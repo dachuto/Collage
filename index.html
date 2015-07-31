@@ -1,1 +1,13 @@
-Hello world
+<input type='text' id="flat" />
+<div id='hex_output'></div>
+
+<script>
+$("#flat").spectrum({
+	clickoutFiresChange: true,
+	flat: true,
+	showInput: true,
+	move: function(color) {
+		$("#hex_output").text(color.toHexString());
+	}
+});
+</script>
