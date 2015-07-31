@@ -5,15 +5,42 @@
 </head>
 
 <input type='text' id="flat" />
-<div id='hex_output'></div>
+<br>
+<input type="text" id="Red" value="0.0"/>
+<br>
+<input type="text" id="Green" value="0.0"/>
+<br>
+<input type="text" id="Blue" value="0.0"/>
+<br>
+<button id="target">
+SET
+</button>
 
 <script>
+function float_to_string(float) {
+    return float.toFixed(3);
+}
+
+function component_to_string(component) {
+    return float_to_string(component / 255);
+}
+
+function component_from_string(string) {
+    return string * 255;
+}
+
 $("#flat").spectrum({
-	clickoutFiresChange: true,
-	flat: true,
-	showInput: true,
-	move: function(color) {
-		$("#hex_output").text(color.toHexString());
-	}
+    clickoutFiresChange: true,
+    flat: true,
+    showInput: true,
+    move: function(color) {
+        $("#Red").val(component_to_string(color.toRgb().r));
+                      $("#Green").val(component_to_string(color.toRgb().g));
+                                    $("#Blue").val(component_to_string(color.toRgb().b));
+                                                      }
+});
+
+$( "#target" ).click(function() {
+$("#flat").spectrum("set", "rgb(" + component_from_string($("#Red").val()) + ", " + component_from_string($("#Green").val()) + ", " + component_from_string($("#Blue").val()) + ")");
 });
 </script>
