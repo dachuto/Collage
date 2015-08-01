@@ -1,59 +1,66 @@
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://bgrins.github.com/spectrum/spectrum.js"></script>
-<link rel="stylesheet" type="text/css" href="http://bgrins.github.com/spectrum/spectrum.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
 </head>
-
-<input type='text' id="flat" />
-<br>
-<input type="text" id="Red" value="0.0"/>
-<br>
-<input type="text" id="Green" value="0.0"/>
-<br>
-<input type="text" id="Blue" value="0.0"/>
-<br>
-<button id="target">
-SET
-</button>
-
-<script>
-function float_to_string(float) {
-    return float.toFixed(3);
-}
-
-function component_to_string(component) {
-    return float_to_string(component / 255);
-}
-
-function component_from_string(string) {
-    return string * 255;
-}
-
-$("#flat").spectrum({
-    clickoutFiresChange: true,
-    flat: true,
-    maxSelectionSize: 16,
-    palette: [["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
-        ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
-        ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
-        ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
-        ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
-        ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
-        ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
-        ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
-    ],
-    showButtons: true,
-    showInput: true,
-    showInitial: true,
-    showPalette: true,
-    move: function(color) {
-        $("#Red").val(component_to_string(color.toRgb().r));
-                      $("#Green").val(component_to_string(color.toRgb().g));
-                                    $("#Blue").val(component_to_string(color.toRgb().b));
-                                                      }
-});
-
-$( "#target" ).click(function() {
-$("#flat").spectrum("set", "rgb(" + component_from_string($("#Red").val()) + ", " + component_from_string($("#Green").val()) + ", " + component_from_string($("#Blue").val()) + ")");
-});
-</script>
+<body>
+		<div class="ui page grid">
+			<div class="four wide column">
+				<a class="ui fluid card" href="picker.html">
+					<div class="image">
+						<img src="assets/colorwheel.jpg">
+					</div>
+					<div class="content">
+						<div class="header">Color Picker</div>
+					</div>
+				</a>
+			</div>
+			<div class="four wide column">
+				<div class="ui fluid card">
+					<div class="image">
+						<img src="assets/colorwheel.jpg">
+					</div>
+					<div class="content">
+						<a class="header">Dupa</a>
+					</div>
+				</div>
+			</div>
+	
+						<div class="four wide column">
+				<div class="ui fluid card">
+					<div class="image">
+						<img src="assets/colorwheel.jpg">
+					</div>
+					<div class="content">
+						<a class="header">Zbita</a>
+					</div>
+				</div>
+			</div>
+						<div class="four wide column">
+				<div class="ui fluid card">
+					<div class="image">
+						<img src="assets/colorwheel.jpg">
+					</div>
+					<div class="content">
+						<a class="header">Zbita</a>
+					</div>
+				</div>
+			</div>
+					<div class="sixteen wide column">
+				<div class="ui fluid card">
+					<div class="image">
+						<img src="assets/colorwheel.jpg">
+					</div>
+					<div class="content">
+						<a class="header">Zbita</a>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
