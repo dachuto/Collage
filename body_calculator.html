@@ -19,6 +19,10 @@
 		<div class="ui label">Area</div>
 		<input id="Area" type="number" step="any" value="1.0">
 	</div>
+	<div class="ui label">
+		Diameter
+		<div id="Diameter" class="detail">1.0</div>
+	</div>
 	<div class="ui labeled input">
 		<div class="ui label">Drag coefficient</div>
 		<input id="Drag" type="number" step="any" value="1.0">
@@ -52,12 +56,18 @@
 		<div class="ui label">Mass</div>
 		<input id="Mass" type="number" step="any" value="1.0">
 	</div>
-
-	
 	<div class="ui label">
-  		Acceleration ratio
-	<div id="Acceleration" class="detail">1.0</div>
-</div>
+		Acceleration
+		<div id="Acceleration" class="detail">1.0</div>
+	</div>
+	<div class="ui label">
+		Acceleration ratio
+		<div id="AccelerationRatio" class="detail">1.0</div>
+	</div>
+	<div class="ui label">
+		Aproximate direction change time
+		<div id="DirectionChangeTime" class="detail">1s</div>
+	</div>
 </body>
 <script>
 	$('input').change(function() {
@@ -70,20 +80,27 @@
 
 		if ($('#SpeedCheckbox').is(':checked')) {
 			$('#Speed').val(force / (area * drag));
+			speed = $('#Speed').val();
 		}
 
 		if ($('#ForceCheckbox').is(':checked')) {
 			$('#Force').val(speed * area * drag);
+			force = $('#Force').val();
 		}
 
 		if ($('#AreaCheckbox').is(':checked')) {
 			$('#Area').val(force / (drag * speed));
+			area = $('#Area').val();
 		}
 
 		if ($('#DragCheckbox').is(':checked')) {
 			$('#Drag').val(force / (area * speed));
+			drag = $('#Drag').val();
 		}
 
-		$('#Acceleration').text(force / (mass * speed));
+		$('#Diameter').text(Math.sqrt(area));
+		$('#Acceleration').text(force / mass);
+		$('#AccelerationRatio').text(force / (mass * speed));
+		$('#DirectionChangeTime').text(((mass * speed) / force) + 's');
 	});
 </script>
