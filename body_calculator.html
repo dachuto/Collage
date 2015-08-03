@@ -1,0 +1,89 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.min.css" />
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+	$$Speed_{max} = {Force_{engine} \over Area * D_c}$$
+	<div class="ui labeled input">
+		<div class="ui label">Speed</div>
+		<input id="Speed" type="number" step="any" value="1.0">
+	</div>
+	<div class="ui labeled input">
+		<div class="ui label">Force</div>
+		<input id="Force" type="number" step="any" value="1.0">
+	</div>
+	<div class="ui labeled input">
+		<div class="ui label">Area</div>
+		<input id="Area" type="number" step="any" value="1.0">
+	</div>
+	<div class="ui labeled input">
+		<div class="ui label">Drag coefficient</div>
+		<input id="Drag" type="number" step="any" value="1.0">
+	</div>
+	<div class="ui form">
+		<div class="grouped fields">
+			<div class="field">
+				<div class="ui radio checkbox">
+					<input id="SpeedCheckbox" type="radio" name="variable"> <label>Speed</label>
+				</div>
+			</div>
+			<div class="field">
+				<div class="ui radio checkbox">
+					<input id="ForceCheckbox" type="radio" name="variable" checked="checked"> <label>Force</label>
+				</div>
+			</div>
+			<div class="field">
+				<div class="ui radio checkbox">
+					<input id="AreaCheckbox" type="radio" name="variable"> <label>Area</label>
+				</div>
+			</div>
+			<div class="field">
+				<div class="ui radio checkbox">
+					<input id="DragCheckbox" type="radio" name="variable"> <label>Drag coefficient</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	$$Acceleration = {Force_{engine} \over Mass}$$
+	<div class="ui labeled input">
+		<div class="ui label">Mass</div>
+		<input id="Mass" type="number" step="any" value="1.0">
+	</div>
+
+	
+	<div class="ui label">
+  		Acceleration ratio
+	<div id="Acceleration" class="detail">1.0</div>
+</div>
+</body>
+<script>
+	$('input').change(function() {
+		var speed = $('#Speed').val();
+		var force = $('#Force').val();
+		var area = $('#Area').val();
+		var drag = $('#Drag').val();
+
+		var mass = $('#Mass').val();
+
+		if ($('#SpeedCheckbox').is(':checked')) {
+			$('#Speed').val(force / (area * drag));
+		}
+
+		if ($('#ForceCheckbox').is(':checked')) {
+			$('#Force').val(speed * area * drag);
+		}
+
+		if ($('#AreaCheckbox').is(':checked')) {
+			$('#Area').val(force / (drag * speed));
+		}
+
+		if ($('#DragCheckbox').is(':checked')) {
+			$('#Drag').val(force / (area * speed));
+		}
+
+		$('#Acceleration').text(force / (mass * speed));
+	});
+</script>
