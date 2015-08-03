@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="200"
+   height="381"
+   id="svg2440">
+  <defs
+     id="defs2443">
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="Arrow1Mend"
+       style="overflow:visible">
+      <path
+         d="M 0,0 L 5,-5 L -12.5,0 L 5,5 L 0,0 z"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         id="path3387"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none" />
+    </marker>
+  </defs>
+  <path
+     d="M 136,40.000001 C 136,47.728 129.728,54 122,54 C 114.272,54 108,47.728 108,40.000001 C 108,32.272001 114.272,26.000001 122,26.000001 C 129.728,26.000001 136,32.272001 136,40.000001 z M 127,89.918348 C 119.272,89.918348 113,83.646349 113,75.918349 C 113,68.190349 119.272,61.91835 127,61.91835 C 127,61.91835 127,61.91835 127,61.91835 L 127,75.918349 L 127,89.918348 z"
+     id="path2451"
+     style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.24068356;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1" />
+  <path
+     d="M 111,140 L 131,140 L 131,160 L 111,160 L 111,140 z M 107.00001,185.85787 L 121.14215,171.71574 L 135.28428,185.85787 L 121.14215,200.00001 L 107.00001,185.85787 z M 113,249 L 131,249 L 131,267 L 113,267 L 113,249 z M 103,213 L 146,213 L 146,231 L 103,231 L 103,213 z"
+     id="rect3229"
+     style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.99999988;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1" />
+  <path
+     d="M 127,98 L 108,113 L 127,128 L 127,98 z M 143,294 C 89.634572,272.45112 91.165547,316.62391 143,294 M 100,340 L 160,340 M 104,340 C 106.20743,327.90192 118.74678,330.23362 147,340"
+     id="path3225"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     d="M 105,340 L 100,345 M 110,340 L 105,345 M 115,340 L 110,345 M 120,340 L 115,345 M 125,340 L 120,345 M 130,340 L 125,345 M 135,340 L 130,345 M 140,340 L 135,345 M 145,340 L 140,345 M 150,340 L 145,345 M 155,340 L 150,345"
+     id="path3251"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  <text
+     x="49.208984"
+     y="13.503906"
+     id="text3281"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="49.208984"
+       y="13.503906"
+       id="tspan3283">Shape</tspan></text>
+  <text
+     x="166.58789"
+     y="10.830078"
+     id="text3285"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="166.58789"
+       y="10.830078"
+       id="tspan3287">Drag</tspan><tspan
+       x="166.58789"
+       y="25.830078"
+       id="tspan3289">Coefficient</tspan></text>
+  <text
+     x="17.34082"
+     y="42.919922"
+     id="text3291"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="17.34082"
+       y="42.919922"
+       id="tspan3293">Sphere</tspan></text>
+  <text
+     x="159.34082"
+     y="40.858398"
+     id="text3295"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="159.34082"
+       y="40.858398"
+       id="tspan3297">0.47</tspan></text>
+  <text
+     x="4.0185547"
+     y="78.919922"
+     id="text3299"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="4.0185547"
+       y="78.919922"
+       id="tspan3301">Half-sphere</tspan></text>
+  <text
+     x="159.34082"
+     y="78.858398"
+     id="text3303"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="159.34082"
+       y="78.858398"
+       id="tspan3305">0.42</tspan></text>
+  <text
+     x="23.438477"
+     y="115.8584"
+     id="text3307"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="23.438477"
+       y="115.8584"
+       id="tspan3309">Cone</tspan></text>
+  <text
+     x="159.34082"
+     y="114.8584"
+     id="text3311"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="159.34082"
+       y="114.8584"
+       id="tspan3313">0.50</tspan></text>
+  <text
+     x="23.438477"
+     y="151.8584"
+     id="text3315"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="23.438477"
+       y="151.8584"
+       id="tspan3317">Cube</tspan></text>
+  <text
+     x="158.90137"
+     y="152.8584"
+     id="text3319"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="158.90137"
+       y="152.8584"
+       id="tspan3321">1.05</tspan></text>
+  <text
+     x="35.324219"
+     y="183.3584"
+     id="text3323"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="35.324219"
+       y="183.3584"
+       id="tspan3325">Angled</tspan><tspan
+       x="35.324219"
+       y="195.8584"
+       id="tspan4172">Cube</tspan></text>
+  <text
+     x="159.34082"
+     y="187.8584"
+     id="text3327"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="159.34082"
+       y="187.8584"
+       id="tspan3329">0.80</tspan></text>
+  <text
+     x="35.151367"
+     y="216.41992"
+     id="text3331"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="35.151367"
+       y="216.41992"
+       id="tspan3333">Long</tspan><tspan
+       x="35.151367"
+       y="228.91992"
+       id="tspan4170">Cylinder</tspan></text>
+  <text
+     x="159.34082"
+     y="222.8584"
+     id="text3335"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="159.34082"
+       y="222.8584"
+       id="tspan3337">0.82</tspan></text>
+  <text
+     x="35.151367"
+     y="255.41992"
+     id="text3339"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="35.151367"
+       y="255.41992"
+       id="tspan3341">Short</tspan><tspan
+       x="35.151367"
+       y="267.91992"
+       id="tspan3371">Cylinder</tspan></text>
+  <text
+     x="158.90137"
+     y="260.8584"
+     id="text3343"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="158.90137"
+       y="260.8584"
+       id="tspan3345">1.15</tspan></text>
+  <text
+     x="32.643555"
+     y="291.41992"
+     id="text3347"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="32.643555"
+       y="291.41992"
+       id="tspan3349">Streamlined</tspan><tspan
+       x="32.643555"
+       y="303.91992"
+       id="tspan3351">Body</tspan></text>
+  <text
+     x="159.34082"
+     y="295.8584"
+     id="text3353"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="159.34082"
+       y="295.8584"
+       id="tspan3355">0.04</tspan></text>
+  <text
+     x="34.643555"
+     y="329.41992"
+     id="text3357"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="34.643555"
+       y="329.41992"
+       id="tspan3359">Streamlined</tspan><tspan
+       x="34.643555"
+       y="341.91992"
+       id="tspan3361">Half-body</tspan></text>
+  <text
+     x="18.822266"
+     y="373.50391"
+     id="text3363"
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="18.822266"
+       y="373.50391"
+       id="tspan3365">Measured Drag Coefficients</tspan></text>
+  <text
+     x="159.34082"
+     y="335.8584"
+     id="text3367"
+     xml:space="preserve"
+     style="font-size:10px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+       x="159.34082"
+       y="335.8584"
+       id="tspan3369">0.09</tspan></text>
+  <path
+     d="M 65.5,38.75 L 95.5,38.75"
+     id="path3373"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1" />
+  <path
+     d="M 65.5,76.75 L 95.5,76.75"
+     id="path4153"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1" />
+  <path
+     d="M 65.5,112.75 L 95.5,112.75"
+     id="path4155"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1" />
+  <path
+     d="M 65.5,150.75 L 95.5,150.75"
+     id="path4157"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1" />
+  <path
+     d="M 65.5,185.75 L 95.5,185.75"
+     id="path4159"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1" />
+  <path
+     d="M 65.5,220.75 L 95.5,220.75"
+     id="path4161"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1" />
+  <path
+     d="M 65.5,258.75 L 95.5,258.75"
+     id="path4163"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1" />
+  <path
+     d="M 65.5,293.75 L 95.5,293.75"
+     id="path4165"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1" />
+  <path
+     d="M 65.5,333.75 L 95.5,333.75"
+     id="path4167"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1" />
+</svg>
