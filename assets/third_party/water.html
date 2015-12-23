@@ -1,0 +1,357 @@
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<h3 class="post-title entry-title" itemprop="name">Reflective water with GLSL, Part I</h3>
+	<div class="post-header">
+		<div class="post-header-line-1"></div>
+	</div>
+	<div class="post-body entry-content" id="post-body-68991470304490751" itemprop="description articleBody">
+		Being it for physical accuracy or setting mood in game, water and reflections are something that can add lot to your rendering engine. While true reflections can only be done with ray-tracing, one can achieve surprisingly nice approximations by using quite simple scene setup and some GPU programming.<br> <br> Good water simulation should have at least the following features:<br>
+		<ul>
+			<li>True reflection (with correct parallax)</li>
+			<li>Clipping of underwater objects on reflection image</li>
+			<li>View angle dependent transparency/reflectivity of water</li>
+			<li>Ripples and/or waves</li>
+			<li>Water scattering (i.e. water becoming gradually opaque as depth increases)</li>
+		</ul>
+		&nbsp;Some more things, that can make things nicer but are not as visible, are:<br>
+		<ul>
+			<li>Refraction</li>
+			<li>Caustics - i.e. light spots at the bottom of shallow water</li>
+			<li>Reflected light - i.e. light spots reflected to objects near water</li>
+		</ul>
+		At moment I have only implemented features from the first list into Khayyam/Sehle/Shinya code. You can look at
+		<a href="http://khayyam.kaplinski.com/2011/08/glsl-water-reflections.html">my previous post</a>
+		for some in-engine images.<br> Here I will describe the mathematics behind the scenes and give step-by-step guide to writing your own water system/object/rendering pass.<br> <br> <span style="font-size: large;">1.Rendering reflection texture</span><br> <br> Water without reflection looks totally uninteresting - just like any other semitransparent surface. Thus we start from implementing reflection and later go on to other effects.<br> <br> <b>1.1. Parallax </b><br>
+		Even if you have until now managed to render you scene in single pass, from this point on you need at least two passes (actually at least <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">N+1</span></b>, where <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">N</span></b> is the number of visible reflective surfaces).<br> <br> The reason is, that unfortunately we cannot recycle our main scene image for reflections.
+		First because it could make view frustum insanely large (for example - if viewing the water surface from high angle we see only ground and water in our main view, but mostly sky in reflection). And second because of parallax. The reflection is unfortunately not the perfect copy of reflected scene, but copy of the view of the same scene from different viewpoint. The following image illustrates this.<br> <br>
+		<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;">
+			<tbody>
+				<tr>
+					<td style="text-align: center;"><a href="http://2.bp.blogspot.com/-3_UlH2s2KbI/TnN7idEjIJI/AAAAAAAAFQ4/hL2r8zgKC2w/s1600/reflections.png" imageanchor="1" style="margin-left: auto; margin-right: auto;">
+							<img border="0" height="400" src="./water_files/reflections.png" width="320">
+						</a></td>
+				</tr>
+				<tr>
+					<td class="tr-caption" style="text-align: center;">A diagram explaining the parallax effect on reflected image</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> It means that you need to have rendering to texture set up and working. We will render reflection to texture and later use this texture while rendering the water surface in main scene.<br> <br> Thus, to get reflection texture we first have to render our scene from the reflected camera viewpoint&nbsp; <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">P'</span></b> to texture. First we have to find the reflected camera position - or more precisely
+		the reflected view matrix (because we need camera orientation too in addition to the position).<br> This can be done with the following formula:<br> <br> <i><b>M'<span style="font-size: x-small;">camera</span> = M<span style="font-size: x-small;">reflection</span> * M<span style="font-size: x-small;">camera</span></b></i><br> <br> Where <i><b>M<span style="font-size: x-small;">reflection</span></b></i> is the reflection matrix of mirror surface. It can trivially be calculated from
+		the position of reflection plane:<br> <br>
+		<pre>              | 1-2Nx2   -2NxNy  -2NxNz  -2NxD |
+Mreflection = |  -2NxNy 1-2Ny2   -2NyNz  -2NyD |
+              |  -2NxNz  -2NyNz 1-2Nz2   -2NzD |
+              |    0       0       0       1   |
+</pre>
+		<br> Where (<i><b>N<span style="font-size: x-small;">x</span>,N<span style="font-size: x-small;">y</span>,N<span style="font-size: x-small;">z</span>,D
+		</b></i>) are the coefficients of plane equation (<i><b>xN<span style="font-size: x-small;">x</span> + yN<span style="font-size: x-small;">y</span> + zN<span style="font-size: x-small;">z</span> + D = 0
+		</b></i>). Notice, that (<i><b>N<span style="font-size: x-small;">x</span>,N<span style="font-size: x-small;">y</span>,N<span style="font-size: x-small;">z</span></b></i>) is also the normal vector of given plane.<br> <br> <i><b>M<span style="font-size: x-small;">camera</span></b></i> is the transformation of camera as if it would be "normal" object in scene. To get ModelView matrix you will need the inverse of it<i><b>.</b></i><br> <br> <b>1.2. Mirrored geometry </b><br>
+		<div style="margin-bottom: 0cm;">
+			Actually we cheated a little in the previous image. We rotated the mirrored image 180<span style="font-family: &amp; amp; #39;Times New Roman&amp;amp;#39;, serif;">º</span> to make it more similar to the original image, so the effect of parallax can be seen. The actual mirrored image looks like this:
+		</div>
+		<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;">
+			<tbody>
+				<tr>
+					<td style="text-align: center;"><a href="http://2.bp.blogspot.com/-Bc87MIvKygc/TnN-zGwd2kI/AAAAAAAAFRA/IebKpTnjc_Q/s1600/reflections-2.png" imageanchor="1" style="margin-left: auto; margin-right: auto;">
+							<img border="0" height="180" src="./water_files/reflections-2.png" width="320">
+						</a></td>
+				</tr>
+				<tr>
+					<td class="tr-caption" style="text-align: center;">Different winding order on mirrored image</td>
+				</tr>
+			</tbody>
+		</table>
+		Notice, that the winding order of polygons in image is flipped on mirrored image - i.e. the triangle is oriented CCW on original but CW on reflection.<br> <br> This may or may not be problem for you. If all your materials are double sided (i.e. you do not do back face culling) or if you can set up rendering pipeline in such a way, that you can change culling direction it is OK. In my case though, I prefer to keep culling always on and have forward-facing always defined as CCW. So something has
+		to be done with the reflected image - or otherwise geometry will not render properly.<br> <br> We will exploit the feature that camera is always (at least in most applications) rectangular and centered around view direction. Thus we can just flip camera in <b style="font-family: &amp; amp;">Y</b> direction and the winding order will be correct again (it flips reflected image so it looks like (3) on the first picture).<br> This can be done with one more reflection matrix:<br> <br>
+		<i><b>M''<span style="font-size: x-small;">camera</span> = M<span style="font-size: x-small;">reflection</span> * M<span style="font-size: x-small;">camera</span></b></i><i><b> * M<span style="font-size: x-small;">flip</span></b></i><br> <br> Where <i><b>M<span style="font-size: x-small;">flip</span></b></i> is simply another reflection matrix that does reflection over <b style="font-family: &amp; amp;">XZ</b> plane.<br> Now if we render mirrored image using <i><b>M''<span
+				style="font-size: x-small;">camera </span></b></i>as camera matrix, pipeline can be left intact. We, of course, have to save this matrix for later reference, because it is needed to properly map our texture to water object in main render stage.<br> <br> <b>1.3. Underwater clipping</b><br> Take a look at the following picture:<br>
+		<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;">
+			<tbody>
+				<tr>
+					<td style="text-align: center;"><a href="http://2.bp.blogspot.com/-NEk2XMHWqf8/TnOC3-uiArI/AAAAAAAAFRI/FHfKSSkVdhA/s1600/reflections-3.png" imageanchor="1" style="margin-left: auto; margin-right: auto;">
+							<img border="0" height="240" src="./water_files/reflections-3.png" width="320">
+						</a></td>
+				</tr>
+				<tr>
+					<td class="tr-caption" style="text-align: center;">A reflection with underwater object</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> <br> We have added an underwater object <b style="font-family: &amp; amp;">Q</b> to our scene. Now it should not appear on reflection, because it does not block the actual reflection rays <b style="font-family: &amp; amp;">PB'B</b> and <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">PA'A</span></b>. But we are not doing ray-tracing. We are instead moving camera to mirrored viewpoint <b><span
+			style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">P'</span></b> and rendering reflection like normal image. But as you can see, the object <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">Q</span></b> blocks ray <b style="font-family: &amp; amp;">P'A'A</b> and thus would show up in our reflection.<br> <br> Thus we have to make sure, that nothing that is under the reflection plane (water surface) will show up in mirror
+		rendering. This can be achieved in three different ways:<br>
+		<ol>
+			<li>Use additional clipping plane on GPU. It can be very fast or very slow - depending on card and driver used.</li>
+			<li>Use oblique projection matrix during reflection rendering. You can read more about it <a href="http://www.terathon.com/code/oblique.html">here</a>. This is cool technique, but personally I have never got it to work well enough because it messes up camera far plane.
+			</li>
+			<li>Clip manually in pixel shaders. It wastes some GPU cycles, but is otherwise easy and foolproof.</li>
+		</ol>
+		I went with option (3) because oblique projection matrix did not seem to play well with wide camera angles (far plane moved through infinity creating all kinds of weird effects). The clipping itself is as easy as adding the following code at the beginning of all pixel shaders (or more precisely the ones that are used for reflectable objects):<br> <br>
+		<pre>uniform vec4 clip_plane;
+varying vec3 interpolatedVertexEye;
+
+void main()
+{ 
+&nbsp;&nbsp;&nbsp; float clipPos = dot (interpolatedVertexEye, clip_plane.xyz) + clip_plane.w;
+&nbsp;&nbsp;&nbsp; if (clipPos &lt; 0.0) {
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; discard;
+&nbsp;&nbsp;&nbsp; }
+...
+}
+</pre>
+		<br> Of course you have to supply your shader with <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">clip_plane</span></b> and calculate <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">interpolatedVertexEye</span></b> in vertex shader (it is simply vertex coordinate in view/eye space: <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">VertexEye = Mmodelview * Vertex</span></b>).
+		If you do not need clipping, simply set <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">clip_plane</span></b> normal (<b style="font-family: &amp; amp;">xyz</b>) to zero and all pixels will be rendered.<br> <br> <b>1.4. Putting it all together</b><br> Before starting the main render pass (being it forward or deferred) do the following:<br>
+		<ol>
+			<li>Create list of all objects that need reflections (and the parameters of all reflection planes). Then for each reflection plane:</li>
+			<li>Calculate the reflected camera matrix<i><b><br>M''<span style="font-size: x-small;">camera</span> = M<span style="font-size: x-small;">reflection</span> * M<span style="font-size: x-small;">camera</span></b></i><i><b> * M<span style="font-size: x-small;">flip</span></b></i></li>
+			<li>Set up camera matrices (you can optimize rendering by using clipped projection matrix, but this will not be discussed here).</li>
+			<li>Set clipping plane to reflection plane</li>
+			<li>Render full scene</li>
+			<li>Save the rendered image as texture to be used with reflective object</li>
+		</ol>
+		If you are using HDR you should not tone-map reflection texture - unless you want to achieve some very specific effect.<br>
+		<ol>
+		</ol>
+		<span style="font-size: large;">2. Rendering reflective object</span><br> <br> This is actually quite easy - provided that you have at hand all necessary parameters. You have still to decide at which render stage to do this. I use transparent stage, as water is basically just one semi-transparent surface in scene, but you can add another pass before or after transparency as well.<br> <br> You will need at hand:<br>
+		<ul>
+			<li>Reflected camera matrix <i><b>M''<span style="font-size: x-small;">camera</span></b></i></li>
+			<li>Projection matrix you used to render reflection <b><i>M<span style="font-size: x-small;">projectionreflection</span></i></b> (normally this is the same projection that you use for main camera)
+			</li>
+			<li>Reflection texture</li>
+		</ul>
+		<br>
+		<ul>
+		</ul>
+		<b>2.1. Vertex shader</b><br> <br>
+		<pre>attribute vec3 vertex;
+
+uniform mat4 o2v_projection;
+
+varying vec3 interpolatedVertexObject;
+
+void main()
+{
+	gl_Position = o2v_projection * vec4(vertex.xy, 0.0, 1.0);
+	interpolatedVertexObject = vertex;
+}
+</pre>
+		<br> We add another constraint here - water surface will be at <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">XY</span></b> plane of the object local coordinate system. It is strictly not necessary if you have the proper reflection plane, but I found it easier that way. Just use <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">XY</span></b> plane as reflection plane and place your object (water body) appropriately.<br>
+		<br> Actually this allows us to do another cool trick. We can use the bottom of water body (i.e. river, lake..) as our water object. It will be flattened in shader, but we can use the <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">Z</span></b> data to determine the depth of water at given point. But more about this in next part.<b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">&nbsp;</span></b><br> <br> <b><span
+			style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">o2v_projection</span></b> is simply my name for composite matrix <b>Projection * ModelView</b>. I prefer to name matrices with mnemonic names, describing the coordinate system transformations they do - in given case it is <b>Object To View</b>, multiplied with <b>Projection</b>.<b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">&nbsp;</span></b><br> <br> <b><span
+			style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">interpolatedVertexObject</span></b> is simply vertex coordinate in object local coordinate system - we will need it to do lookup onto reflection texture.<br> <br> <b>2.2. Fragment shader</b><br> <br>
+		<pre>uniform mat4 o2v_projection_reflection;
+uniform sampler2D reflection_sampler;
+
+varying vec3 interpolatedVertexObject;
+
+void main()
+{
+	vec4 vClipReflection = o2v_projection_reflection * vec4(interpolatedVertexObject.xy, 0.0 , 1.0);
+	vec2 vDeviceReflection = vClipReflection.st / vClipReflection.q;
+	vec2 vTextureReflection = vec2(0.5, 0.5) + 0.5 * vDeviceReflection;
+
+	vec4 reflectionTextureColor = texture2D (reflection_sampler, vTextureReflection);
+
+	// Framebuffer reflection can have alpha &gt; 1
+	reflectionTextureColor.a = 1.0;
+
+	gl_FragColor = reflectionTextureColor;
+}
+</pre>
+		<br> <b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">o2v_projection_reflection</span></b> is the composite matrix <b>Projection * ModelView</b> as it was used during reflection rendering. I.e:<br> <br> <b><i>M<span style="font-size: x-small;">projectionreflection * </span></i></b><i><b>(M''<span style="font-size: x-small;">camera)-1 * Mobject</span></b></i><br> <br> Like the name implies, it transforms from the object coordinate system to
+		the clip coordinate system of reflection camera.<br> <br> In fragment shader we simply repeat the full transform pipeline during reflection rendering and use final 2D coordinates for texture lookup. For this we need initial, untransformed object vertices - thus they are interpolated from vertex shader (<b><span style="font-family: &amp; amp; #39;Courier New&amp;amp;#39;, Courier, monospace;">interpolatedVertexObject</span></b>).<br> <br> I'll set reflection <b>alpha </b>to <b>1.0</b>
+		because I use HDR buffers and due to additive blending the final alpha can have some very weird values there.<br> <br> And the rendered image:<br> <br>
+		<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;">
+			<tbody>
+				<tr>
+					<td style="text-align: center;"><a href="http://3.bp.blogspot.com/-bFCjb8rWuYg/TnOgLlR6P8I/AAAAAAAAFRQ/97Aow-r-vSI/s1600/reflections-4.jpg" imageanchor="1" style="margin-left: auto; margin-right: auto;">
+							<img border="0" height="310" src="./water_files/reflections-4.jpg" width="400">
+						</a></td>
+				</tr>
+				<tr>
+					<td class="tr-caption" style="text-align: center;">Simple scene from Shinya showing water as perfect mirror</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> Not very realistic?<br> Up to now we have implemented water as perfect mirror. This is very far from reality (look at the feature list in the first section).<br> <br> In the next parts I will show how to add viewing angle based transparency, water color and depth-dependent ripples to your water.<br> <span class="Apple-style-span" style="font-size: large;">1. The relation of reflectivity and viewing angle</span><br> <br> If you imagine looking at water body from
+		different angles it should be obvious, that the lower is viewing angle the more light it reflects. Sea may look almost like perfect mirror during tranquil sunset - but if you are looking daytime from the top of a cliff, you can see the blueish-greenish color of water and only a little reflection.<br> <br> The reflectivity of water comes from the difference in refractive indexes of air and water. As the speed of light is different in these mediums, some light is reflected and the light entering
+		water changes slightly its direction - the latter is called refraction. Refraction is another phenomenon that can add realism, but we will not try to simulate it here.<br> <br>
+		<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;">
+			<tbody>
+				<tr>
+					<td style="text-align: center;"><a href="http://4.bp.blogspot.com/-Q1rQHsPmJk4/TosORNTuTqI/AAAAAAAAFR0/sO4VP3EuV_s/s1600/reflections+4.png" imageanchor="1" style="margin-left: auto; margin-right: auto;">
+							<img border="0" height="308" src="./water_files/reflections+4.png" width="320">
+						</a></td>
+				</tr>
+				<tr>
+					<td class="tr-caption" style="text-align: center;">A schematic diagram of reflection and refraction</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> Mathematically the amount of light reflected from the surface of water is described by Fresnel equations:<br> <br>
+		<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;">
+			<tbody>
+				<tr>
+					<td style="text-align: center;"><a href="http://1.bp.blogspot.com/-GrqeLRgxMVo/TosPl08mUfI/AAAAAAAAFR8/15mDPPBeM8I/s1600/fresnel.png" imageanchor="1" style="margin-left: auto; margin-right: auto;">
+							<img border="0" height="160" src="./water_files/fresnel.png" width="400">
+						</a></td>
+				</tr>
+				<tr>
+					<td class="tr-caption" style="text-align: center;">Fresnel reflection equations (source Wikipedia)</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> <i><b>R<span class="Apple-style-span" style="font-size: x-small;">s</span></b></i> and <i><b>R<span class="Apple-style-span" style="font-size: x-small;">t</span></b></i> are the reflectance values of vertically and horizontally polarized light.<br> <i><b>θ<span class="Apple-style-span" style="font-size: x-small;">i</span></b></i> and <i><b>θ<span class="Apple-style-span" style="font-size: x-small;">t</span></b></i> are the angles between the surface normal and incident and refracted rays.<br>
+		<div>
+			<b><i>n<span class="Apple-style-span" style="font-size: x-small;">1</span></i></b> and <b><i>n<span class="Apple-style-span" style="font-size: x-small;">2</span></i></b> are the refractive indices of two media - in our case air and water. The relevant values are:
+		</div>
+		<div>
+			<br>
+		</div>
+		<div>
+			<b><i>n<span class="Apple-style-span" style="font-size: x-small;">1</span></i></b><i>&nbsp;= 1.000277 ≈ 1</i>
+		</div>
+		<div>
+			<b><i>n<span class="Apple-style-span" style="font-size: x-small;">2</span></i></b><i>&nbsp;= 1.3330</i><br>
+			<div>
+				<i><br></i>
+			</div>
+		</div>
+		<div>
+			<div style="font-style: normal;">
+				We do not need&nbsp;<i><b>θ<span class="Apple-style-span" style="font-size: x-small;">t</span></b></i>&nbsp;because it can be derived from&nbsp;<i><b>θ<span class="Apple-style-span" style="font-size: x-small;">i</span></b></i>&nbsp;and refractive indices using Snell's law - look at the rightmost part of equations.
+			</div>
+			<div style="font-style: normal;">The reflectance values are different for differently polarized light. This explains the magic behind anti-glare sunglasses and optical filters - they cut off vertically polarized light, that is much more strongly reflected.</div>
+			<div style="font-style: normal;">It is also interesting to know that skylight is in fact somewhat polarized. But for our simulation we ignore this and treat all light as the uniform mix of both polarizations. In that case, the total reflectance can be simply calculated as:</div>
+			<div style="font-style: normal;">
+				<br>
+			</div>
+			<div>
+				<i><b>R</b> = (<b>R<span class="Apple-style-span" style="font-size: x-small;">s</span></b>&nbsp;+&nbsp;<b>R<span class="Apple-style-span" style="font-size: x-small;">t</span></b>) / 2</i> <br> <i> </i>
+			</div>
+			<div style="font-style: normal;">
+				<br>
+			</div>
+		</div>
+		<div>
+			<div style="font-style: normal;">The full Fresnel equation above is a bit too complex for our shaders. It is physically correct - but our goal is natural or good-looking scene and we are ready to sacrify a little here ad there to save shader instructions for other things.</div>
+			<div style="font-style: normal;">There is quite simple approximation available. Take a look at the following graph:</div>
+			<div style="font-style: normal;">
+				<br>
+			</div>
+			<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="font-style: normal; margin-left: auto; margin-right: auto; text-align: center;">
+				<tbody>
+					<tr>
+						<td style="text-align: center;"><a href="http://4.bp.blogspot.com/-py1tIOc2gSs/Toi7pK3gShI/AAAAAAAAFRk/lczs7UdGmCs/s1600/fresnel-graph.png" imageanchor="1" style="margin-left: auto; margin-right: auto;">
+								<img border="0" height="271" src="./water_files/fresnel-graph.png" width="400">
+							</a></td>
+					</tr>
+					<tr>
+						<td class="tr-caption" style="text-align: center;">Fresnel reflectance values Rs, Rp and R (blue, red, yellow) and our approximation (green)&nbsp;</td>
+					</tr>
+				</tbody>
+			</table>
+			<div style="font-style: normal;">The green line represents function:</div>
+			<div style="font-style: normal;">
+				<br>
+			</div>
+			<i><b>R</b> = <b>Rmin</b> + (1 - <b>Rmin</b>) * (1- cos <b>θ<span class="Apple-style-span" style="font-size: x-small;">i</span></b>)<sup>5</sup></i> <br> <br> That can be used as good approximation.<br> <b>R<span class="Apple-style-span" style="font-size: x-small;">min</span></b> is 0.02 for real water, but you may want to increase it to something like 0.1 or even more, unless you have very good HDR implementation. The problem is that real sky is <b>really </b>bright - if you are using
+			dimmed down version of sky, its reflection is not visible at all from high angles.<br> <br> That's it. Now we have reflectance value calculated - but we cannot yet update our shaders. Unlike in our previous lesson, where the reflection was all that had to be rendered, we now have to render the water itself too - unless the reflectance is exactly 1.<br> <br> <span class="Apple-style-span" style="font-size: large;">2. Rendering water</span><br> <br> Water is normally dense
+			medium and strongly scatters light. The actual formula is quite complex and depends on the amount of different chemical compounds (such as oxygen, humic acids) and various inorganic (such as clay) and organic (like plankton) particles in water. But our goal is not to simulate procedurally the color and turbidity of water, but instead find a meaningful set of descriptive parameters, that will give us good enough approximation.<br> <br> Scattering changes the intensity of light (ray) in two ways:<br>
+			<ul>
+				<li>Out-scattering - if ray of light goes through medium, some fraction of light is scattered away from direct path and thus the final amount of light is lower.</li>
+				<li>In-scattering - as light is scattered to all directions, some light from rays originally going other directions is scattered to the direction of the ray of interest.</li>
+			</ul>
+			Because of out-scattering the bottom of deep water body is dark. Because of in-scattering objects inside water seem "tinted" with water color.<br> <br>
+			<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;">
+				<tbody>
+					<tr>
+						<td style="text-align: center;"><a href="http://3.bp.blogspot.com/-iFsx_EztZII/TotOpC7TTXI/AAAAAAAAFSM/ly3ecLeTaGY/s1600/reflections+6.png" imageanchor="1" style="margin-left: auto; margin-right: auto;">
+								<img border="0" height="257" src="./water_files/reflections+6.png" width="400">
+							</a></td>
+					</tr>
+					<tr>
+						<td class="tr-caption" style="text-align: center;">Scattering in water. A - in-scattering. B - out-scattering.</td>
+					</tr>
+				</tbody>
+			</table>
+			In addition to scattering there is one more phenomenon causing less light to come from water - it is internal reflection. As light hits the bottom of water body or objects inside it and goes upwards from there, some of it is mirrored back into water from the air-water phase surface.<br> We ignore this at moment and will use shortcut - instead of adding together the light coming from inside water and light from reflection, we draw the latter as semitransparent surface using reflectance as alpha
+			value. Thus the higher is reflectance, the lower is the effect of light from inside water - which is generally correct, because the internal and external reflectance values are correlated.<br> <br> How good our water formula can be depends on whether we can read the color and depth values of the bottom of water body or underwater objects in shader or not. Here I present a simple approach, that does not use them, but instead adds the color of water to the reflection image.<br> <br> We
+			ignore the exact scattering equations, that involve multiple integrals and instead combine the "tint" of water with the color of reflection (that is semitransparent now) and then render them as semitransparent surface over the already rendered bottom of water. For this I use a very simple formula:<br> <br> <i><b>C<span class="Apple-style-span" style="font-size: x-small;">tint</span></b> = <b>C<span class="Apple-style-span" style="font-size: x-small;">water</span></b> * (<b>O<span
+					class="Apple-style-span" style="font-size: x-small;">min</span></b> + (1 - <b>O<span class="Apple-style-span" style="font-size: x-small;">min</span></b>) * sqrt (min (<b>thickness</b> / <b>D<span class="Apple-style-span" style="font-size: x-small;">opaque</span></b>, 1)))</i><br> <br> <i><b>C<span class="Apple-style-span" style="font-size: x-small;">tint</span></b></i>&nbsp;is the color that water adds to objects (premultiplied)<br> <i><b>C<span class="Apple-style-span"
+					style="font-size: x-small;">water</span></b></i>&nbsp;is the color of opaque water column<br> <i><b>O<span class="Apple-style-span" style="font-size: x-small;">min</span></b></i>&nbsp;is the minimal opacity of water. It should be 0 for realistic simulation, but in reality values 0.1-0.2 give overall better effect.<br> <i><b>D<span class="Apple-style-span" style="font-size: x-small;">opaque</span></b></i>&nbsp;is the depth of water column, that becomes fully opaque. The reasonable value is 2 m for
+			freshwater bodies - the smaller the better, as it helps to hide the lack of refraction.<br> <i><b>thickness</b></i>&nbsp;is the thickness of water in given direction until bottom or some underwater object is hit.<br> <br> Calculating thickness is tricky. The technically correct way would be to trace ray in refracted direction until bottom (line <b>AC</b> in following figure) - but we cannot afford to do that.<br> If you can use depth buffer, you can ignore refraction and calculate the
+			distance the original ray would cover underwater (line <b>AD</b>). This overestimates the thickness, but as the effect only becomes noticeable at low viewing angle, where reflection dominates, it should look quite good.<br> Here I will use even simpler approximation. Just find the depth of water under given point of surface (point <b>B</b> on following figure), and pretend that water has uniform depth (line <b>AB<sub>1</sub></b>). It underestimates depth at the slopes directed away from viewer and
+			overestimates at slopes directed to viewer, but if the bottom of water is reasonably smooth it is not too bad.<br> <br>
+			<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;">
+				<tbody>
+					<tr>
+						<td style="text-align: center;"><a href="http://1.bp.blogspot.com/-XuVylF1qgTU/TosTCW9Zc9I/AAAAAAAAFSE/umwXwz2M4qY/s1600/reflections+5.png" imageanchor="1" style="margin-left: auto; margin-right: auto;">
+								<img border="0" height="257" src="./water_files/reflections+5.png" width="400">
+							</a></td>
+					</tr>
+					<tr>
+						<td class="tr-caption" style="text-align: center;">A diagram of different possible methods for water thickness calculation</td>
+					</tr>
+				</tbody>
+			</table>
+			How to get the actual water depth under given point?<br> Recall the previous tutorial. We set the Z coordinate of vertex to 0 (i.e. flatten our object), but kept the full original vertex coordinate in <b>interpolatedVertexDepth</b>.<br> Thus if the object being rendered as water is actually the bottom of water body, it will render as flat surface, but we have access to the original Z coordinate of it. In other words - the water depth.<br> Another approach would be to encode water depth
+			into another vertex attribute. It has some good points - like no need to separate the bottom of water body from other terrain and the possibility to hand-code depth.<br> <br> Once we have calculated water thickness with whatever method applicable, we treat the tint color as another semitransparent layer, lying directly beneath the reflection layer. The final color and alpha values can be calculated by standard alpha blending formula:<br> <br> <span class="Apple-style-span"
+				style="font-family: Times,&amp; #39;Times New Roman&amp;#39;, serif;"><i>C = A<sub>reflection</sub> * C<sub>reflection</sub> + (1 - A<sub>reflection</sub>) * C<sub>water</sub></i></span><br> <span class="Apple-style-span" style="font-family: Times,&amp; #39;Times New Roman&amp;#39;, serif;"><i>A = A<sub>reflection</sub> + (1 - A<sub>reflection</sub>) * A<sub>water</sub></i></span><br> <br> Where C and A are color and alpha values.<br> If the resulting alpha is below 1, bottom or
+			underwater objects are partially visible.<br> <br> <span class="Apple-style-span" style="font-size: large;">3. Shaders</span><br> <br> There is no need to change vertex shader.<br> <br> Fragment shader:<br> <span class="Apple-style-span" style="background-color: white; color: #666666; font-family: &amp; #39; Trebuchet MS&amp;#39; , Trebuchet , Verdana, sans-serif; font-size: 13px; line-height: 18px;"></span><br>
+			<pre>uniform mat4 o2v_projection_reflection;
+uniform sampler2D reflection_sampler;
+uniform vec3 eye_object;
+uniform float min_opacity, opaque_depth, opaque_color;
+
+varying vec3 interpolatedVertexObject;
+
+void main()
+{
+    // Vertex on water surface
+    vec3 surfaceVertex = vec3(interpolatedVertexObject.xy, 0.0);
+    // Reflection angle
+    vec3 vertex2Eye = normalize (eye_object - surfaceVertex );
+    float cosT1 = vertex2Eye.z;
+    // Reflectance
+    float c = 1.0 - cosT1;
+    float R = min_reflectivity + (1.0 - min_reflectivity) * c * c * c * c * c;
+
+    // Water density
+    float depth = -interpolatedVertexObject.z;
+    float thickness = depth / max (cosT1, 0.01);
+    float dWater = min_opacity + (1.0 - min_opacity) * sqrt (min (thickness / opaque_depth, 1.0));
+    // Premultiply
+    vec3 waterColor = opaque_color * dWater;
+
+    vec4 vClipReflection = o2v_projection_reflection * vec4(interpolatedVertexObject , 1.0);
+    vec2 vDeviceReflection = vClipReflection.st / vClipReflection.q;
+    vec2 vTextureReflection = vec2(0.5, 0.5) + 0.5 * vDeviceReflection;
+
+    vec4 reflectionTextureColor = texture2D (reflection_sampler, vTextureReflection);
+    // Framebuffer reflection can have alpha &gt; 1
+    reflectionTextureColor.a = 1.0;
+
+    // Combine colors
+    vec3 color = (1.0 - R) * waterColor + R * reflectionTextureColor.rgb;
+    float alpha = R + (1.0 - R) * dWater;
+
+    gl_FragColor = vec4(color, alpha);}</pre>
+			<br> We have added another uniform (in addition to water color and opacity ones) - <b>eye_object</b>, that is simply camera position relative to water object local coordinate system.<br> <br> And real-time image from Shinya:<br> <br>
+			<table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;">
+				<tbody>
+					<tr>
+						<td style="text-align: center;"><a href="http://1.bp.blogspot.com/-2C2vluMOdI4/Tojq29YSr8I/AAAAAAAAFRs/YLeZaKmM1PE/s1600/shinya-water-2.jpg" imageanchor="1" style="margin-left: auto; margin-right: auto;">
+								<img border="0" height="295" src="./water_files/shinya-water-2.jpg" width="400">
+							</a></td>
+					</tr>
+					<tr>
+						<td class="tr-caption" style="text-align: center;">Simple scene from Shinya with partial reflection and water opacity&nbsp;</td>
+					</tr>
+				</tbody>
+			</table>
+			<br> Now it is a bit better than last time - but still artificial and lifeless. Next time I show, how to make it live - i.e. add waves or ripples.<br>
+</body>
