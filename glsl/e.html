@@ -57,7 +57,6 @@
 		<link rel="stylesheet" href="css/codemirror.css">
 		<link rel="stylesheet" href="css/default.css">
 
-		<script src="js/lzma.js"></script>
 		<script src='js/jquery.js'></script>
 		<script src='js/helpers.js'></script>
 		<script src="js/codemirror.js"></script>
@@ -70,53 +69,47 @@ precision mediump float;
 uniform vec2 resolution;
 
 #define M_PI 3.1415926535897932384626433832795
+#define M_2PI 6.28318530717958647692528676655901
 
 float SinToUnit(in float sine) {
 	return (sine + 1.0) * 0.5;
 }
 
-vec4 ColorCycle(in float unit) {
+vec3 ColorCycle(in float unit) {
 	float x = mix(0.0, 2.0 * M_PI, unit);
 		
 	float r = SinToUnit(sin(x + 0.0));
 	float g = SinToUnit(sin(x + 2.0));
 	float b = SinToUnit(sin(x + 4.0));
-	return vec4(r,g,b, 1.0);
+	return vec3(r,g,b);
 }
 
-vec4 ColorCycle2(in float unit) {
+vec3 ColorCycle2(in float unit) {
 	float x = mix(0.0, 2.0 * M_PI, unit);
 	float r = SinToUnit(sin(x + 0.0));
 	float g = SinToUnit(cos(x + 0.0));
 	float b = SinToUnit(sin(x + M_PI));
-	return vec4(r, g, b, 1.0);
+	return vec3(r, g, b);
 }
 
-vec4 Flame(in float unit) {
-	float fade = 1.0 - unit * unit;
-	float fast_fade = clamp((2.0/3.0) - 2.0 * unit, 0.0, 1.0);
-	return vec4(1.0, fade, fast_fade, fade);
-	
-	
-	return vec4(1.0, 1.5 - mix(0.0, 1.5, unit), (2.0 / 3.0) - 2.0 * unit, 1.0 - unit);
-
-	const float a = 1.0 / 3.0;
-	const float b = 2.0 / 3.0;
-	float red = 1.0 - smoothstep(b, 1.0, unit);
-	return vec4(red, 1.0 - smoothstep(a, b, unit), 1.0 - smoothstep(0.0, a, unit), red);
+vec3 color_palette(in float unit, in vec3 a, in vec3 b, in vec3 c, in vec3 d) {
+    return a + b * cos(M_2PI * (c * unit + d));
 }
 
-vec4 ColorLevelMask(in vec4 color, in int level) {
+
+vec3 Flame(in float unit) {
+	return color_palette(unit, vec3(0.8,0.5,0.4),vec3(0.2,0.4,0.2),vec3(2.0,1.0,1.0),vec3(0.0,0.25,0.25));
+}
+
+vec3 ColorLevelMask(in vec3 color, in int level) {
 	if (level == 0) {
-		return color;		
+		return color;
 	} else if (level == 1) {
-		return color * vec4(1.0, 0.0, 0.0, 1.0);	
+		return color * vec3(1.0, 0.0, 0.0);
 	} else if (level == 2) {
-		return color * vec4(0.0, 1.0, 0.0, 1.0);	
+		return color * vec3(0.0, 1.0, 0.0);
 	} else if (level == 3) {
-		return color * vec4(0.0, 0.0, 1.0, 1.0);	
-	} else if (level == 4) {
-		return vec4(color.a);
+		return color * vec3(0.0, 0.0, 1.0);
 	}
 }
 
@@ -124,31 +117,35 @@ vec2 InverseMix(in vec2 a, in vec2 b, in vec2 x) {
 	return (x - a) / (b - a);
 }
 
-vec4 ColorPlot(in vec4 color, in vec2 position) {
-	return step(vec4(position.y), color);
+vec3 ColorPlot(in vec3 color, in vec2 position) {
+	return step(vec3(position.y), color);
 }
 
-#define COLOR_FUNCTION Flame
+#define COLOR_FUNCTION ColorCycle
 
-vec4 ColorMapDebug(in vec2 position) {
+vec3 ColorMapDebug(in vec2 position) {
 	float TOP = 0.5;
 	float BOTTOM = 0.25;
+	float CONTINUITY = 0.05;
 	if (position.y > TOP) {
 		return ColorLevelMask(COLOR_FUNCTION(position.x), int((position.y - TOP) * 2.0 * 5.0));
 	} else if (position.y > BOTTOM) {
 		vec2 sub_position = InverseMix(vec2(0.0, BOTTOM), vec2(1.0, TOP), position);
-		vec4 plot = ColorPlot(COLOR_FUNCTION(sub_position.x), sub_position);
+		vec3 plot = ColorPlot(COLOR_FUNCTION(sub_position.x), sub_position);
 		return plot;
+	} else if (position.y > CONTINUITY) {
+		return COLOR_FUNCTION(fract(position.x));
 	} else {
-		return COLOR_FUNCTION(fract(position.x * 4.0));
+		return COLOR_FUNCTION(fract(position.x * 2.0));
 	}
 }
 
 void main( void ) {
 	vec2 position = vec2(gl_FragCoord.xy / resolution.xy);
 
-	gl_FragColor = ColorMapDebug(position);
-}</script>
+	gl_FragColor = vec4(ColorMapDebug(position), 1.0);
+}
+</script>
 
 		<script id="fragmentShader" type="x-shader/x-fragment">
 
