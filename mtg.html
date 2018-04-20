@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.getJSON demo</title>
+  <style>
+  img {
+    height: 100px;
+    float: left;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<div id="images"></div>
+
+<script>
+	(function() {
+		var flickerAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+		$.getJSON(flickerAPI, {
+			tags : "mount rainier",
+			tagmode : "any",
+			format : "json"
+		}).done(function(data) {
+			$.each(data.items, function(i, item) {
+				$("<img>").attr("src", item.media.m).appendTo("#images");
+				if (i === 3) {
+					return false;
+				}
+			});
+		});
+	})();
+</script>
+
+</body>
+</html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="import" href="import.html">
+	<link rel="stylesheet" href="import.css" />
+</head>
+<script>
+function accept_json(data) {
+	console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+	console.log(data);
+}
+
+$(document).ready(function () {
+	$("#DUPA").html('<img class="ui centered tiny image" src="http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=8327"></img>');
+	$.ajax({
+		dataType: "json",
+		url: "mtg/article.json",
+	}).done(accept_json);
+});
+</script>
+<body>
+	<div id="DUPA"></div>
+	<h1 class="ui center aligned header">
+		Mtg
+	</h1>
+	<h2 class="ui horizontal divider header">
+		<i class="tag icon"></i>
+		Dominaria
+	</h2>
+	<div class="ui cards">
+		<div class="ui card">
+			<div class="content">
+				<div class="header">Combat system</div>
+				<div class="description">Board filled with units. Similar to most match-3 games. Think similar to neuroshima without so much bookkeeping.</div>
+			</div>
+			<div class="content">
+				<div class="ui list">
+					<div class="item">
+						<i class="green thumbs up icon"></i>Auto play
+					</div>
+					<div class="item">
+						<i class="red thumbs down icon"></i>Hard to balance and add depth
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ui card">
+			<div class="content">
+				<div class="header">Hero units</div>
+				<div class="description">Used in place of empty tile in match-3 games.</div>
+			</div>
+		</div>
+		<div class="ui card">
+			<div class="content">
+				<div class="header">Abilities</div>
+				<div class="description">Similar to how alienhive lets you reshuffle board or upgrade tiles. Or how Puzzle forge 2 allows items usage.</div>
+			</div>
+			<div class="content">
+				<div class="ui list">
+					<div class="item">Swap</div>
+					<div class="item">Pull</div>
+					<div class="item">Push</div>
+					<div class="item">Cycle</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
