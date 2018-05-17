@@ -1,0 +1,31 @@
+img.preview {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	/* object-fit: contain; */
+	/* box-sizing: border-box; */
+}
+
+.images_grid {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	/* justify-content: space-evenly; */
+}
+
+.article_grid {
+	display: grid;
+	justify-items: stretch;
+	/*align-items: start; DOES NOT WORK WITH STICKY INSIDE */
+	/* grid-template-columns: 1fr 1fr; */
+	grid-template-columns: 62% 38%;
+}
+
+.images_column {
+}
+
+.top_sticky {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+}
