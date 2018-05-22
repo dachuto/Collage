@@ -1,3 +1,4 @@
+import argparse
 import concurrent.futures
 import enum
 import html.parser
@@ -5,9 +6,9 @@ import http
 import http.client
 import json
 import re
+import sys
 import threading
 import time
-
 
 def strip_whitespace(s):
 	split = re.split(r"\s+", s)
@@ -38,9 +39,11 @@ def download(connection, multiverseid):
 	resource = "/Pages/Card/Details.aspx?multiverseid=" + str(multiverseid)
 	connection.request("GET", resource, headers = {"Connection":" keep-alive"})
 	response = connection.getresponse()
-	max_bytes = 128 * 1024 * 1024
-	content = response.read(max_bytes)
+	# print(response.getheaders())
+	content = response.read()
 	if response.status != http.HTTPStatus.OK.value:
+		if response.status != http.HTTPStatus.FOUND.value:
+			print("Id", multiverseid, "status", response.status)
 		return response.status, None
 	return response.status, content
 
@@ -54,44 +57,50 @@ def get_names(content):
 
 
 def get_data_for_id(connection, multiverseid):
-	try:
-		print("DOING", multiverseid)
-		status, content = download(connection, multiverseid)
-		if content is None:
-			return status
-		names = get_names(content)
-		return names
-	except Exception as e:
-		print("BZZ EX")
-		return e
-	finally:
-		print("DONE", multiverseid)
+	status, content = download(connection, multiverseid)
+	if content is None:
+		return None
+	names = get_names(content)
+	return names
 
+def eprint(*args, **kwargs):
+	print(*args, file=sys.stderr, **kwargs)
 
 class DOERS:
 
-	def __init__(self):
-		self.biggest_id = 888888 + 2
-		self.data = [None] * (self.biggest_id + 1)
-		self.i = 888888
+	def __init__(self, first, last, connections):
+		self.connections = connections
+		self.first = first
+		self.last = last
+		self.i = self.first
+		self.data = [None] * (self.last)
 
-	def synchronous_new(self):
-		return self.Inner()
+	def json(self):
+		tmp = dict()
+		for n, v in enumerate(self.data):
+			if not v is None:
+				tmp[n] = v
+		print(json.dumps(tmp))
+
+	def workers(self):
+		for _ in range(self.connections):
+			yield self.Inner()
 
 	def synchronous_generate(self, inner_instance):
-		if self.i >= self.biggest_id:
+		if self.i >= self.last:
 			return None
 
+		tmp = self.i
 		self.i += 1
-		return self.i
+		return tmp
 
 	def parallel_work(self, inner_instance, i):
 		# self is shared!
 		return inner_instance.parallel_work(i)
 
 	def synchronous_merge(self, inner_instance, i, work):
+		eprint(i, work)
 		self.data[i] = work
-		print(i, "=>", work)
 
 	def synchronous_close(self, inner_instance):
 		inner_instance.synchronous_close()
@@ -108,62 +117,57 @@ class DOERS:
 			return get_data_for_id(self.connection, i)
 
 		def synchronous_close(self):
-			print("worker closing")
 			if self.connection is not None:
 				self.connection.close()
 
 
 class concurrent_do:
-
-	def __init__(self, doers, number_of_doers):
-		self.number_of_doers = number_of_doers
-		self.active = self.number_of_doers
-		self.is_done = threading.Event()
+	def __init__(self, doers, number_of_threads):
 		self.doers = doers
-		self.clients_executor = concurrent.futures.ThreadPoolExecutor(max_workers = self.number_of_doers)
-		self.master_executor = concurrent.futures.ThreadPoolExecutor(max_workers = 1)
-		future = self.master_executor.submit(self.master_start)
+		self.clients_executor = concurrent.futures.ThreadPoolExecutor(max_workers = number_of_threads)
 
 	def close(self):
-		self.is_done.wait()
 		self.clients_executor.shutdown()
-		self.master_executor.shutdown()
 
-	def master_start(self):
-		for i in range(self.number_of_doers):
-			x = self.doers.synchronous_new()
-			self.master_continue(x)
+	def do(self):
+		to_do = set()
+		for x in self.doers.workers():
+			self.master_continue(to_do, x)
 
-	def master_continue(self, x):
+		while to_do:
+			done, not_done = concurrent.futures.wait(to_do, timeout=None, return_when=concurrent.futures.FIRST_COMPLETED)
+			to_do = not_done
+			for future in done:
+				x, i, work = future.result()
+				self.doers.synchronous_merge(x, i, work)
+				self.master_continue(to_do, x)
+
+	def master_continue(self, futures_set, x):
 		i = self.doers.synchronous_generate(x)
-		print("generated", i)
 		if i is None:
-			print("active>", self.active)
-			self.active -= 1
 			self.doers.synchronous_close(x)
-			print("active<", self.active)
-			if self.active == 0:
-				self.is_done.set()
 			return
-		self.clients_executor.submit(self.worker_work, x, i)
-
-	def master_merge(self, x, i, work):
-		self.doers.synchronous_merge(x, i, work)
-		self.master_continue(x)
+		future = self.clients_executor.submit(self.worker_work, x, i)
+		futures_set.add(future)
 
 	def worker_work(self, x, i):
-		work = self.doers.parallel_work(x, i)
-		self.master_executor.submit(self.master_merge, x, i, work)
+		return x, i, self.doers.parallel_work(x, i)
 
 
 if __name__ == "__main__":
-	d = DOERS()
-	z = concurrent_do(d, 3)
-	z.close()
-#	try:
-#		for i in range(426912, 426912 + 30):
-#			data[i] = get_data_for_id(connection, i)
-#	finally:
-#		for i, name in enumerate(data):
-#			if name != None:
-#				print(i, name)
+	parser = argparse.ArgumentParser(description='Downloads data from the gatherer.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+	parser.add_argument('--connections', default=8, type=int)
+	parser.add_argument('--threads', default=4, type=int)
+
+	parser.add_argument('--first', default=1, type=int)
+	parser.add_argument('--last', default=10, type=int)
+
+	args = parser.parse_args()
+
+	d = DOERS(args.first, args.last, args.connections)
+	try:
+		z = concurrent_do(d, args.threads)
+		z.do()
+		z.close()
+	finally:
+		d.json()

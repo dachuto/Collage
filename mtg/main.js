@@ -6,8 +6,8 @@ class cards_data_source {
 	}
 }
 
-function convert_article(article) {
-	let re = /([a-z]+)\((.*?)\)/g;
+function convert_article(article, source) {
+	let re = /#([a-z]+)\((.*?)\)/g;
 
 	let tags = new Array();
 	function replacer(match, p0, p1, offset, string) {
@@ -18,7 +18,7 @@ function convert_article(article) {
 	return [article.replace(re, replacer), tags];
 }
 
-function error_message(h, t) {
+function error_message_html(header, inside) {
 	let icon = $("<i/>", {
 		class: "exclamation triangle icon"
 	});
@@ -26,9 +26,9 @@ function error_message(h, t) {
 		class: "content",
 	}).append($("<div/>", {
 		class: "header",
-		text: h
+		text: header
 	})).append($("<p/>", {
-		text: t
+		text: inside
 	}));
 	return $("<div>", {
 		class: "ui red icon message",
@@ -41,7 +41,7 @@ function JSON_request(file_name) {
 	}).fail(function (jqXHR, textStatus, errorThrown) {
 		failed_json(jqXHR, textStatus, errorThrown);
 
-		$("#main_content").append(error_message(file_name, errorThrown));
+		DOM_append(error_message_html(file_name, errorThrown));
 	});
 	return request;
 }
@@ -57,6 +57,10 @@ function DOM_ready() {
 		JSON_request("mtg/article.json"),
 		JSON_request("mtg/more_data.json"))
 	.then(all_data_is_here, null);
+}
+
+function DOM_append(element) {
+	$("#main_content").append(element);
 }
 
 function set_to_string(set) {
@@ -96,6 +100,7 @@ function articlesJSON_groupped(data) {
 }
 
 function item_html(keys, htmls, item_number, source) {
+	console.log(keys, htmls, item_number);
 	let item = $("<div/>", {
 		class: "article_grid"
 	});
@@ -112,7 +117,8 @@ function item_html(keys, htmls, item_number, source) {
 		class: "images_grid",
 	});
 
-	for (const k in keys) {
+	for (const k of keys) {
+		console.log(k);
 		let image = $("<img/>", {
 			class: "preview",
 			src: source.image_url(k)
@@ -142,21 +148,25 @@ function item_html(keys, htmls, item_number, source) {
 	return item;
 }
 
-function modify_DOM(keys_sets_to_articles) {
-	let source = new cards_data_source();
-
+function all_articles_html(keys_sets_to_articles, source) {
 	let item_number = 0;
+
+	let one_big = $("<div/>");
 
 	for (const [k, v] of keys_sets_to_articles) {
 		const x = item_html(k, v, item_number, source);
-		$("#main_content").append(x);
+		one_big.append(x);
 		++item_number;
 	}
+
+	return one_big;
 }
 
 function all_data_is_here(article, more_data) {
-	console.log(article[0]);
-	let groups = articlesJSON_groupped(article[0]);
-	modify_DOM(groups);
-	console.log(more_data[0]);
+	// console.log(article[0]);
+	// console.log(more_data[0]);
+	let source = new cards_data_source();
+	let groups = articlesJSON_groupped(article[0], source);
+	console.log(groups);
+	DOM_append(all_articles_html(groups, source));
 }
