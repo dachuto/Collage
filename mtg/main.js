@@ -1,8 +1,25 @@
 "use strict";
 
 class cards_data_source {
+	constructor(id_to_name_object) {
+		this.id_to_name_object = id_to_name_object;
+	}
+
+	id_to_name(multiverse_id) {
+		return this.id_to_name_object[multiverse_id];
+	}
+
+	scryfall_link(name) {
+		const url = "https://scryfall.com/search?q=%21%22" + name + "%22";
+		return '<a href="' + url + '">' + name + '</a>';
+	}
+
+	id_to_html(multiverse_id) {
+		return this.scryfall_link(this.id_to_name(multiverse_id))
+	}
+
 	image_url(multiverse_id) {
-		return "http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=" + multiverse_id
+		return "http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=" + multiverse_id;
 	}
 }
 
@@ -12,10 +29,10 @@ function convert_article(article, source) {
 	let tags = new Array();
 	function replacer(match, p0, p1, offset, string) {
 		tags.push(Number(p1));
-		return "XXX"; // TODO: converter id -> html
+		return source.id_to_html(p1);
 	}
 
-	return [article.replace(re, replacer), tags];
+	return [$.parseHTML(article.replace(re, replacer)), tags];
 }
 
 function error_message_html(header, inside) {
@@ -55,7 +72,7 @@ function failed_json(jqXHR, textStatus, errorThrown) {
 function DOM_ready() {
 	$.when(
 		JSON_request("mtg/article.json"),
-		JSON_request("mtg/more_data.json"))
+		JSON_request("mtg/id_to_name.json"))
 	.then(all_data_is_here, null);
 }
 
@@ -89,18 +106,17 @@ class group_by_keys_set {
 	}
 }
 
-function articlesJSON_groupped(data) {
+function articlesJSON_groupped(data, source) {
 	let temp = new Map();
 
 	for (let i in data) {
-		let [html, keys] = convert_article(data[i]);
+		let [html, keys] = convert_article(data[i], source);
 		group_by_keys_set.add(temp, html, keys);
 	}
 	return group_by_keys_set.get(temp);
 }
 
 function item_html(keys, htmls, item_number, source) {
-	console.log(keys, htmls, item_number);
 	let item = $("<div/>", {
 		class: "article_grid"
 	});
@@ -118,7 +134,6 @@ function item_html(keys, htmls, item_number, source) {
 	});
 
 	for (const k of keys) {
-		console.log(k);
 		let image = $("<img/>", {
 			class: "preview",
 			src: source.image_url(k)
@@ -133,8 +148,8 @@ function item_html(keys, htmls, item_number, source) {
 	for (const e of htmls) {
 		let one = $("<div/>", {
 			class: "ui segment",
-			text: e
 		});
+		one.append(e);
 		segments.append(one);
 	}
 
@@ -162,10 +177,10 @@ function all_articles_html(keys_sets_to_articles, source) {
 	return one_big;
 }
 
-function all_data_is_here(article, more_data) {
+function all_data_is_here(article, id_to_name) {
 	// console.log(article[0]);
-	// console.log(more_data[0]);
-	let source = new cards_data_source();
+	// console.log(id_to_name[0]);
+	let source = new cards_data_source(id_to_name[0]);
 	let groups = articlesJSON_groupped(article[0], source);
 	console.log(groups);
 	DOM_append(all_articles_html(groups, source));
