@@ -1,0 +1,782 @@
+{
+	"Academy Drake": [
+		1
+	],
+	"Academy Journeymage": [
+		1
+	],
+	"Adamant Will": [
+		1
+	],
+	"Adeliz, the Cinder Wind": [
+		200
+	],
+	"Adventurous Impulse": [
+		100
+	],
+	"Aesthir Glider": [
+		1
+	],
+	"Amaranthine Wall": [
+		1
+	],
+	"Ancient Animus": [
+		1, 102
+	],
+	"Arbor Armament": [
+		1
+	],
+	"Arcane Flight": [
+		1
+	],
+	"Artificer's Assistant": [
+		1
+	],
+	"Arvad the Cursed": [
+		200
+	],
+	"Aryel, Knight of Windgrace": [
+		102, 500, 600
+	],
+	"Aven Sentry": [
+		1
+	],
+	"Baird, Steward of Argive": [
+		700
+	],
+	"Baloth Gorger": [
+		1
+	],
+	"Befuddle": [
+		1, 100
+	],
+	"Benalish Honor Guard": [
+		1
+	],
+	"Benalish Marshal": [
+		200
+	],
+	"Blackblade Reforged": [
+		1
+	],
+	"Blessed Light": [
+		1, 102
+	],
+	"Blessing of Belzenlok": [
+		1
+	],
+	"Blink of an Eye": [
+		100, 103
+	],
+	"Bloodstone Goblin": [
+		1
+	],
+	"Bloodtallow Candle": [
+		1, 102
+	],
+	"Board the Weatherlight": [
+		1, 100
+	],
+	"Broken Bond": [
+		102, 150
+	],
+	"Cabal Evangel": [
+		1
+	],
+	"Cabal Paladin": [
+		1
+	],
+	"Cabal Stronghold": [
+		150, 500
+	],
+	"Caligo Skin-Witch": [
+		0
+	],
+	"Call the Cavalry": [
+		1
+	],
+	"Cast Down": [
+		3, 102
+	],
+	"Chainer's Torment": [
+		2
+	],
+	"Champion of the Flame": [
+		1
+	],
+	"Chandra's Outburst": [
+		1
+	],
+	"Chandra, Bold Pyromancer": [
+		1
+	],
+	"Charge": [
+		1
+	],
+	"Clifftop Retreat": [
+		3
+	],
+	"Cloudreader Sphinx": [
+		1
+	],
+	"Cold-Water Snapper": [
+		1
+	],
+	"Corrosive Ooze": [
+		1
+	],
+	"Curator's Ward": [
+		700
+	],
+	"D'Avenant Trapper": [
+		1
+	],
+	"Damping Sphere": [
+		3
+	],
+	"Danitha Capashen, Paragon": [
+		2
+	],
+	"Darigaaz Reincarnated": [
+		2
+	],
+	"Daring Archaeologist": [
+		2
+	],
+	"Dark Bargain": [
+		0, 2
+	],
+	"Dauntless Bodyguard": [
+		2
+	],
+	"Deathbloom Thallid": [
+		1
+	],
+	"Deep Freeze": [
+		1, 102
+	],
+	"Demonic Vigor": [
+		1
+	],
+	"Demonlord Belzenlok": [
+		2
+	],
+	"Diligent Excavator": [
+		1
+	],
+	"Divest": [
+		2
+	],
+	"Divination": [
+		0, 2
+	],
+	"Dread Shade": [
+		3
+	],
+	"Drudge Sentinel": [
+		1
+	],
+	"Dub": [
+		1
+	],
+	"Elfhame Druid": [
+		150
+	],
+	"Eviscerate": [
+		1, 102
+	],
+	"Evra, Halcyon Witness": [
+		500
+	],
+	"Excavation Elephant": [
+		1
+	],
+	"Fall of the Thran": [
+		102, 500
+	],
+	"Feral Abomination": [
+		1
+	],
+	"Fervent Strike": [
+		1
+	],
+	"Fiery Intervention": [
+		1
+	],
+	"Fight with Fire": [
+		102, 500
+	],
+	"Final Parting": [
+		500
+	],
+	"Fire Elemental": [
+		1
+	],
+	"Firefist Adept": [
+		1
+	],
+	"Firesong and Sunspeaker": [
+		500
+	],
+	"Forebear's Blade": [
+		500
+	],
+	"Frenzied Rage": [
+		1
+	],
+	"Fungal Infection": [
+		1, 102
+	],
+	"Fungal Plots": [
+		600
+	],
+	"Gaea's Blessing": [
+		500
+	],
+	"Gaea's Protector": [
+		1
+	],
+	"Garna, the Bloodflame": [
+		500
+	],
+	"Ghitu Chronicler": [
+		0, 2
+	],
+	"Ghitu Journeymage": [
+		1
+	],
+	"Ghitu Lavarunner": [
+		2
+	],
+	"Gideon's Reproach": [
+		1, 102
+	],
+	"Gift of Growth": [
+		1
+	],
+	"Gilded Lotus": [
+		150, 500
+	],
+	"Goblin Barrage": [
+		102
+	],
+	"Goblin Chainwhirler": [
+		3, 102
+	],
+	"Goblin Warchief": [
+		200, 500
+	],
+	"Grand Warlord Radha": [
+		500
+	],
+	"Grow from the Ashes": [
+		150
+	],
+	"Grunn, the Lonely King": [
+		500
+	],
+	"Guardians of Koilos": [
+		1
+	],
+	"Hallar, the Firefletcher": [
+		1
+	],
+	"Haphazard Bombardment": [
+		500, 600
+	],
+	"Healing Grace": [
+		1
+	],
+	"Helm of the Host": [
+		500, 600
+	],
+	"Hinterland Harbor": [
+		3
+	],
+	"History of Benalia": [
+		3
+	],
+	"Homarid Explorer": [
+		1
+	],
+	"Howling Golem": [
+		1
+	],
+	"Icy Manipulator": [
+		2
+	],
+	"In Bolas's Clutches": [
+		104
+	],
+	"Invoke the Divine": [
+		102
+	],
+	"Isolated Chapel": [
+		3
+	],
+	"Jaya Ballard": [
+		500
+	],
+	"Jaya's Immolating Inferno": [
+		102, 500
+	],
+	"Jhoira's Familiar": [
+		500
+	],
+	"Jhoira, Weatherlight Captain": [
+		500, 600
+	],
+	"Jodah, Archmage Eternal": [
+		500
+	],
+	"Josu Vess, Lich Knight": [
+		500
+	],
+	"Jousting Lance": [
+		1
+	],
+	"Juggernaut": [
+		1
+	],
+	"Kamahl's Druidic Vow": [
+		500
+	],
+	"Karn's Temporal Sundering": [
+		103, 190
+	],
+	"Karn, Scion of Urza": [
+		3
+	],
+	"Karplusan Hound": [
+		1
+	],
+	"Kazarov, Sengir Pureblood": [
+		102, 500, 600
+	],
+	"Keldon Overseer": [
+		1, 105
+	],
+	"Keldon Raider": [
+		1
+	],
+	"Keldon Warcaller": [
+		1
+	],
+	"Knight of Grace": [
+		2
+	],
+	"Knight of Malice": [
+		2
+	],
+	"Knight of New Benalia": [
+		1
+	],
+	"Krosan Druid": [
+		2
+	],
+	"Kwende, Pride of Femeref": [
+		200
+	],
+	"Lich's Mastery": [
+		500
+	],
+	"Lingering Phantom": [
+		600
+	],
+	"Llanowar Elves": [
+		3, 150
+	],
+	"Llanowar Envoy": [
+		1
+	],
+	"Llanowar Scout": [
+		150
+	],
+	"Lyra Dawnbringer": [
+		3
+	],
+	"Mammoth Spider": [
+		1
+	],
+	"Marwyn, the Nurturer": [
+		150, 500
+	],
+	"Meandering River": [
+		1
+	],
+	"Memorial to Folly": [
+		1
+	],
+	"Memorial to Genius": [
+		2
+	],
+	"Memorial to Glory": [
+		1
+	],
+	"Memorial to Unity": [
+		1
+	],
+	"Memorial to War": [
+		1
+	],
+	"Merfolk Trickster": [
+		2
+	],
+	"Mesa Unicorn": [
+		1
+	],
+	"Mishra's Self-Replicator": [
+		500, 600
+	],
+	"Mox Amber": [
+		500
+	],
+	"Muldrotha, the Gravetide": [
+		500, 600
+	],
+	"Multani, Yavimaya's Avatar": [
+		500, 600
+	],
+	"Naban, Dean of Iteration": [
+		200, 500
+	],
+	"Naru Meha, Master Wizard": [
+		200, 500
+	],
+	"Nature's Spiral": [
+		2
+	],
+	"Navigator's Compass": [
+		1
+	],
+	"Niambi, Faithful Healer": [
+		1
+	],
+	"Oath of Teferi": [
+		500
+	],
+	"On Serra's Wings": [
+		1
+	],
+	"Opt": [
+		3, 100
+	],
+	"Orcish Vandal": [
+		1
+	],
+	"Pardic Wanderer": [
+		1
+	],
+	"Pegasus Courser": [
+		1
+	],
+	"Phyrexian Scriptures": [
+		3, 102
+	],
+	"Pierce the Sky": [
+		1, 102
+	],
+	"Powerstone Shard": [
+		150, 500
+	],
+	"Precognition Field": [
+		500, 600
+	],
+	"Primevals' Glorious Rebirth": [
+		500
+	],
+	"Primordial Wurm": [
+		1
+	],
+	"Pyromantic Pilgrim": [
+		1
+	],
+	"Radiating Lightning": [
+		1, 102
+	],
+	"Raff Capashen, Ship's Mage": [
+		3
+	],
+	"Rampaging Cyclops": [
+		1
+	],
+	"Rat Colony": [
+		1
+	],
+	"Relic Runner": [
+		1
+	],
+	"Rescue": [
+		1
+	],
+	"Rite of Belzenlok": [
+		500
+	],
+	"Rona, Disciple of Gix": [
+		500
+	],
+	"Run Amok": [
+		1
+	],
+	"Sage of Lat-Nam": [
+		1
+	],
+	"Sanctum Spirit": [
+		1
+	],
+	"Saproling Migration": [
+		2
+	],
+	"Seal Away": [
+		3, 102
+	],
+	"Seismic Shift": [
+		1
+	],
+	"Sentinel of the Pearl Trident": [
+		1
+	],
+	"Sergeant-at-Arms": [
+		1
+	],
+	"Serra Angel": [
+		1
+	],
+	"Serra Disciple": [
+		1
+	],
+	"Settle the Score": [
+		102
+	],
+	"Shalai, Voice of Plenty": [
+		500, 600
+	],
+	"Shanna, Sisay's Legacy": [
+		500
+	],
+	"Shield of the Realm": [
+		1
+	],
+	"Shivan Fire": [
+		102
+	],
+	"Short Sword": [
+		1
+	],
+	"Siege-Gang Commander": [
+		3, 102
+	],
+	"Skirk Prospector": [
+		3
+	],
+	"Skittering Surveyor": [
+		0, 2
+	],
+	"Skizzik": [
+		1
+	],
+	"Slimefoot, the Stowaway": [
+		500, 600
+	],
+	"Slinn Voda, the Rising Deep": [
+		103, 500
+	],
+	"Song of Freyalise": [
+		150, 500
+	],
+	"Sorcerer's Wand": [
+		2
+	],
+	"Soul Salvage": [
+		2
+	],
+	"Sparring Construct": [
+		1
+	],
+	"Spore Swarm": [
+		2
+	],
+	"Sporecrown Thallid": [
+		200
+	],
+	"Squee, the Immortal": [
+		500
+	],
+	"Steel Leaf Champion": [
+		3
+	],
+	"Stronghold Confessor": [
+		1
+	],
+	"Sulfur Falls": [
+		3
+	],
+	"Sylvan Awakening": [
+		500
+	],
+	"Syncopate": [
+		106
+	],
+	"Tatyova, Benthic Druid": [
+		500, 600
+	],
+	"Teferi's Sentinel": [
+		1
+	],
+	"Teferi, Hero of Dominaria": [
+		3
+	],
+	"Teferi, Timebender": [
+		1
+	],
+	"Tempest Djinn": [
+		2
+	],
+	"Temporal Machinations": [
+		1
+	],
+	"Territorial Allosaurus": [
+		0, 102
+	],
+	"Teshar, Ancestor's Apostle": [
+		500, 600
+	],
+	"Tetsuko Umezawa, Fugitive": [
+		500
+	],
+	"Thallid Omnivore": [
+		1
+	],
+	"Thallid Soothsayer": [
+		0, 2
+	],
+	"The Antiquities War": [
+		500
+	],
+	"The Eldest Reborn": [
+		102
+	],
+	"The First Eruption": [
+		150
+	],
+	"The Flame of Keld": [
+		2
+	],
+	"The Mending of Dominaria": [
+		2
+	],
+	"The Mirari Conjecture": [
+		2
+	],
+	"Thorn Elemental": [
+		2
+	],
+	"Thran Temporal Gateway": [
+		2
+	],
+	"Tiana, Ship's Caretaker": [
+		2
+	],
+	"Timber Gorge": [
+		1
+	],
+	"Time of Ice": [
+		2
+	],
+	"Tolarian Scholar": [
+		1
+	],
+	"Torgaar, Famine Incarnate": [
+		500
+	],
+	"Tragic Poet": [
+		2
+	],
+	"Traxos, Scourge of Kroog": [
+		500
+	],
+	"Triumph of Gerrard": [
+		1
+	],
+	"Two-Headed Giant": [
+		2
+	],
+	"Untamed Kavu": [
+		2
+	],
+	"Unwind": [
+		106
+	],
+	"Urgoros, the Empty One": [
+		2
+	],
+	"Urza's Ruinous Blast": [
+		102, 500
+	],
+	"Urza's Tome": [
+		2
+	],
+	"Valduk, Keeper of the Flame": [
+		2
+	],
+	"Verdant Force": [
+		500, 600
+	],
+	"Verix Bladewing": [
+		3
+	],
+	"Vicious Offering": [
+		102
+	],
+	"Vodalian Arcanist": [
+		150
+	],
+	"Voltaic Servant": [
+		1
+	],
+	"Warcry Phoenix": [
+		1
+	],
+	"Warlord's Fury": [
+		100
+	],
+	"Weatherlight": [
+		2
+	],
+	"Weight of Memory": [
+		0, 2
+	],
+	"Whisper, Blood Liturgist": [
+		500
+	],
+	"Wild Onslaught": [
+		2
+	],
+	"Windgrace Acolyte": [
+		1
+	],
+	"Wizard's Lightning": [
+		3, 102
+	],
+	"Wizard's Retort": [
+		106
+	],
+	"Woodland Cemetery": [
+		3
+	],
+	"Yargle, Glutton of Urborg": [
+		1
+	],
+	"Yavimaya Sapherd": [
+		2
+	],
+	"Yawgmoth's Vile Offering": [
+		102
+	],
+	"Zahid, Djinn of the Lamp": [
+		2
+	],
+	"Zhalfirin Void": [
+		2
+	]
+}
