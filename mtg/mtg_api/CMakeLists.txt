@@ -10,47 +10,48 @@ set(sources
 )
 
 add_library(${project} STATIC ${sources})
-set_target_properties(${project} PROPERTIES PUBLIC_HEADER mtg_api.h)
 
-#set(BUILD_TESTS OFF)
-set(NGINX_SOURCE_DIR "/mnt/storage/DUPA_nginx/nginx-1.15.0") #TODO : ASK USER!
-set(NGINX_MODULE_NAME mtg_api_module)
-set(NGINX_GENERATED_SOURCE ${NGINX_SOURCE_DIR}/objs/${NGINX_MODULE_NAME}_modules.c)
-
-message(STATUS "./configure --add-dynamic-module=...")
-message(STATUS "This command also generates a C file in objs/ directory with module declaration.")
-message(STATUS "Generated file is: ${NGINX_GENERATED_SOURCE}")
-
-add_library(${project}_module MODULE ${NGINX_GENERATED_SOURCE} mtg_api_module.c)
-set_target_properties(${project}_module PROPERTIES PREFIX "")
-target_link_libraries(${project}_module ${project})
-message(STATUS "Internal include directories are manually taken from nginx's Makefile; beware changes")
-target_include_directories(${project}_module PRIVATE
-	${NGINX_SOURCE_DIR}/src/core/
-	${NGINX_SOURCE_DIR}/src/event/
-	${NGINX_SOURCE_DIR}/src/event/modules/
-	${NGINX_SOURCE_DIR}/src/os/unix/
-	${NGINX_SOURCE_DIR}/objs/
-	${NGINX_SOURCE_DIR}/src/http/
-	${NGINX_SOURCE_DIR}/src/http/modules/
+set(DOWNLOAD_DIR ${CMAKE_CURRENT_BINARY_DIR}/downloads)
+add_custom_target(download_json
+	COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/mtg_api_download.sh
+	WORKING_DIRECTORY ${DOWNLOAD_DIR}
+	VERBATIM
 )
 
-target_include_directories(${project}_module SYSTEM PRIVATE
-	${NGINX_SOURCE_DIR}/../openssl/include/
+target_include_directories(${project} PUBLIC
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )
 
-add_subdirectory(/usr/src/gtest ${CMAKE_BINARY_DIR}/build_gtest)
-include(GoogleTest)
-add_executable(mtg_api_test mtg_api_test.cpp)
+message(STATUS "Dependencies:")
+message(STATUS "sudo apt install libboost-dev rapidjson-dev")
+message(STATUS "")
 
-target_link_libraries(${project}_test ${project})
-target_link_libraries(${project}_test gtest gtest_main)
-gtest_add_tests(
-	TARGET ${project}_test
-	TEST_LIST mtg_api_test
-)
+option(BUILD_TESTS "build tests" OFF)
+if (BUILD_TESTS)
+	add_subdirectory(/usr/src/gtest ${CMAKE_BINARY_DIR}/build_gtest)
+	include(GoogleTest)
+	add_executable(mtg_api_test mtg_api_test.cpp)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -std=c++17 -pthread -O2 -Werror -Wall -Wextra\
-	-Wno-unused-parameter\
-	-Wpedantic\
-	-fdiagnostics-generate-patch")
+	target_link_libraries(${project}_test ${project})
+	target_link_libraries(${project}_test gtest gtest_main)
+	gtest_add_tests(
+		TARGET ${project}_test
+		TEST_LIST mtg_api_test
+	)
+endif()
+
+target_compile_features(${project} PRIVATE cxx_std_17)
+target_compile_options(${project} PRIVATE -pthread -O2 -Werror -Wall -Wextra
+	-Wno-unused-parameter
+	-Wpedantic
+	-fdiagnostics-generate-patch)
+set_property(TARGET ${project} PROPERTY POSITION_INDEPENDENT_CODE ON)
+
+option(BUILD_NGINX_MODULE "build nginx module" OFF)
+if (BUILD_NGINX_MODULE)
+	add_subdirectory(nginx)
+else()
+	message(STATUS "Not building nginx module.")
+endif()
+
+

@@ -6,19 +6,11 @@ Core code is written in C++ and then exposed as C nginx module. Only allocator A
 
 To utilize memory one process and multiple worker threads should be fine. Requests don't modify internal state so can be processed in parallel.
 
-Basic nginx info:
 
-run (with this setup one doesn't need root):
+Build and run (with this setup one doesn't need root):
 ```
-./sbin/nginx
-./sbin/nginx -s stop
+cmake -DBUILD_NGINX_MODULE=ON -DCMAKE_INSTALL_PREFIX=<WHERE TO PUT NGINX> <Collage/mtg/mtg_api/>
+make download_json
+make && make install && make run_nginx
 ```
 
-## TODO: move to script and test on clean install
-git clone https://github.com/nginx/nginx.git
-wget http://www.zlib.net/zlib-1.2.11.tar.gz && tar xzvf zlib-1.2.11.tar.gz
-git clone https://github.com/openssl/openssl.git
-cd nginx
-./configure --prefix=${1} --with-openssl=../openssl --with-http_ssl_module --with-zlib=../zlib-1.2.11/ --with-compat #--add-dynamic-module=...
-
-./conf/nginx.conf
