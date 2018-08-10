@@ -7,15 +7,15 @@
 	<link rel="stylesheet" href="mtg.css" />
 	<script src="mtg/main.js"></script>
 	<script>
-		$(DOM_ready); // .ready(handler)
+		$(DOM_ready_results); // .ready(handler)
+		// $(DOM_ready);
 	</script>
 </head>
 <body>
-
 	<div class="ui attached stackable inverted menu">
 		<div class="ui container">
 			<a class="item">
-				<i class="home icon"></i>Done!
+				<i class="home icon"></i>TODO: id to name as one request
 			</a>
 			<a class="item">
 				<i class="grid layout icon"></i>TODO: colored tags
@@ -36,13 +36,26 @@
 				</div>
 			</div>
 			<div class="right item">
-				<div class="ui input">
+				<!-- <div class="ui input">
 					<input type="text" placeholder="TODO filters">
+				</div> -->
+				<div class="ui action input">
+					<input id="search_input" placeholder="..." type="text">
+					<button id="search_button" class="ui button">Search</button>
 				</div>
+				<!-- <form action="http://localhost:8080/query" class="ui form" method="get">
+					<div class="ui action input">
+						<input name="x" placeholder="First Name" type="text">
+						<button class="ui icon button" type="submit">
+							<i class="big search icon"></i>
+						</button>
+					</div>
+				</form> -->
 			</div>
 		</div>
 	</div>
 
-	<div class="ui" id="main_content"></div>
-
+	<div id="message_box" class="card_tag_inner transparent_box">?</div>
+	<div id="card_tags_container"></div>
+	<div id="main_content" class="ui"></div>
 </body>
