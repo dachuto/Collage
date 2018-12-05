@@ -12,11 +12,6 @@ set(sources
 add_library(${project} STATIC ${sources})
 
 set(DOWNLOAD_DIR ${CMAKE_CURRENT_BINARY_DIR}/downloads)
-add_custom_target(download_json
-	COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/mtg_api_download.sh
-	WORKING_DIRECTORY ${DOWNLOAD_DIR}
-	VERBATIM
-)
 
 target_include_directories(${project} PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
