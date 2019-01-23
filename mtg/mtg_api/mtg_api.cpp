@@ -8,10 +8,17 @@
 #include "json.hpp"
 #include "web.hpp"
 
-void *construct(mtg_api_args const *args) {
+void *construct(interface_from_c_to_cpp_t const *interface, mtg_api_args const *args) {
 	try {
 		auto temp = std::make_unique<mtg_api::database>();
 		*temp = mtg_api::read(*args);
+		{
+			std::stringstream ss;
+			ss << "Unique cards loaded: " << temp->unique_cards.size();
+			std::string s = ss.str();
+			log_error(&interface->logger, s.c_str());
+		}
+
 		return temp.release();
 	} catch (...) {
 		return nullptr;
@@ -26,11 +33,11 @@ mtg_api::database const &as_database(void *p) {
 	return *static_cast<mtg_api::database const *>(p);
 }
 
-bytes_view f1(mtg_api::database const &database, allocator_t allocator, std::string_view const &args) {
-	return mtg_api::to_json{allocator}.write(database);
+bytes_view f1(mtg_api::database const &database, interface_from_c_to_cpp_t const *interface, std::string_view const &args) {
+	return mtg_api::to_json{interface->allocator}.write(database);
 }
 
-bytes_view f2(mtg_api::database const &database, allocator_t allocator, std::string_view const &args) {
+bytes_view f2(mtg_api::database const &database, interface_from_c_to_cpp_t const *interface, std::string_view const &args) {
 	std::vector<int> what_to_output;
 	what_to_output.reserve(512);
 
@@ -39,9 +46,8 @@ bytes_view f2(mtg_api::database const &database, allocator_t allocator, std::str
 	};
 
 	auto const handle_query = [&](std::string_view const &key, std::string_view const &value) {
-		//TODO(boost 1.68) : here we construct std::string just to find
 		if (key == "set") {
-			auto const it = database.card_sets.find(std::string(value));
+			auto const it = database.card_sets.find(std::string(value)); //TODO(boost 1.68) : here we construct std::string just to find
 			if (it != std::cend(database.card_sets)) {
 				std::copy(std::cbegin(it->second.printings), std::cend(it->second.printings), std::back_inserter(what_to_output));
 			}
@@ -57,21 +63,30 @@ bytes_view f2(mtg_api::database const &database, allocator_t allocator, std::str
 			} catch (...) {
 				//
 			}
+		} else if (key == "name") {
+			auto const it = database.unique_cards.find(std::string(value));
+			if (it != std::cend(database.unique_cards)) {
+				for (auto const &id : it->second.printings) {
+					what_to_output.push_back(id);
+				}
+			} else {
+				log_error(&interface->logger, "No cards with that name.");
+			}
 		}
 	};
 
 	mtg_api::args_into_decoded_pairs(args, handle_query);
 
 	if (not what_to_output.empty()) {
-		return mtg_api::to_json{allocator}.write(what_to_output.data(), what_to_output.data() + what_to_output.size());
+		return mtg_api::to_json{interface->allocator}.write(what_to_output.data(), what_to_output.data() + what_to_output.size());
 	}
 	return {nullptr, 0};
 }
 
-bytes_view mtg_api_f1(void *p, allocator_t allocator, char const *args, size_t args_len) {
-	return f1(as_database(p), allocator, {args, args_len});
+bytes_view mtg_api_f1(void *p, interface_from_c_to_cpp_t const *interface, char const *args, size_t args_len) {
+	return f1(as_database(p), interface, {args, args_len});
 }
 
-bytes_view mtg_api_f2(void *p, allocator_t allocator, char const *args, size_t args_len) {
-	return f2(as_database(p), allocator, {args, args_len});
+bytes_view mtg_api_f2(void *p, interface_from_c_to_cpp_t const *interface, char const *args, size_t args_len) {
+	return f2(as_database(p), interface, {args, args_len});
 }

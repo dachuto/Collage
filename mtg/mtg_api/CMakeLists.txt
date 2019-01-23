@@ -21,11 +21,21 @@ message(STATUS "Dependencies:")
 message(STATUS "sudo apt install libboost-dev rapidjson-dev")
 message(STATUS "")
 
-option(BUILD_TESTS "build tests" OFF)
+function(set_compile_options target)
+	target_compile_features(${target} PRIVATE cxx_std_17)
+	target_compile_options(${target} PRIVATE -pthread -O2 -Werror -Wall -Wextra
+		-Wno-unused-parameter
+		-Wpedantic
+		-fdiagnostics-generate-patch)
+	set_property(TARGET ${target} PROPERTY POSITION_INDEPENDENT_CODE ON)
+endfunction()
+
+option(BUILD_TESTS "build tests" ON)
 if (BUILD_TESTS)
 	add_subdirectory(/usr/src/gtest ${CMAKE_BINARY_DIR}/build_gtest)
 	include(GoogleTest)
 	add_executable(mtg_api_test mtg_api_test.cpp)
+	set_compile_options(${project}_test)
 
 	target_link_libraries(${project}_test ${project})
 	target_link_libraries(${project}_test gtest gtest_main)
@@ -35,12 +45,7 @@ if (BUILD_TESTS)
 	)
 endif()
 
-target_compile_features(${project} PRIVATE cxx_std_17)
-target_compile_options(${project} PRIVATE -pthread -O2 -Werror -Wall -Wextra
-	-Wno-unused-parameter
-	-Wpedantic
-	-fdiagnostics-generate-patch)
-set_property(TARGET ${project} PROPERTY POSITION_INDEPENDENT_CODE ON)
+set_compile_options(${project})
 
 option(BUILD_NGINX_MODULE "build nginx module" OFF)
 if (BUILD_NGINX_MODULE)

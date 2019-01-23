@@ -17,6 +17,22 @@ inline void *allocate(allocator_t const *allocator, size_t size) {
 	return allocator->allocate(allocator->data, size);
 }
 
+typedef void *(*log_cb)(void *log_cb_data, char const *string);
+
+typedef struct {
+	log_cb log;
+	void *data;
+} logger_t;
+
+inline void log_error(logger_t const *logger, char const *string) {
+	logger->log(logger->data, string);
+}
+
+typedef struct {
+	allocator_t allocator;
+	logger_t logger;
+} interface_from_c_to_cpp_t;
+
 typedef struct {
 	char *data;
 	size_t size;

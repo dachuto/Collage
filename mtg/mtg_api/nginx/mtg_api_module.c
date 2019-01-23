@@ -19,13 +19,23 @@ void *allocate_passed_to_cpp(void *cb_data, size_t size) {
 	return ngx_palloc((struct ngx_pool_s *)cb_data, size);
 }
 
-typedef bytes_view (*cpp_api_function)(void *p, allocator_t allocator, char const *args, size_t args_len);
+void log_passed_to_cpp(void *log_cb_data, char const *string) {
+	ngx_log_error(NGX_LOG_ERR, (ngx_log_t *)log_cb_data, 0,  string);
+}
 
 static ngx_int_t ngx_http_UNIQUE_generic_handler(ngx_http_request_t *r, cpp_api_function cpp_api) {
 	ngx_chain_t out;
-
-	allocator_t allocator = {.allocate = allocate_passed_to_cpp, .data = r->pool};
-	bytes_view api_response = cpp_api(pointer_from_cpp, allocator, r->args.data, r->args.len);
+	interface_from_c_to_cpp_t interface = {
+		.allocator = {
+			.allocate = allocate_passed_to_cpp,
+			.data = r->pool
+		},
+		.logger = {
+			.log = log_passed_to_cpp,
+			.data = r->connection->log
+		}
+	};
+	bytes_view api_response = cpp_api(pointer_from_cpp, &interface, r->args.data, r->args.len);
 
 	r->headers_out.content_type.len = sizeof(content_type_json) - 1;
 	r->headers_out.content_type.data = (u_char *) content_type_json;
@@ -213,7 +223,18 @@ static ngx_int_t ngx_http_UNIQUE_process_init(ngx_cycle_t *cycle) {
 	args.path_sets = c->path_sets.data;
 	args.path_tags = c->path_tags.data;
 
-	pointer_from_cpp = construct(&args);
+	interface_from_c_to_cpp_t interface = {
+		.allocator = {
+			.allocate = allocate_passed_to_cpp,
+			.data = cycle->pool
+		},
+		.logger = {
+			.log = log_passed_to_cpp,
+			.data = cycle->log
+		}
+	};
+
+	pointer_from_cpp = construct(&interface, &args);
 	if (pointer_from_cpp) {
 		return NGX_OK;
 	}

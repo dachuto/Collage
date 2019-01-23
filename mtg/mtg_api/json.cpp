@@ -18,12 +18,14 @@
 #define STRINGIFY(s) #s
 #define STRINGIFY_MACRO(s) STRINGIFY(s)
 
-#define expect(v) \
+#define expect_2(v, const_char) \
 do { \
 	if (not (v)) { \
-		throw std::runtime_error(STRINGIFY(v) " " __FILE__ ":" STRINGIFY_MACRO(__LINE__)); \
+		throw std::runtime_error(std::string(STRINGIFY(v) " " __FILE__ ":" STRINGIFY_MACRO(__LINE__) " ") + const_char); \
 	} \
 } while (0)
+
+#define expect(v) expect_2(v, "")
 
 namespace {
 
@@ -57,7 +59,7 @@ std::unique_ptr<rapidjson::Document> read_JSON_file(char const *path) {
 template <typename GenericValue>
 auto const &member(GenericValue const &d, char const *c) {
 	auto const it = d.FindMember(c);
-	expect(it != d.MemberEnd());
+	expect_2(it != d.MemberEnd(), c);
 	return it->value;
 }
 
@@ -141,15 +143,16 @@ auto all_sets(rapidjson::Document const &document, unique_cards_container &uniqu
 		for (auto it = cards.Begin(); it != cards.End(); ++it) {
 			auto const &p = *it;
 			expect(p.IsObject());
-			auto const it_multiverseid = p.FindMember("multiverseid");
-			if (it_multiverseid != p.MemberEnd()) {
-				auto const id = as_int(it_multiverseid->value);
+			try {
+				auto const id = as_int(member(p, "multiverseId"));
 				auto const unique_cards_it = unique_cards.find(as_string(member(p, "name")));
 				expect(unique_cards_it != unique_cards.end());
 
 				unique_cards_it->second.printings.insert(id);
 				printings_not_sorted.push_back({id, {unique_cards_it}});
 				temp.insert(id);
+			} catch (...) {
+				// this is because data source lists cards, from wierd supplementary sets, without important fields (like multiverse_id)
 			}
 		}
 
@@ -232,6 +235,7 @@ database read(mtg_api_args const &args) {
 bytes_view to_json::write(database const &database) const {
 	rapidjson::Document d;
 	d.SetObject();
+	//TODO: this is just a test
 	// for (auto const &s : database.unique_cards) {
 	// 	rapidjson::Value v{1}; //TODO
 	// 	d.AddMember(rapidjson::StringRef(s.first.data(), s.first.length()), v, d.GetAllocator());

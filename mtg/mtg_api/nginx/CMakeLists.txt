@@ -71,7 +71,7 @@ function(download_and_unzip url filename working_dir)
 	)
 endfunction()
 
-download_and_unzip(https://mtgjson.com/json AllCards-x.json ${DOWNLOAD_DIR})
+download_and_unzip(https://mtgjson.com/json AllCards.json ${DOWNLOAD_DIR})
 download_and_unzip(https://mtgjson.com/json AllSets.json ${DOWNLOAD_DIR})
 
 message(STATUS "nginx ./configure also generates a C file in objs/ directory with module declaration.")
@@ -82,7 +82,7 @@ set_target_properties(${project} PROPERTIES PREFIX "") # do not add lib prefix (
 target_link_libraries(${project} mtg_api)
 
 add_custom_target(json_data DEPENDS
-	${DOWNLOAD_DIR}/AllCards-x.json
+	${DOWNLOAD_DIR}/AllCards.json
 	${DOWNLOAD_DIR}/AllSets.json
 )
 add_dependencies(${project} json_data)
@@ -106,7 +106,7 @@ install(PROGRAMS ${NGINX_BINARY} DESTINATION sbin)
 install(FILES nginx.conf DESTINATION conf)
 install(TARGETS ${project} DESTINATION modules)
 
-install(FILES ${DOWNLOAD_DIR}/AllCards-x.json DESTINATION .)
+install(FILES ${DOWNLOAD_DIR}/AllCards.json DESTINATION .)
 install(FILES ${DOWNLOAD_DIR}/AllSets.json DESTINATION .)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../name_to_tags.json DESTINATION .)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../tags.json DESTINATION .)
