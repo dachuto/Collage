@@ -51,7 +51,7 @@ function error_message_html(header, inside) {
 
 function JSON_request(file_name) {
 	let request = $.getJSON(file_name).done(function (data, textStatus, jqXHR) {
-		console.log(file_name);
+		console.log("JSON requested: " + file_name);
 	}).fail(function (jqXHR, textStatus, errorThrown) {
 		failed_json(jqXHR, textStatus, errorThrown);
 
@@ -215,7 +215,7 @@ class page_data {
 		this.search_button.onclick = () => {
 			// console.log(encodeURIComponent(SI.value));
 			// data.start_async_loading();
-			window.history.pushState(null, "", "http://localhost:1234/mtg_results.html?set=BBD");
+			// window.history.pushState(null, "", "http://localhost:1234/mtg_results.html?set=BBD");
 			// window.history.replaceState(null, "", "http://localhost:1234/mtg_results.html?set=BBD");
 		};
 	}
@@ -237,6 +237,25 @@ class page_data {
 		);
 	}
 
+	start_async_loading_2(card_names_list) {
+		let requests = [];
+		for (const name of card_names_list) {
+			let url = new URL("/query", this.backend_url);
+			url.search = "name=" + name;
+			requests.push(JSON_request(url.href));
+		}
+
+		$.when(...requests).then(this.async_complete_2.bind(this), null);
+	}
+
+	async_complete_2() {
+		let ids = [];
+		for (const arg of arguments) {
+			ids = [ ...ids, ...arg[0]];
+		}
+		this.append_images_grid(ids);
+	}
+
 	async_complete(info, query) {
 		this.graph = new Map();
 		this.tags = new Map();
@@ -250,14 +269,19 @@ class page_data {
 			this.tags.set(tag_id, t);
 			t.update_element();
 		}
-		//TODO: this graph comes from info server !!!
+		//TODO: this graph comes from info server !!! >>
 		this.graph.set(1, [2]);
 		this.graph.set(100, [102, 104]);
 		this.graph.set(102, [103, 104]);
+		// << ----------------------------
 		console.log(this.graph);
 		this.graph_topological_order = topological_order(this.graph);
 
-		DOM_append(images_grid(query[0], this.source));
+		this.append_images_grid(query[0]);
+	}
+
+	append_images_grid(id_list) {
+		DOM_append(images_grid(id_list, this.source));
 		this.start_lazy_images_loading();
 	}
 
@@ -339,8 +363,22 @@ function DOM_ready() {
 	).then(all_data_is_here, null);
 }
 
+function DOM_ready_wants() {
+	$.when(
+		JSON_request("mtg/wants.json"),
+	).then(all_data_is_here_wants, null);
+}
+
+function all_data_is_here_wants(wants) {
+	console.log(wants);
+
+	let data = new page_data();
+	data.start_async_loading_2(wants);
+}
+
+
 function DOM_ready_results() {
-	document.addEventListener("keyup", event => {
+	document.addEventListener("keyup", event => { //TODO: handle keys to do simple searches
 		console.log(event);
 		// if (event.key !== "Enter") return; // Use `.key` instead.
 		// document.querySelector("#linkadd").click(); // Things you want to do.
