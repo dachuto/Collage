@@ -43,18 +43,19 @@ add_custom_command(
 )
 
 add_custom_command(
-	DEPENDS ${DOWNLOAD_DIR}/nginx
-	OUTPUT ${DOWNLOAD_DIR}/nginx/objs/Makefile
+	DEPENDS ${DOWNLOAD_DIR}/nginx ${DOWNLOAD_DIR}/openssl ${DOWNLOAD_DIR}/zlib
+	OUTPUT ${DOWNLOAD_DIR}/nginx/objs/Makefile ${NGINX_GENERATED_SOURCE}
 	COMMAND ./configure --prefix=${CMAKE_INSTALL_PREFIX} --with-openssl=../openssl --with-http_ssl_module --with-zlib=../zlib/ --with-compat --add-dynamic-module=${CMAKE_CURRENT_SOURCE_DIR} --without-http_rewrite_module
+	COMMENT "nginx configure"
 	WORKING_DIRECTORY ${DOWNLOAD_DIR}/nginx
 	VERBATIM
 )
 
 # we want custom cpp build for our module; only binary here
 add_custom_command(
+	TARGET nginx_slow_build PRE_BUILD
 	COMMENT "nginx build (slow)"
-	DEPENDS ${DOWNLOAD_DIR}/nginx/objs/Makefile ${DOWNLOAD_DIR}/zlib
-	OUTPUT ${NGINX_BINARY} ${NGINX_GENERATED_SOURCE}
+	DEPENDS ${DOWNLOAD_DIR}/nginx/objs/Makefile
 	COMMAND make -f objs/Makefile binary
 	WORKING_DIRECTORY ${DOWNLOAD_DIR}/nginx
 	VERBATIM
@@ -78,6 +79,7 @@ message(STATUS "nginx ./configure also generates a C file in objs/ directory wit
 message(STATUS "Generated file is: ${NGINX_GENERATED_SOURCE}")
 
 add_library(${project} MODULE ${NGINX_GENERATED_SOURCE} mtg_api_module.c)
+
 set_target_properties(${project} PROPERTIES PREFIX "") # do not add lib prefix (nginx modules do not want it)
 target_link_libraries(${project} mtg_api)
 
@@ -85,7 +87,6 @@ add_custom_target(json_data DEPENDS
 	${DOWNLOAD_DIR}/AllCards.json
 	${DOWNLOAD_DIR}/AllSets.json
 )
-add_dependencies(${project} json_data)
 
 message(STATUS "Internal include directories are manually taken from nginx's Makefile; beware changes")
 target_include_directories(${project} PRIVATE
