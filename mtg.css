@@ -91,7 +91,7 @@ img.preview {
 
 .images_grid {
 	display: grid;
-	grid-template-columns: repeat(5, 20%);
+	grid-template-columns: repeat(10, 10%);
 	/* grid-template-rows: repeat(auto-fit, 100px); */
 	/* justify-content: space-evenly; */
 }
