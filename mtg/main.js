@@ -393,7 +393,7 @@ function as_pretty_json(list) {
 	let text = "";
 	text += "[";
 	let divider = false;
-	for (const name of list) {
+	for (const name of sorted) {
 		if (divider) {
 			text += ",";
 		} else {
