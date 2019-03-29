@@ -15,6 +15,12 @@
 <body>
 	<div class="ui attached stackable inverted menu">
 		<div class="ui container">
+			<a href="#deck_segment" class="item">
+				<i class="angle down icon"></i>Deck
+			</a>
+			<a href="#json_segment" class="item">
+				<i class="angle down icon"></i>JSON
+			</a>
 			<a class="item">
 				<i class="home icon"></i>TODO: id to name as one request
 			</a>
@@ -58,7 +64,16 @@
 	<div id="message_box" class="card_tag_inner transparent_box">?</div>
 	<div id="card_tags_container"></div>
 	<div id="main_content" class="ui"></div>
-	<div class="ui segment">
-		<pre id="deck"></pre>
+	<div class="ui segment" id="deck_segment">
+		<button class="ui icon button" id="deck_select_button">
+			<i class="copy icon"></i>
+		</button>
+		<pre id="deck_text"></pre>
+	</div>
+		<div class="ui segment" id="json_segment">
+		<button class="ui icon button" id="json_select_button">
+			<i class="copy icon"></i>
+		</button>
+		<pre id="json_text"></pre>
 	</div>
 </body>

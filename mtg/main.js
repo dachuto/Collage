@@ -369,13 +369,49 @@ function DOM_ready_wants() {
 	).then(all_data_is_here_wants, null);
 }
 
+function select_element_by_id(id) {
+	return () => {
+		let selection = window.getSelection();
+		let range = document.createRange();
+		range.selectNodeContents(document.getElementById(id));
+		selection.removeAllRanges();
+		selection.addRange(range);
+	};
+}
+
+function as_deck(list) {
+	let sorted = Array.from(list).sort();
+	let text = "";
+	for (const name of list) {
+		text += "1 " + name + "\n";
+	}
+	return text;
+}
+
+function as_pretty_json(list) {
+	let sorted = Array.from(list).sort();
+	let text = "";
+	text += "[";
+	let divider = false;
+	for (const name of list) {
+		if (divider) {
+			text += ",";
+		} else {
+			divider = true;
+		}
+		text += "\n\"" + name + "\"";
+	}
+	text += "\n]";
+	return text;
+}
+
 function all_data_is_here_wants(wants) {
 	console.log(wants);
-	let deck_text = "";
-	for (const name of wants) {
-		deck_text += "1 " + name + "\n";
-	}
-	document.getElementById("deck").textContent = deck_text;
+
+	document.getElementById("deck_text").textContent = as_deck(wants);
+	document.getElementById("deck_select_button").onclick = select_element_by_id("deck_text");
+	document.getElementById("json_text").textContent = as_pretty_json(wants);
+	document.getElementById("json_select_button").onclick = select_element_by_id("json_text");
 
 	let data = new page_data();
 	data.start_async_loading_2(wants);
