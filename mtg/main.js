@@ -371,6 +371,11 @@ function DOM_ready_wants() {
 
 function all_data_is_here_wants(wants) {
 	console.log(wants);
+	let deck_text = "";
+	for (const name of wants) {
+		deck_text += "1 " + name + "\n";
+	}
+	document.getElementById("deck").textContent = deck_text;
 
 	let data = new page_data();
 	data.start_async_loading_2(wants);
