@@ -245,13 +245,28 @@ class page_data {
 			requests.push(JSON_request(url.href));
 		}
 
-		$.when(...requests).then(this.async_complete_2.bind(this), null);
+		let make_promise_always_success = promise => promise.then(
+			value => ({value:value}),
+			error => ({error:error})
+		);
+
+		Promise.all(requests.map(make_promise_always_success)).then(results => {
+			const successful = results.reduce((a, e) => {
+				if (e.hasOwnProperty('value')) {
+					a.push(e.value);
+				}
+				return a;
+			}, []);
+			this.async_complete_2(...successful);
+		});
+
+		//old solution (errors break it) $.when(...requests).then(this.async_complete_2.bind(this), null);
 	}
 
 	async_complete_2() {
 		let ids = [];
 		for (const arg of arguments) {
-			ids = [ ...ids, ...arg[0]];
+			ids = [ ...ids, ...arg];
 		}
 		this.append_images_grid(ids);
 	}
