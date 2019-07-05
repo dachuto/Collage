@@ -47,33 +47,40 @@
 	color: white;
 }
 
+.opacity-transition {
+	transition: opacity 0.33s;
+}
+
 .transparent_box {
 	position: fixed;
 	bottom: 0;
 	right: 0;
-	transition: opacity 1s;
-	opacity: .0;
+	opacity: 0.0;
+}
+.transparent-fully {
+	opacity: 0.0;
 }
 
-.transparent_box:hover {
+.transparent-barely-visible {
+	opacity: 0.3;
+}
+
+.transparent-almost-opaque {
+	opacity: 0.7;
+}
+
+.transparent_box:hover,
+.opaque {
 	opacity: 1.0;
 }
 
-.visible {
-	opacity: 1.0;
-}
-
-img.preview {
-	/* display: block;
-	width: 100%;
-	max-width: 100%;
-	height: auto; */
+.preview {
 	object-fit: contain;
 	box-sizing: border-box;
 }
 
-.image_inactive {
-	--distance: 2%;
+.image-inactive {
+	--distance: 3%;
 	--color-one: grey;
 	--color-two: lightgrey;
 	background: repeating-linear-gradient(45deg,
@@ -82,16 +89,15 @@ img.preview {
 		var(--color-two) var(--distance),
 		var(--color-two) calc(var(--distance) * 2)
 	);
-	border: 2px solid black;
-	border-radius: 10%;
-	/* --image-width: 20vw; */
-	/* width: var(--image-width);
-	height: calc(var(--image-width) * 7 / 5); */
+	border-width: thin;
+	border-color: black;
+	border-style: solid;
+	border-radius: 7% / 5%;
 }
 
 .images_grid {
 	display: grid;
-	grid-template-columns: repeat(10, 10%);
+	grid-template-columns: repeat(8, 12.5%);
 	/* grid-template-rows: repeat(auto-fit, 100px); */
 	/* justify-content: space-evenly; */
 }
@@ -105,7 +111,6 @@ img.preview {
 }
 
 .top_sticky {
-	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
 }
@@ -114,7 +119,9 @@ img.preview {
 	width: 100%;
 	height: 0;
 	overflow: hidden;
-	padding-top: calc(100% * 348 / 249);
+	--card-size-x: 25;
+	--card-size-y: 35;
+	padding-top: calc(100% * var(--card-size-y) / var(--card-size-x)); /* With zero height this keeps ratio fixed. */
 	position: relative;
 }
 
@@ -124,4 +131,41 @@ img.preview {
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+
+.fullscreen {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	pointer-events: none;
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+.card-overlay {
+	border-radius: 10%;
+	fill: black;
+	background: white;
+}
+
+.list-overlay-position {
+	position: absolute;
+	width: 20%;
+	top: 12.5%;
+	left: 9%;
+}
+
+.card-name-hidden {
+	position: absolute;
+	overflow: hidden;
+	color: transparent;
+	top: 4%;
+	left: 10%;
+	width: 80%;
+	height: 94%;
+	font-size: xx-small;
 }

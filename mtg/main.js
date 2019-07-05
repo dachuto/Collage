@@ -51,19 +51,10 @@ function error_message_html(header, inside) {
 
 function JSON_request(file_name) {
 	let request = $.getJSON(file_name).done(function (data, textStatus, jqXHR) {
-		console.log("JSON requested: " + file_name);
 	}).fail(function (jqXHR, textStatus, errorThrown) {
-		failed_json(jqXHR, textStatus, errorThrown);
-
 		DOM_append(error_message_html(file_name, errorThrown));
 	});
 	return request;
-}
-
-function failed_json(jqXHR, textStatus, errorThrown) {
-	console.log(jqXHR);
-	console.log(textStatus);
-	console.log(errorThrown);
 }
 
 function DFS(graph, start, visit_pre, visit_post) {
@@ -237,38 +228,52 @@ class page_data {
 		);
 	}
 
-	start_async_loading_2(card_names_list) {
+	request_card_names_to_ids(card_names_list) {
 		let requests = [];
 		for (const name of card_names_list) {
 			let url = new URL("/query", this.backend_url);
 			url.search = "name=" + name;
-			requests.push(JSON_request(url.href));
+			let attach_name_and_always_succeed = $.getJSON(url.href).then(
+				value => ({name:name, value:value}),
+				error => ({name:name, error:error})
+			);
+			requests.push(attach_name_and_always_succeed);
 		}
 
-		let make_promise_always_success = promise => promise.then(
-			value => ({value:value}),
-			error => ({error:error})
-		);
-
-		Promise.all(requests.map(make_promise_always_success)).then(results => {
-			const successful = results.reduce((a, e) => {
-				if (e.hasOwnProperty('value')) {
-					a.push(e.value);
+		return Promise.all(requests).then(results => {
+			return results.reduce((accumulator, element) => {
+				if (element.hasOwnProperty('value')) {
+					accumulator[0].push([element.name, element.value]);
+				} else if (element.hasOwnProperty('error')) {
+					accumulator[1].push([element.name, element.error]);
+				} else {
+					console.assert(false, "missing property");
 				}
-				return a;
-			}, []);
-			this.async_complete_2(...successful);
+				return accumulator;
+			}, [[], []]);
 		});
-
-		//old solution (errors break it) $.when(...requests).then(this.async_complete_2.bind(this), null);
 	}
 
-	async_complete_2() {
-		let ids = [];
-		for (const arg of arguments) {
-			ids = [ ...ids, ...arg];
-		}
-		this.append_images_grid(ids);
+	async_complete_2(card_name_to_ids_list) {
+		// let id_list = [];
+		// for (const e of card_name_to_ids_list) {
+		// 	const [name, card_ids] = e;
+
+		// 	id_list = [ ...id_list, ...card_ids];
+		// }
+	}
+
+	start_async_loading_2(card_names_list) {
+		this.request_card_names_to_ids(card_names_list).then(value => {
+			let [success, error] = value;
+			console.log(success);
+			console.log(error);
+			// this.async_complete_2(success);
+
+			DOM_append(images_grid(success, this.source));
+			//TODO: RESTORE!
+			this.start_lazy_images_loading();
+		});
 	}
 
 	async_complete(info, query) {
@@ -293,11 +298,6 @@ class page_data {
 		this.graph_topological_order = topological_order(this.graph);
 
 		this.append_images_grid(query[0]);
-	}
-
-	append_images_grid(id_list) {
-		DOM_append(images_grid(id_list, this.source));
-		this.start_lazy_images_loading();
 	}
 
 	card_tag_html(id, name, state) {
@@ -351,7 +351,7 @@ class page_data {
 			}
 		}, options);
 
-		for (const t of document.querySelectorAll(".image_inactive")) {
+		for (const t of document.querySelectorAll(".image-inactive")) {
 			++this.images_info.total;
 			observer.observe(t);
 		}
@@ -359,13 +359,13 @@ class page_data {
 
 	update_message_box() {
 		$(this.message_box)
-			.addClass("visible")
+			.addClass("opaque")
 			.text("Images " + this.images_info.loaded + "/" + this.images_info.total);
 		if (this.message_box_timer != null) {
 			window.clearTimeout(this.message_box_timer);
 		}
 		this.message_box_timer = window.setTimeout(() => {
-			$(this.message_box).removeClass("visible");
+			this.message_box.classList.remove("opaque");
 		}, 5000);
 	}
 }
@@ -379,9 +379,13 @@ function DOM_ready() {
 }
 
 function DOM_ready_wants() {
+	// $.when(
+	// 	JSON_request("mtg/wants.json"),
+	// ).then(all_data_is_here_wants, null);
+
 	$.when(
-		JSON_request("mtg/wants.json"),
-	).then(all_data_is_here_wants, null);
+		JSON_request("mtg/articles/commander_teysa.json"),
+	).then(all_data_is_here_deck, null);
 }
 
 function select_element_by_id(id) {
@@ -422,6 +426,8 @@ function as_pretty_json(list) {
 
 function all_data_is_here_wants(wants) {
 	console.log(wants);
+	
+	//TODO: work with deck lists based on this!
 
 	document.getElementById("deck_text").textContent = as_deck(wants);
 	document.getElementById("deck_select_button").onclick = select_element_by_id("deck_text");
@@ -432,6 +438,15 @@ function all_data_is_here_wants(wants) {
 	data.start_async_loading_2(wants);
 }
 
+function all_data_is_here_deck(deck) {
+	// document.getElementById("deck_text").textContent = as_deck(wants);
+	// document.getElementById("deck_select_button").onclick = select_element_by_id("deck_text");
+	// document.getElementById("json_text").textContent = as_pretty_json(wants);
+	// document.getElementById("json_select_button").onclick = select_element_by_id("json_text");
+
+	let data = new page_data();
+	data.start_async_loading_2(deck.main);
+}
 
 function DOM_ready_results() {
 	document.addEventListener("keyup", event => { //TODO: handle keys to do simple searches
@@ -484,30 +499,100 @@ function articlesJSON_groupped(data, source) {
 	return group_by_keys_set.get(temp);
 }
 
+function list_svg() {
+	let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	svg.setAttribute("viewBox", "0 0 24 24");
+	let path_0 = document.createElementNS(svg.namespaceURI, "path");
+	let path_1 = document.createElementNS(svg.namespaceURI, "path");
+	path_0.setAttribute("d", "M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z");
+	path_1.setAttribute("d", "M0 0h24v24H0z");
+	path_1.setAttribute("fill", "none");
+	svg.appendChild(path_0);
+	svg.appendChild(path_1);
+	return svg;
+}
+
+function list_overlay(hover_node, hidden_node) {
+	const TRANSPARENT_STYLES = ["transparent-fully", "transparent-barely-visible", "transparent-almost-opaque"];
+	let list_overlay = list_svg();
+	list_overlay.classList.add("card-overlay");
+	list_overlay.classList.add("list-overlay-position");
+	list_overlay.classList.add("opacity-transition");
+	list_overlay.classList.add(TRANSPARENT_STYLES[0]);
+	
+	$(hover_node).hover(function() {
+		list_overlay.classList.add(TRANSPARENT_STYLES[1]);
+	}, function() {
+		list_overlay.classList.remove(TRANSPARENT_STYLES[1]);
+	});
+
+	$(list_overlay).hover(function() {
+		list_overlay.classList.add(TRANSPARENT_STYLES[2]);
+		hidden_node.classList.remove("invisible");
+	}, function() {
+		list_overlay.classList.remove(TRANSPARENT_STYLES[2]);
+		hidden_node.classList.add("invisible");
+	});
+
+	return list_overlay;
+}
+
 function image_not_loaded_html(url) {
-	let a = document.createElement("div");
-	a.classList.add("aspect-ratio-box");
-	let b = document.createElement("div");
-	b.classList.add("aspect-ratio-box-inside", "image_inactive");
-	b.setAttribute("data-src", url);
-	a.appendChild(b);
-	return a;
+	let i = document.createElement("div");
+	i.classList.add("aspect-ratio-box-inside", "image-inactive");
+	i.setAttribute("data-src", url);
+	return i;
 }
 
 function image_load(e) {
 	let image = document.createElement("img");
 	image.classList.add("aspect-ratio-box-inside", "preview");
 	image.src = e.getAttribute("data-src");
-	e.parentNode.replaceChild(image, e);
+
+	const parent = e.parentNode;
+	parent.replaceChild(image, e);
 }
 
-function images_grid(keys, source) {
+function images_grid(name_to_id_list, source) {
 	let images_grid = $("<div/>", {
 		class: "images_grid",
 	});
 
-	for (const k of keys) {
-		images_grid.append(image_not_loaded_html(source.image_url(k)));
+	for (const [name, ids] of name_to_id_list) {
+		const chosen_index = ids.length - 1; //TODO: we take last (newest printing), maybe customize
+		let hidden_printings = null;
+
+		const hide_some_printings = (ids.length > 1);
+		if (hide_some_printings) {
+			hidden_printings = document.createElement("div");
+			hidden_printings.classList.add("fullscreen", "images_grid", "invisible");
+			document.getElementById("hidden_cards").appendChild(hidden_printings);
+		}
+
+		for (let k = 0; k < ids.length; ++k) {
+			const id = ids[k];
+			
+			let d = document.createElement("div");
+			d.classList.add("aspect-ratio-box");
+			
+			let i = image_not_loaded_html(source.image_url(id));
+			d.appendChild(i);
+			
+			if (k == chosen_index) {
+				if (hide_some_printings) {
+					let hidden_name = document.createElement("div");
+					hidden_name.textContent = name;
+					hidden_name.classList.add("card-name-hidden");
+					d.appendChild(hidden_name);
+					
+					d.appendChild(list_overlay(d, hidden_printings));
+				}
+
+				images_grid.append(d);
+			} else {
+				hidden_printings.appendChild(d);
+			}
+		}
 	}
 	return images_grid;
 }
