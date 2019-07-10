@@ -52,6 +52,8 @@ add_custom_command(
 )
 
 # we want custom cpp build for our module; only binary here
+add_custom_target(nginx_slow_build)
+
 add_custom_command(
 	TARGET nginx_slow_build PRE_BUILD
 	COMMENT "nginx build (slow)"

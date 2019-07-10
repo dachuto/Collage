@@ -29,7 +29,7 @@ TEST(mtg_api_test, works) {
 			std::cout << "multiverseId for Fog: " << id << "\n";
 		}
 	}
-	// auto d = read({"./AllCards-x.json", "./AllSets.json", ""});
+
 	// mtg_api_f2(&d, a, "x=1&y=2", 7);
 	// auto const print_it = [](std::string_view const &key, std::string_view const &value) {
 	// 	std::cout << key << " = " << value << "\n";

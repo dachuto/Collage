@@ -6,11 +6,12 @@ Core code is written in C++ and then exposed as C nginx module. Only allocator A
 
 To utilize memory one process and multiple worker threads should be fine. Requests don't modify internal state so can be processed in parallel.
 
+mtg_api_util will output all unique card names (run from directory with json files).
 
 Build and run (with this setup one doesn't need root):
 ```
 cmake -DBUILD_NGINX_MODULE=ON -DCMAKE_INSTALL_PREFIX=<WHERE TO PUT NGINX> <Collage/mtg/mtg_api/>
-make download_json
+make json_data
 make && make install && make run_nginx
 ```
 
