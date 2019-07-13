@@ -254,24 +254,13 @@ class page_data {
 		});
 	}
 
-	async_complete_2(card_name_to_ids_list) {
-		// let id_list = [];
-		// for (const e of card_name_to_ids_list) {
-		// 	const [name, card_ids] = e;
-
-		// 	id_list = [ ...id_list, ...card_ids];
-		// }
-	}
-
 	start_async_loading_2(card_names_list) {
 		this.request_card_names_to_ids(card_names_list).then(value => {
 			let [success, error] = value;
 			console.log(success);
 			console.log(error);
-			// this.async_complete_2(success);
 
 			DOM_append(images_grid(success, this.source));
-			//TODO: RESTORE!
 			this.start_lazy_images_loading();
 		});
 	}
@@ -351,9 +340,9 @@ class page_data {
 			}
 		}, options);
 
-		for (const t of document.querySelectorAll(".image-inactive")) {
+		for (const target of document.querySelectorAll(".lazy_load_when_almost_visible")) {
 			++this.images_info.total;
-			observer.observe(t);
+			observer.observe(target);
 		}
 	}
 
@@ -426,7 +415,7 @@ function as_pretty_json(list) {
 
 function all_data_is_here_wants(wants) {
 	console.log(wants);
-	
+
 	//TODO: work with deck lists based on this!
 
 	document.getElementById("deck_text").textContent = as_deck(wants);
@@ -512,45 +501,64 @@ function list_svg() {
 	return svg;
 }
 
-function list_overlay(hover_node, hidden_node) {
+function list_overlay(hover_node, hidden_node, images_to_lazy_load) {
 	const TRANSPARENT_STYLES = ["transparent-fully", "transparent-barely-visible", "transparent-almost-opaque"];
 	let list_overlay = list_svg();
 	list_overlay.classList.add("card-overlay");
 	list_overlay.classList.add("list-overlay-position");
 	list_overlay.classList.add("opacity-transition");
 	list_overlay.classList.add(TRANSPARENT_STYLES[0]);
-	
-	$(hover_node).hover(function() {
-		list_overlay.classList.add(TRANSPARENT_STYLES[1]);
-	}, function() {
-		list_overlay.classList.remove(TRANSPARENT_STYLES[1]);
-	});
 
-	$(list_overlay).hover(function() {
+	hover_node.onmouseenter = function() {
+		list_overlay.classList.add(TRANSPARENT_STYLES[1]);
+	};
+	hover_node.onmouseleave = function() {
+		list_overlay.classList.remove(TRANSPARENT_STYLES[1]);
+	};
+
+	const make_visible = function() {
 		list_overlay.classList.add(TRANSPARENT_STYLES[2]);
 		hidden_node.classList.remove("invisible");
-	}, function() {
+	};
+
+	const lazy_load = function() {
+		for (const image of images_to_lazy_load) {
+			image_load(image);
+		}
+	};
+
+	list_overlay.onmouseenter = function() {
+		lazy_load();
+		make_visible();
+		list_overlay.onmouseenter = make_visible;
+	};
+
+	list_overlay.onmouseleave = function() {
 		list_overlay.classList.remove(TRANSPARENT_STYLES[2]);
 		hidden_node.classList.add("invisible");
-	});
+	};
 
 	return list_overlay;
 }
 
 function image_not_loaded_html(url) {
 	let i = document.createElement("div");
-	i.classList.add("aspect-ratio-box-inside", "image-inactive");
+	i.classList.add("aspect-ratio-box-inside", "image-inactive", "transparent-almost-opaque");
 	i.setAttribute("data-src", url);
 	return i;
 }
 
-function image_load(e) {
+function image_load(placeholder) {
 	let image = document.createElement("img");
 	image.classList.add("aspect-ratio-box-inside", "preview");
-	image.src = e.getAttribute("data-src");
+	image.src = placeholder.getAttribute("data-src");
 
-	const parent = e.parentNode;
-	parent.replaceChild(image, e);
+	if (true) {
+		placeholder.insertAdjacentElement('afterend', image);
+	} else {
+		const parent = placeholder.parentNode;
+		parent.replaceChild(image, placeholder);
+	}
 }
 
 function images_grid(name_to_id_list, source) {
@@ -565,33 +573,40 @@ function images_grid(name_to_id_list, source) {
 		const hide_some_printings = (ids.length > 1);
 		if (hide_some_printings) {
 			hidden_printings = document.createElement("div");
-			hidden_printings.classList.add("fullscreen", "images_grid", "invisible");
-			document.getElementById("hidden_cards").appendChild(hidden_printings);
+			hidden_printings.classList.add("fullscreen", "images_grid", "popup", "invisible");
 		}
+
+		let secondary_images = [];
+		let main_image_container = null;
 
 		for (let k = 0; k < ids.length; ++k) {
 			const id = ids[k];
-			
-			let d = document.createElement("div");
-			d.classList.add("aspect-ratio-box");
-			
-			let i = image_not_loaded_html(source.image_url(id));
-			d.appendChild(i);
-			
-			if (k == chosen_index) {
-				if (hide_some_printings) {
-					let hidden_name = document.createElement("div");
-					hidden_name.textContent = name;
-					hidden_name.classList.add("card-name-hidden");
-					d.appendChild(hidden_name);
-					
-					d.appendChild(list_overlay(d, hidden_printings));
-				}
 
-				images_grid.append(d);
+			let image_container = document.createElement("div");
+			image_container.classList.add("aspect-ratio-box");
+
+			let image = image_not_loaded_html(source.image_url(id));
+			image_container.appendChild(image);
+
+			if (k == chosen_index) {
+				image.classList.add("lazy_load_when_almost_visible");
+				main_image_container = image_container;
+
+				let hidden_name = document.createElement("div");
+				hidden_name.textContent = name;
+				hidden_name.classList.add("card-name-hidden");
+				image_container.appendChild(hidden_name);
+
+				images_grid.append(image_container);
 			} else {
-				hidden_printings.appendChild(d);
+				secondary_images.push(image);
+				hidden_printings.appendChild(image_container);
 			}
+		}
+
+		if (hidden_printings !== null) {
+			main_image_container.appendChild(list_overlay(main_image_container, hidden_printings, secondary_images));
+			main_image_container.appendChild(hidden_printings);
 		}
 	}
 	return images_grid;

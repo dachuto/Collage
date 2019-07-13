@@ -139,7 +139,11 @@
 	height: 100%;
 	left: 0;
 	top: 0;
+}
+
+.popup {
 	pointer-events: none;
+	z-index: 1;
 }
 
 .invisible {
