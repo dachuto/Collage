@@ -20,6 +20,7 @@
 "Sea Gate Oracle",
 "Eternal Witness",
 "Reclamation Sage",
+"Fathom Mage",
 "Circuitous Route",
 "Altered Ego",
 "Frilled Mystic",
@@ -42,6 +43,7 @@
 "Rubinia Soulsinger",
 "Draining Whelk",
 "Goldnight Redeemer",
+"Lena, Selfless Champion",
 "Whiptongue Hydra",
 "Deadwood Treefolk",
 "Ajani Unyielding",
@@ -77,8 +79,8 @@
 "Sejiri Refuge",
 "Stirring Wildwood",
 "Plains",
-"Forest",
-"Island"
+{"name":"Forest", "count":9},
+{"name":"Island", "count":13}
 ],
 "sideboard":
 [
@@ -88,7 +90,6 @@
 "Arcanis the Omnipotent",
 "Urbis Protector",
 "Linvala, the Preserver",
-"Lena, Selfless Champion",
 "Quarry Colossus",
 "Terastodon",
 "Seht's Tiger",
