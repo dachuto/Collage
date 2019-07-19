@@ -5,6 +5,7 @@
 	<script src="common.js"></script>
 	<link rel="stylesheet" href="import.css" />
 	<link rel="stylesheet" href="mtg.css" />
+	<script src="mtg/cards.js"></script>
 	<script src="mtg/main.js"></script>
 	<script>
 		$(DOM_ready_wants);
@@ -61,8 +62,56 @@
 			</div>
 		</div>
 	</div>
+
 	<div id="card_tags_container"></div>
+	
+		<!-- <div class="ui horizontal fitted divider header">
+			<i class="file icon"></i>
+			<div class="content">
+				Account Settings
+				<div class="sub header">Manage your preferences</div>
+			</div>
+			<i class="settings green icon"></i>
+			<div class="content">2 + 99</div>
+			<div class="content">&bull;</div>
+			<i class="exchange icon"></i>
+			<div class="content">16</div>
+			<div class="content">&VerticalLine;</div>
+			&VerticalLine;
+			<i class="cart plus icon"></i>
+			<div class="content">
+				32
+				<div class="sub header">Manage your preferences</div>
+			</div>
+		</div> -->
+	<div class="ui attached stackable seven menu">
+		<div class="ui container">
+			<a href="#main_content" class="item">
+				<i class="file icon"></i>
+				Main
+				<div class="ui left pointing basic label" id="deck_menu_main">0 + 00</div>
+			</a>
+			<a href="#sideboard_content" class="item">
+				<i class="exchange icon"></i>
+				Sideboard
+				<div class="ui left pointing blue basic label" id="deck_menu_sideboard">0</div>
+			</a>
+			<a href="#wants_content" class="item">
+				<i class="cart plus icon"></i>
+				Wants
+				<div class="ui left pointing blue basic label" id="deck_menu_wants">0</div>
+			</a>
+		</div>
+	</div>
+
 	<div id="main_content" class="ui"></div>
+
+	<div class="ui horizontal divider header"><i class="exchange icon"></i>Sideboard</div>
+	<div id="sideboard_content" class="ui"></div>
+
+	<div class="ui horizontal divider header"><i class="cart plus icon"></i>Wants</div>
+	<div id="wants_content" class="ui"></div>
+
 	<div class="ui segment" id="deck_segment">
 		<button class="ui icon button" id="deck_select_button">
 			<i class="copy icon"></i>

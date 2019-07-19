@@ -254,14 +254,10 @@ class page_data {
 		});
 	}
 
-	start_async_loading_2(card_names_list) {
+	start_async_loading_2(card_names_list, callback) {
 		this.request_card_names_to_ids(card_names_list).then(value => {
 			let [success, error] = value;
-			console.log(success);
-			console.log(error);
-
-			DOM_append(images_grid(success, this.source));
-			this.start_lazy_images_loading();
+			callback(success, error);
 		});
 	}
 
@@ -373,6 +369,7 @@ function DOM_ready_wants() {
 	// ).then(all_data_is_here_wants, null);
 
 	$.when(
+		//JSON_request("mtg/articles/commander_roon.json"),
 		JSON_request("mtg/articles/commander_teysa.json"),
 	).then(all_data_is_here_deck, null);
 }
@@ -385,32 +382,6 @@ function select_element_by_id(id) {
 		selection.removeAllRanges();
 		selection.addRange(range);
 	};
-}
-
-function as_deck(list) {
-	let sorted = Array.from(list).sort();
-	let text = "";
-	for (const name of list) {
-		text += "1 " + name + "\n";
-	}
-	return text;
-}
-
-function as_pretty_json(list) {
-	let sorted = Array.from(list).sort();
-	let text = "";
-	text += "[";
-	let divider = false;
-	for (const name of sorted) {
-		if (divider) {
-			text += ",";
-		} else {
-			divider = true;
-		}
-		text += "\n\"" + name + "\"";
-	}
-	text += "\n]";
-	return text;
 }
 
 function all_data_is_here_wants(wants) {
@@ -428,13 +399,39 @@ function all_data_is_here_wants(wants) {
 }
 
 function all_data_is_here_deck(deck) {
-	// document.getElementById("deck_text").textContent = as_deck(wants);
-	// document.getElementById("deck_select_button").onclick = select_element_by_id("deck_text");
-	// document.getElementById("json_text").textContent = as_pretty_json(wants);
-	// document.getElementById("json_select_button").onclick = select_element_by_id("json_text");
+	console.log(deck);
+	for (const p of ["commander", "main", "sideboard", "wants"]) {
+		deck[p] = deck[p].map(as_deck_entry);
+	}
+
+	let change_to_text = deck.main;
+	document.getElementById("deck_text").textContent = as_text_deck(change_to_text);
+	document.getElementById("deck_select_button").onclick = select_element_by_id("deck_text");
+	document.getElementById("json_text").textContent = as_pretty_json(change_to_text);
+	document.getElementById("json_select_button").onclick = select_element_by_id("json_text");
+
+	{
+		const count_cards = (entries) => entries.reduce((accumulator, value) => accumulator + value.count, 0);
+		const commander_count = count_cards(deck.commander);
+		const main_count = count_cards(deck.main);
+		const element = document.getElementById("deck_menu_main");
+		element.textContent = commander_count + " + " + main_count;
+		element.classList.add((commander_count + main_count == 100) ? "green" : "red");
+
+		document.getElementById("deck_menu_sideboard").textContent = count_cards(deck.sideboard);
+		document.getElementById("deck_menu_wants").textContent = count_cards(deck.wants);
+	}
+
+	let fetch_list = [...deck.commander, ...deck.main, ...deck.sideboard, ...deck.wants].map(x => x.name);
 
 	let data = new page_data();
-	data.start_async_loading_2(deck.main);
+	data.start_async_loading_2(fetch_list, function(success, error) {
+			// console.log(success);
+			// console.log(error);
+
+			DOM_append(images_grid(success, data.source));
+			data.start_lazy_images_loading();
+	});
 }
 
 function DOM_ready_results() {
@@ -486,6 +483,22 @@ function articlesJSON_groupped(data, source) {
 		group_by_keys_set.add(temp, html, keys);
 	}
 	return group_by_keys_set.get(temp);
+}
+
+function square_text_svg(text_content) {
+	let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	svg.setAttribute("viewBox", "0 0 100 100");
+	let text = document.createElementNS(svg.namespaceURI, "text");
+	text.setAttribute("dominant-baseline", "middle");
+	text.setAttribute("text-anchor", "middle");
+	text.setAttribute("text-align", "center");
+	text.setAttribute("font-size", "60");
+	text.setAttribute("x", "50%");
+	text.setAttribute("y", "50%");
+	text.textContent = text_content;
+
+	svg.appendChild(text);
+	return svg;
 }
 
 function list_svg() {
@@ -589,8 +602,15 @@ function images_grid(name_to_id_list, source) {
 			image_container.appendChild(image);
 
 			if (k == chosen_index) {
-				image.classList.add("lazy_load_when_almost_visible");
 				main_image_container = image_container;
+
+				image.classList.add("lazy_load_when_almost_visible");
+
+				let number_of_copies_overlay = square_text_svg("16");
+				number_of_copies_overlay.classList.add("card-overlay");
+				number_of_copies_overlay.classList.add("number-of-copies-position");
+				number_of_copies_overlay.classList.add("transparent-barely-visible");
+				image_container.appendChild(number_of_copies_overlay);
 
 				let hidden_name = document.createElement("div");
 				hidden_name.textContent = name;

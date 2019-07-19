@@ -143,7 +143,7 @@
 
 .popup {
 	pointer-events: none;
-	z-index: 1;
+	z-index: 1000;
 }
 
 .invisible {
@@ -151,16 +151,28 @@
 }
 
 .card-overlay {
+	position: absolute;
 	border-radius: 10%;
 	fill: black;
 	background: white;
 }
 
+:root {
+	--overlay_size: 20%;
+	--card_image_top_offset: 12.1%;
+	--card_image_left_offset: 8.5%;
+}
+
 .list-overlay-position {
-	position: absolute;
-	width: 20%;
-	top: 12.5%;
-	left: 9%;
+	width: var(--overlay_size);
+	top: var(--card_image_top_offset);
+	left: var(--card_image_left_offset);
+}
+
+.number-of-copies-position {
+	width: var(--overlay_size);
+	top: calc(var(--card_image_top_offset) + var(--overlay_size) * 25 / 35);
+	left: var(--card_image_left_offset);
 }
 
 .card-name-hidden {
