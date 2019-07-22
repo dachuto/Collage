@@ -209,6 +209,91 @@ class page_data {
 			// window.history.pushState(null, "", "http://localhost:1234/mtg_results.html?set=BBD");
 			// window.history.replaceState(null, "", "http://localhost:1234/mtg_results.html?set=BBD");
 		};
+
+		this.commander_deck_param = "deck";
+		this.commander_decks = new Map();
+		this.commander_decks.set("roon", "commander_roon.json");
+		this.commander_decks.set("taigam", "commander_taigam.json");
+		this.commander_decks.set("teysa", "commander_teysa.json");
+		this.commander_decks.set("wort", "commander_wort.json");
+		this.commander_default_deck = this.commander_decks.keys().next().value;
+
+		this.json_path_prefix = "mtg/articles/";
+	}
+
+	validate_url(url) {
+		const url_params = new URLSearchParams(url.search);
+
+		if (!url_params.has(this.commander_deck_param)) {
+			url_params.append(this.commander_deck_param, this.commander_default_deck);
+		}
+
+		const modified_url = new URL(url);
+		modified_url.search = url_params;
+
+		console.log(modified_url);
+		const json_path = this.json_path_prefix + this.commander_decks.get(url_params.get(this.commander_deck_param));
+		return [modified_url, json_path];
+	}
+
+	populate_decks_list() {
+		const menu = document.getElementById("commander_decks_menu");
+		for (const [key, value] of this.commander_decks) {
+			const commander_deck_link = new URL(window.location);
+			commander_deck_link.search = new URLSearchParams([[this.commander_deck_param, key]]);
+
+			let inner = document.createElement("a");
+			inner.classList.add("item");
+			inner.setAttribute("href", commander_deck_link);
+			inner.textContent = key;
+			menu.appendChild(inner);
+		}
+	}
+
+	deck_page_init() {
+		const [modified_url, json_path] = this.validate_url(window.location);
+		history.replaceState(null, null, modified_url);
+
+		// $.when(
+		// 	JSON_request("mtg/wants.json"),
+		// ).then(all_data_is_here_wants, null);
+		this.populate_decks_list();
+
+		$.when(
+			JSON_request(json_path),
+		).then(deck => {
+			for (const p of ["commander", "main", "sideboard", "wants"]) {
+				deck[p] = deck[p].map(as_deck_entry);
+			}
+
+			let change_to_text = deck.main;
+			document.getElementById("deck_text").textContent = as_text_deck(change_to_text);
+			document.getElementById("deck_select_button").onclick = select_element_by_id("deck_text");
+			document.getElementById("json_text").textContent = as_pretty_json(change_to_text);
+			document.getElementById("json_select_button").onclick = select_element_by_id("json_text");
+
+			{
+				const count_cards = (entries) => entries.reduce((accumulator, value) => accumulator + value.count, 0);
+				const commander_count = count_cards(deck.commander);
+				const main_count = count_cards(deck.main);
+				const element = document.getElementById("deck_menu_main");
+				element.textContent = commander_count + " + " + main_count;
+				element.classList.add((commander_count + main_count == 100) ? "green" : "red");
+
+				document.getElementById("deck_menu_sideboard").textContent = count_cards(deck.sideboard);
+				document.getElementById("deck_menu_wants").textContent = count_cards(deck.wants);
+			}
+
+			let fetch_list = [...deck.commander, ...deck.main, ...deck.sideboard, ...deck.wants].map(x => x.name);
+
+			this.start_async_loading_2(fetch_list, (success, error) => {
+				// console.log(success);
+				// console.log(error);
+
+				DOM_append(images_grid(success, this.source));
+				this.start_lazy_images_loading();
+			});
+		}, null);
 	}
 
 	start_async_loading() {
@@ -364,14 +449,8 @@ function DOM_ready() {
 }
 
 function DOM_ready_wants() {
-	// $.when(
-	// 	JSON_request("mtg/wants.json"),
-	// ).then(all_data_is_here_wants, null);
-
-	$.when(
-		//JSON_request("mtg/articles/commander_roon.json"),
-		JSON_request("mtg/articles/commander_teysa.json"),
-	).then(all_data_is_here_deck, null);
+	let data = new page_data();
+	data.deck_page_init();
 }
 
 function select_element_by_id(id) {
@@ -396,42 +475,6 @@ function all_data_is_here_wants(wants) {
 
 	let data = new page_data();
 	data.start_async_loading_2(wants);
-}
-
-function all_data_is_here_deck(deck) {
-	console.log(deck);
-	for (const p of ["commander", "main", "sideboard", "wants"]) {
-		deck[p] = deck[p].map(as_deck_entry);
-	}
-
-	let change_to_text = deck.main;
-	document.getElementById("deck_text").textContent = as_text_deck(change_to_text);
-	document.getElementById("deck_select_button").onclick = select_element_by_id("deck_text");
-	document.getElementById("json_text").textContent = as_pretty_json(change_to_text);
-	document.getElementById("json_select_button").onclick = select_element_by_id("json_text");
-
-	{
-		const count_cards = (entries) => entries.reduce((accumulator, value) => accumulator + value.count, 0);
-		const commander_count = count_cards(deck.commander);
-		const main_count = count_cards(deck.main);
-		const element = document.getElementById("deck_menu_main");
-		element.textContent = commander_count + " + " + main_count;
-		element.classList.add((commander_count + main_count == 100) ? "green" : "red");
-
-		document.getElementById("deck_menu_sideboard").textContent = count_cards(deck.sideboard);
-		document.getElementById("deck_menu_wants").textContent = count_cards(deck.wants);
-	}
-
-	let fetch_list = [...deck.commander, ...deck.main, ...deck.sideboard, ...deck.wants].map(x => x.name);
-
-	let data = new page_data();
-	data.start_async_loading_2(fetch_list, function(success, error) {
-			// console.log(success);
-			// console.log(error);
-
-			DOM_append(images_grid(success, data.source));
-			data.start_lazy_images_loading();
-	});
 }
 
 function DOM_ready_results() {
