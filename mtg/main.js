@@ -212,6 +212,7 @@ class page_data {
 
 		this.commander_deck_param = "deck";
 		this.commander_decks = new Map();
+		this.commander_decks.set("estrid", "commander_estrid.json");
 		this.commander_decks.set("roon", "commander_roon.json");
 		this.commander_decks.set("taigam", "commander_taigam.json");
 		this.commander_decks.set("teysa", "commander_teysa.json");
