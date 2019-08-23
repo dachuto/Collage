@@ -217,6 +217,8 @@ class page_data {
 		this.commander_decks.set("taigam", "commander_taigam.json");
 		this.commander_decks.set("teysa", "commander_teysa.json");
 		this.commander_decks.set("wort", "commander_wort.json");
+		this.commander_decks.set("COMBO", "commander_ccc.json");
+		this.commander_decks.set("IZZET", "commander_new_izzet.json");
 		this.commander_decks.set("WANTS", "wants.json");
 		this.commander_default_deck = this.commander_decks.keys().next().value;
 
