@@ -217,6 +217,7 @@ class page_data {
 		this.commander_decks.set("taigam", "commander_taigam.json");
 		this.commander_decks.set("teysa", "commander_teysa.json");
 		this.commander_decks.set("wort", "commander_wort.json");
+		this.commander_decks.set("WANTS", "wants.json");
 		this.commander_default_deck = this.commander_decks.keys().next().value;
 
 		this.json_path_prefix = "mtg/articles/";
@@ -256,7 +257,7 @@ class page_data {
 		history.replaceState(null, null, modified_url);
 
 		// $.when(
-		// 	JSON_request("mtg/wants.json"),
+		// 	JSON_request("mtg/articles/wants.json"),
 		// ).then(all_data_is_here_wants, null);
 		this.populate_decks_list();
 
