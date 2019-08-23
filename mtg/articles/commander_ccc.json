@@ -1,0 +1,101 @@
+{
+"commander":["Niv-Mizzet Reborn"],
+"main":
+[
+"Murderous Redcap",
+"Solemnity",
+
+"Nomads en-Kor",
+"Shuko",
+"Outrider en-Kor",
+"Cephalid Illusionist",
+"Daru Spiritualist",
+"Task Force",
+"Twisted Image",
+"Inside Out",
+"Thud",
+
+"Ceaseless Searblades",
+"Crackdown Construct",
+"Wandering Fumarole",
+
+"Composite Golem",
+
+"Presence of Gond",
+"Midnight Guard",
+
+"Jeskai Ascendancy",
+"Nettle Drone",
+"Battered Golem",
+"Retraction Helix",
+
+"Triton Tactics",
+"Zhur-Taa Druid",
+
+"Ornithopter",
+"Enduring Renewal",
+
+"Rosheen Meanderer",
+"Naban, Dean of Iteration",
+"Elite Archanist",
+"Dramatic Reversal",
+
+"Dualcaster Mage",
+"Naru Meha, Master Wizard",
+"Ghostly Flicker",
+
+"Deadeye Navigator",
+"Peregrine Drake",
+
+"Devoted Druid",
+"Vizierof Remedies",
+"Quillspike",
+
+"Mindcrank",
+"Duskmantle Guildmage",
+
+"Enduring Scalelord",
+"Altered Ego",
+"Spark Double",
+
+"Stuffy Doll",
+"Guilty Conscience",
+
+"Izzet Guildmage",
+"Nivix Guildmage",
+"Channel the Suns",
+"Biomancer's Familiar",
+
+"Famished Paladin",
+
+"Muddle the Mixture",
+"Dizzy Spell",
+"Disciple of Deceit",
+"Eladamri's Call",
+"Neoform",
+"Signal the Clans",
+"Trinket Mage",
+"Wild Research",
+"Mystical Teachings",
+"Yisan, the Wanderer Bard",
+"Zur the Enchanter",
+"Bring to Light",
+"Shared Summons",
+"Invent"
+
+],
+"sideboard":
+[
+],
+"wants":
+[
+"Command Tower",
+"Exotic Orchard",
+"Mirrodin's Core",
+"Tendo Ice Bridge",
+"Mystic Monastery",
+"Izzet Boilerworks",
+"Crumbling Vestige",
+"Grand Colliseum"
+]
+}
