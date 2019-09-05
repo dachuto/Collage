@@ -10,6 +10,7 @@
 "Peek",
 "Equal Treatment",
 "Anticipate",
+"Everdream",
 "Peer Through Depths",
 "Impulse",
 "Scour All Possibilities",
@@ -23,11 +24,11 @@
 "Clear the Mind",
 "Compulsive Research",
 "Secrets of the Golden City",
+"Drawn from Dreams",
 "Pirate's Prize",
 "Plea for Power",
 "Concentrate",
 "Tidings",
-"Precognitive Perception",
 "Pore Over the Pages",
 "The Mirari Conjecture",
 
@@ -41,6 +42,7 @@
 "Rout",
 "Devastation Tide",
 "Aether Gale",
+"Time Wipe",
 "Final Judgment",
 "Descend upon the Sinful",
 "Hour of Revelation",
@@ -48,7 +50,6 @@
 "Akroma's Vengeance",
 "Kirtar's Wrath",
 "Crush of Tentacles",
-"Dimensional Breach",
 "Play of the Game",
 
 "Revitalize",
@@ -56,29 +57,32 @@
 "Ancestral Tribute",
 
 "Counterspell",
-"Confound",
 "Foil",
 "Exclude",
 "Void Shatter",
 "Devious Cover-Up",
 
 "Archaeomancer",
+"Scholar of the Ages",
 "Rise from the Tides",
 "Swarm Intelligence",
 
-"Runic Repetition",
-"Terrain Generator",
 "Lonely Sandbar",
+"Secluded Steppe",
 "Tranquil Cove",
+"Sejiri Refuge",
 "Azorius Guildgate",
 "Meandering River",
 "Irrigated Farmland",
-"Reliquary Tower",
+"Myriad Landscape",
+"Terrain Generator",
 "Drownyard Temple",
+"Zoetic Cavern",
 "Temple of the False God",
+"Reliquary Tower",
 "Mystifying Maze",
-{"name":"Plains", "count":8},
-{"name":"Island", "count":21}
+{"name":"Plains", "count":7},
+{"name":"Island", "count":18}
 ],
 "sideboard":
 [
@@ -94,7 +98,9 @@
 "Foresee",
 "Deep Analysis",
 "Fact or Fiction",
+"Precognitive Perception",
 "Trail of Evidence",
+"Confound",
 "Capsize",
 "Dismantling Blow",
 "Reviving Dose",
@@ -103,26 +109,24 @@
 "Migratory Route",
 "Planar Outburst",
 "Evangelize",
+"Dimensional Breach",
 "Roiling Waters",
 "Single Combat",
 "Wash Out",
 "Reduce to Dreams",
 "Flood of Tears",
-"Learn from the Past"
+"Learn from the Past",
+"Runic Repetition",
 ],
 "wants":
 [
-"Time Wipe",
 "Leap",
-"Drawn from Dreams",
 "Coastal Breach",
 "Pull from Eternity",
 "Divine Reckoning",
-"Sejiri Refuge",
+
 "Calciform Pools",
 "Arch of Orazca",
-"Azorius Chancery",
-"Secluded Steppe",
-"Zoetic Cavern"
+"Azorius Chancery"
 ]
 }

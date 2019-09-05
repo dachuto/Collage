@@ -4,12 +4,12 @@
 [
 "Dawn of Hope",
 "Mastery of the Unseen",
+"Wilderness Reclamation",
 "Wolfcaller's Howl",
 "First Response",
 "Sigil of the Empty Throne",
 "Leafdrake Roost",
 "Primordial Mist",
-"Day of the Dragons",
 "Sandwurm Convergence",
 "Collective Blessing",
 "Dictate of Heliod",
@@ -17,9 +17,9 @@
 "Honden of Seeing Winds",
 "Honden of Life's Web",
 "Lashknife Barrier",
-"Rule of Law",
 "Teferi's Moat",
 "Sunken Hope",
+"Shared Fate",
 "Martyr's Bond",
 "Satyr Enchanter",
 "Mesa Enchantress",
@@ -83,6 +83,7 @@
 ],
 "sideboard":
 [
+"Rule of Law",
 "Arcane Laboratory",
 "Mana Breach",
 "Ajani's Chosen",
@@ -90,10 +91,15 @@
 "Benefaction of Rhonas",
 "Heliod's Pilgrim",
 "Lay Claim",
+"Day of the Dragons",
+"Teferi's Care",
 "Ley Weaver"
 ],
 "wants":
 [
+"Seal of Removal",
+"Seal of Primordium",
+"Sacred Mesa",
 "Enchantress's Presence",
 "Verduran Enchantress",
 "Abundant Growth",
@@ -101,6 +107,7 @@
 "Sejiri Refuge",
 "Tranquil Thicket",
 "Seaside Citadel",
+"Krosan Verge",
 "Words of Wilding"
 ]
 }
