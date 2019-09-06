@@ -1,0 +1,109 @@
+{
+"commander":["Grenzo, Dungeon Warden"],
+"main":
+[
+"Leaden Myr",
+"Iron Myr",
+"Palladium Myr",
+"Pilgrim's Eye",
+"Crypt Ghast",
+
+"Pawn of Ulamog",
+"Pitiless Plunderer",
+
+"Keeper of the Dead",
+"Sparksmith",
+"Royal Assassin",
+"Manic Vandal",
+"Stronghold Assassin",
+"Nekrataal",
+"Skinrender",
+"Faceless Butcher",
+"Stalking Yeti",
+"Murderous Redcap",
+"Shriekmaw",
+"Ingot Chewer",
+"Dark Hatchling",
+"Deathbringer Thoctar",
+"Duplicant",
+"Triskelion",
+"Meteor Golem",
+"Pentavus",
+"Triskelavus",
+
+"Skirsdag High Priest",
+"Pia Nalaar",
+"Marsh Flitter",
+"Sengir Autocrat",
+"Pia and Kiran Nalaar",
+"Emrakul's Hatcher",
+"Endrek Sahr, Master Breeder",
+"Siege-Gang Commander",
+"Ogre Slumlord",
+"Marionette Master",
+"Skeletal Vampire",
+"Noosegraf Mob",
+
+"Wort, Boggart Auntie",
+"Gravedigger",
+"Graveshifter",
+"Phyrexian Delver",
+"Garna, the Bloodflame",
+"Chainer, Dementia Master",
+
+"Liliana's Specter",
+"Blazing Specter",
+"Okiba-Gang Shinobi",
+"Sadistic Hypnotist",
+"Mindclaw Shaman",
+
+"Viscera Seer",
+"Junktroller",
+"Mad Auntie",
+"Xathrid Gorgon",
+
+"Audacious Thief",
+"Phyrexian Rager",
+"Rowdy Crew",
+
+"Skullclamp",
+
+"Howltooth Hollow",
+"Spinerock Knoll",
+"Crypt of Agadeem",
+"Opal Palace",
+"Aether Hub",
+"Akoum Refuge",
+"Bloodfell Caves",
+"Drownyard Temple",
+"Zhalfirin Void",
+{"name":"Swamp", "count":24},
+{"name":"Mountain", "count":9}
+],
+"sideboard":
+[
+"Din of the Fireherd",
+"Fire Covenant",
+"Epitaph Golem",
+"Workhorse",
+"Goblin Artillery",
+"Orcish Cannoneers",
+"Arms Dealer",
+"Sling-Gang Lieutenant",
+"Bone Shredder",
+"Greel, Mind Raker",
+"Flamerush Rider",
+"Heartstone",
+"Mana Echoes",
+"Ashnod's Altar"
+],
+"wants":
+[
+"Temple of the False God",
+"Puppeteer Clique",
+"Ravenous Chupacabra",
+"Millikin",
+"Kozilek's Translator",
+"Pontiff of Blight"
+]
+}
