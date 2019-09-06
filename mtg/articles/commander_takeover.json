@@ -1,0 +1,116 @@
+{
+"commander":["Merieke Ri Berit"],
+"main":
+[
+"Nezumi Graverobber",
+"Champion of Wits",
+"Kheru Mind-Eater",
+"Daxos of Meletis",
+"Dimir Doppelganger",
+"Callous Oppressor",
+"Kheru Spellsnatcher",
+"Vizier of Many Faces",
+"Crafty Cutpurse",
+"Master Thief",
+"Gonti, Lord of Luxury",
+"Body Double",
+"Puppeteer Clique",
+"Fallen Shinobi",
+"Chancellor of the Spires",
+"Thieving Amalgam",
+"Silent-Blade Oni",
+"Mindleech Mass",
+
+"Legacy's Allure",
+"Mimic Vat",
+"Chaos Wand",
+"Profane Procession",
+"The Eldest Reborn",
+
+"Biting Tether",
+"Vapor Snare",
+"Mind Control",
+"In Bolas's Clutches",
+"Confiscate",
+"Volition Reins",
+"Enslave",
+"Take Possession",
+"Lay Claim",
+
+"Fumble",
+"Praetor's Grasp",
+"Welcome to the Fold",
+"Rags",
+"Memory Plunder",
+"Exert Influence",
+"Acquire",
+"Govern the Guildless",
+"Spelltwine",
+"Stolen Identity",
+"Saheeli's Artistry",
+"Entrancing Melody",
+"Mass Manipulation",
+
+"Mnemonic Betrayal",
+"Rise from the Grave",
+"Command the Dreadhorde",
+"Boneyard Parley",
+"Ghastly Conscription",
+"Fated Return",
+
+"Dismiss",
+"Tidings",
+"Commander's Sphere",
+
+"Vivid Marsh",
+"Vivid Meadow",
+"Vivid Creek",
+
+"Arcane Sanctum",
+"Aether Hub",
+
+"Azorius Chancery",
+"Dimir Aqueduct",
+"Orzhov Basilica",
+
+"Tranquil Cove",
+"Dismal Backwater",
+
+"Azorius Guildgate",
+
+"Meandering River",
+"Submerged Boneyard",
+
+{"name":"Island", "count":21},
+{"name":"Swamp", "count":10}
+],
+"sideboard":
+[
+"Control Magic",
+"Persuasion",
+"Threads of Disloyalty",
+"Retether",
+"Reins of Power",
+"Fool's Demise",
+"Clone Legion",
+"Spirit Away",
+"Dominate",
+"X",
+"Hedonist's Trove"
+],
+"wants":
+[
+"Darkwater Catacombs",
+"Sunken Hollow",
+"Dimir Guildgate",
+"Sejiri Refuge",
+"Jwar Isle Refuge",
+"Agent of Treachery",
+"Thief of Sanity",
+"Steal Enchantment",
+"Blatant Thievery",
+"Seasinger",
+"Grip of Phyresis",
+"Nightveil Specter"
+]
+}
