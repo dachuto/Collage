@@ -214,6 +214,7 @@ class page_data {
 		this.commander_decks = new Map();
 		this.commander_decks.set("Artifacts", "commander_artifacts.json");
 		this.commander_decks.set("estrid", "commander_estrid.json");
+		this.commander_decks.set("Equipment", "commander_equipment.json");
 		this.commander_decks.set("Grenzo", "commander_grenzo.json");
 		this.commander_decks.set("roon", "commander_roon.json");
 		this.commander_decks.set("taigam", "commander_taigam.json");
@@ -224,7 +225,6 @@ class page_data {
 		this.commander_decks.set("IZZET", "commander_new_izzet.json");
 		this.commander_decks.set("WANTS", "wants.json");
 		this.commander_default_deck = this.commander_decks.keys().next().value;
-
 		this.json_path_prefix = "mtg/articles/";
 	}
 
