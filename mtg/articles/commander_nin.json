@@ -1,0 +1,120 @@
+{
+"commander":["Nin, the Pain Artist"],
+"main":
+[
+"Warkite Marauder",
+"Fireslinger",
+"Vengeful Devil",
+"Dismissive Pyromancer",
+"Ovinomancer",
+"Serendib Sorcerer",
+"Thornwind Faeries",
+"Prodigal Pyromancer",
+"Goblin Artillery",
+"Goblin Sharpshooter",
+"Ghost-Lit Raider",
+"Orcish Cannoneers",
+"Vithian Stinger",
+"Izzet Staticaster",
+"Krenko, Tin Street Kingpin",
+"Cyclops Gladiator",
+"Flametongue Kavu",
+"Wojek Embermage",
+"Glorybringer",
+"Jiwari, the Earth Aflame",
+"Karplusan Yeti",
+"Mercurial Chemister",
+"Kamahl, Pit Fighter",
+"Niv-Mizzet, Dracogenius",
+"Drakuseth, Maw of Flames",
+"Siege Dragon",
+"Tyrant's Familiar",
+"Living Inferno",
+
+"Enclave Cryptologist",
+"Merfolk Looter",
+"Thought Courier",
+"Jushi Apprentice",
+"Magus of the Wheel",
+"Archivist",
+"Cephalid Broker",
+"Atemsis, All-Seeing",
+"Arcanis the Omnipotent",
+
+"Goblin Tinkerer",
+"Callous Oppressor",
+"Stronghold Biologist",
+"Stronghold Machinist",
+"Feldon of the Third Path",
+"Djinn of Infinite Deceits",
+"Magus of the Mind",
+
+"Anger",
+"Wonder",
+"Cyclops of Eternal Fury",
+"Angrath's Marauders",
+
+"Back from the Brink",
+
+"Squee, Goblin Nabob",
+"Fortune Thief",
+"Mist-Syndicate Naga",
+"Kefnet the Mindful",
+"Coalhauler Swine",
+
+"Confound",
+"Suffocating Blast",
+"Flood of Tears",
+
+"Izzet Signet",
+"Mind Stone",
+
+"Swiftwater Cliffs",
+"Izzet Guildgate",
+"Highland Lake",
+
+"Coral Atoll",
+"Dormant Volcano",
+"Lonely Sandbar",
+"Forgotten Cave",
+"Spinerock Knoll",
+
+{"name":"Island", "count":14},
+{"name":"Mountain", "count":18}
+
+],
+"sideboard":
+[
+"Bloodshot Trainee",
+"Orcish Artillery"
+],
+"wants":
+[
+"Tahngarth, Talruum Hero",
+"Izzet Boilerworks",
+"Ring of Valkas",
+"Loxodon Warhammer",
+"Spikeshot Goblin",
+"Dominating Licid",
+"Viashino Heretic",
+"Jaya Ballard, Task Mage",
+"Niv-Mizzet, the Firemind",
+"Beguiler of Wills",
+"Riptide Director",
+"Timestream Navigator",
+"Dwarven Blastminer",
+"Dwarven Miner",
+"Magus of the Scroll",
+"Endbringer",
+"Godo, Bandit Warlord",
+"Reveka, Wizard Savant",
+"Gelectrode",
+"Hanweir Battlements",
+"Hammer of Purphoros",
+"Dack's Duplicate",
+"Ogre Battledriver",
+"Keeper of the Mind",
+"Initiate of Blood",
+"Stalking Yeti"
+]
+}
