@@ -1,0 +1,209 @@
+{
+"commander":["Golos, Tireless Pilgrim"],
+"main":
+[
+"Presence of Gond",
+"Midnight Guard",
+
+"Dualcaster Mage",
+"Ghostly Flicker",
+
+"Iridescent Drake",
+"Abduction",
+"Kaya's Ghostform",
+"Renegade Rallier",
+
+"Cloud of Faeries",
+"Peregrine Drake",
+"Deadeye Navigator",
+
+"Triton Tactics",
+"Zhur-Taa Druid",
+"Elite Archanist",
+
+"Famished Paladin",
+"Viridian Longbow",
+"Azorius Charm",
+
+"Jeskai Ascendancy",
+"Nettle Drone",
+"Battered Golem",
+"Retraction Helix",
+"Everflowing Chalice",
+"Bone Saw",
+"Ornithopter",
+
+"Diligent Excavator",
+
+"Ceaseless Searblades",
+"Lavaclaw Reaches",
+"Crackdown Construct",
+"Crypt Rats",
+
+"Birds of Paradise",
+"Rattleclaw Mystic",
+"Voyaging Satyr",
+"Kiora's Follower",
+"Vizier of Tumbling Sands",
+"Ley Weaver",
+
+"Demonic Consultation",
+"Faithless Looting",
+"Expedite",
+"Opt",
+"Open the Armory",
+"Impulse",
+"Shimmer of Possibility",
+"Disciple of Deceit",
+"Neoform",
+"Heliod's Pilgrim",
+"Perplex",
+"Dizzy Spell",
+"Wild Research",
+"Trinket Mage",
+"Dimir House Guard",
+"Pattern of Rebirth",
+"Bring to Light",
+"Shared Summons",
+
+"Chamber Sentry",
+"Twisted Image",
+"Bloodthrone Vampire",
+"Murderous Redcap",
+"Jace, Wielder of Mysteries",
+
+"Dispel",
+"Spell Pierce",
+"Miscalculation",
+
+"Aether Hub",
+"Command Tower",
+"Crumbling Vestige",
+"Exotic Orchard",
+"Evolving Wilds",
+"Mirrodin's Core",
+"Terramorphic Expanse",
+
+"Crumbling Necropolis",
+"Frontier Bivouac",
+"Jungle Shrine",
+"Mystic Monastery",
+"Nomad Outpost",
+"Opulent Palace",
+"Sandsteppe Citadel",
+"Savage Lands",
+
+"Vivid Meadow",
+"Vivid Creek",
+"Vivid Marsh",
+"Vivid Crag",
+"Vivid Grove",
+
+"Plains",
+"Island",
+"Swamp",
+"Mountain",
+"Forest",
+
+"Azorius Chancery",
+"Golgari Rot Farm",
+"Gruul Turf",
+"Izzet Boilerworks",
+"Orzhov Basilica",
+"Rakdos Carnarium",
+"Simic Growth Chamber",
+
+"Rupture Spire",
+"Gateway Plaza",
+"Dismal Backwater",
+"Swiftwater Cliffs",
+"Thornwood Falls",
+"Irrigation Ditch"
+],
+"sideboard":
+[
+],
+"wants":
+[
+"Arcane Sanctum",
+"Seaside Citadel",
+
+"Boros Garrison",
+"Dimir Aqueduct",
+
+"Paradise Druid",
+
+"Freed from the Real",
+"Pemmin's Aura",
+
+"Altar of Dementia",
+"Carrion Feeder",
+"Enduring Renewal",
+
+"Eladamri's Call",
+"Dimir Infiltrator",
+
+"Tendo Ice Bridge",
+"Grand Colliseum",
+"Ancient Spring",
+"Sulfur Vent",
+"Banishing Knack",
+"Mirran Spy",
+"Zephyr Scribe",
+"Wandering Fumarole",
+
+"Gyre Engineer",
+
+"Murderous Redcap",
+"Vizier of Remedies",
+"Solemnity",
+
+"Shuko",
+"Task Force",
+"Daru Spiritualist",
+"Inside Out",
+"Thud",
+"Nomads en-Kor",
+"Outrider en-Kor",
+"Cephalid Illusionist",
+
+"Morselhoarder",
+"Sinking Feeling",
+
+"Rosheen Meanderer",
+"Naban, Dean of Iteration",
+"Dramatic Reversal",
+
+"Naru Meha, Master Wizard",
+
+"Devoted Druid",
+"Vizierof Remedies",
+"Quillspike",
+
+"Mindcrank",
+"Duskmantle Guildmage",
+
+"Enduring Scalelord",
+"Altered Ego",
+"Spark Double",
+
+"Stuffy Doll",
+"Guilty Conscience",
+
+"Izzet Guildmage",
+"Nivix Guildmage",
+"Channel the Suns",
+"Biomancer's Familiar",
+
+"Cerulean Wisps",
+"Crimson Wisps",
+"To Arms!",
+
+"Invent",
+"Muddle the Mixture",
+"Signal the Clans",
+"Mystical Teachings",
+"Yisan, the Wanderer Bard",
+"Zur the Enchanter"
+]
+}

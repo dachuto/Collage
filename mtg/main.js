@@ -216,12 +216,13 @@ class page_data {
 		this.commander_decks.set("estrid", "commander_estrid.json");
 		this.commander_decks.set("Equipment", "commander_equipment.json");
 		this.commander_decks.set("Grenzo", "commander_grenzo.json");
+		this.commander_decks.set("Merieke Ri Berit", "commander_merieke.json");
 		this.commander_decks.set("roon", "commander_roon.json");
 		this.commander_decks.set("taigam", "commander_taigam.json");
 		this.commander_decks.set("teysa", "commander_teysa.json");
 		this.commander_decks.set("wort", "commander_wort.json");
 		this.commander_decks.set("Takeover", "commander_takeover.json");
-		this.commander_decks.set("COMBO", "commander_ccc.json");
+		this.commander_decks.set("Combo", "commander_combo.json");
 		this.commander_decks.set("IZZET", "commander_new_izzet.json");
 		this.commander_decks.set("WANTS", "wants.json");
 		this.commander_default_deck = this.commander_decks.keys().next().value;

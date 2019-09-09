@@ -1,0 +1,135 @@
+{
+"commander":["Merieke Ri Berit"],
+"main":
+[
+"Disrupt",
+"Peek",
+"Duress",
+"Swords to Plowshares",
+
+"Thought Erasure",
+"Castigate",
+"Counterspell",
+"Mana Leak",
+"Impulse",
+"Remove Soul",
+"Negate",
+"Miscalculation",
+
+"Sin Collector",
+"Exclude",
+"Sinister Sabotage",
+"Praetor's Grasp",
+"Compulsive Research",
+"Recoil",
+"Supreme Will",
+"Dissolve",
+"Dromar's Charm",
+"Void Shatter",
+"Complicate",
+"Soul Manipulation",
+
+"Archaeomancer",
+"Evil Twin",
+"Notion Thief",
+"Consuming Vapors",
+"Fact or Fiction",
+"Mystical Teachings",
+"Day of Judgment",
+"Dismiss",
+"Return to Dust",
+"Bone to Ash",
+
+"Body Double",
+"Mulldrifter",
+"Fumigate",
+"Silumgar's Command",
+"Far",
+
+"Magister of Worth",
+"Duplicant",
+"Austere Command",
+"Identity Crisis",
+"Thought Distortion",
+"Planar Cleansing",
+"Merciless Eviction",
+"Final Judgment",
+
+"Nezahal, Primal Tide",
+"Scholar of the Ages",
+"Sphinx of Uthuun",
+
+"Play of the Game",
+
+"Condescend",
+"Skeletal Scrying",
+"Flash of Insight",
+"Pull from Tomorrow",
+"Stroke of Genius",
+"Blue Sun's Zenith",
+
+"Vivid Marsh",
+"Vivid Meadow",
+"Vivid Creek",
+
+"Arcane Sanctum",
+"Aether Hub",
+"Evolving Wilds",
+"Terramorphic Expanse",
+"Myriad Landscape",
+
+"Azorius Chancery",
+"Dimir Aqueduct",
+"Orzhov Basilica",
+
+"Irrigated Farmland",
+"Sunken Hollow",
+"Sejiri Refuge",
+"Jwar Isle Refuge",
+"Dismal Backwater",
+"Tranquil Cove",
+
+"Lonely Sandbar",
+"Bojuka Bog",
+"Temple of the False God",
+
+{"name":"Plains", "count":7},
+{"name":"Island", "count":12},
+{"name":"Swamp", "count":3}
+],
+"sideboard":
+[
+"Revoke Existence",
+"Reveillark",
+"Karmic Guide",
+"Phyrexian Rebirth",
+
+"Dispel",
+"Forbid",
+"Clear the Mind",
+"Vizier of Many Faces",
+"Devious Cover-Up",
+"Confirm Suspicions",
+
+"Ashes to Ashes",
+"Doomfall",
+"Parting Thoughts",
+"Painful Truths",
+"Virtus's Maneuver",
+"Languish",
+"Silence the Believers",
+"Sever the Bloodline",
+"Shriekmaw",
+"Mind Shatter",
+
+"Utter End"
+
+],
+"wants":
+[
+"Darkwater Catacombs",
+"Command Tower",
+"Shambling Vent",
+"Hour of Revelation"
+]
+}
