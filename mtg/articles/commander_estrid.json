@@ -76,8 +76,9 @@
 "Lonely Sandbar",
 "Secluded Steppe",
 "Stirring Wildwood",
+"Krosan Verge",
 "Vitu-Ghazi, the City-Tree",
-{"name":"Plains", "count":6},
+{"name":"Plains", "count":5},
 {"name":"Island", "count":7},
 {"name":"Forest", "count":11}
 ],
@@ -107,7 +108,6 @@
 "Sejiri Refuge",
 "Tranquil Thicket",
 "Seaside Citadel",
-"Krosan Verge",
 "Words of Wilding"
 ]
 }
