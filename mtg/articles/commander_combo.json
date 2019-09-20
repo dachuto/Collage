@@ -37,10 +37,11 @@
 
 "Ceaseless Searblades",
 "Lavaclaw Reaches",
+"Wandering Fumarole",
 "Crackdown Construct",
 "Crypt Rats",
 
-"Birds of Paradise",
+"Paradise Druid",
 "Rattleclaw Mystic",
 "Voyaging Satyr",
 "Kiora's Follower",
@@ -106,6 +107,7 @@
 "Forest",
 
 "Azorius Chancery",
+"Boros Garrison",
 "Golgari Rot Farm",
 "Gruul Turf",
 "Izzet Boilerworks",
@@ -116,22 +118,19 @@
 "Rupture Spire",
 "Gateway Plaza",
 "Dismal Backwater",
-"Swiftwater Cliffs",
-"Thornwood Falls",
-"Irrigation Ditch"
+"Thornwood Falls"
 ],
 "sideboard":
 [
+"Birds of Paradise"
 ],
 "wants":
 [
 "Arcane Sanctum",
 "Seaside Citadel",
 
-"Boros Garrison",
 "Dimir Aqueduct",
-
-"Paradise Druid",
+"Selesnya Sanctuary",
 
 "Freed from the Real",
 "Pemmin's Aura",
@@ -150,7 +149,6 @@
 "Banishing Knack",
 "Mirran Spy",
 "Zephyr Scribe",
-"Wandering Fumarole",
 
 "Gyre Engineer",
 
