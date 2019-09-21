@@ -1,0 +1,102 @@
+{
+"commander":["Grenzo, Dungeon Warden"],
+"main":
+[
+"Dawn of Hope",
+"Mastery of the Unseen",
+"Arguel's Blood Fast",
+"Circle of Flame",
+"Malevolent Awakening",
+"Honden of Infinite Rage",
+"Rune of Protection: Green",
+"Hidden Stockpile",
+"Mesa Enchantress",
+"Cantivore",
+"Auramancer",
+"Restoration Specialist",
+"Doomwake Giant",
+
+"Theater of Horrors",
+
+"Monk Idealist",
+"Lotus-Eye Mystics",
+"Spirit Cairn",
+"Angelic Exaltation",
+"Angelic Accord",
+
+"Trading Post",
+"Creeping Dread",
+
+"Death Match",
+"Death Pit Offering",
+
+"Doom Foretold",
+"Outpost Siege",
+"Greed",
+
+"Endless Whispers",
+"Last Laugh",
+
+"Sphere of Duty",
+"Revenge of Ravens",
+"Proper Burial",
+"Marshal's Anthem",
+
+"Night of Souls' Betrayal",
+"Powerstone Minefield",
+"Pyrohemia",
+"Pestilence",
+"Sigil of the Empty Throne",
+"Call to the Grave",
+"Curse of Death's Hold",
+"Dawn of the Dead",
+"Liliana's Contract",
+"Palace Siege",
+"Skybind",
+"Ethereal Absolution",
+"Haphazard Bombardment",
+"Nettlevine Blight",
+"Sunbird's Invocation",
+"Grave Betrayal",
+"Hedonist's Trove",
+"Cruel Reality",
+
+
+"Howltooth Hollow",
+"Spinerock Knoll",
+"Crypt of Agadeem",
+"Opal Palace",
+"Aether Hub",
+"Akoum Refuge",
+"Bloodfell Caves",
+"Drownyard Temple",
+"Zhalfirin Void",
+{"name":"Swamp", "count":24},
+{"name":"Mountain", "count":9}
+],
+"sideboard":
+[
+"Captive Audience",
+"Subversion",
+"Spreading Plague",
+"Paradise Plume"
+],
+"wants":
+[
+"Bogbrew Witch",
+"Festering Newt",
+"Bubbling Cauldron",
+
+"Kaalia, Zenith Seeker",
+
+"Rewards of Diversity",
+"Orim's Prayer",
+"Faith of the Devoted",
+"Dega Sanctuary",
+"Moonlit Wake",
+"Experimental Frenzy",
+"Outlaws' Merriment",
+"Homicidal Seclusion",
+"Pontiff of Blight"
+]
+}
