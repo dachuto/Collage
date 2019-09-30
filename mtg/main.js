@@ -264,19 +264,23 @@ class page_data {
 		const [modified_url, json_path] = this.validate_url(window.location);
 		history.replaceState(null, null, modified_url);
 
-		// $.when(
-		// 	JSON_request("mtg/articles/wants.json"),
-		// ).then(all_data_is_here_wants, null);
 		this.populate_decks_list();
 
 		$.when(
 			JSON_request(json_path),
 		).then(deck => {
-			for (const p of ["commander", "main", "sideboard", "wants"]) {
+			for (const p in deck) {
 				deck[p] = deck[p].map(as_deck_entry);
 			}
 
-			let change_to_text = deck.main;
+			let flat_list = [];
+			for (const p in deck) {
+				for (const o in deck[p]) {
+					flat_list.push(deck[p][o]);
+				}
+			}
+
+			let change_to_text = flat_list;
 			document.getElementById("deck_text").textContent = as_text_deck(change_to_text);
 			document.getElementById("deck_select_button").onclick = select_element_by_id("deck_text");
 			document.getElementById("json_text").textContent = as_pretty_json(change_to_text);
@@ -284,23 +288,64 @@ class page_data {
 
 			{
 				const count_cards = (entries) => entries.reduce((accumulator, value) => accumulator + value.count, 0);
-				const commander_count = count_cards(deck.commander);
-				const main_count = count_cards(deck.main);
-				const element = document.getElementById("deck_menu_main");
-				element.textContent = commander_count + " + " + main_count;
-				element.classList.add((commander_count + main_count == 100) ? "green" : "red");
 
-				document.getElementById("deck_menu_sideboard").textContent = count_cards(deck.sideboard);
-				document.getElementById("deck_menu_wants").textContent = count_cards(deck.wants);
+				const subsection_to_icon = {
+					"commander": ["star"],
+					"main": ["file"],
+					"sideboard": ["exchange"],
+					"wants": ["cart", "plus"]
+				};
+
+				const ui_icon = subsection => {
+					const ret = subsection_to_icon[subsection];
+					if (ret !== undefined ) {
+						return ret;
+					} else {
+						return ["file", "outline"];
+					}
+				};
+
+				let colors = {};
+				if (deck.hasOwnProperty("commander")) {
+					colors.commander = "red";
+					if (deck.hasOwnProperty("main")) {
+						colors.main = "red";
+						if (count_cards(deck["commander"]) + count_cards(deck["main"]) == 100) {
+							colors.commander = "green";
+							colors.main = "green";
+						}
+					}
+				} else if (deck.hasOwnProperty("main")) {
+					colors.main = "red";
+					if (count_cards(deck["main"]) == 60) {
+						colors.main = "green";
+					}
+
+					if (deck.hasOwnProperty("sideboard")) {
+						colors.sideboard = "red";
+						if (count_cards(deck["sideboard"]) == 15) {
+							colors.sideboard = "green";
+						}
+					}
+				}
+
+				for (const p in deck) {
+					const color = (colors[p] === undefined) ? "blue" : colors[p];
+
+					document.getElementById("deck_subsection_menu").appendChild(deck_subsection_menu_item(p, "TODO", count_cards(deck[p]), ui_icon(p), color));
+				}
+
 			}
 
-			let fetch_list = [...deck.commander, ...deck.main, ...deck.sideboard, ...deck.wants].map(x => x.name);
-
-			this.start_async_loading_2(fetch_list, (success, error) => {
+			this.request_card_names_to_ids(flat_list, x => x.name).then(([success, error]) => {
 				// console.log(success);
 				// console.log(error);
 
-				DOM_append(images_grid(success, this.source));
+				for (const s of success) {
+					s[0].ids = s[1];
+				}
+
+				DOM_append(images_grid(flat_list, this.source));
 				this.start_lazy_images_loading();
 			});
 		}, null);
@@ -323,14 +368,15 @@ class page_data {
 		);
 	}
 
-	request_card_names_to_ids(card_names_list) {
+	request_card_names_to_ids(cards_list, name_extract_function = x => x) {
 		let requests = [];
-		for (const name of card_names_list) {
+		for (const card of cards_list) {
+			const name = name_extract_function(card);
 			let url = new URL("/query", this.backend_url);
 			url.search = "name=" + name;
 			let attach_name_and_always_succeed = $.getJSON(url.href).then(
-				value => ({name:name, value:value}),
-				error => ({name:name, error:error})
+				value => ({query:card, value:value}),
+				error => ({query:card, error:error})
 			);
 			requests.push(attach_name_and_always_succeed);
 		}
@@ -338,21 +384,14 @@ class page_data {
 		return Promise.all(requests).then(results => {
 			return results.reduce((accumulator, element) => {
 				if (element.hasOwnProperty('value')) {
-					accumulator[0].push([element.name, element.value]);
+					accumulator[0].push([element.query, element.value]);
 				} else if (element.hasOwnProperty('error')) {
-					accumulator[1].push([element.name, element.error]);
+					accumulator[1].push([element.query, element.error]);
 				} else {
 					console.assert(false, "missing property");
 				}
 				return accumulator;
 			}, [[], []]);
-		});
-	}
-
-	start_async_loading_2(card_names_list, callback) {
-		this.request_card_names_to_ids(card_names_list).then(value => {
-			let [success, error] = value;
-			callback(success, error);
 		});
 	}
 
@@ -473,20 +512,6 @@ function select_element_by_id(id) {
 	};
 }
 
-function all_data_is_here_wants(wants) {
-	console.log(wants);
-
-	//TODO: work with deck lists based on this!
-
-	document.getElementById("deck_text").textContent = as_deck(wants);
-	document.getElementById("deck_select_button").onclick = select_element_by_id("deck_text");
-	document.getElementById("json_text").textContent = as_pretty_json(wants);
-	document.getElementById("json_select_button").onclick = select_element_by_id("json_text");
-
-	let data = new page_data();
-	data.start_async_loading_2(wants);
-}
-
 function DOM_ready_results() {
 	document.addEventListener("keyup", event => { //TODO: handle keys to do simple searches
 		console.log(event);
@@ -536,6 +561,27 @@ function articlesJSON_groupped(data, source) {
 		group_by_keys_set.add(temp, html, keys);
 	}
 	return group_by_keys_set.get(temp);
+}
+
+function deck_subsection_menu_item(name, url, count, ui_icon_names, color) {
+	let a = document.createElement("a");
+	a.classList.add("item");
+	a.setAttribute("href", url);
+
+	let icon = document.createElement("i");
+	icon.classList.add(...ui_icon_names);
+	icon.classList.add("icon");
+
+	let text = document.createTextNode(name);
+
+	let label = document.createElement("div");
+	label.classList.add("ui", "left", "pointing", color, "basic", "label");
+	label.textContent = count;
+
+	a.appendChild(icon);
+	a.appendChild(text);
+	a.appendChild(label);
+	return a;
 }
 
 function square_text_svg(text_content) {
@@ -627,16 +673,16 @@ function image_load(placeholder) {
 	}
 }
 
-function images_grid(name_to_id_list, source) {
-	let images_grid = $("<div/>", {
-		class: "images_grid",
-	});
+function images_grid(deck, source) {
+	let images_grid = document.createElement("div");
+	images_grid.classList.add("images_grid");
 
-	for (const [name, ids] of name_to_id_list) {
-		const chosen_index = ids.length - 1; //TODO: we take last (newest printing), maybe customize
+
+	for (const entry of deck) {
+		const chosen_index = entry.ids.length - 1; //TODO: we take last (newest printing), maybe customize
 		let hidden_printings = null;
 
-		const hide_some_printings = (ids.length > 1);
+		const hide_some_printings = (entry.ids.length > 1);
 		if (hide_some_printings) {
 			hidden_printings = document.createElement("div");
 			hidden_printings.classList.add("fullscreen", "images_grid", "popup", "invisible");
@@ -645,8 +691,8 @@ function images_grid(name_to_id_list, source) {
 		let secondary_images = [];
 		let main_image_container = null;
 
-		for (let k = 0; k < ids.length; ++k) {
-			const id = ids[k];
+		for (let k = 0; k < entry.ids.length; ++k) {
+			const id = entry.ids[k];
 
 			let image_container = document.createElement("div");
 			image_container.classList.add("aspect-ratio-box");
@@ -659,14 +705,16 @@ function images_grid(name_to_id_list, source) {
 
 				image.classList.add("lazy_load_when_almost_visible");
 
-				let number_of_copies_overlay = square_text_svg("16");
-				number_of_copies_overlay.classList.add("card-overlay");
-				number_of_copies_overlay.classList.add("number-of-copies-position");
-				number_of_copies_overlay.classList.add("transparent-barely-visible");
-				image_container.appendChild(number_of_copies_overlay);
+				if (entry.count != 1) {
+					let number_of_copies_overlay = square_text_svg(entry.count.toString());
+					number_of_copies_overlay.classList.add("card-overlay");
+					number_of_copies_overlay.classList.add("number-of-copies-position");
+					number_of_copies_overlay.classList.add("transparent-barely-visible");
+					image_container.appendChild(number_of_copies_overlay);
+				}
 
 				let hidden_name = document.createElement("div");
-				hidden_name.textContent = name;
+				hidden_name.textContent = entry.name;
 				hidden_name.classList.add("card-name-hidden");
 				image_container.appendChild(hidden_name);
 

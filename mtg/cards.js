@@ -1,7 +1,7 @@
 "use strict";
 
 class deck_entry {
-	constructor(name, count) {
+	constructor(name, count, ids) {
 		this.name = name;
 		if (!Number.isInteger(count)) {
 			throw "Not an integer";
@@ -10,6 +10,7 @@ class deck_entry {
 			throw "Must be at least 1";
 		}
 		this.count = count;
+		this.ids = ids;
 	}
 }
 
@@ -17,9 +18,9 @@ function as_deck_entry(data) {
 	if (typeof data === 'deck_entry') {
 		return data;
 	} else if (typeof data === "string") {
-		return new deck_entry(data, 1);
+		return new deck_entry(data, 1, []);
 	} else if (data.hasOwnProperty("name") && data.hasOwnProperty("count")) {
-		return new deck_entry(data.name, data.count);
+		return new deck_entry(data.name, data.count, []);
 	}
 	throw "Invalid data format";
 }
