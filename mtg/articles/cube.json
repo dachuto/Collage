@@ -547,6 +547,195 @@
 "Genesis Hydra",
 "Wildest Dreams"
 ],
+"colorless":
+[
+"Bonesplitter",
+"Scrabbling Claws",
+"Terrarion",
+"Trusty Machete",
+
+"Epochrasite",
+"Scrapheap Scrounger",
+"Armillary Sphere",
+"Mind Stone",
+"Mortarpod",
+"Mycosynth Wellspring",
+"Perpetual Timepiece",
+"Prophetic Prism",
+"Runechanter's Pike",
+
+"Palladium Myr",
+"Pilgrim's Eye",
+"Aethersphere Harvester",
+"Cultivator's Caravan",
+"Butcher's Cleaver",
+"Chaos Wand",
+"Dynavolt Tower",
+"Plague Boiler",
+"Sarpadian Empires, Vol. VII",
+"Slayer's Plate",
+"Unstable Obelisk",
+"Worn Powerstone",
+
+"Etched Oracle",
+"Golden Guardian",
+"Bomat Bazaar Barge",
+"Conqueror's Galleon",
+"Fleetwheel Cruiser",
+"Icy Manipulator",
+"Prototype Portal",
+"Seer's Sundial",
+"Sentinel Tower",
+"Soul Foundry",
+
+"Blight Herder",
+"Etched Monstrosity",
+"Mirari",
+"Tome of the Guildpact",
+
+"Triskelion",
+"Dreamstone Hedron",
+"Loreseeker's Stone",
+
+"Meteor Golem",
+"Myr Battlesphere",
+"Sandstone Oracle",
+"God-Pharaoh's Gift",
+
+"Artisan of Kozilek",
+
+"Orochi Hatchery"
+],
+"azorius":
+[
+"Azorius Guildmage",
+"Senate Guildmage",
+"Cloudblazer",
+"Ith, High Arcanist",
+"Azorius Charm",
+"Depose",
+"Roil Spout",
+"Migratory Route",
+"Dovin's Acuity",
+"Dovin Baan"
+],
+"dimir":
+[
+"Dimir Cutpurse",
+"Shadowmage Infiltrator",
+"Etrata, the Silencer",
+"Evil Twin",
+"Silent-Blade Oni",
+"Agony Warp",
+"Recoil",
+"Far",
+"Connive",
+"Soulquake"
+],
+"rakdos":
+[
+"Rakdos Guildmage",
+"Spike Jester",
+"Rakdos Firewheeler",
+"Grusilda, Monster Masher",
+"Deathbringer Thoctar",
+"Swift Warkite",
+"Terminate",
+"Angrath's Rampage",
+"Blightning",
+"Void"
+],
+"gruul":
+[
+"Radha, Heir to Keld",
+"Ghor-Clan Rampager",
+"Rumbling Slum",
+"Sunder Shaman",
+"Nikya of the Old Ways",
+"Wort, the Raidmother",
+"Branching Bolt",
+"Heaven",
+"Escape the Wilds",
+"Reap the Past"
+],
+"selesnya":
+[
+"Selesnya Guildmage",
+"Renegade Rallier",
+"Loxodon Hierarch",
+"Conclave Cavalier",
+"Tolsimir, Friend to Wolves",
+"Enlisted Wurm",
+"Phantom Nishoba",
+"Assure",
+"Behemoth Sledge",
+"Ajani, the Greathearted"
+],
+"orzhov":
+[
+"Sin Collector",
+"Basilica Bell-Haunt",
+"Aryel, Knight of Windgrace",
+"Blood Baron of Vizkopa",
+"Treasury Thrull",
+"Orzhov Charm",
+"Mortify",
+"Obzedat's Aid",
+"Hidden Stockpile",
+"Kaya, Bane of the Dead"
+],
+"izzet":
+[
+"League Guildmage",
+"Jori En, Ruin Diver",
+"Crackling Drake",
+"Mercurial Chemister",
+"Djinn Illuminatus",
+"Electrolyze",
+"Brutal Expulsion",
+"Suffocating Blast",
+"Turn",
+"Prophetic Bolt"
+],
+"golgari":
+[
+"Putrid Leech",
+"Varolz, the Scar-Striped",
+"Corpsejack Menace",
+"Brood Butcher",
+"Nath of the Gilt-Leaf",
+"Izoni, Thousand-Eyed",
+"Gleancrawler",
+"Putrefy",
+"Moldervine Reclamation",
+"Vraska, Swarm's Eminence"
+],
+"boros":
+[
+"Boros Challenger",
+"Sunhome Guildmage",
+"Thundersong Trumpeter",
+"Brion Stoutarm",
+"Firemane Avenger",
+"Firemane Angel",
+"Integrity",
+"Response",
+"Warleader's Helix",
+"Nahiri, Storm of Stone"
+],
+"simic":
+[
+"Merfolk Skydiver",
+"Trygon Predator",
+"Altered Ego",
+"Fathom Mage",
+"Zegana, Utopian Speaker",
+"Tatyova, Benthic Druid",
+"Aether Mutation",
+"Urban Evolution",
+"Bounty of the Luxa",
+"Kiora, Behemoth Beckoner"
+],
 "wants":
 [
 "Flame Javelin",
@@ -564,6 +753,18 @@
 "Ogre Battledriver",
 "Rowdy Crew",
 "Chandra Nalaar",
-"Wickerbough Elder"
+"Wickerbough Elder",
+"Nomad Outpost",
+"Sandsteppe Citadel",
+"Arcane Sanctum",
+"Seaside Citadel",
+"Caves of Koilos",
+"Battlefield Forge",
+"Shivan Reef",
+"Yavimaya Coast",
+"Llanowar Wastes",
+"Rakdos Guildmage",
+"Swiftblade Vindicator",
+"Tajic, Legion's Edge"
 ]
 }
