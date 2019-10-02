@@ -6,6 +6,7 @@
 "Scrap Trawler",
 "Workshop Assistant",
 "Treasure Keeper",
+"Arcanist's Owl",
 "Cataclysmic Gearhulk",
 "Ethersworn Adjudicator",
 "Sphinx Summoner",
@@ -23,12 +24,10 @@
 "Azorius Signet",
 "Dimir Signet",
 "Orzhov Signet",
-"Gold Myr",
-"Silver Myr",
-"Leaden Myr",
 "Mind Stone",
 "Worn Powerstone",
 "Palladium Myr",
+"Midnight Clock",
 "Firemind Vessel",
 "Hedron Archive",
 "Blinkmoth Urn",
@@ -38,7 +37,6 @@
 "Scrabbling Claws",
 "Sunset Pyramid",
 "Chaos Wand",
-"Magistrate's Scepter",
 "Mimic Vat",
 "Skeleton Shard",
 "Oracle's Vault",
@@ -57,13 +55,15 @@
 "Trinket Mage",
 "Trophy Mage",
 "Treasure Mage",
-"Teshar, Ancestor's Apostle",
+"Raff Capashen, Ship's Mage",
 "Herald of Anguish",
 
 "The Antiquities War",
 "Thopter Spy Network",
 "Tezzeret the Scheemer",
 "One with the Machine",
+"Fumigate",
+"Phyrexian Rebirth",
 "Confirm Suspicions",
 "Rush of Knowledge",
 "Saheeli's Artistry",
@@ -111,7 +111,10 @@
 "Wayfarer's Bauble",
 "Universal Solvent",
 "Soul Foundry",
-"Dimir Locket"
+"Silver Myr",
+"Dimir Locket",
+"Magistrate's Scepter",
+"Teshar, Ancestor's Apostle"
 ],
 "wants":
 [
@@ -123,7 +126,6 @@
 "Scourglass",
 "Soulscour",
 "Shimmer Dragon",
-"Midnight Clock",
 "Clock of Omens"
 ]
 }

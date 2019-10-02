@@ -7,6 +7,7 @@
 "Palladium Myr",
 "Pilgrim's Eye",
 "Crypt Ghast",
+"Kozilek's Translator",
 
 "Pawn of Ulamog",
 "Pitiless Plunderer",
@@ -18,6 +19,7 @@
 "Stronghold Assassin",
 "Nekrataal",
 "Skinrender",
+"Ravenous Chupacabra",
 "Faceless Butcher",
 "Stalking Yeti",
 "Murderous Redcap",
@@ -49,7 +51,6 @@
 "Graveshifter",
 "Phyrexian Delver",
 "Garna, the Bloodflame",
-"Chainer, Dementia Master",
 
 "Liliana's Specter",
 "Blazing Specter",
@@ -57,10 +58,9 @@
 "Sadistic Hypnotist",
 "Mindclaw Shaman",
 
-"Viscera Seer",
-"Junktroller",
 "Mad Auntie",
-"Xathrid Gorgon",
+"Anger",
+"Junktroller",
 
 "Audacious Thief",
 "Phyrexian Rager",
@@ -85,6 +85,7 @@
 "Din of the Fireherd",
 "Fire Covenant",
 "Epitaph Golem",
+"Viscera Seer",
 "Workhorse",
 "Goblin Artillery",
 "Orcish Cannoneers",
@@ -93,6 +94,8 @@
 "Bone Shredder",
 "Greel, Mind Raker",
 "Flamerush Rider",
+"Chainer, Dementia Master",
+"Xathrid Gorgon",
 "Heartstone",
 "Mana Echoes",
 "Ashnod's Altar"
@@ -101,9 +104,7 @@
 [
 "Temple of the False God",
 "Puppeteer Clique",
-"Ravenous Chupacabra",
 "Millikin",
-"Kozilek's Translator",
 "Pontiff of Blight"
 ]
 }

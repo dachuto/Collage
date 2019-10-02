@@ -13,6 +13,7 @@
 "Nissa's Renewal",
 
 "Cathartic Reunion",
+"Thrill of Possibility",
 "Tormenting Voice",
 "Wild Guess",
 "Pirate's Pillage",
@@ -21,6 +22,7 @@
 "Hunter's Prowess",
 "Collective Unconscious",
 "Shamanic Revelation",
+"Escape to the Wilds",
 "Apex of Power",
 
 "Regrowth",
@@ -35,7 +37,6 @@
 "Young Pyromancer",
 "Magus of the Library",
 "Elvish Visionary",
-"Sylvan Ranger",
 "Dualcaster Mage",
 "Eternal Witness",
 "Farhaven Elf",
@@ -53,6 +54,7 @@
 
 "Mizzium Mortars",
 "Grab the Reins",
+"Word of Seizing",
 "Ghired's Belligerence",
 
 "Rending Vines",
@@ -65,7 +67,6 @@
 "Second Harvest",
 "Rude Awakening",
 "Brass's Bounty",
-"Veil of Summer",
 "Wild Ricochet",
 "Repeated Reverberation",
 
@@ -74,7 +75,7 @@
 "Gruul Guildgate",
 "Kher Keep",
 "Temple of the False God",
-"Fungal Reaches",
+"Dwarven Mine",
 "Khalni Garden",
 "Forgotten Cave",
 {"name":"Mountain", "count":13},
@@ -82,14 +83,15 @@
 ],
 "sideboard":
 [
+"Veil of Summer",
 "Zhur-Taa Druid",
+"Sylvan Ranger",
 "Civic Wayfinder",
 "Branching Bolt",
 "Fight with Fire",
 "Lightning Surge",
 "Clan Defiance",
 "Explosive Revelation",
-"Word of Seizing",
 "The Great Aurora",
 "Root Out",
 "Relic Crush",
@@ -111,6 +113,7 @@
 "Jaya's Immolating Inferno",
 "Rolling Thunder",
 "Fall of the Titans",
+"Battle Hymn",
 "Early Harvest",
 "Inner Fire",
 "Mana Geyser",
@@ -121,7 +124,8 @@
 "Reroute",
 "Seedtime",
 "Geomancer's Gambit",
-"Overmaster"
+"Overmaster",
+"Fungal Reaches"
 ],
 "wants":
 [
