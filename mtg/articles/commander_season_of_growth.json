@@ -1,0 +1,104 @@
+{
+"commander":["Season of Growth"],
+"main":
+[
+"Prey Upon",
+"Ranger's Guile",
+"Vines of Vastwood",
+"Withstand Death",
+"Pack's Vavor",
+
+"Sacred Wolf",
+"Troll Ascetic",
+
+"Mold Shambler",
+"Genesis",
+
+"Enlarge",
+"Setessan Tactics",
+
+"Biogenic Upgrade",
+"Gargos, Vicious Watcher",
+
+"Trollhide",
+"Increasing Savagery",
+
+{"name":"Plains", "count":27}
+],
+"sideboard":
+[
+"Silverblade Paladin",
+
+],
+"wants":
+[
+"Mire Boa",
+"River Boa",
+"Karoo Meerkat",
+"Skylasher",
+"Whirling Dervish",
+"Bloated Toad",
+"Darkwatch Elves",
+"Nantuko Blightcutter",
+"Phantom Nantuko",
+"Great Sable Stag",
+"Horned Troll",
+"Predator Ooze",
+"Temur Sabertooth",
+"Phantom Centaur",
+"Silvos, Rogue Elemental",
+"Silhana Ledgewalker",
+"Syr Faren, the Hengehammer",
+
+"Hunter's Prowess",
+"Ulvenwald Tracker",
+"Budoka Gardener",
+"Kalonian Twingrove",
+"Witchstalker",
+"Lumberknot",
+"Jade Guardian",
+"Vine Mare",
+"Scaled Behemoth",
+"Noble Quarry",
+"Boon Satyr",
+"Nyxborn Wolf",
+"Nylea's Emissary",
+"Leafcrown Dryad",
+
+"Savage Silhouette",
+"Molting Skin",
+"Gaea's Embrace",
+"Declare Dominance",
+
+"Wild Defiance",
+
+"Blossoming Defense",
+"Irresistible Prey",
+"Prey's Vengeance",
+"Primal Below",
+"Mending Touch",
+"Gather Courage",
+"Savage Swipe",
+"Epic Confrontation",
+"Nature's Way",
+"Pounce",
+"Rabid Bite",
+"Resize",
+"Savage Punch",
+"Sheltering Word",
+"Terifying Presence",
+"Swell of Growth",
+"Titanic Brawl",
+"Ambuscade",
+"Band Together",
+"Cartouche of Strength",
+"Clear Shot",
+"Roar of Challenge",
+"Savage Stomp",
+"Time to Feed",
+"Might of Oaks",
+"Revenge of the Hunted",
+"Tower Above",
+
+]
+}
