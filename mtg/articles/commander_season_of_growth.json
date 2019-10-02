@@ -3,32 +3,82 @@
 "main":
 [
 "Prey Upon",
+"Pounce",
+"Rabid Bite",
+"Setessan Tactics",
+"Enlarge",
+
 "Ranger's Guile",
 "Vines of Vastwood",
 "Withstand Death",
-"Pack's Vavor",
-
-"Sacred Wolf",
-"Troll Ascetic",
-
-"Mold Shambler",
-"Genesis",
-
-"Enlarge",
-"Setessan Tactics",
-
-"Biogenic Upgrade",
-"Gargos, Vicious Watcher",
 
 "Trollhide",
 "Increasing Savagery",
+"Biogenic Upgrade",
+"Epic Proportions",
+"Nylea's Emissary",
 
-{"name":"Plains", "count":27}
+"Giant Growth",
+"Aim High",
+"Pack's Favor",
+
+"Warriors' Lesson",
+
+"Reclamation Sage",
+"Viridian Shaman",
+"Conclave Naturalists",
+"Indrik Stomphowler",
+"Acidic Slime",
+"Mold Shambler",
+
+"Cudgel Troll",
+
+"Llanowar Elves",
+"Magus of the Library",
+"Dryad Greenseeker",
+
+"Fierce Empath",
+"Wolfbriar Elemental",
+"Brawn",
+"Seedguide Ash",
+"Genesis",
+"Den Protector",
+
+"Gladecover Scout",
+"Jungleborn Pioneer",
+"Sacred Wolf",
+"Troll Ascetic",
+
+"Managorger Hydra",
+"Staunch-Hearted Warrior",
+"Centaur Battlemaster",
+"Grunn, the Lonely King",
+"Gargos, Vicious Watcher",
+"Phantom Wurm",
+
+"Kavu Predator",
+"Evolution Sage",
+"Hermit of the Natterknolls",
+"Wildsize",
+"Oakhame Adversary",
+"Sage of Ancient Lore",
+"Verdant Force",
+"Hatchery Spider",
+"Tornado Elemental",
+"Jedit Ojanen of Efrava",
+"Creeperhulk",
+"Trophy Hunter",
+"Garruk's Packleader",
+"Phytotitan",
+"Howl of the Night Pack",
+"The Great Aurora",
+"Jungle Basin",
+"Mosswort Bridge",
+"Treetop Village",
+{"name":"Forest", "count":37}
 ],
 "sideboard":
 [
-"Silverblade Paladin",
-
 ],
 "wants":
 [
@@ -64,11 +114,18 @@
 "Nyxborn Wolf",
 "Nylea's Emissary",
 "Leafcrown Dryad",
+"Slith Predator",
+"Avenging Druid",
+"Ohran Viper",
+"Emperor's Vanguard",
+"Gnarlback Rhino",
 
 "Savage Silhouette",
 "Molting Skin",
 "Gaea's Embrace",
 "Declare Dominance",
+"Elephant Guide",
+"Verdant Embrace",
 
 "Wild Defiance",
 
@@ -81,8 +138,6 @@
 "Savage Swipe",
 "Epic Confrontation",
 "Nature's Way",
-"Pounce",
-"Rabid Bite",
 "Resize",
 "Savage Punch",
 "Sheltering Word",
@@ -98,7 +153,7 @@
 "Time to Feed",
 "Might of Oaks",
 "Revenge of the Hunted",
-"Tower Above",
+"Tower Above"
 
 ]
 }

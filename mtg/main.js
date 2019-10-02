@@ -223,6 +223,7 @@ class page_data {
 		this.commander_decks.set("Nin, the Pain Artist", "commander_nin.json");
 		this.commander_decks.set("populate *", "commander_populate.json");
 		this.commander_decks.set("Roon", "commander_roon.json");
+		this.commander_decks.set("season of growth *", "commander_season_of_growth.json");
 		this.commander_decks.set("Taigam", "commander_taigam.json");
 		this.commander_decks.set("takeover", "commander_takeover.json");
 		this.commander_decks.set("Teysa", "commander_teysa.json");
