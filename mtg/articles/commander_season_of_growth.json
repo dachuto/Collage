@@ -2,6 +2,7 @@
 "commander":["Season of Growth"],
 "main":
 [
+"Irresistible Prey",
 "Prey Upon",
 "Pounce",
 "Rabid Bite",
@@ -12,12 +13,16 @@
 "Vines of Vastwood",
 "Withstand Death",
 
+"Spider Umbra",
+"Boar Umbra",
 "Trollhide",
+"Snake Umbra",
 "Increasing Savagery",
 "Biogenic Upgrade",
 "Epic Proportions",
 "Nylea's Emissary",
 
+"Prey's Vengeance",
 "Giant Growth",
 "Aim High",
 "Pack's Favor",
@@ -41,10 +46,10 @@
 "Wolfbriar Elemental",
 "Brawn",
 "Seedguide Ash",
+"Keeper of Fables",
 "Genesis",
 "Den Protector",
 
-"Gladecover Scout",
 "Jungleborn Pioneer",
 "Sacred Wolf",
 "Troll Ascetic",
@@ -56,22 +61,18 @@
 "Gargos, Vicious Watcher",
 "Phantom Wurm",
 
-"Kavu Predator",
 "Evolution Sage",
 "Hermit of the Natterknolls",
 "Wildsize",
 "Oakhame Adversary",
 "Sage of Ancient Lore",
 "Verdant Force",
-"Hatchery Spider",
 "Tornado Elemental",
-"Jedit Ojanen of Efrava",
-"Creeperhulk",
-"Trophy Hunter",
 "Garruk's Packleader",
 "Phytotitan",
+"Pelakka Wurm",
 "Howl of the Night Pack",
-"The Great Aurora",
+
 "Jungle Basin",
 "Mosswort Bridge",
 "Treetop Village",
@@ -79,6 +80,8 @@
 ],
 "sideboard":
 [
+"Gladecover Scout",
+"Jedit Ojanen of Efrava"
 ],
 "wants":
 [
@@ -121,7 +124,6 @@
 "Gnarlback Rhino",
 
 "Savage Silhouette",
-"Molting Skin",
 "Gaea's Embrace",
 "Declare Dominance",
 "Elephant Guide",
@@ -130,8 +132,6 @@
 "Wild Defiance",
 
 "Blossoming Defense",
-"Irresistible Prey",
-"Prey's Vengeance",
 "Primal Below",
 "Mending Touch",
 "Gather Courage",
