@@ -13,6 +13,10 @@
 "Kaya's Ghostform",
 "Renegade Rallier",
 
+"Altar of Dementia",
+"Murderous Redcap",
+"Grumgully, the Generous",
+
 "Cloud of Faeries",
 "Peregrine Drake",
 "Deadeye Navigator",
@@ -49,9 +53,7 @@
 "Ley Weaver",
 
 "Demonic Consultation",
-"Faithless Looting",
 "Expedite",
-"Opt",
 "Open the Armory",
 "Impulse",
 "Shimmer of Possibility",
@@ -60,6 +62,7 @@
 "Heliod's Pilgrim",
 "Perplex",
 "Dizzy Spell",
+"Demand",
 "Wild Research",
 "Trinket Mage",
 "Dimir House Guard",
@@ -70,12 +73,10 @@
 "Chamber Sentry",
 "Twisted Image",
 "Bloodthrone Vampire",
-"Murderous Redcap",
+
 "Jace, Wielder of Mysteries",
 
 "Dispel",
-"Spell Pierce",
-"Miscalculation",
 
 "Aether Hub",
 "Command Tower",
@@ -113,6 +114,7 @@
 "Izzet Boilerworks",
 "Orzhov Basilica",
 "Rakdos Carnarium",
+"Selesnya Sanctuary",
 "Simic Growth Chamber",
 
 "Rupture Spire",
@@ -122,7 +124,13 @@
 ],
 "sideboard":
 [
-"Birds of Paradise"
+"Birds of Paradise",
+
+"Faithless Looting",
+"Opt",
+"Spell Pierce",
+"Miscalculation"
+
 ],
 "wants":
 [
@@ -152,7 +160,6 @@
 
 "Gyre Engineer",
 
-"Murderous Redcap",
 "Vizier of Remedies",
 "Solemnity",
 
