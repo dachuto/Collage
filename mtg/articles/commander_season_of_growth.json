@@ -42,7 +42,6 @@
 "Magus of the Library",
 "Dryad Greenseeker",
 
-"Fierce Empath",
 "Wolfbriar Elemental",
 "Brawn",
 "Seedguide Ash",
@@ -57,7 +56,6 @@
 "Managorger Hydra",
 "Staunch-Hearted Warrior",
 "Centaur Battlemaster",
-"Grunn, the Lonely King",
 "Gargos, Vicious Watcher",
 "Phantom Wurm",
 
@@ -72,30 +70,60 @@
 "Phytotitan",
 "Pelakka Wurm",
 "Howl of the Night Pack",
-
-"Jungle Basin",
-"Mosswort Bridge",
-"Treetop Village",
-{"name":"Forest", "count":37}
-],
-"sideboard":
-[
-"Gladecover Scout",
-"Jedit Ojanen of Efrava"
-],
-"wants":
-[
 "Mire Boa",
 "River Boa",
-"Karoo Meerkat",
-"Skylasher",
 "Whirling Dervish",
-"Bloated Toad",
-"Darkwatch Elves",
 "Nantuko Blightcutter",
 "Phantom Nantuko",
 "Great Sable Stag",
 "Horned Troll",
+"Hunter's Prowess",
+"Lumberknot",
+"Noble Quarry",
+"Boon Satyr",
+"Nyxborn Wolf",
+"Slith Predator",
+"Emperor's Vanguard",
+"Gnarlback Rhino",
+"Declare Dominance",
+"Gather Courage",
+"Savage Swipe",
+"Epic Confrontation",
+"Resize",
+"Savage Punch",
+"Swell of Growth",
+"Clear Shot",
+"Tower Above",
+"Titanic Brawl",
+"Blanchwood Armor",
+"Lure",
+"Roar of Challenge",
+"Budoka Gardener",
+"Centaur Rootcaster",
+"Prodigious Growth",
+"Mythic Proportions",
+"Mitotic Slime",
+"Feral Throwback",
+
+"Jungle Basin",
+"Mosswort Bridge",
+"Treetop Village",
+{"name":"Forest", "count":41}
+],
+"sideboard":
+[
+"Gladecover Scout",
+"Fierce Empath",
+"Grunn, the Lonely King",
+"Jedit Ojanen of Efrava"
+],
+"wants":
+[
+"Karoo Meerkat",
+"Skylasher",
+
+"Bloated Toad",
+"Darkwatch Elves",
 "Predator Ooze",
 "Temur Sabertooth",
 "Phantom Centaur",
@@ -103,29 +131,18 @@
 "Silhana Ledgewalker",
 "Syr Faren, the Hengehammer",
 
-"Hunter's Prowess",
 "Ulvenwald Tracker",
-"Budoka Gardener",
 "Kalonian Twingrove",
 "Witchstalker",
-"Lumberknot",
 "Jade Guardian",
 "Vine Mare",
 "Scaled Behemoth",
-"Noble Quarry",
-"Boon Satyr",
-"Nyxborn Wolf",
-"Nylea's Emissary",
 "Leafcrown Dryad",
-"Slith Predator",
 "Avenging Druid",
 "Ohran Viper",
-"Emperor's Vanguard",
-"Gnarlback Rhino",
 
 "Savage Silhouette",
 "Gaea's Embrace",
-"Declare Dominance",
 "Elephant Guide",
 "Verdant Embrace",
 
@@ -134,26 +151,16 @@
 "Blossoming Defense",
 "Primal Below",
 "Mending Touch",
-"Gather Courage",
-"Savage Swipe",
-"Epic Confrontation",
 "Nature's Way",
-"Resize",
-"Savage Punch",
 "Sheltering Word",
 "Terifying Presence",
-"Swell of Growth",
-"Titanic Brawl",
 "Ambuscade",
 "Band Together",
 "Cartouche of Strength",
-"Clear Shot",
-"Roar of Challenge",
 "Savage Stomp",
 "Time to Feed",
 "Might of Oaks",
-"Revenge of the Hunted",
-"Tower Above"
+"Revenge of the Hunted"
 
 ]
 }
