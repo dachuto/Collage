@@ -3,7 +3,6 @@
 "main":
 [
 "Disrupt",
-"Peek",
 "Duress",
 "Swords to Plowshares",
 
@@ -20,14 +19,16 @@
 "Exclude",
 "Sinister Sabotage",
 "Praetor's Grasp",
-"Compulsive Research",
-"Recoil",
-"Supreme Will",
+
 "Dissolve",
-"Dromar's Charm",
+"Supreme Will",
 "Void Shatter",
 "Complicate",
+"Clear the Mind",
+"Painful Truths",
+"Recoil",
 "Soul Manipulation",
+"Dromar's Charm",
 
 "Archaeomancer",
 "Evil Twin",
@@ -47,13 +48,13 @@
 "Far",
 
 "Magister of Worth",
+"Lochmere Serpent",
 "Duplicant",
 "Austere Command",
 "Identity Crisis",
 "Thought Distortion",
+"Hour of Revelation",
 "Planar Cleansing",
-"Merciless Eviction",
-"Final Judgment",
 
 "Nezahal, Primal Tide",
 "Scholar of the Ages",
@@ -106,15 +107,15 @@
 
 "Dispel",
 "Forbid",
-"Clear the Mind",
 "Vizier of Many Faces",
 "Devious Cover-Up",
 "Confirm Suspicions",
 
+"Peek",
 "Ashes to Ashes",
 "Doomfall",
 "Parting Thoughts",
-"Painful Truths",
+"Compulsive Research",
 "Virtus's Maneuver",
 "Languish",
 "Silence the Believers",
@@ -122,7 +123,9 @@
 "Shriekmaw",
 "Mind Shatter",
 
-"Utter End"
+"Utter End",
+"Final Judgment",
+"Merciless Eviction"
 
 ],
 "wants":

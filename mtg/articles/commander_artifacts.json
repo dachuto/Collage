@@ -34,6 +34,8 @@
 "Dreamstone Hedron",
 
 "Aether Spellbomb",
+"Dispeller's Capsule",
+"Executioner's Capsule",
 "Scrabbling Claws",
 "Sunset Pyramid",
 "Chaos Wand",
@@ -55,12 +57,9 @@
 "Trinket Mage",
 "Trophy Mage",
 "Treasure Mage",
-"Raff Capashen, Ship's Mage",
-"Herald of Anguish",
 
 "The Antiquities War",
 "Thopter Spy Network",
-"Tezzeret the Scheemer",
 "One with the Machine",
 "Fumigate",
 "Phyrexian Rebirth",
@@ -68,6 +67,7 @@
 "Rush of Knowledge",
 "Saheeli's Artistry",
 "Roar of Reclamation",
+"Soulscour",
 "Battle at the Bridge",
 
 "Vivid Marsh",
@@ -114,6 +114,9 @@
 "Silver Myr",
 "Dimir Locket",
 "Magistrate's Scepter",
+"Raff Capashen, Ship's Mage",
+"Herald of Anguish",
+"Tezzeret the Scheemer",
 "Teshar, Ancestor's Apostle"
 ],
 "wants":
@@ -124,7 +127,6 @@
 "Sejiri Refuge",
 "Jwar Isle Refuge",
 "Scourglass",
-"Soulscour",
 "Shimmer Dragon",
 "Clock of Omens"
 ]

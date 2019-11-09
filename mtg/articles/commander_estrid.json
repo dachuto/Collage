@@ -37,6 +37,7 @@
 "Soul Snare",
 "Seal of Cleansing",
 "Lignify",
+"Mirrormade",
 "Oblivion Ring",
 "Cast Out",
 "Fertile Ground",
@@ -55,7 +56,6 @@
 "Martial Coup",
 "Vessel of Nascency",
 "Bonds of Mortality",
-"Clear the Mind",
 "Urban Evolution",
 "Mystic Snake",
 "Confirm Suspicions",
@@ -65,6 +65,7 @@
 "Vivid Grove",
 "Aether Hub",
 "Azorius Chancery",
+"Selesnya Sanctuary",
 "Simic Growth Chamber",
 "Blossoming Sands",
 "Tranquil Cove",
@@ -80,10 +81,11 @@
 "Vitu-Ghazi, the City-Tree",
 {"name":"Plains", "count":5},
 {"name":"Island", "count":7},
-{"name":"Forest", "count":11}
+{"name":"Forest", "count":10}
 ],
 "sideboard":
 [
+"Clear the Mind",
 "Rule of Law",
 "Arcane Laboratory",
 "Mana Breach",
@@ -94,7 +96,8 @@
 "Lay Claim",
 "Day of the Dragons",
 "Teferi's Care",
-"Ley Weaver"
+"Ley Weaver",
+"Squirrel Nest"
 ],
 "wants":
 [
@@ -104,7 +107,6 @@
 "Enchantress's Presence",
 "Verduran Enchantress",
 "Abundant Growth",
-"Selesnya Sanctuary",
 "Sejiri Refuge",
 "Tranquil Thicket",
 "Seaside Citadel",

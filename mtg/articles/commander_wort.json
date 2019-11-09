@@ -8,7 +8,7 @@
 "Harrow",
 "Nissa's Pilgrimage",
 "Explosive Vegetation",
-"Circuitous Route",
+"Skyshroud Claim",
 "Pir's Whim",
 "Nissa's Renewal",
 
@@ -105,6 +105,7 @@
 "Empty the Warrens",
 "Harvest Season",
 "Far Wanderings",
+"Circuitous Route",
 "Verdant Confluence",
 "Boundless Realms",
 "Artifact Mutation",
@@ -125,15 +126,23 @@
 "Seedtime",
 "Geomancer's Gambit",
 "Overmaster",
+"Dwell on the Past",
+"Serene Remembrance",
+"Krosan Reclamation",
+"Loaming Shaman",
+"Seasons Past",
 "Fungal Reaches"
 ],
 "wants":
 [
-"Skyshroud Claim",
 "Goblin War Party",
 "Crush of Wurms",
 "Flame Wave",
 "Tranquil Thicket",
-"Oran-Rief, the Vastwood"
+"Serene Remembrance",
+"Krosan Reclamation",
+"Oran-Rief, the Vastwood",
+"Fated Conflagration",
+"Volcanic Wind"
 ]
 }

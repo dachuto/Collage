@@ -4,6 +4,7 @@
 [
 "Steward of Solidarity",
 "Precinct Captain",
+"Skirsdag High Priest",
 "Imperious Oligarch",
 "Ministrant of Obligation",
 "Mardu Strike Leader",
@@ -24,7 +25,7 @@
 "War Priest of Thune",
 "Ayli, Eternal Pilgrim",
 "Sin Collector",
-"Necrotic Sliver",
+
 "Aryel, Knight of Windgrace",
 "Archon of Justice",
 "Phyrexian Plaguelord",
@@ -59,10 +60,10 @@
 
 "Vampiric Rites",
 "Spirit Bonds",
+"Oketra's Monument",
 "Field of Souls",
 "Open the Graves",
 "Hedonist's Trove",
-"God-Pharaoh's Gift",
 
 "Command the Dreadhorde",
 "Boneyard Parley",
@@ -93,9 +94,11 @@
 "Intrepid Hero",
 "Pit Keeper",
 "Fleshwrither",
+"Nikko-Onna",
 "Devout Chaplain",
 "Devout Witness",
 "Kor Sanctifiers",
+"Necrotic Sliver",
 "Kalemne's Captain",
 "Rotlung Reanimator",
 "Cruel Celebrant",
@@ -105,12 +108,11 @@
 "Corpse Augur",
 "Fell Shepherd",
 "Keeper of the Dead",
-"Decree of Justice"
+"Decree of Justice",
+"God-Pharaoh's Gift"
 ],
 "wants":
 [
-"Skirsdag High Priest",
-"Oketra's Monument",
 "Hanweir Militia Captain"
 ]
 }
