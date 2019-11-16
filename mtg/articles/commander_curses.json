@@ -1,77 +1,98 @@
 {
-"commander":["Grenzo, Dungeon Warden"],
+"commander":["Cursed Monstrosity", "Zurgo Helmsmasher"],
 "main":
 [
-"Dawn of Hope",
-"Mastery of the Unseen",
-"Arguel's Blood Fast",
 "Circle of Flame",
-"Malevolent Awakening",
-"Honden of Infinite Rage",
-"Rune of Protection: Green",
-"Hidden Stockpile",
-"Mesa Enchantress",
-"Cantivore",
-"Auramancer",
-"Restoration Specialist",
-"Doomwake Giant",
-
-"Theater of Horrors",
-
-"Monk Idealist",
-"Lotus-Eye Mystics",
-"Spirit Cairn",
-"Angelic Exaltation",
-"Angelic Accord",
-
-"Trading Post",
-"Creeping Dread",
-
-"Death Match",
-"Death Pit Offering",
-
-"Doom Foretold",
-"Outpost Siege",
-"Greed",
-
-"Endless Whispers",
-"Last Laugh",
-
-"Sphere of Duty",
-"Revenge of Ravens",
-"Proper Burial",
-"Marshal's Anthem",
-
+"Aether Flash",
 "Night of Souls' Betrayal",
 "Powerstone Minefield",
-"Pyrohemia",
-"Pestilence",
-"Sigil of the Empty Throne",
-"Call to the Grave",
 "Curse of Death's Hold",
-"Dawn of the Dead",
+"Ethereal Absolution",
+
+"Honden of Infinite Rage",
+"Honden of Night's Reach",
+"Honden of Cleansing Fire",
+
+"Skybind",
+
+"Theater of Horrors",
+"Oracle's Vault",
+"Vance's Blasting Cannons",
 "Liliana's Contract",
 "Palace Siege",
-"Skybind",
-"Ethereal Absolution",
-"Haphazard Bombardment",
-"Nettlevine Blight",
+"Null Profusion",
 "Sunbird's Invocation",
 "Grave Betrayal",
 "Hedonist's Trove",
+
+"Last Laugh",
+"Pestilence",
+"The Eldest Reborn",
+"Haphazard Bombardment",
+"Nettlevine Blight",
+
+"Bereavement",
+"Citadel of Pain",
+"Curse of Exhaustion",
+"Manabarbs",
+"Dingus Staff",
+"Creeping Dread",
 "Cruel Reality",
 
-"Howltooth Hollow",
-"Spinerock Knoll",
-"Crypt of Agadeem",
-"Opal Palace",
+"Thunderstaff",
+"Sphere of Grace",
+"Sphere of Law",
+"Revenge of Ravens",
+"Lich's Mastery",
+"Axis of Mortality",
+
+"Dawn of Hope",
+"Curse of Disturbance",
+"Sigil of the Empty Throne",
+
+"Kuon, Ogre Ascendant",
+"Restoration Specialist",
+"Bitterheart Witch",
+"Doomwake Giant",
+"Linvala, the Preserver",
+"Purity",
+"Angel of Despair",
+
+"Ob Nixilis Reignited",
+"Gideon Jura",
+
+"Single Combat",
+
+"Boros Signet",
+"Rakdos Signet",
+"Orzhov Signet",
+"Prophetic Prism",
+"Hedron Archive",
+
+"Nomad Outpost",
 "Aether Hub",
-"Akoum Refuge",
+"Vivid Meadow",
+"Vivid Crag",
+
+"Boros Garrison",
+"Orzhov Basilica",
+"Rakdos Carnarium",
 "Bloodfell Caves",
-"Drownyard Temple",
-"Zhalfirin Void",
-{"name":"Swamp", "count":24},
-{"name":"Mountain", "count":9}
+"Wind-Scarred Crag",
+"Boros Guildgate",
+"Orzhov Guildgate",
+"Rakdos Guildgate",
+"Cinder Barrens",
+"Forsaken Sanctuary",
+"Stone Quarry",
+
+"Barren Moor",
+"Polluted Mire",
+"Forgotten Cave",
+
+{"name":"Plains", "count":8},
+{"name":"Swamp", "count":12},
+{"name":"Mountain", "count":6}
 ],
 "sideboard":
 [
@@ -82,6 +103,43 @@
 ],
 "wants":
 [
+"Vivid Marsh",
+"Akoum Refuge",
+"Scoured Barrens",
+"Torment of Scarabs",
+"Worn Powerstone",
+"Pestilence",
+"Malevolent Awakening",
+"Auramancer",
+"Monk Idealist",
+"Mesa Enchantress",
+"Mastery of the Unseen",
+"Outpost Siege",
+"Death Match",
+"Marshal's Anthem",
+"Call to the Grave",
+
+"Arguel's Blood Fast",
+"Rune of Protection: Green",
+
+"Cantivore",
+"Lotus-Eye Mystics",
+"Spirit Cairn",
+"Angelic Accord",
+
+"Trading Post",
+
+"Death Pit Offering",
+
+"Doom Foretold",
+"Greed",
+
+"Endless Whispers",
+
+"Proper Burial",
+"Pyrohemia",
+"Dawn of the Dead",
+
 "Bogbrew Witch",
 "Festering Newt",
 "Bubbling Cauldron",
@@ -89,8 +147,7 @@
 "Spellshock",
 "Pyrostatic Pillar",
 "Burning Earth",
-"Manabarbs",
-"Dingus Staff",
+
 "Thought Prison",
 
 "Crown of Empires",
@@ -98,8 +155,6 @@
 "Throne of Empires",
 
 "Farsight Mask",
-"Thunderstaff",
-"Purity",
 "Battletide Alchemist",
 "Orbs of Warding",
 "Protection of the Hekma",
@@ -118,7 +173,6 @@
 
 "Rewards of Diversity",
 "Orim's Prayer",
-"Faith of the Devoted",
 "Dega Sanctuary",
 "Moonlit Wake",
 "Experimental Frenzy",

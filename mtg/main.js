@@ -214,7 +214,7 @@ class page_data {
 		this.commander_decks = new Map();
 		this.commander_decks.set("artifacts", "commander_artifacts.json");
 		this.commander_decks.set("combo", "commander_combo.json");
-		this.commander_decks.set("curses *", "commander_curses.json");
+		this.commander_decks.set("Curses Mardu", "commander_curses.json");
 		this.commander_decks.set("cycling *", "commander_cycling.json");
 		this.commander_decks.set("equipment", "commander_equipment.json");
 		this.commander_decks.set("Estrid", "commander_estrid.json");
