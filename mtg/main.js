@@ -212,13 +212,13 @@ class page_data {
 
 		this.commander_deck_param = "deck";
 		this.commander_decks = new Map();
-		this.commander_decks.set("artifacts", "commander_artifacts.json");
-		this.commander_decks.set("combo", "commander_combo.json");
-		this.commander_decks.set("Curses Mardu", "commander_curses.json");
+		this.commander_decks.set("artifacts Esper", "commander_artifacts.json");
+		this.commander_decks.set("combo Golos", "commander_combo.json");
+		this.commander_decks.set("curses Mardu", "commander_curses.json");
 		this.commander_decks.set("cycling *", "commander_cycling.json");
-		this.commander_decks.set("equipment", "commander_equipment.json");
+		this.commander_decks.set("equipment White", "commander_equipment.json");
 		this.commander_decks.set("Estrid", "commander_estrid.json");
-		this.commander_decks.set("Firesong", "commander_firesong.json");
+		this.commander_decks.set("Firesong *", "commander_firesong.json");
 		this.commander_decks.set("Grenzo", "commander_grenzo.json");
 		this.commander_decks.set("Kadena *", "commander_kadena.json");
 		this.commander_decks.set("Merieke Ri Berit", "commander_merieke.json");
@@ -253,6 +253,7 @@ class page_data {
 
 	populate_decks_list() {
 		const menu = document.getElementById("commander_decks_menu");
+		let counter = 1;
 		for (const [key, value] of this.commander_decks) {
 			const commander_deck_link = new URL(window.location);
 			commander_deck_link.search = new URLSearchParams([[this.commander_deck_param, key]]);
@@ -260,8 +261,9 @@ class page_data {
 			let inner = document.createElement("a");
 			inner.classList.add("item");
 			inner.setAttribute("href", commander_deck_link);
-			inner.textContent = key;
+			inner.textContent = counter + ". " + key;
 			menu.appendChild(inner);
+			++counter;
 		}
 	}
 
