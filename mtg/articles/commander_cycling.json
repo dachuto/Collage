@@ -7,7 +7,6 @@
 "Spirit Cairn",
 "Drake Haven",
 "Faith of the Devoted",
-"Lightning Rift",
 
 "Abandoned Sarcophagus",
 "Bag of Holding",
@@ -96,6 +95,7 @@
 ],
 "wants":
 [
+"Lightning Rift",
 "Forsake the Worldly",
 "Renewed Faith",
 "Resounding Silence",

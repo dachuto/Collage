@@ -105,17 +105,21 @@
 "Mitotic Slime",
 "Feral Throwback",
 
+"Duskwatch Recruiter",
+"Jedit Ojanen of Efrava",
+"Guardian Project",
+"Grim Flowering",
+"Stone-Tongue Basilisk",
+
 "Jungle Basin",
 "Mosswort Bridge",
 "Treetop Village",
-{"name":"Forest", "count":41}
+{"name":"Forest", "count":71}
 ],
 "sideboard":
 [
 "Gladecover Scout",
-"Fierce Empath",
-"Grunn, the Lonely King",
-"Jedit Ojanen of Efrava"
+"Grunn, the Lonely King"
 ],
 "wants":
 [

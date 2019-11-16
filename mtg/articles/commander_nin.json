@@ -41,13 +41,11 @@
 "Atemsis, All-Seeing",
 "Arcanis the Omnipotent",
 
-"Goblin Tinkerer",
 "Callous Oppressor",
 "Stronghold Biologist",
 "Stronghold Machinist",
 "Feldon of the Third Path",
 "Djinn of Infinite Deceits",
-"Magus of the Mind",
 
 "Anger",
 "Wonder",
@@ -56,11 +54,12 @@
 
 "Back from the Brink",
 
+"Magus of the Scroll",
+"Goblin Diplomats",
 "Squee, Goblin Nabob",
 "Fortune Thief",
 "Mist-Syndicate Naga",
 "Kefnet the Mindful",
-"Coalhauler Swine",
 
 "Confound",
 "Suffocating Blast",
@@ -68,25 +67,27 @@
 
 "Izzet Signet",
 "Mind Stone",
+"Izzet Locket",
 
 "Swiftwater Cliffs",
 "Izzet Guildgate",
 "Highland Lake",
 
-"Coral Atoll",
-"Dormant Volcano",
 "Lonely Sandbar",
 "Forgotten Cave",
 "Spinerock Knoll",
 
-{"name":"Island", "count":14},
-{"name":"Mountain", "count":18}
+{"name":"Island", "count":15},
+{"name":"Mountain", "count":19}
 
 ],
 "sideboard":
 [
+"Goblin Tinkerer",
 "Bloodshot Trainee",
-"Orcish Artillery"
+"Orcish Artillery",
+"Stalking Yeti",
+"Magus of the Mind"
 ],
 "wants":
 [
@@ -104,7 +105,6 @@
 "Timestream Navigator",
 "Dwarven Blastminer",
 "Dwarven Miner",
-"Magus of the Scroll",
 "Endbringer",
 "Godo, Bandit Warlord",
 "Reveka, Wizard Savant",
@@ -114,7 +114,6 @@
 "Dack's Duplicate",
 "Ogre Battledriver",
 "Keeper of the Mind",
-"Initiate of Blood",
-"Stalking Yeti"
+"Initiate of Blood"
 ]
 }

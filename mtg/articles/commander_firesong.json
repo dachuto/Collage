@@ -1,0 +1,84 @@
+{
+"commander":["Firesong and Sunspeaker"],
+"main":
+[
+
+"Response",
+"Intervention",
+"Warleader's Helix",
+
+"Reaping the Rewards",
+"Revitalize",
+"Survival Cache",
+
+"Terashi's Grasp",
+"Glacial Ray",
+"Candles' Glow",
+"Torrent of Stone",
+
+"Eight-and-a-Half-Tails",
+"Celestial Dawn",
+
+{"name":"Plains", "count":27}
+],
+"sideboard":
+[
+],
+"wants":
+[
+"Arrows of Justice",
+"Fire at Will",
+"Intimidation Bolt",
+"Sun's Bounty",
+"Invoke the Divine",
+"Pulse of the Fields",
+"Narrow Escape",
+"Reviving Dose",
+"Ritual of Rejuvenation",
+"Solemn Offering",
+"Silverstrike",
+"Resupply",
+"Archangel's Light",
+"Ancestral Tribute",
+"Reckless Rage",
+"Shower of Sparks",
+"Arc Trail",
+
+"First Volley",
+"Blessed Breath",
+"Spiritual Visit",
+
+"Grapeshot",
+"Lash Out",
+"Char",
+
+"Mizzium Mortars",
+"Punishing Fire",
+"Hammer of Bogardan",
+"Meteor Blast",
+"Scattershot",
+"Spit Flame",
+"Chain Reaction",
+"Arc Blade",
+"Explosive Revelation",
+"Hour of Devastation",
+"Lightning Surge",
+"Searing Barrage",
+"Shivan Meteor",
+"Slice and Dice",
+"Sundering Stroke",
+"Volcanic Vision",
+"Wildfire",
+"Destructive Force",
+"Earthquake",
+"Fault Line",
+"Jaya's Immolating Inferno",
+"Magmaquake",
+"Molten Disaster",
+"Starstorm",
+
+"Dragon Mage",
+"Tower of Fortunes"
+
+]
+}
