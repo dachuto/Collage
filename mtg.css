@@ -96,8 +96,36 @@
 }
 
 .images_grid {
+	--how-many-cards-in-a-row: 1;
+}
+
+@media screen and (width > 6cm) {
+	.images_grid {
+		--how-many-cards-in-a-row: 2;
+	}
+}
+
+@media screen and (width > 12cm) {
+	.images_grid {
+		--how-many-cards-in-a-row: 4;
+	}
+}
+
+@media screen and (width > 18cm) {
+	.images_grid {
+		--how-many-cards-in-a-row: 6;
+	}
+}
+
+@media screen and (width > 24cm) {
+	.images_grid {
+		--how-many-cards-in-a-row: 8;
+	}
+}
+
+.images_grid {
 	display: grid;
-	grid-template-columns: repeat(8, 12.5%);
+	grid-template-columns: repeat(var(--how-many-cards-in-a-row), calc(100.0 / var(--how-many-cards-in-a-row) * 1%));
 	/* grid-template-rows: repeat(auto-fit, 100px); */
 	/* justify-content: space-evenly; */
 }

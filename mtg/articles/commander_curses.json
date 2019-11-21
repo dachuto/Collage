@@ -17,6 +17,7 @@
 
 "Theater of Horrors",
 "Oracle's Vault",
+"Outpost Siege",
 "Vance's Blasting Cannons",
 "Liliana's Contract",
 "Palace Siege",
@@ -34,6 +35,7 @@
 "Bereavement",
 "Citadel of Pain",
 "Curse of Exhaustion",
+"Torment of Scarabs",
 "Manabarbs",
 "Dingus Staff",
 "Creeping Dread",
@@ -50,6 +52,7 @@
 "Curse of Disturbance",
 "Sigil of the Empty Throne",
 
+"Mesa Enchantress",
 "Kuon, Ogre Ascendant",
 "Restoration Specialist",
 "Bitterheart Witch",
@@ -66,7 +69,6 @@
 "Boros Signet",
 "Rakdos Signet",
 "Orzhov Signet",
-"Prophetic Prism",
 "Hedron Archive",
 
 "Nomad Outpost",
@@ -87,12 +89,11 @@
 "Stone Quarry",
 
 "Barren Moor",
-"Polluted Mire",
 "Forgotten Cave",
 
 {"name":"Plains", "count":8},
 {"name":"Swamp", "count":12},
-{"name":"Mountain", "count":6}
+{"name":"Mountain", "count":5}
 ],
 "sideboard":
 [
@@ -106,15 +107,12 @@
 "Vivid Marsh",
 "Akoum Refuge",
 "Scoured Barrens",
-"Torment of Scarabs",
 "Worn Powerstone",
 "Pestilence",
 "Malevolent Awakening",
 "Auramancer",
 "Monk Idealist",
-"Mesa Enchantress",
 "Mastery of the Unseen",
-"Outpost Siege",
 "Death Match",
 "Marshal's Anthem",
 "Call to the Grave",
