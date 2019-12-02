@@ -29,15 +29,13 @@
 "Last Laugh",
 "Pestilence",
 "The Eldest Reborn",
+"Traveling Plague",
 "Haphazard Bombardment",
 "Nettlevine Blight",
 
 "Bereavement",
-"Citadel of Pain",
-"Curse of Exhaustion",
 "Torment of Scarabs",
 "Manabarbs",
-"Dingus Staff",
 "Creeping Dread",
 "Cruel Reality",
 
@@ -50,6 +48,8 @@
 
 "Dawn of Hope",
 "Curse of Disturbance",
+"Death Pit Offering",
+"Outlaws' Merriment",
 "Sigil of the Empty Throne",
 
 "Mesa Enchantress",
@@ -97,6 +97,9 @@
 ],
 "sideboard":
 [
+"Citadel of Pain",
+"Curse of Exhaustion",
+"Dingus Staff",
 "Captive Audience",
 "Subversion",
 "Spreading Plague",
@@ -126,9 +129,6 @@
 "Angelic Accord",
 
 "Trading Post",
-
-"Death Pit Offering",
-
 "Doom Foretold",
 "Greed",
 

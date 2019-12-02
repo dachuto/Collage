@@ -2,6 +2,8 @@
 "commander":[],
 "main":
 [
+"Lightning Rift",
+"Improbable Alliance",
 "Astral Slide",
 "Astral Drift",
 "Spirit Cairn",
@@ -10,6 +12,7 @@
 
 "Abandoned Sarcophagus",
 "Bag of Holding",
+"Moonring Mirror",
 "New Perspectives",
 
 "Shadow of the Grave",
@@ -23,6 +26,7 @@
 
 "Disciple of Law",
 "Radiant's Judgment",
+"Sunfire Balm",
 "Miscalculation",
 "Tectonic Reformation",
 "Countervailing Winds",
@@ -39,6 +43,7 @@
 "Sylvan Reclamation",
 
 "Starstorm",
+"Slice and Dice",
 "Krosan Tusker",
 
 "Stir the Sands",
@@ -56,14 +61,11 @@
 "Fiend Hunter",
 "Vesperlark",
 "Wispmare",
-"Sea Gate Oracle",
 "Lorescale Coatl",
 "Archaeomancer",
 "Wing Splicer",
-"Mulldrifter",
 "Conclave Naturalists",
 "Urbis Protector",
-"Trostani's Summoner",
 
 "The Grand Calcutron",
 
@@ -81,6 +83,8 @@
 "Vivid Crag",
 "Vivid Grove",
 
+"Arcane Sanctum",
+"Crumbling Necropolis",
 "Frontier Bivouac",
 "Jungle Shrine",
 "Mystic Monastery",
@@ -99,8 +103,8 @@
 
 "Forgotten Cave",
 
-{"name":"Plains", "count":2},
-{"name":"Island", "count":4},
+{"name":"Plains", "count":1},
+{"name":"Island", "count":3},
 "Swamp",
 "Mountain",
 "Forest",
@@ -124,12 +128,7 @@
 ],
 "wants":
 [
-"Lightning Rift",
-"Improbable Alliance",
-
 "Mirrodin's Core",
-"Arcane Sanctum",
-"Crumbling Necropolis",
 "Seaside Citadel",
 
 "Lonely Sandbar",
@@ -160,7 +159,6 @@
 "Windcaller Aven",
 "Vizier of Tumbling Sands",
 "Undead Gladiator",
-"Slice and Dice",
 "Claws of Wirewood",
 "Deadshot Minotaur",
 "Grixis Sojourners",
