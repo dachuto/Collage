@@ -22,6 +22,8 @@
 "Choking Tethers",
 "Curator of Mysteries",
 "Hieroglyphic Illumination",
+"Windcaller Aven",
+"Scarab Feast",
 "Razaketh's Rite",
 
 "Disciple of Law",
@@ -39,6 +41,7 @@
 "Expunge",
 "Ichor Slick",
 "Archfiend of Ifnir",
+"Rampaging Hippo",
 "Migratory Route",
 "Sylvan Reclamation",
 
@@ -61,11 +64,9 @@
 "Fiend Hunter",
 "Vesperlark",
 "Wispmare",
-"Lorescale Coatl",
 "Archaeomancer",
 "Wing Splicer",
 "Conclave Naturalists",
-"Urbis Protector",
 
 "The Grand Calcutron",
 
@@ -96,7 +97,9 @@
 "Secluded Steppe",
 
 "Remote Isle",
+"Desert of the True",
 "Desert of the Mindful",
+"Desert of the Glorified",
 
 "Barren Moor",
 "Polluted Mire",
@@ -112,9 +115,7 @@
 "Azorius Chancery",
 "Izzet Boilerworks",
 
-"Azorius Guildgate",
 "Izzet Guildgate",
-"Simic Guildgate",
 
 "Blossoming Sands",
 "Swiftwater Cliffs",
@@ -124,7 +125,8 @@
 ],
 "sideboard":
 [
-
+"Dissenter's Deliverance",
+"Lorescale Coatl"
 ],
 "wants":
 [
@@ -156,7 +158,6 @@
 "Akroma's Blessing",
 "Sacred Excavation",
 "Striped Riverwinder",
-"Windcaller Aven",
 "Vizier of Tumbling Sands",
 "Undead Gladiator",
 "Claws of Wirewood",
