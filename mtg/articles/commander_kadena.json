@@ -2,31 +2,102 @@
 "commander":["Kadena, Slinking Sorcerer"],
 "main":
 [
-"Weaver of Lies",
-"Whisperwood Elemental",
-"Mischievous Quanar",
+
+
+"Dragon's Eye Savants",
+"Ruthless Ripper",
+
+"Wall of Deceit",
+"Monastery Flock",
+"Headhunter",
+
+"Stratus Dancer",
+"Kadena's Silencer",
+"Willbender",
+"Fledgling Mawcor",
+"Vesuvan Shapeshifter",
+"Haunted Cadaver",
+"Ainok Survivalist",
+"Den Protector",
+"Nantuko Vigilante",
+
+"Shaper Parasite",
+"Mistfire Weaver",
+"Soul Collector",
+"Broodhatch Nantuko",
+"Icefeather Aven",
+
+
+"Aphetto Exterminator",
+
+"Shorecrasher Elemental",
+"Chromeshell Crab",
+"Quicksilver Dragon",
+"Skinthinner",
+"Spitting Gourna",
+"Deathmist Raptor",
+"Hooded Hydra",
+"Thelonite Hermit",
+"Venomspout Brackus",
+
+"Monastery Loremaster",
+
+"Brine Elemental",
+"Thousand Winds",
+
+"Bane of the Living",
+
+"Whetwheel",
+"Zoetic Cavern",
+
+"Ixidron",
+"Thieving Amalgam",
+
+"Trail of Mystery",
+"Secret Plans",
+
+"Ghastly Conscription",
+
+
+"Hex",
+"Flood of Tears",
+"Nissa's Renewal",
+"Crush of Tentacles",
+"Spitting Image",
+"Repeal",
+"Plasm Capture",
+"Golgari Charm",
+"Clear the Mind",
+"Void Shatter",
+
+"Rashmi, Eternities Crafter",
+"Altered Ego",
+"Fallen Shinobi",
+"Gonti, Lord of Luxury",
+"Scholar of the Ages",
+"Genesis",
 
 "Vivid Marsh",
-"Vivid Meadow",
 "Vivid Creek",
+"Vivid Grove",
 
-"Arcane Sanctum",
+"Opulent Palace",
 "Aether Hub",
+"Exotic Orchard",
 
-"Azorius Chancery",
-"Dimir Aqueduct",
-"Orzhov Basilica",
+"Golgari Rot Farm",
+"Simic Growth Chamber",
 
-"Tranquil Cove",
 "Dismal Backwater",
+"Jungle Hollow",
+"Thornwood Falls",
 
-"Azorius Guildgate",
+"Simic Guildgate",
+"Woodland Stream",
 
-"Meandering River",
-"Submerged Boneyard",
-
-{"name":"Island", "count":21},
-{"name":"Swamp", "count":10}
+{"name":"Island", "count":10},
+{"name":"Swamp", "count":7},
+{"name":"Forest", "count":13}
 ],
 "sideboard":
 [
@@ -34,12 +105,30 @@
 ],
 "wants":
 [
-"Darkwater Catacombs",
-"Sunken Hollow",
-"Dimir Guildgate",
-"Sejiri Refuge",
-"Jwar Isle Refuge",
-"Agent of Treachery",
-"Nightveil Specter"
+"Dimir Aqueduct",
+"Aphetto Runecaster",
+"Grim Haruspex",
+"Silumgar Assassin",
+"Weaver of Lies",
+"Kheru Spellsnatcher",
+"Salt Road Ambushers",
+"Unblinking Bleb",
+"Mischievous Quanar",
+"Whisperwood Elemental",
+"Riptide Pilferer",
+"Voidmage Apprentice",
+"Disruptive Pitmage",
+"Riptide Entrancer",
+"Silumgar Spell-Eater",
+"Cabal Executioner",
+"Hystrodon",
+"Acid-Spewer Dragon",
+"Sagu Mauler",
+"Silent Specter",
+"Echo Tracer",
+"Riptide Biologist",
+"Patron of the Wild",
+"Temur War Shaman"
+
 ]
 }
