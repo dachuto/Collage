@@ -531,7 +531,7 @@ function DOM_ready_results() {
 }
 
 function DOM_append(element) {
-	$("#main_content").append(element);
+	document.getElementById("main_content").append(element);
 }
 
 function set_to_string(set) {
@@ -667,11 +667,15 @@ function image_not_loaded_html(url) {
 	return i;
 }
 
-function image_load(placeholder) {
+function image_loaded_html(src) {
 	let image = document.createElement("img");
 	image.classList.add("aspect-ratio-box-inside", "preview");
-	image.src = placeholder.getAttribute("data-src");
+	image.src = src;
+	return image;
+}
 
+function image_load(placeholder) {
+	let image = image_loaded_html(placeholder.getAttribute("data-src"));
 	if (true) {
 		placeholder.insertAdjacentElement('afterend', image);
 	} else {
