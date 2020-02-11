@@ -9,6 +9,7 @@
 "Spirit Cairn",
 "Drake Haven",
 "Faith of the Devoted",
+"Mad Ratter",
 
 "Abandoned Sarcophagus",
 "Bag of Holding",
@@ -26,6 +27,7 @@
 "Scarab Feast",
 "Razaketh's Rite",
 
+"Disciple of Grace",
 "Disciple of Law",
 "Radiant's Judgment",
 "Sunfire Balm",
@@ -34,7 +36,6 @@
 "Countervailing Winds",
 "Rescind",
 "Traumatic Visions",
-"Drifting Djinn",
 "Lay Claim",
 "Unearth",
 "Vile Manifestation",
@@ -59,14 +60,13 @@
 
 "Mirrorade",
 
-"Elvish Visionary",
 "Wall of Blossoms",
-"Fiend Hunter",
+"Auramancer",
+"Monk Idealist",
 "Vesperlark",
-"Wispmare",
 "Archaeomancer",
-"Wing Splicer",
 "Conclave Naturalists",
+"Scholar of the Ages",
 
 "The Grand Calcutron",
 
@@ -95,6 +95,7 @@
 "Savage Lands",
 
 "Secluded Steppe",
+"Lonely Sandbar",
 
 "Remote Isle",
 "Desert of the True",
@@ -107,7 +108,7 @@
 "Forgotten Cave",
 
 {"name":"Plains", "count":1},
-{"name":"Island", "count":3},
+{"name":"Island", "count":2},
 "Swamp",
 "Mountain",
 "Forest",
@@ -125,15 +126,19 @@
 ],
 "sideboard":
 [
+"Drifting Djinn",
 "Dissenter's Deliverance",
-"Lorescale Coatl"
+"Lorescale Coatl",
+"Elvish Visionary",
+"Fiend Hunter",
+"Wispmare",
+"Wing Splicer"
 ],
 "wants":
 [
 "Mirrodin's Core",
 "Seaside Citadel",
 
-"Lonely Sandbar",
 "Tranquil Thicket",
 "Drifting Meadow",
 "Smoldering Crater",

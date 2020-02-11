@@ -67,6 +67,8 @@
 "Rise from the Tides",
 "Swarm Intelligence",
 
+"Azorius Chancery",
+
 "Lonely Sandbar",
 "Secluded Steppe",
 "Tranquil Cove",
@@ -82,7 +84,7 @@
 "Reliquary Tower",
 "Mystifying Maze",
 {"name":"Plains", "count":7},
-{"name":"Island", "count":18}
+{"name":"Island", "count":17}
 ],
 "sideboard":
 [
@@ -126,7 +128,6 @@
 "Divine Reckoning",
 
 "Calciform Pools",
-"Arch of Orazca",
-"Azorius Chancery"
+"Arch of Orazca"
 ]
 }

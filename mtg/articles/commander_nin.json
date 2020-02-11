@@ -22,6 +22,7 @@
 "Cyclops Gladiator",
 "Flametongue Kavu",
 "Wojek Embermage",
+"Initiate of Blood",
 "Glorybringer",
 "Jiwari, the Earth Aflame",
 "Karplusan Yeti",
@@ -29,6 +30,7 @@
 "Mercurial Chemister",
 "Kamahl, Pit Fighter",
 "Niv-Mizzet, Dracogenius",
+"Niv-Mizzet, the Firemind",
 "Drakuseth, Maw of Flames",
 "Siege Dragon",
 "Tyrant's Familiar",
@@ -43,6 +45,7 @@
 "Cephalid Broker",
 "Atemsis, All-Seeing",
 "Arcanis the Omnipotent",
+
 
 "Callous Oppressor",
 "Stronghold Biologist",
@@ -59,10 +62,8 @@
 
 "Magus of the Scroll",
 "Goblin Diplomats",
-"Squee, Goblin Nabob",
 "Fortune Thief",
 "Mist-Syndicate Naga",
-"Kefnet the Mindful",
 
 "Confound",
 "Suffocating Blast",
@@ -98,7 +99,6 @@
 "Dominating Licid",
 "Viashino Heretic",
 "Jaya Ballard, Task Mage",
-"Niv-Mizzet, the Firemind",
 "Beguiler of Wills",
 "Riptide Director",
 "Timestream Navigator",
@@ -112,7 +112,6 @@
 "Hammer of Purphoros",
 "Dack's Duplicate",
 "Ogre Battledriver",
-"Keeper of the Mind",
-"Initiate of Blood"
+"Keeper of the Mind"
 ]
 }

@@ -3,30 +3,29 @@
 "main":
 [
 
-
 "Dragon's Eye Savants",
 "Ruthless Ripper",
 
 "Wall of Deceit",
 "Monastery Flock",
 "Headhunter",
+"Grim Haruspex",
 
 "Stratus Dancer",
 "Kadena's Silencer",
 "Willbender",
 "Fledgling Mawcor",
 "Vesuvan Shapeshifter",
-"Haunted Cadaver",
 "Ainok Survivalist",
 "Den Protector",
 "Nantuko Vigilante",
 
 "Shaper Parasite",
 "Mistfire Weaver",
+"Silumgar Assassin",
 "Soul Collector",
 "Broodhatch Nantuko",
 "Icefeather Aven",
-
 
 "Aphetto Exterminator",
 
@@ -39,14 +38,16 @@
 "Hooded Hydra",
 "Thelonite Hermit",
 "Venomspout Brackus",
+"Sagu Mauler",
 
 "Monastery Loremaster",
+"Kheru Spellsnatcher",
 
-"Brine Elemental",
 "Thousand Winds",
 
 "Bane of the Living",
 
+"Gift of Doom",
 "Whetwheel",
 "Zoetic Cavern",
 
@@ -58,19 +59,15 @@
 
 "Ghastly Conscription",
 
-
 "Hex",
 "Flood of Tears",
 "Nissa's Renewal",
 "Crush of Tentacles",
 "Spitting Image",
-"Repeal",
 "Plasm Capture",
-"Golgari Charm",
 "Clear the Mind",
 "Void Shatter",
 
-"Rashmi, Eternities Crafter",
 "Altered Ego",
 "Fallen Shinobi",
 "Gonti, Lord of Luxury",
@@ -84,7 +81,9 @@
 "Opulent Palace",
 "Aether Hub",
 "Exotic Orchard",
+"Myriad Landscape",
 
+"Dimir Aqueduct",
 "Golgari Rot Farm",
 "Simic Growth Chamber",
 
@@ -95,22 +94,20 @@
 "Simic Guildgate",
 "Woodland Stream",
 
-{"name":"Island", "count":10},
+{"name":"Island", "count":9},
 {"name":"Swamp", "count":7},
-{"name":"Forest", "count":13}
+{"name":"Forest", "count":12}
 ],
 "sideboard":
 [
-"Hedonist's Trove"
+"Haunted Cadaver",
+"Brine Elemental",
+"Golgari Charm"
 ],
 "wants":
 [
-"Dimir Aqueduct",
 "Aphetto Runecaster",
-"Grim Haruspex",
-"Silumgar Assassin",
 "Weaver of Lies",
-"Kheru Spellsnatcher",
 "Salt Road Ambushers",
 "Unblinking Bleb",
 "Mischievous Quanar",
@@ -123,7 +120,6 @@
 "Cabal Executioner",
 "Hystrodon",
 "Acid-Spewer Dragon",
-"Sagu Mauler",
 "Silent Specter",
 "Echo Tracer",
 "Riptide Biologist",

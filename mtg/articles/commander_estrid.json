@@ -6,6 +6,7 @@
 "Mastery of the Unseen",
 "Wilderness Reclamation",
 "Wolfcaller's Howl",
+"Arasta of the Endless Web",
 "First Response",
 "Sigil of the Empty Throne",
 "Leafdrake Roost",
@@ -40,6 +41,7 @@
 "Mirrormade",
 "Oblivion Ring",
 "Cast Out",
+
 "Fertile Ground",
 "Overgrowth",
 "Weirding Wood",
@@ -48,40 +50,50 @@
 "Market Festival",
 "Nylea's Presence",
 "Zendikar Resurgent",
+
 "Fumigate",
 "Winds of Rath",
 "Rout",
+"Time Wipe",
 "Phyrexian Rebirth",
-"Kirtar's Wrath",
 "Martial Coup",
+
 "Vessel of Nascency",
 "Bonds of Mortality",
-"Urban Evolution",
+"Oath of Teferi",
+
 "Mystic Snake",
 "Confirm Suspicions",
-"Oath of Teferi",
+
 "Vivid Meadow",
 "Vivid Creek",
 "Vivid Grove",
 "Aether Hub",
+"Myriad Landscape",
+
 "Azorius Chancery",
 "Selesnya Sanctuary",
 "Simic Growth Chamber",
+
 "Blossoming Sands",
 "Tranquil Cove",
 "Thornwood Falls",
+
 "Graypelt Refuge",
+"Sejiri Refuge",
+
 "Azorius Guildgate",
 "Selesnya Guildgate",
 "Simic Guildgate",
+
 "Lonely Sandbar",
 "Secluded Steppe",
 "Stirring Wildwood",
 "Krosan Verge",
 "Vitu-Ghazi, the City-Tree",
-{"name":"Plains", "count":5},
+{"name":"Plains", "count":4},
 {"name":"Island", "count":7},
-{"name":"Forest", "count":10}
+{"name":"Forest", "count":9}
 ],
 "sideboard":
 [
@@ -97,17 +109,20 @@
 "Day of the Dragons",
 "Teferi's Care",
 "Ley Weaver",
-"Squirrel Nest"
+"Squirrel Nest",
+"Sacred Mesa",
+"Monk Idealist",
+"Marshal's Anthem",
+"Archon of Falling Stars"
 ],
 "wants":
 [
 "Seal of Removal",
 "Seal of Primordium",
-"Sacred Mesa",
+"Kenrith's Transformation",
 "Enchantress's Presence",
 "Verduran Enchantress",
 "Abundant Growth",
-"Sejiri Refuge",
 "Tranquil Thicket",
 "Seaside Citadel",
 "Words of Wilding"

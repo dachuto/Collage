@@ -41,6 +41,13 @@
 "Trostani, Selesnya's Voice",
 "Growing Ranks",
 "Ghired's Beligerence",
+"Wake the Reflections",
+"Druid's Deliverance",
+"Sundering Growth",
+"Rootborn Defenses",
+"Eyes in the Skies",
+"Trostani's Judgment",
+"Full Flowering",
 
 "Hour of Reckoning",
 
@@ -54,7 +61,6 @@
 "Mystic Snake",
 "Mnemonic Wall",
 "Indrik Stomphowler",
-"Izzet Chronarch",
 
 "Aether Hub",
 "Exotic Orchard",
@@ -76,6 +82,7 @@
 "Simic Growth Chamber",
 
 "Azorius Guildgate",
+"Izzet Guildgate",
 
 "Blossoming Sands",
 "Rugged Highlands",
@@ -87,7 +94,7 @@
 {"name":"Plains", "count":4},
 {"name":"Island", "count":7},
 "Mountain",
-{"name":"Forest", "count":10}
+{"name":"Forest", "count":9}
 ],
 "sideboard":
 [
@@ -106,13 +113,10 @@
 "Mirrodin's Core",
 "Vivid Crag",
 "Vivid Grove",
-"Izzet Guildgate",
 
 "Wake the Reflections",
 "Druid's Deliverance",
 "Sundering Growth",
-"Vitu-Ghazi Guildmage",
-"Full Flowering",
 "Rootborn Defenses",
 "Scion of Vitu-Ghazi",
 

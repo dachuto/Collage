@@ -6,7 +6,9 @@
 "Prey Upon",
 "Pounce",
 "Rabid Bite",
+"Warbriar Blessing",
 "Setessan Tactics",
+"Cartouche of Strength",
 "Enlarge",
 
 "Ranger's Guile",
@@ -17,17 +19,25 @@
 "Boar Umbra",
 "Trollhide",
 "Snake Umbra",
+"Hydra's Growth",
 "Increasing Savagery",
+"Mantle of the Wolf",
 "Biogenic Upgrade",
 "Epic Proportions",
 "Nylea's Emissary",
+"Wurmweaver Coil",
 
 "Prey's Vengeance",
 "Giant Growth",
+"Garenbrig Carver",
 "Aim High",
+"Steady Aim",
 "Pack's Favor",
+"Tuinvale Treefolk",
 
 "Warriors' Lesson",
+"Wildsize",
+"Sudden Strength",
 
 "Reclamation Sage",
 "Viridian Shaman",
@@ -44,6 +54,7 @@
 
 "Wolfbriar Elemental",
 "Brawn",
+"Eidolon of Blossoms",
 "Seedguide Ash",
 "Keeper of Fables",
 "Genesis",
@@ -61,9 +72,9 @@
 
 "Evolution Sage",
 "Hermit of the Natterknolls",
-"Wildsize",
 "Oakhame Adversary",
 "Sage of Ancient Lore",
+"Cloudthresher",
 "Verdant Force",
 "Tornado Elemental",
 "Garruk's Packleader",
@@ -92,6 +103,7 @@
 "Resize",
 "Savage Punch",
 "Swell of Growth",
+"Band Together",
 "Clear Shot",
 "Tower Above",
 "Titanic Brawl",
@@ -114,7 +126,7 @@
 "Jungle Basin",
 "Mosswort Bridge",
 "Treetop Village",
-{"name":"Forest", "count":71}
+{"name":"Forest", "count":77}
 ],
 "sideboard":
 [
@@ -145,6 +157,10 @@
 "Avenging Druid",
 "Ohran Viper",
 
+"Sixth Sense",
+"Karametra's Favor",
+"Setessan Training",
+
 "Savage Silhouette",
 "Gaea's Embrace",
 "Elephant Guide",
@@ -159,8 +175,6 @@
 "Sheltering Word",
 "Terifying Presence",
 "Ambuscade",
-"Band Together",
-"Cartouche of Strength",
 "Savage Stomp",
 "Time to Feed",
 "Might of Oaks",
