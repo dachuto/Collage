@@ -4,7 +4,7 @@
 [
 "Dawn of Hope",
 "Mastery of the Unseen",
-"Wilderness Reclamation",
+"Sacred Mesa",
 "Wolfcaller's Howl",
 "Arasta of the Endless Web",
 "First Response",
@@ -12,20 +12,24 @@
 "Leafdrake Roost",
 "Primordial Mist",
 "Sandwurm Convergence",
+
 "Collective Blessing",
 "Dictate of Heliod",
+
 "Honden of Cleansing Fire",
 "Honden of Seeing Winds",
 "Honden of Life's Web",
+
 "Lashknife Barrier",
+"Wilderness Reclamation",
 "Teferi's Moat",
-"Sunken Hope",
 "Shared Fate",
 "Martyr's Bond",
 "Satyr Enchanter",
 "Mesa Enchantress",
 "Tuvasa the Sunlit",
 "Insight",
+"Verity Circle",
 "Eidolon of Blossoms",
 "Bounty of the Luxa",
 "Patient Rebuilding",
@@ -58,7 +62,6 @@
 "Phyrexian Rebirth",
 "Martial Coup",
 
-"Vessel of Nascency",
 "Bonds of Mortality",
 "Oath of Teferi",
 
@@ -98,9 +101,11 @@
 "sideboard":
 [
 "Clear the Mind",
+"Vessel of Nascency",
 "Rule of Law",
 "Arcane Laboratory",
 "Mana Breach",
+"Sunken Hope",
 "Ajani's Chosen",
 "Celestial Ancient",
 "Benefaction of Rhonas",
@@ -113,6 +118,7 @@
 "Sacred Mesa",
 "Monk Idealist",
 "Marshal's Anthem",
+"Spawning Grounds",
 "Archon of Falling Stars"
 ],
 "wants":
@@ -125,6 +131,17 @@
 "Abundant Growth",
 "Tranquil Thicket",
 "Seaside Citadel",
+"Archon of Sun's Grace",
+"Setessan Champion",
+"The Birth of Meletis",
+"Elspeth Conquers Death",
+"Kiora Bests the Sea God",
+"Omen of the Sea",
+"Destiny Spinner",
+"Wolfwillow Haven",
+"Enigmatic Incarnation",
+"Angelic Chorus",
+"Faith Healer",
 "Words of Wilding"
 ]
 }

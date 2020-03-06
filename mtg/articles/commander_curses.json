@@ -2,7 +2,6 @@
 "commander":["Cursed Monstrosity", "Zurgo Helmsmasher"],
 "main":
 [
-"Circle of Flame",
 "Aether Flash",
 "Night of Souls' Betrayal",
 "Powerstone Minefield",
@@ -12,8 +11,6 @@
 "Honden of Infinite Rage",
 "Honden of Night's Reach",
 "Honden of Cleansing Fire",
-
-"Skybind",
 
 "Theater of Horrors",
 "Oracle's Vault",
@@ -28,6 +25,8 @@
 
 "Last Laugh",
 "Pestilence",
+"The Akroan War",
+"Doom Foretold",
 "The Eldest Reborn",
 "Traveling Plague",
 "Haphazard Bombardment",
@@ -35,7 +34,6 @@
 
 "Bereavement",
 "Torment of Scarabs",
-"Manabarbs",
 "Creeping Dread",
 "Cruel Reality",
 
@@ -44,21 +42,23 @@
 "Sphere of Law",
 "Revenge of Ravens",
 "Lich's Mastery",
-"Axis of Mortality",
 
 "Dawn of Hope",
-"Curse of Disturbance",
 "Death Pit Offering",
 "Outlaws' Merriment",
+"Marshal's Anthem",
 "Sigil of the Empty Throne",
 
+"Monk Idealist",
 "Mesa Enchantress",
 "Kuon, Ogre Ascendant",
 "Restoration Specialist",
 "Bitterheart Witch",
 "Doomwake Giant",
+"Blood Baron of Vizkopa",
+"Archon of Falling Stars",
 "Linvala, the Preserver",
-"Purity",
+"Silent Sentinel",
 "Angel of Despair",
 
 "Ob Nixilis Reignited",
@@ -69,10 +69,10 @@
 "Boros Signet",
 "Rakdos Signet",
 "Orzhov Signet",
-"Hedron Archive",
 
 "Nomad Outpost",
 "Aether Hub",
+"Myriad Landscape",
 "Vivid Meadow",
 "Vivid Crag",
 
@@ -92,17 +92,23 @@
 "Forgotten Cave",
 
 {"name":"Plains", "count":8},
-{"name":"Swamp", "count":12},
+{"name":"Swamp", "count":11},
 {"name":"Mountain", "count":5}
 ],
 "sideboard":
 [
-"Citadel of Pain",
+"Axis of Mortality",
 "Curse of Exhaustion",
 "Dingus Staff",
+"Circle of Flame",
 "Captive Audience",
 "Subversion",
 "Spreading Plague",
+"Skybind",
+"Citadel of Pain",
+"Manabarbs",
+"Purity",
+"Curse of Disturbance",
 "Paradise Plume"
 ],
 "wants":
@@ -110,14 +116,13 @@
 "Vivid Marsh",
 "Akoum Refuge",
 "Scoured Barrens",
+"Treasury Thrull",
 "Worn Powerstone",
 "Pestilence",
 "Malevolent Awakening",
 "Auramancer",
-"Monk Idealist",
 "Mastery of the Unseen",
 "Death Match",
-"Marshal's Anthem",
 "Call to the Grave",
 
 "Arguel's Blood Fast",
@@ -129,7 +134,6 @@
 "Angelic Accord",
 
 "Trading Post",
-"Doom Foretold",
 "Greed",
 
 "Endless Whispers",
