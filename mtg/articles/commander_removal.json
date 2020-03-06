@@ -1,0 +1,35 @@
+{
+"commander":["Kadena, Slinking Sorcerer"],
+"main":
+[
+"Epic Downfall",
+"Grip of Desolation",
+"Hour of Glory",
+"Eat to Extinction",
+"Fade into Antiquity",
+"Unnatural Aggression",
+"Silence the Believers",
+"Settle the Score",
+"Complete Disregard",
+
+"Gamekeeper",
+
+
+{"name":"Island", "count":21},
+{"name":"Swamp", "count":10}
+],
+"sideboard":
+[
+"Hedonist's Trove"
+],
+"wants":
+[
+"Darkwater Catacombs",
+"Sunken Hollow",
+"Dimir Guildgate",
+"Sejiri Refuge",
+"Jwar Isle Refuge",
+"Agent of Treachery",
+"Nightveil Specter"
+]
+}
