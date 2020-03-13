@@ -14,7 +14,7 @@ void *allocate_with_new(void *data, size_t size) {
 TEST(mtg_api_test, works) {
 	allocator_t a{allocate_with_new, nullptr};
 
-	auto database = read({"./AllCards.json", "./name_to_tags.json", "./AllSets.json", "./tags.json"});
+	auto database = read({"./AllCards.json", "./name_to_tags.json", "./AllPrintings.json", "./tags.json"});
 	auto ret = to_json{a}.write(database);
 	std::string s(ret.data, ret.size);
 	std::cout << s << "\n";

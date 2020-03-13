@@ -19,10 +19,23 @@ function as_deck_entry(data) {
 		return data;
 	} else if (typeof data === "string") {
 		return new deck_entry(data, 1, []);
+	} else if (typeof data === "number") {
+		return new deck_entry(null, 1, [data]);
 	} else if (data.hasOwnProperty("name") && data.hasOwnProperty("count")) {
 		return new deck_entry(data.name, data.count, []);
 	}
+
 	throw "Invalid data format";
+}
+
+function flat_entries(deck) {
+	let flat = [];
+	for (const subsection in deck) {
+		for (const o in deck[subsection]) {
+			flat.push(deck[subsection][o]);
+		}
+	}
+	return flat;
 }
 
 function as_text_deck(entries) {

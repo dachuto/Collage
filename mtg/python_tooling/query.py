@@ -1,5 +1,7 @@
 import argparse
 import datetime
+import json
+
 import serialize
 
 def date_from_record(r):
@@ -42,14 +44,9 @@ if __name__ == "__main__":
 		for (id, r) in merged.items():
 			print(id)
 	if args.interesting:
-		TODO
-		# fix this
-
-		multiverse_ids = []
-
 		interesting = []
 
-		for r in f:
+		for r in merged.values():
 			# print(r)
 			if (r.USD is None or r.EUR is None):
 				continue
@@ -57,13 +54,20 @@ if __name__ == "__main__":
 			pln_EUR = r.EUR * 4.32
 			difference = pln_USD - pln_EUR
 			relative = pln_USD / pln_EUR
-			if (difference > 5.0):
-				print(r.multiverse_id, pln_USD, pln_EUR)
-				interesting.append((relative, r.multiverse_id))
+			# difference *= -1.0
+			# relative = 1.0 / relative
+			if ((difference > 8.0 and relative > 2.0)): # or (difference > 3.0 and relative > 3.0)
+				# print(r.multiverse_id, pln_USD, pln_EUR)
+				interesting.append((difference, relative, r.multiverse_id, pln_USD, pln_EUR))
 				# interesting.append(difference)
 
-		interesting.sort(key = lambda x: x[0])
-		for i in interesting:
-			print(i)
-
-
+		interesting.sort(key = lambda x: x[1])
+		interesting.reverse()
+		if False:
+			for i in interesting:
+				print(i[0], i[1], i[2], i[3])
+		else:
+			ids = []
+			for i in interesting:
+				ids.append(i[2])
+			print(json.dumps({"main":ids}))
