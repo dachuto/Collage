@@ -75,7 +75,7 @@ function(download_and_unzip url filename working_dir)
 endfunction()
 
 download_and_unzip(https://mtgjson.com/json AllCards.json ${DOWNLOAD_DIR})
-download_and_unzip(https://mtgjson.com/json AllSets.json ${DOWNLOAD_DIR})
+download_and_unzip(https://mtgjson.com/json AllPrintings.json ${DOWNLOAD_DIR})
 
 message(STATUS "nginx ./configure also generates a C file in objs/ directory with module declaration.")
 message(STATUS "Generated file is: ${NGINX_GENERATED_SOURCE}")
@@ -87,7 +87,7 @@ target_link_libraries(${project} mtg_api)
 
 add_custom_target(json_data DEPENDS
 	${DOWNLOAD_DIR}/AllCards.json
-	${DOWNLOAD_DIR}/AllSets.json
+	${DOWNLOAD_DIR}/AllPrintings.json
 )
 
 message(STATUS "Internal include directories are manually taken from nginx's Makefile; beware changes")
@@ -110,7 +110,7 @@ install(FILES nginx.conf DESTINATION conf)
 install(TARGETS ${project} DESTINATION modules)
 
 install(FILES ${DOWNLOAD_DIR}/AllCards.json DESTINATION .)
-install(FILES ${DOWNLOAD_DIR}/AllSets.json DESTINATION .)
+install(FILES ${DOWNLOAD_DIR}/AllPrintings.json DESTINATION .)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../name_to_tags.json DESTINATION .)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../tags.json DESTINATION .)
 

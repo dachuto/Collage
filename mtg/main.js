@@ -249,7 +249,7 @@ class page_data {
 		const modified_url = new URL(url);
 		modified_url.search = url_params;
 
-		console.log(modified_url);
+		// console.log(modified_url);
 		const json_path = this.json_path_prefix + this.commander_decks.get(url_params.get(this.commander_deck_param));
 		return [modified_url, json_path];
 	}
@@ -276,89 +276,79 @@ class page_data {
 
 		this.populate_decks_list();
 
-		$.when(
-			JSON_request(json_path),
-		).then(deck => {
-			for (const p in deck) {
-				deck[p] = deck[p].map(as_deck_entry);
+		JSON_request(json_path).then(deck => {
+			for (const subsection in deck) {
+				deck[subsection] = deck[subsection].map(as_deck_entry);
 			}
 
-			let flat_list = [];
-			for (const p in deck) {
-				for (const o in deck[p]) {
-					flat_list.push(deck[p][o]);
-				}
-			}
+			const cards = flat_entries(deck);
+			this.add_colors_and_icons(deck);
 
-			let change_to_text = flat_list;
-			document.getElementById("deck_text").textContent = as_text_deck(change_to_text);
-			document.getElementById("deck_select_button").onclick = select_element_by_id("deck_text");
-			document.getElementById("json_text").textContent = as_pretty_json(change_to_text);
-			document.getElementById("json_select_button").onclick = select_element_by_id("json_text");
+			this.request_missing_card_names(cards)
+			.then(values => this.request_card_names_to_ids(cards))
+			.then(values => {
 
-			{
-				const count_cards = (entries) => entries.reduce((accumulator, value) => accumulator + value.count, 0);
-
-				const subsection_to_icon = {
-					"commander": ["star"],
-					"main": ["file"],
-					"sideboard": ["exchange"],
-					"wants": ["cart", "plus"]
-				};
-
-				const ui_icon = subsection => {
-					const ret = subsection_to_icon[subsection];
-					if (ret !== undefined ) {
-						return ret;
-					} else {
-						return ["file", "outline"];
-					}
-				};
-
-				let colors = {};
-				if (deck.hasOwnProperty("commander")) {
-					colors.commander = "red";
-					if (deck.hasOwnProperty("main")) {
-						colors.main = "red";
-						if (count_cards(deck["commander"]) + count_cards(deck["main"]) == 100) {
-							colors.commander = "green";
-							colors.main = "green";
-						}
-					}
-				} else if (deck.hasOwnProperty("main")) {
-					colors.main = "red";
-					if (count_cards(deck["main"]) == 60) {
-						colors.main = "green";
-					}
-
-					if (deck.hasOwnProperty("sideboard")) {
-						colors.sideboard = "red";
-						if (count_cards(deck["sideboard"]) == 15) {
-							colors.sideboard = "green";
-						}
-					}
-				}
-
-				for (const p in deck) {
-					const color = (colors[p] === undefined) ? "blue" : colors[p];
-
-					document.getElementById("deck_subsection_menu").appendChild(deck_subsection_menu_item(p, "TODO", count_cards(deck[p]), ui_icon(p), color));
-				}
-
-			}
-
-			this.request_card_names_to_ids(flat_list, x => x.name).then(([success, error]) => {
-				// console.log(success);
-				// console.log(error);
-
-				for (const s of success) {
-					s[0].ids = s[1];
-				}
-
-				DOM_append(images_grid(flat_list, this.source));
+				this.fill_deck_text_boxes(cards);
+				DOM_append(images_grid(cards, this.source));
 				this.start_lazy_images_loading();
 			});
-		}, null);
+		});
+	}
+
+	fill_deck_text_boxes(cards) {
+		document.getElementById("deck_text").textContent = as_text_deck(cards);
+		document.getElementById("deck_select_button").onclick = select_element_by_id("deck_text");
+		document.getElementById("json_text").textContent = as_pretty_json(cards);
+		document.getElementById("json_select_button").onclick = select_element_by_id("json_text");
+	}
+
+	add_colors_and_icons(deck) {
+		const count_cards = (entries) => entries.reduce((accumulator, value) => accumulator + value.count, 0);
+
+		const subsection_to_icon = {
+			"commander": ["star"],
+			"main": ["file"],
+			"sideboard": ["exchange"],
+			"wants": ["cart", "plus"]
+		};
+
+		const ui_icon = subsection => {
+			const ret = subsection_to_icon[subsection];
+			if (ret !== undefined ) {
+				return ret;
+			} else {
+				return ["file", "outline"];
+			}
+		};
+
+		let colors = {};
+		if (deck.hasOwnProperty("commander")) {
+			colors.commander = "red";
+			if (deck.hasOwnProperty("main")) {
+				colors.main = "red";
+				if (count_cards(deck["commander"]) + count_cards(deck["main"]) == 100) {
+					colors.commander = "green";
+					colors.main = "green";
+				}
+			}
+		} else if (deck.hasOwnProperty("main")) {
+			colors.main = "red";
+			if (count_cards(deck["main"]) == 60) {
+				colors.main = "green";
+			}
+
+			if (deck.hasOwnProperty("sideboard")) {
+				colors.sideboard = "red";
+				if (count_cards(deck["sideboard"]) == 15) {
+					colors.sideboard = "green";
+				}
+			}
+		}
+
+		for (const subsection in deck) {
+			const color = (colors[subsection] === undefined) ? "blue" : colors[subsection];
+			document.getElementById("deck_subsection_menu").appendChild(deck_subsection_menu_item(subsection, "TODO", count_cards(deck[subsection]), ui_icon(subsection), color));
+		}
 	}
 
 	start_async_loading() {
@@ -378,31 +368,39 @@ class page_data {
 		);
 	}
 
-	request_card_names_to_ids(cards_list, name_extract_function = x => x) {
+	request_missing_card_names(cards) {
 		let requests = [];
-		for (const card of cards_list) {
-			const name = name_extract_function(card);
+		for (const card of cards) {
+			if (card.name != null) {
+				continue;
+			}
 			let url = new URL("/query", this.backend_url);
-			url.search = "name=" + name;
-			let attach_name_and_always_succeed = $.getJSON(url.href).then(
-				value => ({query:card, value:value}),
-				error => ({query:card, error:error})
-			);
-			requests.push(attach_name_and_always_succeed);
+			url.search = "multiverse_id=" + card.ids[0];
+			requests.push($.getJSON(url.href).then(
+				value => { card.name = value; },
+				error => ({error})
+			));
 		}
 
-		return Promise.all(requests).then(results => {
-			return results.reduce((accumulator, element) => {
-				if (element.hasOwnProperty('value')) {
-					accumulator[0].push([element.query, element.value]);
-				} else if (element.hasOwnProperty('error')) {
-					accumulator[1].push([element.query, element.error]);
-				} else {
-					console.assert(false, "missing property");
-				}
-				return accumulator;
-			}, [[], []]);
-		});
+		return Promise.all(requests);
+	}
+
+	request_card_names_to_ids(cards) {
+		let requests = [];
+		for (const card of cards) {
+			if (card.ids != []) {
+				continue;
+			}
+
+			let url = new URL("/query", this.backend_url);
+			url.search = "name=" + card.name;
+			requests.push($.getJSON(url.href).then(
+				value => { card.ids = value; },
+				error => ({error})
+			));
+		}
+
+		return Promise.all(requests);
 	}
 
 	async_complete(info, query) {

@@ -232,6 +232,12 @@ database read(mtg_api_args const &args) {
 	return ret;
 }
 
+bytes_view to_json::write(std::string const &s) const {
+	rapidjson::Document d;
+	d.SetString(s.data(), s.length(), d.GetAllocator());
+	return serialize(allocator, d);
+}
+
 bytes_view to_json::write(database const &database) const {
 	rapidjson::Document d;
 	d.SetObject();

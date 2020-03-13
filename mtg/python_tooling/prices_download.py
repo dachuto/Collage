@@ -1,14 +1,17 @@
 import argparse
-import concurrent.futures
+import datetime
 import enum
 import html.parser
 import http
 import http.client
 import json
 import re
+import signal
 import sys
 import threading
 import time
+
+import concurrent_do
 
 def strip_whitespace(s):
 	split = re.split(r"\s+", s)
@@ -17,7 +20,6 @@ def strip_whitespace(s):
 
 
 class matching_parser(html.parser.HTMLParser):
-
 	def __init__(self, pattern):
 		super().__init__()
 		self.found = []
@@ -39,7 +41,7 @@ def download(connection, multiverseid):
 	resource = "/Pages/Card/Details.aspx?multiverseid=" + str(multiverseid)
 	connection.request("GET", resource, headers = {"Connection":" keep-alive"})
 	response = connection.getresponse()
-	# print(response.getheaders())
+	print(response.getheaders())
 	content = response.read()
 	if response.status != http.HTTPStatus.OK.value:
 		if response.status != http.HTTPStatus.FOUND.value:
@@ -67,12 +69,10 @@ def eprint(*args, **kwargs):
 	print(*args, file=sys.stderr, **kwargs)
 
 class DOERS:
-
 	def __init__(self, first, last, connections):
 		self.connections = connections
 		self.first = first
 		self.last = last
-		self.i = self.first
 		self.data = [None] * (self.last)
 
 	def json(self):
@@ -86,75 +86,90 @@ class DOERS:
 		for _ in range(self.connections):
 			yield self.Inner()
 
-	def synchronous_generate(self, inner_instance):
-		if self.i >= self.last:
-			return None
+	def jobs(self):
+		yield from range(self.first, self.last)
 
-		tmp = self.i
-		self.i += 1
-		return tmp
-
-	def parallel_work(self, inner_instance, i):
+	def parallel_work(self, worker, job):
 		# self is shared!
-		return inner_instance.parallel_work(i)
+		return worker.parallel_work(job)
 
-	def synchronous_merge(self, inner_instance, i, work):
-		eprint(i, work)
-		self.data[i] = work
-
-	def synchronous_close(self, inner_instance):
-		inner_instance.synchronous_close()
+	def merge(self, worker, job, result):
+		eprint(job, result)
+		self.data[job] = result
 
 	class Inner:
-
 		def __init__(self):
 			self.connection = None
 
 		def parallel_work(self, i):
 			if self.connection is None:
-				self.connection = http.client.HTTPConnection("gatherer.wizards.com")
+				self.connection = http.client.HTTPSConnection("gatherer.wizards.com")
 
 			return get_data_for_id(self.connection, i)
 
-		def synchronous_close(self):
-			if self.connection is not None:
-				self.connection.close()
+import serialize
 
+class ScryfallAPI:
+	def __init__(self):
+		self.connection = http.client.HTTPSConnection("api.scryfall.com")
 
-class concurrent_do:
-	def __init__(self, doers, number_of_threads):
-		self.doers = doers
-		self.clients_executor = concurrent.futures.ThreadPoolExecutor(max_workers = number_of_threads)
+	def prices_request(self, multiverse_id):
+		# Watch for HTTP 429 too many requests (scryfall API guide)
+		# if response.status != http.HTTPStatus.OK.value:
+		resource = "/cards/multiverse/" + str(multiverse_id)
+		self.connection.request("GET", resource, headers = {"Connection":" keep-alive"})
+		response = self.connection.getresponse()
+		content = response.read()
+		# print(response.getheaders())
+		# print(response.status)
+		# print(content)
+		l = json.loads(content)
 
-	def close(self):
-		self.clients_executor.shutdown()
+		def check(p):
+			if p is None:
+				return None
+			try:
+				return float(p)
+			except ValueError:
+				return None
+		prices = l["prices"]
+		return (l["name"], check(prices["usd"]), check(prices["usd_foil"]), check(prices["eur"]), None, check(prices["tix"]), None)
 
-	def do(self):
-		to_do = set()
-		for x in self.doers.workers():
-			self.master_continue(to_do, x)
+class MockAPI:
+	def prices_request(self, multiverse_id):
+		return ("Mock Card", 1.0, 2.0, 3.0, None, 5.0, None)
 
-		while to_do:
-			done, not_done = concurrent.futures.wait(to_do, timeout=None, return_when=concurrent.futures.FIRST_COMPLETED)
-			to_do = not_done
-			for future in done:
-				x, i, work = future.result()
-				self.doers.synchronous_merge(x, i, work)
-				self.master_continue(to_do, x)
-
-	def master_continue(self, futures_set, x):
-		i = self.doers.synchronous_generate(x)
-		if i is None:
-			self.doers.synchronous_close(x)
-			return
-		future = self.clients_executor.submit(self.worker_work, x, i)
-		futures_set.add(future)
-
-	def worker_work(self, x, i):
-		return x, i, self.doers.parallel_work(x, i)
-
+def signal_handler_raise_exception(signum, frame):
+	raise OSError("Arbitrary string. Signal " + str(signum))
 
 if __name__ == "__main__":
+	multiverse_ids = []
+
+	for line in sys.stdin.readlines():
+		multiverse_ids.append(int(line))
+
+	a = ScryfallAPI()
+	# a = MockAPI()
+
+	dump = []
+	signal.signal(signal.SIGTERM, signal_handler_raise_exception)
+	try:
+		for multiverse_id in multiverse_ids:
+			time.sleep(1.0 / 8.0)
+			r = a.prices_request(multiverse_id)
+			now = datetime.datetime.utcnow()
+			rr = serialize.PriceRecord(multiverse_id, *r[1:], now.year, now.month, now.day)
+			print(r[0], multiverse_id, rr.USD, rr.EUR)
+			dump.append(rr)
+
+	except BaseException as e:
+		print(e.__class__.__name__, str(e))
+	finally:
+		serialize.to_file("e_data", dump) # cleanup
+
+	# print(list(from_file("e_data")))
+
+if __name__ == "__main__2":
 	parser = argparse.ArgumentParser(description='Downloads data from the gatherer.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 	parser.add_argument('--connections', default=8, type=int)
 	parser.add_argument('--threads', default=4, type=int)
@@ -166,8 +181,8 @@ if __name__ == "__main__":
 
 	d = DOERS(args.first, args.last, args.connections)
 	try:
-		z = concurrent_do(d, args.threads)
-		z.do()
+		z = concurrent_do.concurrent_do(d, args.threads)
+		z.start()
 		z.close()
 	finally:
 		d.json()

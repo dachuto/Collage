@@ -1,17 +1,29 @@
 import argparse
 import json
+import datetime
 
 class filter_merge:
 	def __init__(self):
-		self.merged = dict()
+		# self.merged = dict()
+		self.merged = []
 
 	def extract(self, data):
-		for c in data["DOM"]["cards"]:
-			self.merged[c["name"]] = [1]
+		for (set_name, values) in data.items():
+			x = datetime.datetime.strptime(values["releaseDate"], "%Y-%m-%d")
+			if x.year < 1995:
+				continue
+			for c in values["cards"]:
+				if "multiverseId" in c:
+					self.merged.append((c["multiverseId"], x))
 
 	def done(self):
-		print(json.dumps(self.merged, indent="\t", separators=(",", ":"), sort_keys=True))
+		self.merged.sort(key = lambda x : x[1])
+		for (a, b) in self.merged:
+			print(a)
 
+# 1 get an ordered list of multiverse id's
+# 2 for ID process data request
+# 3 put it into database
 
 class invert_map:
 	def __init__(self):
