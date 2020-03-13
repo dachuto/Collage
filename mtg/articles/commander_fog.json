@@ -1,5 +1,5 @@
 {
-"commander":["Estrid, the Masked"],
+"commander":["Tuvasa the Sunlit"],
 "main":
 [
 
@@ -7,9 +7,6 @@
 "Temple Bell",
 "Walking Archive",
 "Kumena's Awakening",
-"Game Plan",
-"Commit",
-"Emergency Powers",
 "Prosperity",
 "Folio of Fancies",
 "Kami of the Crescent Moon",
@@ -17,7 +14,6 @@
 "Well of Ideas",
 "Otherworld Atlas",
 
-"Psychic Spiral",
 "Urban Evolution",
 "Nissa's Renewal",
 
@@ -30,7 +26,6 @@
 "Defend the Hearth",
 "Druid's Deliverance",
 "Encircling Fissure",
-"Energy Arc",
 "Ethereal Haze",
 "Fog",
 "Harmless Assault",
@@ -49,57 +44,34 @@
 "Spore Frog",
 "Winds of Qal Sisma",
 
-"Basilica Guards",
 "Fog Bank",
 "Wall of Blossoms",
-"Archon of Sun's Grace",
-"Rhox War Monk",
-"Blazing Archon",
-"Kefnet the Mindful",
-"Manor Gargoyle",
-"Stuffy Doll",
-"Pariah",
-"Darksteel Gargoyle",
 "Seht's Tiger",
 
 "Sandwurm Convergence",
-"Stormtide Leviathan",
-"Teferi's Moat",
-"War Tax",
-"Web of Inertia",
-"Archon of Absolution",
 
 "Prahv, Spires of Order",
 
-
-"Worship",
-"Words of Worship",
-"Battletide Alchemist",
 "Blessed Reversal",
-"Overrule",
-"Weather the Storm",
-"Pulse of Murasa",
 "Riot Control",
 "Congregate",
-"Chant of Vitu-Ghazi",
 "Wing Shards",
-"Heliod's Intervention"
+"Heliod's Intervention",
+
+"Clear the Mind",
+"Learn from the Past",
+"Gaea's Blessing",
+"Psychic Spiral",
+"Game Plan",
+"Commit",
+"Emergency Powers",
 
 "Honden of Cleansing Fire",
 "Honden of Seeing Winds",
 "Honden of Life's Web",
-"Lashknife Barrier",
-"Teferi's Moat",
-"Martyr's Bond",
-"Satyr Enchanter",
-"Mesa Enchantress",
-"Tuvasa the Sunlit",
 "Eidolon of Blossoms",
 "Bounty of the Luxa",
 "Future Sight",
-"Auramancer",
-"Lotus-Eye Mystics",
-"Soul Snare",
 "Mirrormade",
 "Fumigate",
 "Rout",
@@ -129,12 +101,34 @@
 ],
 "sideboard":
 [
-"Clear the Mind",
-"Mark of Asylum",
-"Squirrel Nest"
+"Energy Arc",
+"Chant of Vitu-Ghazi",
+"Stormtide Leviathan",
+"Teferi's Moat",
+"War Tax",
+"Web of Inertia",
+"Archon of Absolution",
+"Overrule",
+"Weather the Storm",
+"Pulse of Murasa",
+"Teferi's Moat",
+"Satyr Enchanter",
+"Mesa Enchantress",
+"Worship",
+"Words of Worship",
+"Battletide Alchemist",
+"Archon of Sun's Grace",
+"Blazing Archon",
+"Kefnet the Mindful",
+"Manor Gargoyle",
+"Stuffy Doll",
+"Pariah",
+"Darksteel Gargoyle",
+"Memory's Journey"
 ],
 "wants":
 [
-"Words of Wilding"
+"Words of Wilding",
+"Moment's Peace"
 ]
 }
