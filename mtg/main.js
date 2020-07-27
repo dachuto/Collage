@@ -388,7 +388,7 @@ class page_data {
 	request_card_names_to_ids(cards) {
 		let requests = [];
 		for (const card of cards) {
-			if (card.ids != []) {
+			if (card.ids.length > 0) {
 				continue;
 			}
 
