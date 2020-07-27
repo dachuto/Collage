@@ -67,8 +67,8 @@
 "Rush of Knowledge",
 "Saheeli's Artistry",
 "Roar of Reclamation",
-"Soulscour",
 "Battle at the Bridge",
+"Danse of the Manse",
 
 "Vivid Marsh",
 "Vivid Meadow",
@@ -106,6 +106,7 @@
 ],
 "sideboard":
 [
+"Soulscour",
 "Mycosynth Wellspring",
 "Merchant's Dockhand",
 "Wayfarer's Bauble",

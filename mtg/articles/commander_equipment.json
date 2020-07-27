@@ -9,9 +9,7 @@
 "Lone Rider",
 "Magus of the Balance",
 "Relic Seeker",
-"Restoration Specialist",
 "War Priest of Thune",
-"Kor Outfitter",
 "Precinct Captain",
 "Silver Knight",
 "White Knight",
@@ -23,7 +21,6 @@
 "Riftmarked Knight",
 "Kemba, Kha Regent",
 "Foundry Inspector",
-"Palladium Myr",
 "Harvest Hand",
 "Daring Archaeologist",
 "Guardian of the Guildpact",
@@ -41,14 +38,12 @@
 "Manriki-Gusari",
 "Mask of Avacyn",
 "Swiftfoot Boots",
-"True-Faith Censer",
 "Butcher's Cleaver",
 "Heirloom Blade",
 "Loxodon Warhammer",
 "Magebane Armor",
 "Sigiled Sword of Valeron",
 "Slayer's Plate",
-"Strider Harness",
 "Forebear's Blade",
 "Bonehoard",
 "Haunted Plate Mail",
@@ -68,6 +63,13 @@
 "Loreseeker's Stone",
 "Parhelion II",
 
+"Stone Haven Outfitter",
+"Danitha Capashen, Paragon",
+"Emeria Shepherd",
+"Acclaimed Contender",
+"Lavabrink Venturer",
+"Adarkar Valkyrie",
+
 "Secluded Steppe",
 "Drifting Meadow",
 "Desert of the True",
@@ -82,16 +84,18 @@
 ],
 "sideboard":
 [
-"Silverblade Paladin",
-"Twilight Shepherd"
+"Twilight Shepherd",
+"Restoration Specialist",
+"Kor Outfitter",
+"Palladium Myr",
+"True-Faith Censer",
+"Strider Harness"
 ],
 "wants":
 [
+"Basri's Lieutenant",
 "Sram, Senior Edificer",
-"Stone Haven Outfitter",
-"Danitha Capashen, Paragon",
 "Heavenly Blademaster",
-"Emeria Shepherd",
 "Armament Master",
 "Mask of Memory",
 "Karoo"

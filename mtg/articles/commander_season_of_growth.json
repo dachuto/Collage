@@ -10,6 +10,7 @@
 "Setessan Tactics",
 "Cartouche of Strength",
 "Enlarge",
+"Primal Might",
 
 "Ranger's Guile",
 "Vines of Vastwood",
@@ -26,6 +27,7 @@
 "Epic Proportions",
 "Nylea's Emissary",
 "Wurmweaver Coil",
+"Colossification",
 
 "Prey's Vengeance",
 "Giant Growth",
@@ -63,8 +65,8 @@
 "Jungleborn Pioneer",
 "Sacred Wolf",
 "Troll Ascetic",
+"Garruk's Harbinger",
 
-"Managorger Hydra",
 "Staunch-Hearted Warrior",
 "Centaur Battlemaster",
 "Gargos, Vicious Watcher",
@@ -117,6 +119,8 @@
 "Mitotic Slime",
 "Feral Throwback",
 
+"Kogla, the Titan Ape",
+"Kalonian Twingrove",
 "Duskwatch Recruiter",
 "Jedit Ojanen of Efrava",
 "Guardian Project",
@@ -126,7 +130,7 @@
 "Jungle Basin",
 "Mosswort Bridge",
 "Treetop Village",
-{"name":"Forest", "count":77}
+{"name":"Forest", "count":79}
 ],
 "sideboard":
 [
@@ -148,7 +152,6 @@
 "Syr Faren, the Hengehammer",
 
 "Ulvenwald Tracker",
-"Kalonian Twingrove",
 "Witchstalker",
 "Jade Guardian",
 "Vine Mare",
