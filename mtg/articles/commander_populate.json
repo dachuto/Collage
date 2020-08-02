@@ -104,6 +104,7 @@
 "Vraska, Swarm's Eminence",
 "Oviya Pashiri, Sage Lifecrafter",
 "Penumbra Spider",
+"Wing Splicer",
 "Trostani's Summoner"
 ],
 "wants":
@@ -114,6 +115,9 @@
 "Vivid Crag",
 "Vivid Grove",
 
+"Sarkhan the Masterless",
+"Saheeli, Sublime Artificer",
+
 "Wake the Reflections",
 "Druid's Deliverance",
 "Sundering Growth",
@@ -121,7 +125,6 @@
 "Scion of Vitu-Ghazi",
 
 "Song of the Worldsoul",
-"Ghired, Conclave Exile",
 
 "Mirror Match",
 "Echo Storm",
@@ -131,14 +134,11 @@
 "Cackling Counterpart",
 "Progenitor Mimic",
 "Vital Splicer",
-"Wing Splicer",
 
 "Mitotic Slime",
 "Reef Worm",
 "Dragonmaster Outcast",
 "Thragtusk",
-"Bear's Companion",
-"Sarkhan the Masterless",
-"Saheeli, Sublime Artificer"
+"Bear's Companion"
 ]
 }

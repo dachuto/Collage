@@ -1,0 +1,111 @@
+{
+"commander":["Taigam, Ojutai Master"],
+"main":
+[
+
+"Spectral Sailor",
+
+"Vantress Gargoyle",
+
+"Bygone Bishop",
+"Aethersphere Harvester",
+"Warden of Evos Isle",
+"Kefnet the Mindful",
+"Spiketail Drakeling",
+
+"Archon of Absolution",
+"Aven Cloudchaser",
+"Emeria Angel",
+"Mist Raven",
+
+
+"Reveillark",
+"Sturmgeist",
+"Sky Hussar",
+"Sunscorch Regent",
+"Thryx, the Sudden Storm",
+"Windreaver",
+
+"Pristine Angel",
+"Azorius Skyguard",
+"Dawnbreak Reclaimer",
+
+"Sphinx of Lost Truths",
+"Windreader Sphinx",
+
+"Aethertide Whale",
+"Aethersquall Ancient",
+
+"Azorius Chancery",
+
+"Lonely Sandbar",
+"Secluded Steppe",
+"Tranquil Cove",
+"Sejiri Refuge",
+"Azorius Guildgate",
+"Meandering River",
+"Irrigated Farmland",
+"Myriad Landscape",
+"Terrain Generator",
+"Drownyard Temple",
+"Zoetic Cavern",
+"Temple of the False God",
+"Reliquary Tower",
+"Mystifying Maze",
+{"name":"Plains", "count":7},
+{"name":"Island", "count":17}
+],
+"sideboard":
+[
+"Learn from the Past",
+"Runic Repetition"
+],
+"wants":
+[
+"Sunblast Angel",
+"Unesh, Criosphinx Sovereign",
+"Twilight Shepherd",
+"Sphinx of Magosi",
+"Riddlemaster Sphinx",
+"Isperia, Supreme Judge",
+"Aboshan, Cephalid Emperor",
+"Scalpelexis",
+"Stormtide Leviathan",
+"Soulblade Djinn",
+"Thunderclap Wyvern",
+"Emeria Shepherd",
+"Sephara, Sky's Blade",
+"Chancellor of the Spires",
+"Favorable Winds",
+"Zetalpa, Primal Dawn",
+"Hoverguard Sweepers",
+"Misthollow Griffin",
+"Guardian Seraph",
+"Dust Elemental",
+"Cloudblazer",
+"Angler Drake",
+"Angel of Serenity",
+"Elite Guardmage",
+"Aven Wind Guide",
+"Ishai, Ojutai Dragonspeaker",
+"Sphinx of Foresight",
+"Sphinx of New Prahv",
+"Tower Geist",
+"Thieving Magpie",
+"Voice of All",
+"Cloudchaser Kestrel",
+"Empyrean Eagle",
+"Loyal Drake",
+"Skyscanner",
+"Stormbound Geist",
+"Tome Raider",
+"Wispmare",
+"Hypnotic Sprite",
+"Skycat Sovereign",
+"Stolen by the Fae",
+"Sacred Mesa",
+"Atemsis All-Seeing",
+"Reconnaissance Mission",
+"Time Wipe"
+]
+}

@@ -218,8 +218,9 @@ class page_data {
 		this.commander_decks.set("cycling *", "commander_cycling.json");
 		this.commander_decks.set("equipment White", "commander_equipment.json");
 		this.commander_decks.set("Estrid", "commander_estrid.json");
+		this.commander_decks.set("flying*", "commander_flying.json");
 		this.commander_decks.set("Firesong *", "commander_firesong.json");
-		this.commander_decks.set("flashback *", "commander_flashback.json");
+		this.commander_decks.set("Sevinne - Flashback", "commander_flashback.json");
 		this.commander_decks.set("Grenzo", "commander_grenzo.json");
 		this.commander_decks.set("Kadena *", "commander_kadena.json");
 		this.commander_decks.set("Merieke Ri Berit", "commander_merieke.json");

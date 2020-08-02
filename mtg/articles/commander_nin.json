@@ -88,19 +88,7 @@
 "Bloodshot Trainee",
 "Orcish Artillery",
 "Stalking Yeti",
-"Magus of the Mind"
-],
-"wants":
-[
-"Tahngarth, Talruum Hero",
-"Spikeshot Goblin",
-"Ring of Valkas",
-"Loxodon Warhammer",
-"Dominating Licid",
-"Viashino Heretic",
 "Jaya Ballard, Task Mage",
-"Beguiler of Wills",
-"Riptide Director",
 "Timestream Navigator",
 "Dwarven Blastminer",
 "Dwarven Miner",
@@ -108,10 +96,20 @@
 "Godo, Bandit Warlord",
 "Reveka, Wizard Savant",
 "Gelectrode",
-"Hanweir Battlements",
+"Ring of Valkas",
 "Hammer of Purphoros",
-"Dack's Duplicate",
 "Ogre Battledriver",
+"Riptide Director",
+"Magus of the Mind"
+],
+"wants":
+[
+"Loxodon Warhammer",
+"Dominating Licid",
+"Viashino Heretic",
+"Beguiler of Wills",
+"Hanweir Battlements",
+"Dack's Duplicate",
 "Keeper of the Mind"
 ]
 }
