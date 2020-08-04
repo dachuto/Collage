@@ -12,12 +12,12 @@ import threading
 import time
 
 import concurrent_do
+import mtg_json
 
 def strip_whitespace(s):
 	split = re.split(r"\s+", s)
 	none_removed = list(filter(None, split))
 	return " ".join(none_removed)
-
 
 class matching_parser(html.parser.HTMLParser):
 	def __init__(self, pattern):
@@ -107,7 +107,25 @@ class DOERS:
 
 			return get_data_for_id(self.connection, i)
 
-import serialize
+def merge_alternate(a, b):
+	k = min(len(a), len(b))
+	result = [None] * (k * 2)
+	result[::2] = a[:k]
+	result[1::2] = b[:k]
+	result.extend(a[k:])
+	result.extend(b[k:])
+	return result
+
+def remove_duplicates_keeping_order(l):
+	ret = []
+	s = set()
+	for x in l:
+		if not x in s:
+			s.add(x)
+			ret.append(x)
+	return ret
+
+import price_record
 
 class ScryfallAPI:
 	def __init__(self):
@@ -143,32 +161,67 @@ def signal_handler_raise_exception(signum, frame):
 	raise OSError("Arbitrary string. Signal " + str(signum))
 
 if __name__ == "__main__":
-	multiverse_ids = []
+	parser = argparse.ArgumentParser(description='Prepare data from mtgjson.com files. Take multiple json files and output one.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+	parser.add_argument('prices', help='price files', nargs='*')
+	parser.add_argument('--mtg-json', help='mtg json data file')
+	parser.add_argument('--output', help='output price file', required=True)
+	parser.add_argument('--merge', action='store_true')
+	parser.add_argument('--verbose', action='store_true')
 
-	for line in sys.stdin.readlines():
-		multiverse_ids.append(int(line))
+	args = parser.parse_args()
+	prices_by_multiverse_id = price_record.merge(args.prices)
+
+	print("Found ", len(prices_by_multiverse_id), "records.")
+	query_list = []
+
+	if args.mtg_json is not None:
+		data = mtg_json.mtg_json()
+		with open(args.mtg_json, 'r') as f:
+			data.extract(json.load(f))
+
+		print("Found ", len(data.by_multiverse_id), "unique multiverse_ids.")
+		for (k, v) in data.by_multiverse_id.items():
+			if not k in prices_by_multiverse_id:
+				query_list.append(k)
+		query_list.sort(reverse=True)
+
+	if args.verbose:
+		print("Calculating delays...")
+		now = datetime.datetime.utcnow()
+		one_divided_by_count = 1.0 / len(prices_by_multiverse_id)
+		total = datetime.timedelta()
+		for record in prices_by_multiverse_id.values():
+			then = price_record.date_from_record(record)
+			elapsed = now - then
+			total += elapsed * one_divided_by_count
+		print("Average price check delay", total)
+
+	sorted_by_date  = [r.multiverse_id for r in sorted(prices_by_multiverse_id.values(), key = lambda x: price_record.date_from_record(x))]
+	sorted_by_multiverse_id = sorted(prices_by_multiverse_id.keys(), reverse=True)
+	query_list += remove_duplicates_keeping_order(merge_alternate(sorted_by_date, sorted_by_multiverse_id))
 
 	a = ScryfallAPI()
 	# a = MockAPI()
 
-	dump = []
+	DELAY_BETWEEN_REQUESTS_IN_SECONDS = 0.1
+	dump = dict()
+	if args.merge:
+		dump = prices_by_multiverse_id
 	signal.signal(signal.SIGTERM, signal_handler_raise_exception)
 	try:
-		for multiverse_id in multiverse_ids:
-			time.sleep(1.0 / 8.0)
-			r = a.prices_request(multiverse_id)
-			now = datetime.datetime.utcnow()
-			rr = serialize.PriceRecord(multiverse_id, *r[1:], now.year, now.month, now.day)
-			print(r[0], multiverse_id, rr.USD, rr.EUR)
-			dump.append(rr)
-
-	except BaseException as e:
-		print(e.__class__.__name__, str(e))
+		total = len(query_list)
+		for i, multiverse_id in enumerate(query_list, start=1):
+			time.sleep(DELAY_BETWEEN_REQUESTS_IN_SECONDS)
+			response = a.prices_request(multiverse_id)
+			record = price_record.make_price_record(multiverse_id, *response[1:])
+			print(response[0], multiverse_id, record.USD, record.EUR, "{} of {}".format(i, total))
+			dump[multiverse_id] = record
+	#except BaseException as e:
+	#	print(e.__class__.__name__, str(e))
 	finally:
-		serialize.to_file("e_data", dump) # cleanup
+		price_record.to_file(args.output, dump.values()) # cleanup
 
-	# print(list(from_file("e_data")))
-
+# this is just old code just to test getting data from official WotC site
 if __name__ == "__main__2":
 	parser = argparse.ArgumentParser(description='Downloads data from the gatherer.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 	parser.add_argument('--connections', default=8, type=int)

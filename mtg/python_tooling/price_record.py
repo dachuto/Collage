@@ -80,3 +80,33 @@ def to_file(file_name, records):
 	with open(file_name, "wb") as file:
 		for e in records:
 			file.write(to_bytes(e))
+
+#TODO: rethink those names
+import datetime
+
+def make_price_record(multiverse_id, USD, USD_foil, EUR, EUR_foil, TIX, TIX_foil):
+	now = datetime.datetime.utcnow()
+	return PriceRecord(multiverse_id, USD, USD_foil, EUR, EUR_foil, TIX, TIX_foil, now.year, now.month, now.day)
+
+def date_from_record(r):
+	return datetime.datetime(r.year, r.month, r.day)
+
+def merge(input_files):
+	def newest(old, record):
+		if date_from_record(record) > date_from_record(old):
+			return record
+		return old
+
+	fresh = dict()
+
+	for name in input_files:
+		f = from_file(name)
+		for record in f:
+			old = fresh.get(record.multiverse_id)
+			updated = old
+			if old is None:
+				updated = record
+			else:
+				updated = newest(old, record)
+			fresh[record.multiverse_id] = updated
+	return fresh

@@ -1,87 +1,9 @@
 import argparse
+import logging
 import json
-import datetime
-import dataclasses
 
-import serialize
-
-class price_record:
-	def date_from_record(r):
-		return datetime.datetime(r.year, r.month, r.day)
-
-	def merge(input_files):
-		def newest(old, record):
-			if date_from_record(record) > date_from_record(old):
-				return record
-			return old
-
-		fresh = dict()
-
-		for name in input_files:
-			f = serialize.from_file(name)
-			for record in f:
-				old = fresh.get(record.multiverse_id)
-				updated = old
-				if old is None:
-					updated = record
-				else:
-					updated = newest(old, record)
-				fresh[record.multiverse_id] = updated
-		return fresh
-
-class filter_merge:
-	def __init__(self):
-		# self.merged = dict()
-		self.merged = []
-		self.by_name = dict()
-		self.by_multiverse_id = dict()
-		self.by_mcm_id = dict()
-
-	def extract(self, data):
-		for (set_name, values) in data.items():
-			# x = datetime.datetime.strptime(values["releaseDate"], "%Y-%m-%d")
-			for v in values["cards"]:
-				name = v["name"]
-				multiverse_id = v.get("multiverseId", None)
-				mcm_id = v.get("mcmId", None)
-				self.by_name.setdefault(name, []).append((multiverse_id, mcm_id))
-				if multiverse_id is not None:
-					self.by_multiverse_id.setdefault(multiverse_id, []).append((name, mcm_id))
-				if mcm_id is not None:
-					self.by_mcm_id.setdefault(mcm_id, []).append((name, multiverse_id))
-
-	def done(self):
-		pass
-		# for (k, v) in self.by_name.items():
-		# for (k, v) in self.by_multiverse_id.items():
-		# for (k, v) in self.by_mcm_id.items():
-		# 	print(len(v), k)
-
-class invert_map:
-	def __init__(self):
-		self.merged = dict()
-
-	def extract(self, data):
-		for k, names in data.items():
-			names_as_string = " // ".join(names)
-			if names_as_string in self.merged:
-				self.merged[names_as_string].append(k)
-			else:
-				self.merged[names_as_string] = [k]
-
-	def done(self):
-		print(json.dumps(self.merged))
-
-class just_merge:
-	def __init__(self):
-		self.merged = dict()
-
-	def extract(self, data):
-		for k, names in data.items():
-			self.merged[k] = names
-
-	def done(self):
-		print(json.dumps(self.merged))
+import price_record
+import mtg_json
 
 #################################
 
@@ -96,7 +18,7 @@ def cardmarket_csv_to_id_and_name(f):
 ###########################
 
 def worth_it(market_price, individual_price):
-	FLAT_PER_UNIT = 0.1
+	FLAT_PER_UNIT = 0.1 # for international shipping
 	investment = individual_price + FLAT_PER_UNIT
 	profit = market_price - investment
 	return profit / investment
@@ -129,8 +51,37 @@ def cool_bar_string(length, max_value, value):
 	return bar_string(i).ljust(length, " ")
 
 ############################
+def multiverse_id_with_best_price(price_by_multiverse_id, multiverse_ids):
+	def is_new_better_considering_nones(old_price, new_price):
+		if new_price is None:
+			return False
+		if old_price is None:
+			return True
+		return old_price > new_price
+
+	best_price = None
+	best_multiverse_id = None
+	for multiverse_id in multiverse_ids:
+		if multiverse_id is None:
+			continue
+		record = price_by_multiverse_id.get(multiverse_id, None)
+		if record is None:
+			continue
+		next_price = record.EUR #TODO: do we need foil or USD
+		if is_new_better_considering_nones(best_price, next_price):
+			best_price = next_price
+			best_multiverse_id = multiverse_id
+	return best_multiverse_id
+
+############################
+
+CONVERSION_USD_TO_EUR = 0.85
+
 #TODO: recover this functionality
-if False:
+if __name__ == "__main__3":
+	parser = argparse.ArgumentParser(description='Prepare data from mtgjson.com files. Take multiple json files and output one.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+	parser.add_argument('input_files', help='in json format', nargs='*')
+
 	group = parser.add_mutually_exclusive_group(required=True)
 	group.add_argument('--merge', nargs=1, help='merge to', metavar='output_file')
 	group.add_argument('--list', action='store_true', help='list included multiverse_id')
@@ -176,86 +127,58 @@ if False:
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='Prepare data from mtgjson.com files. Take multiple json files and output one.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-	parser.add_argument('input_files', help='in json format', nargs='*')
+	parser.add_argument('--mtg-json', help='mtg json data file', required=True)
 	parser.add_argument('--prices', help='serialized binary format', nargs='*', required=True)
 	parser.add_argument('--user', help='cardmarket user data file', required=True)
-	group = parser.add_mutually_exclusive_group(required=True)
-	group.add_argument('--filter', action='store_true', help='...')
-	group.add_argument('--invert', action='store_true', help='invert top level maps {key : value} => {value : [keys]}')
-	group.add_argument('--merge', action='store_true', help='merge top level maps')
+	parser.add_argument('--mcm-products', help='cardmarket products data file', required=True)
+	parser.add_argument('--wants', help='personal wants txt')
+
+	# group = parser.add_mutually_exclusive_group(required=True)
+	# group.add_argument('--filter', action='store_true', help='...')
+	# group.add_argument('--invert', action='store_true', help='invert top level maps {key : value} => {value : [keys]}')
+	# group.add_argument('--merge', action='store_true', help='merge top level maps')
 
 	args = parser.parse_args()
 
-	merger = None
-	if args.filter:
-		merger = filter_merge()
-	if args.invert:
-		merger = invert_map()
-	if args.merge:
-		merger = just_merge()
+	wants_set = None
+	if args.wants:
+		with open(args.wants) as f:
+			wants_set = set(line.rstrip() for line in f)
 
-	for name in args.input_files:
-		with open(name, 'r') as f:
-			# pass
-			data = json.load(f)
-			merger.extract(data)
-	merger.done()
-
+	logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
+	logging.info("Loading prices...")
 	prices_by_multiverse_id = price_record.merge(args.prices)
+	logging.info("Found {} prices...".format(len(prices_by_multiverse_id)))
 
+	logging.info("Loading mtg_json...")
+	mtg_json_data = mtg_json.mtg_json()
+	with open(args.mtg_json, 'r') as f:
+		mtg_json_data.extract(json.load(f))
+
+	logging.info("Loading MCM items...")
 	mcm_csv = dict()
-	for t in cardmarket_csv_to_id_and_name(open("../content")):
+	for t in cardmarket_csv_to_id_and_name(open(args.mcm_products)):
 		assert t[0] not in mcm_csv
 		mcm_csv[t[0]] = t
 
-	def update_considering_nones(old_price, new_price):
-		if new_price is None:
-			return old_price
-		if old_price is None:
-			return new_price
-		if old_price < new_price:
-			return old_price
-		return new_price
-
-	prices_by_name = dict()
-	for (name, v) in merger.by_name.items():
-		best_price = None
-		for (multiverse_id, mcm_id) in v:
-			if multiverse_id is not None:
-				record = prices_by_multiverse_id.get(multiverse_id, None)
-				if record is not None:
-					best_price = update_considering_nones(best_price, record.EUR)
-		prices_by_name[name] = best_price
-		# if best_price is None:
-		# 	print("NONE for ", name, v)
-
-	prices_by_mcm_id = dict()
-	for (mcm_id, v) in merger.by_mcm_id.items():
-		best_price = None
-		for (name, multiverse_id) in v:
-			name_fallback = True
-			# COPY PASTE!
-			if multiverse_id is not None:
-				record = prices_by_multiverse_id.get(multiverse_id, None)
-				if record is not None:
-					best_price = update_considering_nones(best_price, record.EUR)
-					name_fallback = True # only change!
-			#######
-			if name_fallback:
-				best_price = update_considering_nones(best_price, prices_by_name[name])
-		prices_by_mcm_id[mcm_id] = best_price
-
+	logging.info("User...")
 	deals = []
 	#TODO: hardcodeed filenames
 	#TODO: mcm api strings magic
 	with open(args.user, 'r') as f:
 		data = json.load(f)
 		for d in data:
+			# TODO: d["comments"]
 			mcm_id = d["idProduct"]
+			if not mcm_id in mcm_csv:
+				print("Missing MCM product")
+				continue
+
 			[mcm_csv_id, mcm_csv_name, mcm_csv_is_single] = mcm_csv.get(mcm_id)
+			print_item_info = "{} {}".format(mcm_csv_name, mcm_csv_id)
 			assert mcm_csv_id == mcm_id
 			if not mcm_csv_is_single:
-				print("Not MtG single:", mcm_csv_name)
+				print("Not MtG single.", print_item_info)
 				continue
 
 			price_eur = d["priceEUR"]
@@ -264,21 +187,46 @@ if __name__ == "__main__":
 			if is_playset:
 				price_eur /= 4.0
 
-			market_price = prices_by_mcm_id.get(mcm_id, None)
-			if market_price is None:
-				print("Missing price € for", mcm_csv_name)
+			considered_multiverse_ids = []
+			name_fallback = False
+			if not mcm_id in mtg_json_data.by_mcm_id:
+				print("No mtg_json MCM. Fallback...", print_item_info)
+				name_fallback = True
+			else:
+				considered_multiverse_ids = (x[1] for x in mtg_json_data.by_mcm_id.get(mcm_id))
+
+			if name_fallback:
+				if not mcm_csv_name in mtg_json_data.by_name:
+					print("Missing mtg_json name!!!", print_item_info)
+					continue
+				else:
+					considered_multiverse_ids = (x[0] for x in mtg_json_data.by_name.get(mcm_csv_name))
+
+			best_price_multiverse_id = multiverse_id_with_best_price(prices_by_multiverse_id, considered_multiverse_ids)
+			if best_price_multiverse_id is None:
+				print("Missing price €.", print_item_info)
 				continue
 
-			if is_foil:
-				FOIL_PRICE_MULTIPLIER = 4.0
+			record = prices_by_multiverse_id.get(best_price_multiverse_id)
+			market_price = record.EUR
+
+			if is_foil: #TODO: lame, use EUR_foil (at this time I only sometimes have USD)
+				FOIL_PRICE_MULTIPLIER = 3.0
 				market_price *= FOIL_PRICE_MULTIPLIER
+				if not record.USD_foil is None:
+					market_price = min(market_price, record.USD_foil * CONVERSION_USD_TO_EUR)
 
 			how_good = worth_it(market_price, price_eur)
-			deals.append((how_good, price_eur, market_price, mcm_csv_name, is_foil, is_playset))
+			deals.append((how_good, price_eur, market_price, mcm_csv_name, is_foil, is_playset, price_record.date_from_record(record), name_fallback))
 
 	deals.sort(key=lambda x: x[0])
+	info_format = "{:7.2f} {:7.2f} {:7.2f} {:10} {} {} {:30} {} {} {}"
+	head_format = "{:7} {:7} {:7} {:10} {} {} {:30} {} {} {}"
 	for x in deals:
-		bar = cool_bar_string(10, 5.0, x[1])
+		bar = cool_bar_string(10, 2.0, x[1])
 		playset = "④" if x[5] else " "
 		foil = "☆" if x[4] else " "
-		print("{:6.3f} {:7.2f} {:7.2f} {:10} {} {} {}".format(x[0], x[1], x[2], bar, foil, playset, x[3]))
+		name_fallback = "?" if x[7] else " "
+		wanted = "X" if x[3] in wants_set else " "
+		print(info_format.format(x[0], x[1], x[2], bar, foil, playset, x[3], x[6], name_fallback, wanted))
+	print(head_format.format("HowGood", "User", "Market", "€", "foil", "playset", "name", "date", "fallback", "wanted"))
