@@ -39,7 +39,8 @@ function flat_entries(deck) {
 }
 
 function as_text_deck(entries) {
-	let sorted = Array.from(entries).sort((a, b) => a.name.localeCompare(b.name));
+	//let sorted = Array.from(entries).sort((a, b) => a.name.localeCompare(b.name));
+	let sorted = entries;
 	let text = "";
 	for (const e of sorted) {
 		text += e.count + " " + e.name + "\n";
