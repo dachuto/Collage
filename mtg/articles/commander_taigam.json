@@ -8,7 +8,6 @@
 "Ponder",
 "Brainstorm",
 "Peek",
-"Equal Treatment",
 "Anticipate",
 "Everdream",
 "Peer Through Depths",
@@ -31,6 +30,7 @@
 "Tidings",
 "Pore Over the Pages",
 "The Mirari Conjecture",
+"Thassa's Intervention",
 
 "Repulse",
 "Crashing Tide",
@@ -83,12 +83,14 @@
 "Temple of the False God",
 "Reliquary Tower",
 "Mystifying Maze",
+"Labyrinth of Skophos",
 {"name":"Plains", "count":7},
-{"name":"Island", "count":17}
+{"name":"Island", "count":16}
 ],
 "sideboard":
 [
 "Dovin's Acuity",
+"Equal Treatment",
 "Slip Through Space",
 "Opt",
 "Whispers of the Muse",

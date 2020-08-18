@@ -1,0 +1,79 @@
+{
+"commander":["Jeleva, Nephalia's Scourge"],
+"main":
+[
+"Bond of Insight",
+
+"Dakra Mystic",
+"Manic Scribe",
+"Fathom Feeder",
+"Lore Broker",
+"Magus of the Wheel",
+"Scalpelexis",
+"Extractor Demon",
+"Sire of Stagnaton",
+"Oblivion Sower",
+"Dragon Mage",
+"Szadek, Lord of Secrets",
+"Fleet Swallower",
+
+"Ghoulcaller's Bell",
+"Knowledge Pool",
+
+"Prosperity",
+"Fascination",
+"Skyscribing",
+
+{"name":"Island", "count":21},
+{"name":"Swamp", "count":10}
+],
+"sideboard":
+[
+"Magus of the Jar",
+"Folio of Fancies",
+"Uba Mask",
+"Temporal Cascade",
+"Minds Aglow",
+"Khorvath's Fury",
+"Runehorn Hellkite",
+"Psychic Surgery",
+"Psychic Corrosion",
+"Drowned Secrets",
+"Sphinx's Tutelage",
+"Eye Collector",
+"Grisly Spectacle",
+"Induce Paranoia",
+"Necromaster Dragon",
+"Patient Rebuilding",
+"Mindwrack Harpy"
+],
+"wants":
+[
+"Chancellor of the Spires",
+"Sphinx Mindbreaker",
+"Pyxis of Pandemonium",
+"Dreamborn Muse",
+"Psychic Spiral",
+"Chill of Foreboding",
+"Whispering Madness",
+"Dreadwaters",
+"Memory Erosion",
+"Windfall",
+"Crumbling Sanctuary",
+"Teferi's Tutelage",
+"Geth, Lord of the Vault",
+"Gyruda, Doom of Depths",
+"Extract from Darkness",
+"Well of Ideas",
+"Temple Bell",
+"Otherworld Atlas",
+"Dead Man's Chest",
+"Shared Trauma",
+"Nightmare Incursion",
+"Elsewhere Flask",
+"Barbed Shocker",
+"Vantress Gargoyle",
+"Dictate of Kruphix",
+"Sadistic Sacrament",
+]
+}

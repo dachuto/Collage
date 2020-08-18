@@ -85,6 +85,8 @@
 "Dismal Backwater",
 "Scoured Barrens",
 
+"Sejiri Refuge",
+
 "Azorius Guildgate",
 
 "Ancient Den",
@@ -101,7 +103,7 @@
 "Temple of the False God",
 
 {"name":"Plains", "count":1},
-{"name":"Island", "count":8},
+{"name":"Island", "count":7},
 {"name":"Swamp", "count":4}
 ],
 "sideboard":
@@ -125,10 +127,10 @@
 "Darkwater Catacombs",
 "Sunken Hollow",
 "Dimir Guildgate",
-"Sejiri Refuge",
 "Jwar Isle Refuge",
 "Scourglass",
 "Shimmer Dragon",
+"Mazemind Tome",
 "Clock of Omens"
 ]
 }

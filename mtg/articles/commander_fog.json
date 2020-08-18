@@ -2,17 +2,8 @@
 "commander":["Tuvasa the Sunlit", "Angus Mackenzie"],
 "main":
 [
-
-"Dictate of Kruphix",
-"Temple Bell",
-"Walking Archive",
 "Kumena's Awakening",
-"Prosperity",
 "Folio of Fancies",
-"Kami of the Crescent Moon",
-"Skyscribing",
-"Well of Ideas",
-"Otherworld Atlas",
 
 "Urban Evolution",
 "Nissa's Renewal",
@@ -52,6 +43,7 @@
 
 "Prahv, Spires of Order",
 
+"Kefnet the Mindful",
 "Blessed Reversal",
 "Riot Control",
 "Congregate",
@@ -66,15 +58,10 @@
 "Commit",
 "Emergency Powers",
 
-"Honden of Cleansing Fire",
-"Honden of Seeing Winds",
-"Honden of Life's Web",
 "Eidolon of Blossoms",
 "Bounty of the Luxa",
 "Future Sight",
 "Mirrormade",
-"Fumigate",
-"Rout",
 
 "Vivid Meadow",
 "Vivid Creek",
@@ -101,6 +88,14 @@
 ],
 "sideboard":
 [
+"Skyscribing",
+"Dictate of Kruphix",
+"Temple Bell",
+"Walking Archive",
+"Prosperity",
+"Kami of the Crescent Moon",
+"Well of Ideas",
+"Otherworld Atlas",
 "Energy Arc",
 "Chant of Vitu-Ghazi",
 "Stormtide Leviathan",
@@ -119,7 +114,6 @@
 "Battletide Alchemist",
 "Archon of Sun's Grace",
 "Blazing Archon",
-"Kefnet the Mindful",
 "Manor Gargoyle",
 "Stuffy Doll",
 "Pariah",
@@ -128,6 +122,17 @@
 ],
 "wants":
 [
+"Folio of Fancies",
+"Ethereal Haze",
+"Pollen Lullaby",
+"Nissa's Renewal",
+"Riot Control",
+"Fog",
+"Clinging Mists",
+"Gaea's Blessing",
+"Angelsong",
+"Psychic Spiral",
+"Learn from the Past",
 "Words of Wilding",
 "Moment's Peace"
 ]

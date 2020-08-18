@@ -4,28 +4,29 @@
 [
 "Call of the Conclave",
 "Temmet, Vizier of Naktamun",
+"Alirios, Enraptured",
 "Champion of Wits",
-"Call of the Herd",
+"Saheeli, Sublime Artificer",
 "Feldon of the Third Path",
 "Replicate",
 "Mimic Vat",
 "Master Splicer",
+"Mythos of Illuna",
 "Vizier of Many Faces",
 "Heart-Piercer Manticore",
 "Aven Wind Guide",
 "Soul Foundry",
 "Angel of Sanctions",
-"Geist-Honored Monk",
 "Wingmate Roc",
+"Broodbirth Viper",
 "Glyph Keeper",
 "Zndrsplt's Judgment",
+"Sarkhan the Masterless",
 "Siege-Gang Commander",
-"Deep Forest Hermit",
+"Quartzwood Crasher",
 "Warden",
 "Mystic Genesis",
-"Lena, Selfless Champion",
 "Supplant Form",
-"Mirror March",
 "Honored Hydra",
 "Rampaging Baloths",
 "Spitting Image",
@@ -35,6 +36,7 @@
 "God-Pharaoh's Gift",
 "Clone Legion",
 
+"Selesnya Eulogist",
 "Wayfaring Temple",
 "Quasiduplicate",
 "Second Harvest",
@@ -52,15 +54,14 @@
 "Hour of Reckoning",
 
 "Sylvan Ranger",
-"Paradise Druid",
 "Reclamation Sage",
 "Dualcaster Mage",
 "Mulldrifter",
 "Altered Ego",
 "Circuitous Route",
 "Mystic Snake",
-"Mnemonic Wall",
 "Indrik Stomphowler",
+"Lena, Selfless Champion",
 
 "Aether Hub",
 "Exotic Orchard",
@@ -76,6 +77,7 @@
 "Seaside Citadel",
 
 "Azorius Chancery",
+"Boros Garrison",
 "Gruul Turf",
 "Izzet Boilerworks",
 "Selesnya Sanctuary",
@@ -89,56 +91,55 @@
 "Swiftwater Cliffs",
 "Thornwood Falls",
 
+"Graypelt Refuge",
+"Kazandu Refuge",
+
+"Krosan Verge",
 "Stirring Wildwood",
 
-{"name":"Plains", "count":4},
+{"name":"Plains", "count":2},
 {"name":"Island", "count":7},
 "Mountain",
-{"name":"Forest", "count":9}
+{"name":"Forest", "count":7}
 ],
 "sideboard":
 [
 "Urbis Protector",
 "Howling Giant",
-"Seed Guardian",
 "Vraska, Swarm's Eminence",
+"Call of the Herd",
+"Mirror March",
+"Seed Guardian",
+"Deep Forest Hermit",
 "Oviya Pashiri, Sage Lifecrafter",
 "Penumbra Spider",
 "Wing Splicer",
+"Geist-Honored Monk",
+"Paradise Druid",
 "Trostani's Summoner"
 ],
 "wants":
 [
-
 "Command Tower",
 "Mirrodin's Core",
 "Vivid Crag",
 "Vivid Grove",
 
-"Sarkhan the Masterless",
-"Saheeli, Sublime Artificer",
-
-"Wake the Reflections",
-"Druid's Deliverance",
-"Sundering Growth",
-"Rootborn Defenses",
 "Scion of Vitu-Ghazi",
-
 "Song of the Worldsoul",
+"Stolen Identity",
+"Saheeli's Artistry",
+"Reef Worm",
+"Progenitor Mimic",
+"Cackling Counterpart",
 
 "Mirror Match",
 "Echo Storm",
-"Stolen Identity",
-"Saheeli's Artistry",
 
-"Cackling Counterpart",
-"Progenitor Mimic",
 "Vital Splicer",
 
 "Mitotic Slime",
-"Reef Worm",
 "Dragonmaster Outcast",
-"Thragtusk",
-"Bear's Companion"
+"Thragtusk"
 ]
 }

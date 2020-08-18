@@ -26,28 +26,27 @@
 "Last Laugh",
 "Pestilence",
 "The Akroan War",
-"Doom Foretold",
 "The Eldest Reborn",
 "Traveling Plague",
 "Haphazard Bombardment",
 "Nettlevine Blight",
 
-"Bereavement",
 "Torment of Scarabs",
-"Creeping Dread",
 "Cruel Reality",
 
+"Spiritual Focus",
 "Thunderstaff",
 "Sphere of Grace",
 "Sphere of Law",
+"Fires of Invention",
 "Revenge of Ravens",
-"Lich's Mastery",
 
 "Dawn of Hope",
 "Death Pit Offering",
 "Outlaws' Merriment",
 "Marshal's Anthem",
 "Sigil of the Empty Throne",
+"Demonic Rising",
 
 "Monk Idealist",
 "Mesa Enchantress",
@@ -58,6 +57,7 @@
 "Blood Baron of Vizkopa",
 "Archon of Falling Stars",
 "Linvala, the Preserver",
+"Treasury Thrull",
 "Silent Sentinel",
 "Angel of Despair",
 
@@ -76,6 +76,9 @@
 "Vivid Meadow",
 "Vivid Crag",
 
+"Scoured Barrens",
+"Akoum Refuge",
+
 "Boros Garrison",
 "Orzhov Basilica",
 "Rakdos Carnarium",
@@ -92,14 +95,18 @@
 "Forgotten Cave",
 
 {"name":"Plains", "count":8},
-{"name":"Swamp", "count":11},
+{"name":"Swamp", "count":9},
 {"name":"Mountain", "count":5}
 ],
 "sideboard":
 [
 "Axis of Mortality",
+"Lich's Mastery",
+"Bereavement",
+"Doom Foretold",
 "Curse of Exhaustion",
 "Dingus Staff",
+"Creeping Dread",
 "Circle of Flame",
 "Captive Audience",
 "Subversion",
@@ -114,9 +121,10 @@
 "wants":
 [
 "Vivid Marsh",
-"Akoum Refuge",
-"Scoured Barrens",
-"Treasury Thrull",
+"Lavaclaw Reaches",
+"Needle Spires",
+"Shambling Vent",
+"Sanctum of Stone Fangs",
 "Worn Powerstone",
 "Pestilence",
 "Malevolent Awakening",
@@ -178,7 +186,6 @@
 "Dega Sanctuary",
 "Moonlit Wake",
 "Experimental Frenzy",
-"Outlaws' Merriment",
 "Homicidal Seclusion",
 "Pontiff of Blight"
 ]

@@ -232,8 +232,8 @@ class page_data {
 		this.commander_decks.set("takeover", "commander_takeover.json");
 		this.commander_decks.set("Teysa", "commander_teysa.json");
 		this.commander_decks.set("Wort", "commander_wort.json");
+		this.commander_decks.set("Mill", "commander_mill_grixis.json");
 		this.commander_decks.set("--FOG", "commander_fog.json");
-		this.commander_decks.set("--Removals", "commander_removal.json");
 		this.commander_decks.set("CUBE", "cube.json");
 		this.commander_decks.set("WANTS", "wants.json");
 		this.commander_default_deck = this.commander_decks.keys().next().value;

@@ -5,23 +5,22 @@
 "Think Twice",
 "Scour All Possibilities",
 "Desperate Ravings",
+"Burning Oil",
 "Oona's Grace",
 "Deep Analysis",
 "Reality Scramble",
 "Silent Departure",
 "Call the Skybreaker",
 "Ignite the Future",
-"Rally the Peasants",
-"Saving Grasp",
 "Dusk",
 "Devil's Play",
 "Beacon Bolt",
 "Volley of Boulders",
-"Burning Oil",
 "Quasiduplicate",
 "Mystic Retrieval",
 "Increasing Devotion",
 "Increasing Vengeance",
+"Ancestral Tribute",
 
 "Quiet Speculation",
 "Runic Repetition",
@@ -32,6 +31,7 @@
 "Mirrormade",
 "Whirlwind of Thought",
 "The Mirari Conjecture",
+"Double Vision",
 "Metallurgic Summonings",
 "Swarm Intelligence",
 
@@ -50,8 +50,6 @@
 "Scholar of the Ages",
 "Djinn Illuminatus",
 
-"Saheeli, Sublime Artificer",
-
 "Ephemerate",
 "Peek",
 "Narset's Reversal",
@@ -65,13 +63,17 @@
 "Spell Swindle",
 "Inspired Ultimatum",
 "Magmaquake",
+"Starstorm",
 
 "Mystic Monastery",
 "Aether Hub",
 "Exotic Orchard",
 
 "Swiftwater Cliffs",
+"Tranquil Cove",
 "Wind-Scarred Crag",
+
+"Sejiri Refuge",
 
 "Vivid Creek",
 "Vivid Crag",
@@ -81,31 +83,36 @@
 "Stone Quarry",
 
 "Azorius Guildgate",
+"Boros Garrison",
 "Izzet Guildgate",
 
 "Myriad Landscape",
 "Evolving Wilds",
 
 "Azorius Chancery",
+"Izzet Boilerworks",
 
 "Mystic Sanctuary",
 
 {"name":"Plains", "count":2},
-{"name":"Island", "count":12},
-{"name":"Mountain", "count":11}
+{"name":"Island", "count":10},
+{"name":"Mountain", "count":9}
 ],
 "sideboard":
 [
+"Rally the Peasants",
 "Flash of Insight",
 "Strategic Planning",
 "Pieces of the Puzzle",
 "Pore Over the Pages",
 "Throes of Chaos",
+"Saving Grasp",
 "Lightning Surge",
 "Goblin Dark-Dwellers",
 "Bash to Bits",
 "Battle Screech",
 "Backdraft Hellkite",
+"Saheeli, Sublime Artificer",
 "Firebolt",
 "Rolling Temblor",
 "Grasp of Phantoms",
@@ -118,12 +125,7 @@
 "wants":
 [
 "Vivid Meadow",
-"Izzet Boilerworks",
-"Tranquil Cove",
-"Sejiri Refuge",
-"Ancestral Tribute",
 "Shark Typhoon",
-"Double Vision",
 "Cackling Counterpart"
 ]
 }
