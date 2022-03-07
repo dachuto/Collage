@@ -1,16 +1,29 @@
 "use strict";
 
 class deck_entry {
-	constructor(name, count, ids) {
-		this.name = name;
+	constructor(name, count, ids, notes) {
 		if (!Number.isInteger(count)) {
 			throw "Not an integer";
 		}
 		if (count < 1) {
 			throw "Must be at least 1";
 		}
+		if (notes != null && typeof notes !== "string") {
+			throw "Notes must be string";
+		}
+
+		if (!Array.isArray(ids)) {
+			throw "Ids is not an array";
+		}
+
+		if (name == null && ids.length < 1) {
+			throw "Not representing any printing";
+		}
+
+		this.name = name;
 		this.count = count;
 		this.ids = ids;
+		this.notes = notes;
 	}
 }
 
@@ -21,12 +34,23 @@ function as_deck_entry(data) {
 		return new deck_entry(data, 1, []);
 	} else if (typeof data === "number") {
 		return new deck_entry(null, 1, [data]);
-	} else if (data.hasOwnProperty("name")) {
-		const count = data.count ?? 1;
-		return new deck_entry(data.name, count, []);
 	}
 
-	throw data + "Invalid data format";
+	const property_or_else = (object, property, or_else) =>
+		object.hasOwnProperty(property) ? object[property] : or_else;
+
+	return new deck_entry(
+		property_or_else(data, "name", null),
+		property_or_else(data, "count", 1),
+		property_or_else(data, "ids", []),
+		property_or_else(data, "notes", null)
+	);
+}
+
+function test() {
+	console.debug(as_deck_entry({"ids" : [1], "count" : 2}));
+	console.debug(as_deck_entry({"name" : "Island", "notes" : "important stuff"}));
+	// console.assert(as_deck_entry("Island") === new deck_entry("Island", 1, [], null));
 }
 
 function flat_entries(deck) {
