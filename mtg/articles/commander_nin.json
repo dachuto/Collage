@@ -2,17 +2,16 @@
 "commander":["Nin, the Pain Artist"],
 "main":
 [
+"Magus of the Scroll",
 "Razorfin Hunter",
 "Warkite Marauder",
 "Fireslinger",
 "Vengeful Devil",
-"Dismissive Pyromancer",
 "Ovinomancer",
 "Serendib Sorcerer",
 "Thornwind Faeries",
 "Prodigal Pyromancer",
 "Goblin Artillery",
-"Goblin Sharpshooter",
 "Ghost-Lit Raider",
 "Orcish Cannoneers",
 "Vithian Stinger",
@@ -23,6 +22,7 @@
 "Flametongue Kavu",
 "Wojek Embermage",
 "Initiate of Blood",
+"Brash Taunter",
 "Glorybringer",
 "Jiwari, the Earth Aflame",
 "Karplusan Yeti",
@@ -38,36 +38,34 @@
 
 "Enclave Cryptologist",
 "Merfolk Looter",
-"Thought Courier",
 "Jushi Apprentice",
 "Magus of the Wheel",
 "Archivist",
-"Cephalid Broker",
+"Dazzling Sphinx",
+"Zara, Renegade Recruiter",
 "Atemsis, All-Seeing",
 "Arcanis the Omnipotent",
+"Etali, Primal Storm",
 
-
+"Goblin Diplomats",
 "Callous Oppressor",
-"Stronghold Biologist",
-"Stronghold Machinist",
 "Feldon of the Third Path",
 "Djinn of Infinite Deceits",
+"Fortune Thief",
+"Mist-Syndicate Naga",
 
 "Anger",
 "Wonder",
 "Cyclops of Eternal Fury",
 "Angrath's Marauders",
 
-"Back from the Brink",
-
-"Magus of the Scroll",
-"Goblin Diplomats",
-"Fortune Thief",
-"Mist-Syndicate Naga",
-
 "Confound",
 "Suffocating Blast",
 "Flood of Tears",
+"Stolen Identity",
+
+"Back from the Brink",
+"Loxodon Warhammer",
 
 "Izzet Boilerworks",
 "Swiftwater Cliffs",
@@ -86,7 +84,6 @@
 [
 "Goblin Tinkerer",
 "Bloodshot Trainee",
-"Orcish Artillery",
 "Stalking Yeti",
 "Jaya Ballard, Task Mage",
 "Timestream Navigator",
@@ -96,15 +93,17 @@
 "Godo, Bandit Warlord",
 "Reveka, Wizard Savant",
 "Gelectrode",
+"Thought Courier",
+"Voltaic Visionary",
 "Ring of Valkas",
 "Hammer of Purphoros",
 "Ogre Battledriver",
 "Riptide Director",
+"Goblin Sharpshooter",
 "Magus of the Mind"
 ],
 "wants":
 [
-"Loxodon Warhammer",
 "Dominating Licid",
 "Viashino Heretic",
 "Beguiler of Wills",

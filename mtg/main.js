@@ -690,7 +690,6 @@ function images_grid(deck, source) {
 	let images_grid = document.createElement("div");
 	images_grid.classList.add("images_grid");
 
-
 	for (const entry of deck) {
 		const chosen_index = entry.ids.length - 1; //TODO: we take last (newest printing), maybe customize
 		let hidden_printings = null;

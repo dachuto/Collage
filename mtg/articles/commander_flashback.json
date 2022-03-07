@@ -12,7 +12,7 @@
 "Silent Departure",
 "Call the Skybreaker",
 "Ignite the Future",
-"Dusk",
+"Dusk // Dawn",
 "Devil's Play",
 "Beacon Bolt",
 "Volley of Boulders",
@@ -117,6 +117,7 @@
 "Rolling Temblor",
 "Grasp of Phantoms",
 "Jace's Sanctum",
+"Shark Typhoon",
 "Divine Reckoning",
 "Ray of Distortion",
 "Chemister's Insight",
@@ -125,7 +126,15 @@
 "wants":
 [
 "Vivid Meadow",
-"Shark Typhoon",
-"Cackling Counterpart"
+"Cackling Counterpart",
+"Laboratory Drudge",
+"Mission Briefing",
+"Battle of Frost and Fire",
+"Experimental Overload",
+"Cindeclasm",
+"Flame Sweep",
+"Inferno",
+"Splicer's Skill",
+"Young Pyromancer"
 ]
 }

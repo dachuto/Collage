@@ -2,6 +2,7 @@
 "commander":["Firesong and Sunspeaker"],
 "main":
 [
+"Sacred Fire",
 "Response",
 "Warleader's Helix",
 "Brightflame",
@@ -35,7 +36,6 @@
 "Sundering Stroke",
 
 "Blessed Breath",
-"Spiritual Visit",
 "Crushing Pain",
 "Glacial Ray",
 "Candles' Glow",
@@ -95,10 +95,10 @@
 "Flame Wave",
 "Lightning Helix",
 "Star of Extinction",
-"",
 "Stormwild Capridor",
 "Cleanfall",
 "Painter's Servant",
+"Spiritual Visit",
 "First Volley",
 "Eight-and-a-Half-Tails",
 "Celestial Dawn"

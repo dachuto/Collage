@@ -2,11 +2,11 @@
 "commander":["Sharuum the Hegemon"],
 "main":
 [
-"Junk Diver",
 "Scrap Trawler",
 "Workshop Assistant",
+"Tormod's Cryptkeeper",
+"Etherium Spinner",
 "Treasure Keeper",
-"Arcanist's Owl",
 "Cataclysmic Gearhulk",
 "Ethersworn Adjudicator",
 "Sphinx Summoner",
@@ -19,7 +19,9 @@
 "Sandstone Oracle",
 "Enigma Sphinx",
 "Filigree Angel",
+"Ethersworn Sphinx",
 "Inkwell Leviathan",
+"Triplicate Titan",
 
 "Azorius Signet",
 "Dimir Signet",
@@ -30,7 +32,6 @@
 "Midnight Clock",
 "Firemind Vessel",
 "Hedron Archive",
-"Blinkmoth Urn",
 "Dreamstone Hedron",
 
 "Aether Spellbomb",
@@ -45,7 +46,6 @@
 "Prototype Portal",
 "Seer's Sundial",
 "Trading Post",
-"Uba Mask",
 "Mirrorworks",
 "Ugin's Nexus",
 "Predator, Flagship",
@@ -81,11 +81,15 @@
 "Dimir Aqueduct",
 "Orzhov Basilica",
 
+"Darkwater Catacombs",
+"Skycloud Expanse",
+
 "Tranquil Cove",
 "Dismal Backwater",
 "Scoured Barrens",
 
 "Sejiri Refuge",
+"Jwar Isle Refuge",
 
 "Azorius Guildgate",
 
@@ -93,6 +97,7 @@
 "Seat of the Synod",
 "Vault of Whispers",
 "Darksteel Citadel",
+"Goldmire Bridge",
 
 "Dreadship Reef",
 "Mage-Ring Network",
@@ -102,21 +107,20 @@
 "Shrine of the Forsaken Gods",
 "Temple of the False God",
 
-{"name":"Plains", "count":1},
-{"name":"Island", "count":7},
-{"name":"Swamp", "count":4}
+{"name":"Island", "count":4},
+{"name":"Swamp", "count":4, "notes": "Cycle from original Mirrodin."}
 ],
 "sideboard":
 [
 "Soulscour",
 "Mycosynth Wellspring",
+{"name" : "Junk Diver", "notes" : "Unnecessary redundancy with commander"},
 "Merchant's Dockhand",
 "Wayfarer's Bauble",
 "Universal Solvent",
 "Soul Foundry",
-"Silver Myr",
-"Dimir Locket",
 "Magistrate's Scepter",
+"Blinkmoth Urn",
 "Raff Capashen, Ship's Mage",
 "Herald of Anguish",
 "Tezzeret the Schemer",
@@ -124,13 +128,17 @@
 ],
 "wants":
 [
-"Darkwater Catacombs",
 "Sunken Hollow",
+"Mistvault Bridge",
+"Razortide Bridge",
 "Dimir Guildgate",
-"Jwar Isle Refuge",
+"Wizard's Spellbook",
+"Maelstrom colossus",
+"Ingenuity Engine",
 "Scourglass",
 "Shimmer Dragon",
 "Mazemind Tome",
-"Clock of Omens"
+"Clock of Omens",
+"Angel of the Ruins"
 ]
 }

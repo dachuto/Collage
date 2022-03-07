@@ -1,5 +1,5 @@
 {
-"commander":["Nahiri, the Lithomancer"],
+"commander":["Sram, Senior Edificer", "Nahiri, the Lithomancer"],
 "main":
 [
 "Apostle of Purifying Light",
@@ -102,9 +102,17 @@
 ],
 "wants":
 [
-"Sram, Senior Edificer",
 "Heavenly Blademaster",
 "Mask of Memory",
-"Karoo"
+"Karoo",
+"Plate Armor",
+"Batterbone",
+"Goldvein Pick",
+"Valkyrie's Sword",
+"Maul of the Skyclaves",
+"Barbed Spike",
+"Warchanter Skald",
+"Armored Skyhunter",
+"Ardenn, Intrepid Archaeologist"
 ]
 }

@@ -4,6 +4,7 @@
 [
 "Sylvan Ranger",
 "Coiling Oracle",
+"Lonis, Cryptozoologist",
 "Elvish Visionary",
 "Watcher for Tomorrow",
 "Gatecreeper Vine",
@@ -12,7 +13,6 @@
 "Springbloom Druid",
 "Rogue Refiner",
 "Soulherder",
-"Fierce Empath",
 "Sea Gate Oracle",
 "Eternal Witness",
 "Reclamation Sage",
@@ -90,6 +90,7 @@
 "sideboard":
 [
 "Deadeye Navigator",
+"Fierce Empath",
 "Ajani Unyielding",
 "Nezahal, Primal Tide",
 "Harmonic Sliver",
@@ -106,8 +107,19 @@
 "wants":
 [
 "Vesperlark",
+"Dawnbringer Cleric",
+"Priest of Ancient Lore",
 "Scholar of the Ages",
 "Karmic Guide",
-"Diluvian Primordial"
+"Drizzt Do'Urden",
+"Cloudgoat Ranger",
+"Foundation Breaker",
+"Diluvian Primordial",
+"Glorious Protector",
+"Stingerfling Spider",
+"Yasharn, Implacable Earth",
+"Llanowar Visionary",
+"Harmonious Archon",
+"Wingmate Roc"
 ]
 }
