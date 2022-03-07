@@ -20,7 +20,20 @@ TEST(mtg_api_test, works) {
 	std::cout << s << "\n";
 
 	for (auto const &kv: database.unique_cards) {
+		std::cout << kv.first;
+		std::cout << " [ ";
+		for (auto const &x : kv.second.printings) {
+			std::cout << " " << x;
+		}
+		std::cout << "]\n";
+	}
+
+	for (auto const &kv: database.card_sets) {
 		std::cout << kv.first << "\n";
+		for (auto const &id : kv.second.printings) {
+			std::cout << id << " ";
+		}
+		std::cout << "\n";
 	}
 
 	auto const it = database.unique_cards.find(std::string("Fog"));
