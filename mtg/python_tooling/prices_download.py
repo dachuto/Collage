@@ -179,8 +179,8 @@ if __name__ == "__main__":
 		with open(args.mtg_json, 'r') as f:
 			data.extract(json.load(f))
 
-		print("Found ", len(data.by_multiverse_id), "unique multiverse_ids.")
-		for (k, v) in data.by_multiverse_id.items():
+		print("Found ", len(data.multiverse_id_to_name), "unique multiverse_ids.")
+		for (k, v) in data.multiverse_id_to_name.items():
 			if not k in prices_by_multiverse_id:
 				query_list.append(k)
 		query_list.sort(reverse=True)
