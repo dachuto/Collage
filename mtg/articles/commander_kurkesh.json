@@ -1,0 +1,58 @@
+{
+"commander":["Kurkesh, Onakke Ancient"],
+"main":
+[
+
+"Myr Battlesphere",
+
+"Worn Powerstone",
+
+"Mimic Vat",
+"Goblin Charbelcher",
+
+"Wayfarer's Bauble",
+"Universal Solvent",
+"Soul Foundry",
+"Magistrate's Scepter",
+
+{"name":"Mountain", "count":30},
+{"name":"Swamp", "count":4, "notes": "Cycle from original Mirrodin."}
+],
+"sideboard":
+[
+],
+"wants":
+[
+"Brittle Effigy",
+"Golem Foundry",
+"Titan Forge",
+"Erratic Portal",
+"Wand of Wonder",
+	
+"Mind Stone",
+"Hedron Archive",
+"Dreamstone Hedron",
+"Sunset Pyramid",
+"Chaos Wand",
+
+"Oracle's Vault",
+"Prototype Portal",
+
+"Trading Post",
+
+"Salvaging Station",
+
+"Spine of Ish Sah",
+	
+"Voltaic Key",
+"Burnished Hart",
+"Coretapper",
+"Steel Overseer",
+"Endless Atlas",
+"Dragonspark Reactor",
+"Investigator's Journal",
+"Throne of Geth",
+"Power Conduit",
+"Grindclock"
+]
+}
