@@ -14,11 +14,18 @@
 	
 	"Grim Lavamancer",
 	"Conspiracy Theorist",
-	"Izzet Chemister",
+	"Plargg, Dean of Chaos",
+	"Dismissive Pyromancer",
+	"Hollowhead Sliver",
+	
+	"Zurzoth, Chaos Rider",
 	"Coastline Marauders",
 	"Phoenix of Ash",
 	
+	"Millikin",
 	"Containment Construct",
+	
+	"Drogskol Reinforcements",
 	
 	"Battle Screech",
 	
@@ -26,10 +33,9 @@
 	"Desecrated Tomb",
 
 
-
-{"name":"Plains", "count":1},
-{"name":"Mountain", "count":2},
-
+	"Needle Spires",
+	{"name":"Plains", "count":1},
+	{"name":"Mountain", "count":2},
 ],
 "sideboard":
 [
@@ -42,10 +48,14 @@
 	"Charmbreaker Devils",
 	"Daretti, Scrap Savant",
 	"Late to Dinner",
+	"Anje's Ravager",
+	"Cenn's Enlistment",
+	"Dire Fleet Daredevil",
 	
 	"Abiding Grace",
 	"Auriok Salvagers",
 	"Salvaging Station",
+	"Izzet Chemister",
 	"Earthshaker Khenra",
 	"Sacred Cat",
 	"Electric Revelation",
@@ -73,6 +83,7 @@
 	"Trueheart Duelist",
 	"Twinblade Geist",
 	"Vault Robber",
+	"Mishra, Excavation Prodigy",
 	"Visions of Ruin",
 	"Vithian Stinger",
 	"Wand of Vertebrae",
@@ -110,11 +121,12 @@
 	"Flamewake Phoenix",
 	"Twilight Shepherd",
 	"Brilliant Halo",
-	
+	"Queen Kayla bin-Kroog",
 	"Spirit Loop",
 	"Fiery Mantle",
 	"Trove Warden",
 	"Icefall",
+	"Hostile Desert",
 	"Sungold Sentinel",
 	"Angel of Serenity",
 	"Cessation",
