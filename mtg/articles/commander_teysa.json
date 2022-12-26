@@ -2,10 +2,10 @@
 "commander":["Teysa, Orzhov Scion"],
 "main":
 [
-"Steward of Solidarity",
-"Precinct Captain",
+"Wyrm's Crossing Patrol",
 "Skirsdag High Priest",
 "Imperious Oligarch",
+"Hammers of Moradin",
 "Ministrant of Obligation",
 "Thraben Doomsayer",
 "Mardu Strike Leader",
@@ -20,14 +20,11 @@
 "Endrek Sahr, Master Breeder",
 "Ogre Slumlord",
 "Lena, Selfless Champion",
-"Captain of the Watch",
 "Skeletal Vampire",
 
 "War Priest of Thune",
-"Ayli, Eternal Pilgrim",
 "Sin Collector",
 
-"Aryel, Knight of Windgrace",
 "Archon of Justice",
 "Butcher of Malakir",
 "Angel of Despair",
@@ -47,6 +44,8 @@
 "Bygone Bishop",
 "Mentor of the Meek",
 "Audacious Thief",
+"Skullport Merchant",
+"Ellyn Harbreeze, Busybody",
 "Smothering Abomination",
 "Gonti, Lord of Luxury",
 "Emeria Shepherd",
@@ -54,12 +53,12 @@
 
 "Zulaport Cutthroat",
 "Kambal, Consul of Allocation",
+"Minthara, Merciless Soul",
 "Teysa Karlov",
 "Dragonscale General",
 "Orzhov Racketeers",
 
-"Vampiric Rites",
-"Spirit Bonds",
+"Ghost Lantern",
 "Oketra's Monument",
 "Field of Souls",
 "Open the Graves",
@@ -69,27 +68,30 @@
 "Boneyard Parley",
 "Ghastly Conscription",
 
-"Aether Hub",
+"Path of Ancestry",
 "Scoured Barrens",
 "Orzhov Guildgate",
 "Forsaken Sanctuary",
+"Shambling Vent",
 "Orzhov Basilica",
-"Karoo",
-"Everglades",
 "Secluded Steppe",
 "Barren Moor",
 "Windbrisk Heights",
+"Vivid Meadow",
 {"name":"Swamp", "count":15},
 {"name":"Plains", "count":15}
 ],
 "sideboard":
 [
 "Resolute Watchdog",
+"Spirit Bonds",
 "Reassembling Skeleton",
 "Teysa, Envoy of Ghosts",
+"Ayli, Eternal Pilgrim",
 "Teshar, Ancestor's Apostle",
 "Phyrexian Plaguelord",
 "Syphon Mind",
+"Aryel, Knight of Windgrace",
 "Ethereal Absolution",
 "Voldaren Pariah",
 "Intrepid Hero",
@@ -110,10 +112,15 @@
 "Fell Shepherd",
 "Keeper of the Dead",
 "Decree of Justice",
+"Precinct Captain",
+"Steward of Solidarity",
 "Hanweir Militia Captain",
-"God-Pharaoh's Gift"
+"Captain of the Watch",
+"God-Pharaoh's Gift",
+"Vampiric Rites"
 ],
 "wants":
 [
+"Myriad Landscape",
 ]
 }
