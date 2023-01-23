@@ -1,0 +1,24 @@
+{
+"commander":["Henzie \"Toolbox\" Torre"],
+"main":
+[
+
+
+{"name":"Plains", "count":9},
+{"name":"Mountain", "count":20}
+],
+"sideboard":
+[
+
+],
+"wants":
+[
+"Rakshasa Debaser",
+"Gorex, the Tombshell",
+"Oxidda Scrapmelter",
+"Ondu Giant",
+"Nekrataal",
+"Seedguide Ash",
+]
+}
+
