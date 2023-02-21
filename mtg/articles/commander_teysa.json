@@ -93,7 +93,6 @@
 "Syphon Mind",
 "Aryel, Knight of Windgrace",
 "Ethereal Absolution",
-"Voldaren Pariah",
 "Intrepid Hero",
 "Pit Keeper",
 "Fleshwrither",
@@ -105,7 +104,6 @@
 "Kalemne's Captain",
 "Rotlung Reanimator",
 "Cruel Celebrant",
-"Loyal Cathar",
 "Doomed Dissenter",
 "Undead Augur",
 "Corpse Augur",
@@ -114,13 +112,14 @@
 "Decree of Justice",
 "Precinct Captain",
 "Steward of Solidarity",
-"Hanweir Militia Captain",
+"Hanweir Militia Captain // Westvale Cult Leader",
 "Captain of the Watch",
 "God-Pharaoh's Gift",
-"Vampiric Rites"
+"Vampiric Rites",
+"God-Pharaoh's Gift"
 ],
 "wants":
 [
-"Myriad Landscape",
+"Myriad Landscape"
 ]
 }

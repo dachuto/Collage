@@ -64,7 +64,7 @@
 "Heliod's Pilgrim",
 "Perplex",
 "Dizzy Spell",
-"Demand",
+"Supply // Demand",
 "Wild Research",
 "Trinket Mage",
 "Dimir House Guard",
@@ -145,7 +145,7 @@
 "Dimir Infiltrator",
 
 "Tendo Ice Bridge",
-"Grand Colliseum",
+"Grand Coliseum",
 "Ancient Spring",
 "Sulfur Vent",
 "Banishing Knack",
@@ -177,7 +177,6 @@
 "Naru Meha, Master Wizard",
 
 "Devoted Druid",
-"Vizierof Remedies",
 "Quillspike",
 
 "Mindcrank",
@@ -199,7 +198,7 @@
 "Crimson Wisps",
 "To Arms!",
 
-"Invent",
+"Invert // Invent",
 "Muddle the Mixture",
 "Signal the Clans",
 "Mystical Teachings",
