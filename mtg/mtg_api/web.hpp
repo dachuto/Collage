@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <cstdio>
 #include <regex>
 #include <string_view>

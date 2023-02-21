@@ -11,8 +11,8 @@ set(NGINX_GENERATED_SOURCE ${NGINX_SOURCE_DIR}/objs/${NGINX_MODULE_NAME}_modules
 set(NGINX_BINARY ${NGINX_SOURCE_DIR}/objs/nginx)
 
 
-set(NGINX_VERSION nginx-1.15.2)
-set(ZLIB_VERSION zlib-1.2.11)
+set(NGINX_VERSION nginx-1.22.1)
+set(ZLIB_VERSION zlib-1.2.13)
 
 function(wget_and_unpack url filename working_dir unpacked_dir_name new_dir_name)
 	add_custom_command(
@@ -74,8 +74,14 @@ function(download_and_unzip url filename working_dir)
 	)
 endfunction()
 
-download_and_unzip(https://mtgjson.com/json AllCards.json ${DOWNLOAD_DIR})
-download_and_unzip(https://mtgjson.com/json AllPrintings.json ${DOWNLOAD_DIR})
+set(MTG_JSON_FILES
+	AtomicCards.json
+	AllPrintings.json
+)
+
+foreach(X IN LISTS MTG_JSON_FILES)
+	download_and_unzip(https://mtgjson.com/api/v5 ${X} ${DOWNLOAD_DIR})
+endforeach()
 
 message(STATUS "nginx ./configure also generates a C file in objs/ directory with module declaration.")
 message(STATUS "Generated file is: ${NGINX_GENERATED_SOURCE}")
@@ -85,10 +91,12 @@ add_library(${project} MODULE ${NGINX_GENERATED_SOURCE} mtg_api_module.c)
 set_target_properties(${project} PROPERTIES PREFIX "") # do not add lib prefix (nginx modules do not want it)
 target_link_libraries(${project} mtg_api)
 
-add_custom_target(json_data DEPENDS
-	${DOWNLOAD_DIR}/AllCards.json
-	${DOWNLOAD_DIR}/AllPrintings.json
-)
+set(MTG_JSON_FILES_DOWNLOADED "")
+foreach(X IN LISTS MTG_JSON_FILES)
+	list(APPEND MTG_JSON_FILES_DOWNLOADED "${DOWNLOAD_DIR}/${X}")
+endforeach()
+
+add_custom_target(json_data DEPENDS ${MTG_JSON_FILES_DOWNLOADED})
 
 message(STATUS "Internal include directories are manually taken from nginx's Makefile; beware changes")
 target_include_directories(${project} PRIVATE
@@ -109,8 +117,11 @@ install(PROGRAMS ${NGINX_BINARY} DESTINATION sbin)
 install(FILES nginx.conf DESTINATION conf)
 install(TARGETS ${project} DESTINATION modules)
 
-install(FILES ${DOWNLOAD_DIR}/AllCards.json DESTINATION .)
-install(FILES ${DOWNLOAD_DIR}/AllPrintings.json DESTINATION .)
+foreach(X IN LISTS MTG_JSON_FILES)
+	install(FILES "${DOWNLOAD_DIR}/${X}" DESTINATION .)
+endforeach()
+#install(FILES ${DOWNLOAD_DIR}/AllCards.json DESTINATION .)
+#install(FILES ${DOWNLOAD_DIR}/AllPrintings.json DESTINATION .)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../name_to_tags.json DESTINATION .)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../tags.json DESTINATION .)
 

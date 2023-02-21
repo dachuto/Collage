@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 #include <boost/container/flat_map.hpp>
 #include <boost/container/flat_set.hpp>
 
