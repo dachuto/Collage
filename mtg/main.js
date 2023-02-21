@@ -33,28 +33,37 @@ function convert_article(article, source) {
 }
 
 function error_message_html(header, inside) {
-	let icon = $("<i/>", {
-		class: "exclamation triangle icon"
-	});
-	let content = $("<div/>", {
-		class: "content",
-	}).append($("<div/>", {
-		class: "header",
-		text: header
-	})).append($("<p/>", {
-		text: inside
-	}));
-	return $("<div>", {
-		class: "ui red icon message",
-	}).append(icon).append(content);
+	const top = document.createElement("div");
+	top.classList.add("ui", "red", "icon", "message");
+	const ico = document.createElement("i");
+	ico.classList.add("exclamation", "triangle", "icon");
+	const d = document.createElement("div");
+	d.classList.add("content");
+	const dd = document.createElement("div");
+	dd.classList.add("header");
+	dd.textContent = String(header);
+	const pp = document.createElement("p");
+	pp.textContent = String(inside);
+	top.appendChild(ico);
+	top.appendChild(d);
+	d.appendChild(dd);
+	d.appendChild(pp);
+	return top;
 }
 
-function JSON_request(file_name) {
-	let request = $.getJSON(file_name).done(function (data, textStatus, jqXHR) {
-	}).fail(function (jqXHR, textStatus, errorThrown) {
-		DOM_append(error_message_html(file_name, errorThrown));
-	});
-	return request;
+async function JSON_request(file_name) {
+	const response = await fetch(file_name);
+	if (!response.ok) {
+		DOM_append(error_message_html(file_name, response.statusText));
+		return Promise.reject(response.statusText);
+	}
+
+	try {
+		const json = await response.json();
+		return json;
+	} catch (error) {
+		DOM_append(error_message_html(file_name, error));
+	}
 }
 
 function DFS(graph, start, visit_pre, visit_post) {
@@ -288,7 +297,6 @@ class page_data {
 			this.request_missing_card_names(cards)
 			.then(values => this.request_card_names_to_ids(cards))
 			.then(values => {
-
 				this.fill_deck_text_boxes(cards);
 				DOM_append(images_grid(cards, this.source));
 				this.start_lazy_images_loading();
@@ -377,9 +385,8 @@ class page_data {
 			}
 			let url = new URL("/query", this.backend_url);
 			url.search = "multiverse_id=" + card.ids[0];
-			requests.push($.getJSON(url.href).then(
-				value => { card.name = value; },
-				error => ({error})
+			requests.push(JSON_request(url.href).then(
+				value => { card.name = value; }
 			));
 		}
 
@@ -392,12 +399,10 @@ class page_data {
 			if (card.ids.length > 0) {
 				continue;
 			}
-
 			let url = new URL("/query", this.backend_url);
 			url.search = "name=" + card.name;
-			requests.push($.getJSON(url.href).then(
-				value => { card.ids = value; },
-				error => ({error})
+			requests.push(JSON_request(url.href).then(
+				value => { card.ids = value; }
 			));
 		}
 

@@ -8,7 +8,12 @@
 	<script src="mtg/cards.js"></script>
 	<script src="mtg/main.js"></script>
 	<script>
-		$(DOM_ready_wants);
+
+		if (document.readyState == "DONE") {
+			DOM_ready_wants();
+		} else {
+			document.addEventListener('DOMContentLoaded', DOM_ready_wants);
+		}
 		// $(DOM_ready_results); // .ready(handler)
 		// $(DOM_ready);
 	</script>

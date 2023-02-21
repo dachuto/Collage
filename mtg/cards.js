@@ -21,11 +21,12 @@ function as_deck_entry(data) {
 		return new deck_entry(data, 1, []);
 	} else if (typeof data === "number") {
 		return new deck_entry(null, 1, [data]);
-	} else if (data.hasOwnProperty("name") && data.hasOwnProperty("count")) {
-		return new deck_entry(data.name, data.count, []);
+	} else if (data.hasOwnProperty("name")) {
+		const count = data.count ?? 1;
+		return new deck_entry(data.name, count, []);
 	}
 
-	throw "Invalid data format";
+	throw data + "Invalid data format";
 }
 
 function flat_entries(deck) {
