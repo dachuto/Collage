@@ -233,6 +233,7 @@ class page_data {
 		this.commander_decks.set("Grenzo", "commander_grenzo.json");
 		this.commander_decks.set("Kadena *", "commander_kadena.json");
 		this.commander_decks.set("Merieke Ri Berit", "commander_merieke.json");
+		this.commander_decks.set("Minn", "commander_minn.json");
 		this.commander_decks.set("Nin, the Pain Artist", "commander_nin.json");
 		this.commander_decks.set("populate *", "commander_populate.json");
 		this.commander_decks.set("Roon", "commander_roon.json");

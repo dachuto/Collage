@@ -1,0 +1,100 @@
+{
+"commander":["Minn, Wily Illusionist"],
+"main":
+[
+
+"Phantasmal Bear",
+"Veiled Sentry",
+"Phantom Steed",
+"Fathom Seer",
+
+"Facet Reader",
+"Merfolk Looter",
+"Looter il-Kor",
+"Thought Courier",
+"Seeker of Insight",
+"Raving Visionary",
+"Bonded Fetch",
+"Cephalid Looter",
+"Cosima, God of the Voyage // The Omenkeel",
+"Reckless Scholar",
+"Archivist",
+"Curator of Mysteries",
+"Lunar Mystic",
+"Ethereal Investigator",
+
+"Faerie Vandal",
+"Whispering Wizard",
+
+"Clairvoyance",
+"Peek",
+"Portent",
+"Whispers of the Muse",
+"Culling Dais",
+"Foresight",
+"Glimpse of Freedom",
+"Lat-Nam's Legacy",
+"Investigator's Journal",
+"Mnemonic Sphere",
+"Scroll of Origins",
+"Sway of Illusion",
+"Compulsive Research",
+"Phyrexian Vault",
+"Theft of Dreams",
+"Thirst for Discovery",
+{"name": "Contact Other Plane", "notes": "There are plenty other opitions that can double as removal."},
+"Vivisection",
+"Bargaining Table",
+"Graven Lore",
+"Boon of the Wish-Giver",
+
+"Disrupt",
+"Interdict",
+"Exclude",
+"Leadership Vacuum",
+"Galestrike",
+"Nimble Obstructionist",
+"Dismiss",
+"Inscription of Insight",
+"Overwhelming Intellect",
+
+"Viridian Longbow",
+"Negate",
+"Mortarpod",
+"Tormod's Cryptkeeper",
+"Devious Cover-Up",
+"Fodder Cannon",
+"Nevinyrral's Disk",
+"Aetherspouts",
+"Duplicant",
+"Meteor Golem",
+"Scour from Existence",
+
+"Psychic Spiral",
+
+"Mogg Cannon",
+"Stitcher's Apprentice",
+"Grafted Wargear",
+
+"Mind Stone",
+"Sky Diamond",
+
+"Desert of the Mindful",
+"Remote Isle",
+"Lonely Sandbar",
+"Svyelunite Temple",
+"The Biblioplex",
+"Riptide Laboratory",
+"Myriad Landscape",
+{"name":"Island", "count":25}
+],
+"sideboard":
+[
+],
+"wants":
+[
+"Wonder",
+"Bag of Holding",
+"Arcanis the Omnipotent"
+]
+}
