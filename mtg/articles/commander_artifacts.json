@@ -3,14 +3,14 @@
 "main":
 [
 "Scrap Trawler",
-"Workshop Assistant",
+
 "Tormod's Cryptkeeper",
 "Etherium Spinner",
 "Treasure Keeper",
+"Venomcrawler",
 "Cataclysmic Gearhulk",
 "Ethersworn Adjudicator",
-"Sphinx Summoner",
-"Mishra's Self-Replicator",
+
 "Steel Hellkite",
 "Thopter Assembly",
 "Sharding Sphinx",
@@ -18,9 +18,10 @@
 "Myr Battlesphere",
 "Sandstone Oracle",
 "Enigma Sphinx",
+"Hexavus",
 "Filigree Angel",
 "Ethersworn Sphinx",
-"Inkwell Leviathan",
+
 "Triplicate Titan",
 
 "Azorius Signet",
@@ -30,14 +31,15 @@
 "Worn Powerstone",
 "Palladium Myr",
 "Midnight Clock",
-"Firemind Vessel",
 "Hedron Archive",
+"Slagstone Refinery",
 "Dreamstone Hedron",
 
 "Aether Spellbomb",
 "Dispeller's Capsule",
 "Executioner's Capsule",
 "Scrabbling Claws",
+"Contagion Clasp",
 "Sunset Pyramid",
 "Chaos Wand",
 "Mimic Vat",
@@ -47,28 +49,30 @@
 "Seer's Sundial",
 "Trading Post",
 "Mirrorworks",
-"Ugin's Nexus",
-"Predator, Flagship",
+
 "Salvaging Station",
 "Staff of Nin",
 "Altar of Shadows",
 "Spine of Ish Sah",
+"Wizard's Spellbook",
 
 "Trinket Mage",
 "Trophy Mage",
 "Treasure Mage",
 
+"Malcator, Purity Overseer",
+"Geology Enthusiast",
+  
 "The Antiquities War",
 "Thopter Spy Network",
 "One with the Machine",
 "Fumigate",
 "Phyrexian Rebirth",
-"Confirm Suspicions",
 "Rush of Knowledge",
 "Saheeli's Artistry",
-"Roar of Reclamation",
-"Battle at the Bridge",
 "Dance of the Manse",
+
+"Terisiare's Devastation",
 
 "Vivid Marsh",
 "Vivid Meadow",
@@ -124,6 +128,15 @@
 "Raff Capashen, Ship's Mage",
 "Herald of Anguish",
 "Tezzeret the Schemer",
+"Workshop Assistant",
+"Sphinx Summoner",
+"Mishra's Self-Replicator",
+"Inkwell Leviathan",
+"Ugin's Nexus",
+"Predator, Flagship",
+"Roar of Reclamation",
+"Battle at the Bridge",
+"Firemind Vessel",
 "Teshar, Ancestor's Apostle"
 ],
 "wants":
@@ -132,7 +145,6 @@
 "Mistvault Bridge",
 "Razortide Bridge",
 "Dimir Guildgate",
-"Wizard's Spellbook",
 "Maelstrom Colossus",
 "Ingenuity Engine",
 "Scourglass",
