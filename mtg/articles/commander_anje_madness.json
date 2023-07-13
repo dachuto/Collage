@@ -1,0 +1,72 @@
+{
+"commander":["Anje Falkenrath"],
+"main":
+[
+"Bloodline Necromancer",
+
+"Asylum Visitor",
+"Murderous Compulsion",
+"Big Game Hunter",
+"Necrogoyf",
+"Hell Mongrel",
+"Biting Rain",
+"Twins of Maurer Estate",
+"From Under the Florrboards",
+"Gorgon Recluse",
+"Voldaren Pariah",
+"Dark Withering",
+"Avacyn's Judgment",
+"Bloodmad Vampire",
+"Stormkirk Ocultist",
+"Stensia Masquerade",
+"Malevolent Whispers",
+"Violent Erruption",
+"Incorrigible Youths",
+"Terminal Agony",
+
+"Neheb, Dreadhorde Champion",
+
+"Nezumi Graverobber",
+"The Eldest Reborn",
+"Soul of Innistrad",
+
+"Deathbringer Thoctar",
+
+"Skirsdag High Priest",
+
+"Mindclaw Shaman",
+
+"Howltooth Hollow",
+"Spinerock Knoll",
+"Crypt of Agadeem",
+"Opal Palace",
+"Aether Hub",
+"Akoum Refuge",
+"Bloodfell Caves",
+"Drownyard Temple",
+"Zhalfirin Void",
+{"name":"Swamp", "count":24},
+{"name":"Mountain", "count":9}
+],
+"sideboard":
+[
+"Falkenrath Gorger",
+"Bloodhall Priest",
+"Surly Badgersaur",
+"Senseless Rage",
+"Grave Scrabbler",
+"Dying to Serve",
+"Conspiracy Theorist",
+"Chainer, Nightmare Adept",
+],
+"wants":
+[
+"Markov Enforcer",
+"Florian, Voldaren Scion",
+"Anje, Maid of Dishonor",
+"Necropolis Regent",
+"Champion of Dusk",
+"Westgate Regent",
+"Olivia's Attendants",
+]
+}

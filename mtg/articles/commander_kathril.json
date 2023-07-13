@@ -1,0 +1,132 @@
+{
+"commander":["Kathril, Aspect Warper"],
+"main":
+[
+"Nekrataal",
+"Thalia's Lancers",
+
+"Hidden Dragonslayer",
+"Leyline Prowler",
+"Angel of Invention",
+"Vitality Hunter",
+"Blood Baron of Vizkopa",
+"Gravebreaker Lamia",
+
+"Aven Sunstriker",
+"Solemn Recruit",
+"Zetalpa, Primal Dawn",
+
+"Archon of Valor's Reach",
+"Storrev, Devkarin Lich",
+
+"Faeburrow Elder",
+"Glimmerpoint Stag",
+"Kalemne's Captain",
+"Luminate Primordial",
+
+"Garruk's Harbinger",
+"Kothophed, Soul Hoarder",
+
+"Massacre Girl",
+"Pestilent Spirit",
+"Gilt-Leaf Winnower",
+"Ikra Shidiqi, the Usurper",
+
+"Extractor Demon",
+"Galepowder Mage",
+
+"Deadbridge Chant",
+
+"Aether Hub",
+"Scoured Barrens",
+"Orzhov Guildgate",
+"Forsaken Sanctuary",
+"Orzhov Basilica",
+"Karoo",
+"Everglades",
+"Secluded Steppe",
+"Barren Moor",
+"Windbrisk Heights",
+{"name":"Swamp", "count":15},
+{"name":"Plains", "count":15}
+],
+"sideboard":
+[
+"Satyr Wayfinder",
+"Gonti, Lord of Luxury",
+"Rampaging Hippo",
+"Lone Rider",
+"Knight of Meadowgrain",
+"Danitha Capashen, Paragon",
+"Akroma, Angel of Wrath",
+"Kheru Mind-Eater",
+"Dreamstealer",
+"Elderwood Scion",
+"Cataclysmic Gearhulk",
+"Siege Rhino",
+"Vorapede",
+"Demonlord Belzenlok",
+"Gleancrawler",
+"Panglacial Wurm",
+"Pelakka Wurm",
+"Sun Titan",
+"Moldgraf Monstrosity",
+"Possessed Nomad",
+"Adarkar Valkyrie",
+"Lumberknot",
+"Pale Recluse",
+"Bassara Tower Archer",
+"Kessig Recluse",
+"Poison-Tip Archer",
+"Silklash Spider",
+"Stingerfling Spider",
+"Whiptongue Hydra",
+"Cavalier of Thorns",
+"Penumbra Spider",
+"Crow of Dark Tidings",
+"Ramunap Hydra",
+"Mulch",
+"Winding Way",
+"Lifecrafter's Bestiary",
+"See the Unwritten",
+"Selective Adaptation",
+"Grisly Salvage"
+],
+"wants":
+[
+"Adorned Pouncer",
+"Kunoros, Hound of Athreos",
+"Vampire Nighthawk",
+"Sporeweb Weaver",
+"Troll Ascetic",
+"Vine Mare",
+
+"Creepy Doll",
+"Gorging Vulture",
+
+"Qasali Slingers",
+"Jungle Weaver",
+"Cloudthresher",
+"Seed Guardian",
+
+"Knight of Grace",
+"Knight of Malice",
+
+"Imposing Vantasaur",
+
+"Splendor Mare",
+"Sunblade Angel",
+"The Haunt of Hightower",
+
+"Winged Shepherd",
+
+"Titanoth Rex",
+
+"Void Beckoner",
+
+"Aerial Responder",
+"Phantom Nishoba",
+"Thorn Mammoth",
+"Soul of the Harvest"
+]
+}

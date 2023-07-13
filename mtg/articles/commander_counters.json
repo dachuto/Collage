@@ -1,0 +1,84 @@
+{
+"commander":["Roon of the Hidden Realm"],
+"main":
+[
+	""asdad,
+	"Wizard Class",
+	"RiseandShine",
+	"Westgate Regent",
+	"Scurry Oak",
+	"Deepwood Denizen"
+	"Froghemoth"
+	"Quandrix Pledgemage",
+	"Quandrix Command",
+	"Manifestation Sage",
+	"Biomathematician",
+	"Kianne, Dean of Substance // Imbraham, Dean of Theory",
+	"Dragonsguard Elite",
+	"Emergent Sequence",
+	"Paradox Zone",
+	"Fractal Harness",
+	"Deekah, Fractal Theorist",
+	"Sweet-Gum Recluse",
+	"Iridescent Hornbeetle",
+	"Woodland Champion",
+	"Mowu, Loyal Companion"
+
+"Evolving Wilds",
+"Vivid Creek",
+"Vivid Grove",
+"Vivid Meadow",
+"Aether Hub",
+"Azorius Chancery",
+"Selesnya Sanctuary",
+"Simic Growth Chamber",
+"Temple of the False God",
+"Blossoming Sands",
+"Tranquil Cove",
+"Thornwood Falls",
+"Azorius Guildgate",
+"Selesnya Guildgate",
+"Simic Guildgate",
+"Graypelt Refuge",
+"Sejiri Refuge",
+"Stirring Wildwood",
+"Plains",
+{"name":"Forest", "count":9},
+{"name":"Island", "count":13}
+],
+"sideboard":
+[
+"Deadeye Navigator",
+"Fierce Empath",
+"Ajani Unyielding",
+"Nezahal, Primal Tide",
+"Harmonic Sliver",
+"Loxodon Hierarch",
+"Urbis Protector",
+"Linvala, the Preserver",
+"Quarry Colossus",
+"Sage of Ancient Lore",
+"Terastodon",
+"Seht's Tiger",
+"Djinn of Wishes",
+"Brago, King Eternal"
+],
+"wants":
+[
+"Vesperlark",
+"Dawnbringer Cleric",
+"Priest of Ancient Lore",
+"Scholar of the Ages",
+"Karmic Guide",
+"Drizzt Do'Urden",
+"Cloudgoat Ranger",
+"Foundation Breaker",
+"Diluvian Primordial",
+"Glorious Protector",
+"Stingerfling Spider",
+"Yasharn, Implacable Earth",
+"Llanowar Visionary",
+"Harmonious Archon",
+"Wingmate Roc"
+]
+}

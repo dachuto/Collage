@@ -1,0 +1,61 @@
+{
+"commander":["Verazol, the Split Current"],
+"main":
+[
+"Everflowing Chalice",
+
+"Roost of Drakes",
+"Reclaim the Wastes",
+"Blink of an Eye",
+"Into the Roil",
+"Inscription of Abundance",
+"Sea Gate Stormcaller",
+"Tazeem Roilmage",
+"Citanul Woodreaders",
+"Field Research",
+"Grow from the Ashes",
+"Krosan Druid",
+"Murasa Sprouting",
+"Oran-Rief Recluse",
+"Primal Growth",
+"Rushing River",
+"Spell Contortion",
+"Hunting Wilds",
+"Inscription of Insight",
+"Mold Shambler",
+"Myriad Construct",
+"Territorial Allosaurus",
+"Vastwood Surge",
+"Wild Onslaught",
+"Wolfbriar Elemental",
+"Sphinx of Lost Truths",
+"Grunn, the Lonely King",
+"Cragplate Baloth",
+"Strength of the Tajuru",
+
+"Elfhame Druid",
+"Vine Gecko",
+"Saproling Infestation",
+"Coralheim Chronicler",
+"Lullmage's Familiar",
+
+"Temple of the False God",
+"Simic Guildgate",
+{"name":"Forest", "count":9},
+{"name":"Island", "count":13}
+],
+"sideboard":
+[
+"Djinn of Wishes",
+"Skyclave Relic",
+"Pouncing Wurm",
+"Rite of Replication",
+"Kavu Primarch",
+"Thicket Elemental",
+"Thieving Skydiver"
+],
+"wants":
+[
+"Saproling Infestation"
+]
+}

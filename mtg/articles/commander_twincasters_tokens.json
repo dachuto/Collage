@@ -1,0 +1,50 @@
+{
+"commander":["Adrix and Nev, Twincasters"],
+"main":
+[
+
+"Ethernal Investigator",
+"Progenitor Mimic",
+
+
+	"Temple of the False God",
+"Simic Guildgate",
+{"name":"Forest", "count":9},
+{"name":"Island", "count":13}
+],
+"sideboard":
+[
+"Broodbirth Viper",
+"Mirror Match",
+"Talrand's Invocation",
+"Druid's Deliverance",
+"Mystic Genesis",
+"Vizier of Many Faces"
+],
+"wants":
+[
+"Budoka Gardener",
+"Hard Evidence",
+"Consuming Blob",
+"Garruk, Primal Hunter",
+"Mirrorhall Mimic",
+"Deekah, Fractal Theorist",
+"Specimen Collector",
+"Mist-Syndicate Naga",
+"Dollhouse of Horrors",
+"Haunting Imitation",
+"Paradox Zone",
+"Gutter Grime",
+"Champion of Wits",
+"Timeless Witness",
+"Supplant Form",
+"Multiple Choice",
+"Spitting Image",
+"Manifestation Sage",
+"Etherium Spinner",
+"Temple of Mystery",
+"Duplicant",
+"Yavimaya Coast",
+"Thornwood Falls"
+]
+}
