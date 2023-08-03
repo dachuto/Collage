@@ -233,6 +233,7 @@ class page_data {
 		this.commander_decks.set("Firesong *", "commander_firesong.json");
 		this.commander_decks.set("Sevinne - Flashback", "commander_flashback.json");
 		this.commander_decks.set("Grenzo", "commander_grenzo.json");
+		this.commander_decks.set("Henzie", "commander_henize.json");
 		this.commander_decks.set("Kadena *", "commander_kadena.json");
 		this.commander_decks.set("Merieke Ri Berit", "commander_merieke.json");
 		this.commander_decks.set("Minn", "commander_minn.json");
@@ -240,8 +241,10 @@ class page_data {
 		this.commander_decks.set("populate *", "commander_populate.json");
 		this.commander_decks.set("Roon", "commander_roon.json");
 		this.commander_decks.set("season of growth *", "commander_season_of_growth.json");
+		this.commander_decks.set("Quintorius", "commander_quintorius.json");
 		this.commander_decks.set("Taigam", "commander_taigam.json");
 		this.commander_decks.set("takeover", "commander_takeover.json");
+		this.commander_decks.set("Tatsunari", "commander_tatsunari.json");
 		this.commander_decks.set("Teysa", "commander_teysa.json");
 		this.commander_decks.set("Wort", "commander_wort.json");
 		this.commander_decks.set("Mill", "commander_mill_grixis.json");

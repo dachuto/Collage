@@ -32,6 +32,7 @@
 
 "Reckless Rage",
 "Punishing Fire",
+"Calibrated Blast",
 "Shivan Meteor",
 "Sundering Stroke",
 
@@ -43,12 +44,13 @@
 "Blind with Anger",
 "Torrent of Stone",
 
-"Angelic Accord",
 "Experimental Frenzy",
 "Double Vision",
 "Mirari",
+"Radiant Performer",
 
 "Stromkirk Occultist",
+"Bell Borca, Spectral Sergeant",
 "Tectonic Giant",
 "Wildfire Devils",
 "Galvanoth",
@@ -57,7 +59,6 @@
 "Syr Carah, the Bold",
 "Dragon Mage",
 
-"Splicer's Skill",
 "Wild Ricochet",
 "Stuffy Doll",
 "Hostility",
@@ -67,7 +68,6 @@
 "Dreamstone Hedron",
 
 "Bag of Holding",
-"Tower of Fortunes",
 
 "Aether Hub",
 "Boros Garrison",
@@ -101,6 +101,7 @@
 "Spiritual Visit",
 "First Volley",
 "Eight-and-a-Half-Tails",
+"Angelic Accord",
 "Celestial Dawn"
 ],
 "wants":

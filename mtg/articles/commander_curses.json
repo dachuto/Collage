@@ -1,5 +1,5 @@
 {
-"commander":["Cursed Monstrosity", "Zurgo Helmsmasher"],
+"commander":["Ghen, Arcanum Weaver"],
 "main":
 [
 "Aether Flash",
@@ -15,7 +15,7 @@
 "Theater of Horrors",
 "Oracle's Vault",
 "Outpost Siege",
-"Vance's Blasting Cannons",
+"Vance's Blasting Cannons // Spitfire Bastion",
 "Liliana's Contract",
 "Palace Siege",
 "Null Profusion",
@@ -25,17 +25,16 @@
 
 "Last Laugh",
 "Pestilence",
+"The Fall of Lord Konda",
 "The Akroan War",
+"Elspeth Conquers Death",
 "The Eldest Reborn",
 "Traveling Plague",
 "Haphazard Bombardment",
-"Nettlevine Blight",
 
-"Torment of Scarabs",
 "Cruel Reality",
 
 "Spiritual Focus",
-"Thunderstaff",
 "Sphere of Grace",
 "Sphere of Law",
 "Fires of Invention",
@@ -46,11 +45,10 @@
 "Outlaws' Merriment",
 "Marshal's Anthem",
 "Sigil of the Empty Throne",
-"Demonic Rising",
 
 "Monk Idealist",
 "Mesa Enchantress",
-"Kuon, Ogre Ascendant",
+"Kuon, Ogre Ascendant // Kuon's Essence",
 "Restoration Specialist",
 "Bitterheart Witch",
 "Doomwake Giant",
@@ -60,6 +58,8 @@
 "Treasury Thrull",
 "Silent Sentinel",
 "Angel of Despair",
+"Piru, the Volatile",
+"Ashen Rider",
 
 "Ob Nixilis Reignited",
 "Gideon Jura",
@@ -101,9 +101,12 @@
 "sideboard":
 [
 "Axis of Mortality",
+"Demonic Rising",
 "Lich's Mastery",
+"Torment of Scarabs",
 "Bereavement",
 "Doom Foretold",
+"Nettlevine Blight",
 "Curse of Exhaustion",
 "Dingus Staff",
 "Creeping Dread",
@@ -116,6 +119,7 @@
 "Manabarbs",
 "Purity",
 "Curse of Disturbance",
+"Thunderstaff",
 "Paradise Plume"
 ],
 "wants":
@@ -133,7 +137,7 @@
 "Death Match",
 "Call to the Grave",
 
-"Arguel's Blood Fast",
+"Arguel's Blood Fast // Temple of Aclazotz",
 "Rune of Protection: Green",
 
 "Cantivore",
