@@ -1,0 +1,109 @@
+{
+"commander":["Tatsunari, Toad Rider"],
+"main":
+[
+"Fang of Shigeki",
+"Dockside Chef",
+"Arasta of the Endless Web",
+
+"Wild Growth",
+"Overgrowth",
+"Weirding Wood",
+
+"Enchantress's Presence",
+"Eidolon of Blossoms",
+
+"Boneyard Lurker",
+"Parcelbeast",
+
+"Wiretapping",
+
+"Grolnok, the Omnivore",
+"Froghemoth",
+
+{"name":"Plains", "count":8},
+{"name":"Swamp", "count":9},
+{"name":"Mountain", "count":5}
+],
+"sideboard":
+[
+"Crab Umbra",
+"Spider Umbra",
+"Eel Umbra",
+"Witness Protection",
+"Frogify",
+"Dead Man's Chest",
+"Fate Foretold",
+"Doomwake Giant",
+"Braids's Frightful Return",
+"Curse of Clinging Webs",
+"Feast on the Fallen",
+"Killer Service",
+"Soulreaper of Mogis",
+"Baba Lysaga, Night Witch",
+"Bushmeat Poacher",
+"Vampiric Rites",
+
+"Elemental Bond",
+"Energy Flux",
+"Ever-Watching Threshold",
+"Hissing Miasma",
+"Fecundity",
+"Curse of Leeches // Leeching Lurker",
+"Grim Guardian",
+"Howling Moon",
+"Journey to the Lost City",
+"Skeletal Swarming",
+
+"Shimmering Wings",
+"Whip Silk",
+"Dense Canopy",
+"Bower Passage",
+"Shielding Plax",
+"Snake Umbra",
+"Disinformation Campaign",
+"The First Iroan Games",
+"Dowsing Shaman",
+"Shadowheart, Dark Justiciar",
+
+"Vessel of Nascency",
+"Death's Approach",
+"Mogis's Favor",
+"Omen of the Dead",
+"Rancor",
+"Despondency",
+"Seal of Removal",
+"Seal of Primordium",
+"Seal of Doom"
+],
+"wants":
+[
+"Trudge Garden",
+"Ranger Class",
+"Broken Fall",
+"Bounty of the Luxa",
+"Control Magic",
+"Molting Skin",
+"Otrimi, the Ever-Playful",
+"Brokkos, Apex of Forever",
+"Gemrazer",
+"Migratory Greathorn",
+"Pouncing Shoreshark",
+"Chittering Harvester",
+"Dreadhorde Invasion",
+"Yargle and Multani",
+"Mind Harness",
+"Binding the Old Gods",
+"Curse of Wizardry",
+"Deathreap Ritual",
+"Reconnaissance Mission",
+"Revenge of Ravens",
+"Glorious Sunrise",
+"Moldervine Reclamation",
+"Death's Presence",
+"Deadbridge Chant",
+"Extravagant Replication",
+"Primeval Bounty"
+
+]
+}
