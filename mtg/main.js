@@ -221,6 +221,8 @@ class page_data {
 
 		this.commander_deck_param = "deck";
 		this.commander_decks = new Map();
+		this.commander_decks.set("* Quintorius", "commander_quintorius.json");
+		this.commander_decks.set("* counters deck", "commander_counters.json");
 		this.commander_decks.set("artifacts Esper", "commander_artifacts.json");
 		this.commander_decks.set("combo Golos", "commander_combo.json");
 		this.commander_decks.set("curses Mardu", "commander_curses.json");

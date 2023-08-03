@@ -2,13 +2,12 @@
 "commander":["Roon of the Hidden Realm"],
 "main":
 [
-	""asdad,
 	"Wizard Class",
-	"RiseandShine",
+	"Rise and Shine",
 	"Westgate Regent",
 	"Scurry Oak",
-	"Deepwood Denizen"
-	"Froghemoth"
+	"Deepwood Denizen",
+	"Froghemoth",
 	"Quandrix Pledgemage",
 	"Quandrix Command",
 	"Manifestation Sage",
@@ -22,7 +21,7 @@
 	"Sweet-Gum Recluse",
 	"Iridescent Hornbeetle",
 	"Woodland Champion",
-	"Mowu, Loyal Companion"
+	"Mowu, Loyal Companion",
 
 "Evolving Wilds",
 "Vivid Creek",
@@ -48,20 +47,7 @@
 ],
 "sideboard":
 [
-"Deadeye Navigator",
-"Fierce Empath",
-"Ajani Unyielding",
-"Nezahal, Primal Tide",
-"Harmonic Sliver",
-"Loxodon Hierarch",
-"Urbis Protector",
-"Linvala, the Preserver",
-"Quarry Colossus",
-"Sage of Ancient Lore",
-"Terastodon",
-"Seht's Tiger",
-"Djinn of Wishes",
-"Brago, King Eternal"
+"Deadeye Navigator"
 ],
 "wants":
 [

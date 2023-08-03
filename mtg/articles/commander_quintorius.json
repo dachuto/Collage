@@ -7,35 +7,35 @@
 	"Dauntless Cathar",
 	"Kindly Ancestor",
 	"Nearheath Chaplain",
-	
+
 	"Timeless Dragon",
 	"Katilda, Dawnhart Martyr",
 	"Moorland Rescuer",
-	
+
 	"Grim Lavamancer",
 	"Conspiracy Theorist",
 	"Plargg, Dean of Chaos",
 	"Dismissive Pyromancer",
 	"Hollowhead Sliver",
-	
+
 	"Zurzoth, Chaos Rider",
 	"Coastline Marauders",
 	"Phoenix of Ash",
-	
+
 	"Millikin",
 	"Containment Construct",
-	
+
 	"Drogskol Reinforcements",
-	
+
 	"Battle Screech",
-	
+
 	"Bag of Holding",
 	"Desecrated Tomb",
 
 
 	"Needle Spires",
 	{"name":"Plains", "count":1},
-	{"name":"Mountain", "count":2},
+	{"name":"Mountain", "count":2}
 ],
 "sideboard":
 [
@@ -51,7 +51,7 @@
 	"Anje's Ravager",
 	"Cenn's Enlistment",
 	"Dire Fleet Daredevil",
-	
+
 	"Abiding Grace",
 	"Auriok Salvagers",
 	"Salvaging Station",
@@ -109,8 +109,7 @@
 	"Nemesis Phoenix",
 	"Rekindling Phoenix",
 	"Unquenchable Fury",
-	"Undying Rage",
-	
+	"Undying Rage"
 ],
 "wants":
 [
@@ -142,6 +141,6 @@
 	"Sentinel's Eyes",
 	"Satyr's Cunning",
 	"Escape Velocity",
-	"Spellbinding Soprano",
+	"Spellbinding Soprano"
 ]
 }
