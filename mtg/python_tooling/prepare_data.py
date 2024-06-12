@@ -174,34 +174,36 @@ if __name__ == "__main__3":
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='Prepare data from mtgjson.com files. Take multiple json files and output one.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-	parser.add_argument('--mtg-json', help='mtg json data file', required=True)
-	parser.add_argument('--prices', help='serialized binary format', nargs='*', required=True)
-	parser.add_argument('--user', help='cardmarket user data file', required=True)
-	parser.add_argument('--mcm-products', help='cardmarket products data file', required=True)
-	parser.add_argument('--wants', help='personal wants txt')
+	# parser.add_argument('--prices', help='serialized binary format', nargs='*', required=True)
+	# parser.add_argument('--user', help='cardmarket user data file', required=True)
+	# parser.add_argument('--mcm-products', help='cardmarket products data file', required=True)
+	# parser.add_argument('--wants', help='personal wants txt')
 	parser.add_argument('--summary', help='output file name', required=True)
 
-	# group = parser.add_mutually_exclusive_group(required=True)
-	# group.add_argument('--filter', action='store_true', help='...')
-	# group.add_argument('--invert', action='store_true', help='invert top level maps {key : value} => {value : [keys]}')
-	# group.add_argument('--merge', action='store_true', help='merge top level maps')
+	parser.add_argument('--mtg-json', help='mtg json data file', required=True)
+	parser.add_argument('--mtg-json-prices', help='mtg json prices file', required=True)
 
 	args = parser.parse_args()
-
-	wants_set = None
-	if args.wants:
-		with open(args.wants) as f:
-			wants_set = set(line.rstrip() for line in f)
-
 	logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
+	mtg_json_data = mtg_json.mtg_json()
+
+	with open(args.mtg_json, 'r') as f:
+		mtg_json_data.extract(json.load(f))
+
+	with open(args.mtg_json_prices, 'r') as f:
+		mtg_json_data.prices(json.load(f))
+
+	exit()
+	# wants_set = None
+	# if args.wants:
+	# 	with open(args.wants) as f:
+	# 		wants_set = set(line.rstrip() for line in f)
+
 	logging.info("Loading prices...")
 	prices_by_multiverse_id = price_record.merge(args.prices)
 	logging.info("Found {} prices...".format(len(prices_by_multiverse_id)))
 
 	logging.info("Loading mtg_json...")
-	mtg_json_data = mtg_json.mtg_json()
-	with open(args.mtg_json, 'r') as f:
-		mtg_json_data.extract(json.load(f))
 
 	logging.info("Loading MCM items...")
 	mcm_csv = dict()
