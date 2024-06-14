@@ -19,7 +19,7 @@ void *allocate_passed_to_cpp(void *cb_data, size_t size) {
 	return ngx_palloc((struct ngx_pool_s *)cb_data, size);
 }
 
-void log_passed_to_cpp(void *log_cb_data, char const *string) {
+void *log_passed_to_cpp(void *log_cb_data, char const *string) {
 	ngx_log_error(NGX_LOG_ERR, (ngx_log_t *)log_cb_data, 0,  string);
 }
 
