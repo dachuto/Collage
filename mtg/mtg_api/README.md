@@ -12,6 +12,6 @@ Build and run (with this setup one doesn't need root):
 ```
 cmake -DBUILD_NGINX_MODULE=ON -DCMAKE_INSTALL_PREFIX=<WHERE TO PUT NGINX> <Collage/mtg/mtg_api/>
 make json_data
+nginx_slow_build
 make && make install && make run_nginx
 ```
-
