@@ -12,7 +12,7 @@ set(NGINX_BINARY ${NGINX_SOURCE_DIR}/objs/nginx)
 
 
 set(NGINX_VERSION nginx-1.22.1)
-set(ZLIB_VERSION zlib-1.2.13)
+set(ZLIB_VERSION zlib-1.3.1)
 
 function(wget_and_unpack url filename working_dir unpacked_dir_name new_dir_name)
 	add_custom_command(
@@ -130,4 +130,3 @@ add_custom_target(run_nginx
 	WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}
 	VERBATIM
 )
-
