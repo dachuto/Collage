@@ -45,8 +45,8 @@
 "Bloodfell Caves",
 "Drownyard Temple",
 "Zhalfirin Void",
-{"name":"Swamp", "count":24},
-{"name":"Mountain", "count":9}
+{"name":"Swamp", "quantity":24},
+{"name":"Mountain", "quantity":9}
 ],
 "sideboard":
 [

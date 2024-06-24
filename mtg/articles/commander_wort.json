@@ -78,8 +78,8 @@
 "Dwarven Mine",
 "Khalni Garden",
 "Forgotten Cave",
-{"name":"Mountain", "count":13},
-{"name":"Forest", "count":18}
+{"name":"Mountain", "quantity":13},
+{"name":"Forest", "quantity":18}
 ],
 "sideboard":
 [

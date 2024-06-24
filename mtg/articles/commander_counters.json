@@ -42,8 +42,8 @@
 "Sejiri Refuge",
 "Stirring Wildwood",
 "Plains",
-{"name":"Forest", "count":9},
-{"name":"Island", "count":13}
+{"name":"Forest", "quantity":9},
+{"name":"Island", "quantity":13}
 ],
 "sideboard":
 [

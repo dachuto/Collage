@@ -84,8 +84,8 @@
 "Reliquary Tower",
 "Mystifying Maze",
 "Labyrinth of Skophos",
-{"name":"Plains", "count":7},
-{"name":"Island", "count":16}
+{"name":"Plains", "quantity":7},
+{"name":"Island", "quantity":16}
 ],
 "sideboard":
 [

@@ -7,44 +7,40 @@
 
 namespace mtg_api {
 
-using tag_id = int;
-using tag_ids_container = boost::container::flat_set<tag_id>;
+using collector_number_type = int;
+using multiverse_id_type = int;
+using set_code_type = std::string;
 
-using multiverse_id = int;
-using multiverse_ids_container = boost::container::flat_set<multiverse_id>;
+using cards_by_collector_number_container = boost::container::flat_map<collector_number_type, multiverse_id_type>;
 
 struct card_set {
 	std::string name;
-	multiverse_ids_container printings{};
+	std::string release_date;
+	cards_by_collector_number_container cards_by_collector_number;
 };
 
-struct unique_card {
-	multiverse_ids_container printings{};
-	tag_ids_container tags{};
+using card_sets_container = boost::container::flat_map<set_code_type, card_set>;
+
+using multiverse_ids_container = boost::container::flat_set<multiverse_id_type>;
+using set_and_collector_number_container = boost::container::flat_set<std::pair<set_code_type, collector_number_type>>;
+
+using card_name_to_multiverse_id_container = boost::container::flat_map<std::string, multiverse_ids_container>;
+
+struct set_printing {
+	collector_number_type collector_number;
+	set_code_type set_code;
+
+	auto operator<=>(set_printing const &) const = default;
 };
 
-using card_sets_container = boost::container::flat_map<std::string, card_set>;
-using unique_cards_container = boost::container::flat_map<std::string, unique_card>;
-
-struct printing {
-	unique_cards_container::const_iterator card_iterator;
-};
-
-using printings_container = boost::container::flat_map<multiverse_id, printing>;
-
-struct tag {
-	std::string name;
-	using card_iterators_container = boost::container::flat_set<unique_cards_container::const_iterator>;
-	card_iterators_container card_iterators{};
-};
-
-using tags_container = boost::container::flat_map<tag_id, tag>;
+using multiverse_id_to_set_printing_container = boost::container::flat_map<multiverse_id_type, set_printing>;
+using multiverse_id_to_card_name_index_container = boost::container::flat_map<multiverse_id_type, std::size_t>;
 
 struct database {
 	card_sets_container card_sets;
-	printings_container printings;
-	tags_container tags;
-	unique_cards_container unique_cards;
+	multiverse_id_to_set_printing_container multiverse_id_to_set_printing;
+	multiverse_id_to_card_name_index_container multiverse_id_to_card_name_index;
+	card_name_to_multiverse_id_container card_name_to_multiverse_id;
 };
 
 }

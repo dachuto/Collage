@@ -82,9 +82,9 @@
 "Stirring Wildwood",
 "Krosan Verge",
 "Vitu-Ghazi, the City-Tree",
-{"name":"Plains", "count":5},
-{"name":"Island", "count":7},
-{"name":"Forest", "count":10}
+{"name":"Plains", "quantity":5},
+{"name":"Island", "quantity":7},
+{"name":"Forest", "quantity":10}
 ],
 "sideboard":
 [

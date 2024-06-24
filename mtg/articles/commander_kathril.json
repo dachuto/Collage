@@ -47,8 +47,8 @@
 "Secluded Steppe",
 "Barren Moor",
 "Windbrisk Heights",
-{"name":"Swamp", "count":15},
-{"name":"Plains", "count":15}
+{"name":"Swamp", "quantity":15},
+{"name":"Plains", "quantity":15}
 ],
 "sideboard":
 [

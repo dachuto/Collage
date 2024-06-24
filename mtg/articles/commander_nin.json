@@ -76,8 +76,8 @@
 "Forgotten Cave",
 "Spinerock Knoll",
 
-{"name":"Island", "count":14},
-{"name":"Mountain", "count":19}
+{"name":"Island", "quantity":14},
+{"name":"Mountain", "quantity":19}
 
 ],
 "sideboard":

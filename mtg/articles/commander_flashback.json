@@ -97,9 +97,9 @@
 
 "Mystic Sanctuary",
 
-{"name":"Plains", "count":1},
-{"name":"Island", "count":8},
-{"name":"Mountain", "count":9}
+{"name":"Plains", "quantity":1},
+{"name":"Island", "quantity":8},
+{"name":"Mountain", "quantity":9}
 ],
 "sideboard":
 [

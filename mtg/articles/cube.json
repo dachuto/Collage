@@ -4,7 +4,7 @@
 "Thraben Inspector",
 "Dauntless Bodyguard",
 "Doomed Traveler",
-"Giant Killer",
+"Giant Killer // Chop Down",
 "Herald of Anafenza",
 "Soldier of the Pantheon",
 "Condemn",
@@ -73,7 +73,7 @@
 "Faith's Fetters",
 "Conclave Tribunal",
 "Cast Out",
-"Dusk",
+"Dusk // Dawn",
 "Entrapment Maneuver",
 "Angelic Exaltation",
 "Marshal's Anthem",
@@ -267,7 +267,7 @@
 "Doomfall",
 "Virtus's Maneuver",
 "Read the Bones",
-"Never",
+"Never // Return",
 "Ruinous Path",
 "Cry of the Carnarium",
 "Underworld Connections",
@@ -628,7 +628,7 @@
 "Silent-Blade Oni",
 "Agony Warp",
 "Recoil",
-"Far",
+"Far // Away",
 "Connive",
 "Soulquake"
 ],
@@ -654,7 +654,7 @@
 "Nikya of the Old Ways",
 "Wort, the Raidmother",
 "Branching Bolt",
-"Heaven",
+"Heaven // Earth",
 "Escape the Wilds",
 "Reap the Past"
 ],
@@ -694,7 +694,7 @@
 "Electrolyze",
 "Brutal Expulsion",
 "Suffocating Blast",
-"Turn",
+"Turn // Burn",
 "Prophetic Bolt"
 ],
 "golgari":

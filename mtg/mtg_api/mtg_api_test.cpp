@@ -19,26 +19,23 @@ TEST(mtg_api_test, works) {
 	std::string s(ret.data, ret.size);
 	std::cout << s << "\n";
 
-	for (auto const &kv: database.unique_cards) {
+	for (auto const &kv: database.multiverse_id_to_set_printing) {
 		std::cout << kv.first;
-		std::cout << " [ ";
-		for (auto const &x : kv.second.printings) {
-			std::cout << " " << x;
-		}
-		std::cout << "]\n";
+		std::cout << " [ " << kv.second.collector_number << ", " << kv.second.set_code;
+		std::cout << " ]\n";
 	}
 
 	for (auto const &kv: database.card_sets) {
 		std::cout << kv.first << "\n";
-		for (auto const &id : kv.second.printings) {
-			std::cout << id << " ";
+		for (auto const &id : kv.second.cards_by_collector_number) {
+			std::cout << id.second << " ";
 		}
 		std::cout << "\n";
 	}
 
-	auto const it = database.unique_cards.find(std::string("Fog"));
-	if (it != database.unique_cards.end()) {
-		for (auto const &id : it->second.printings) {
+	auto const it = database.card_name_to_multiverse_id.find(std::string("Fog"));
+	if (it != database.card_name_to_multiverse_id.end()) {
+		for (auto const &id : it->second) {
 			std::cout << "multiverseId for Fog: " << id << "\n";
 		}
 	}

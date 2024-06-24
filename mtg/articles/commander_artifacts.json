@@ -62,7 +62,7 @@
 
 "Malcator, Purity Overseer",
 "Geology Enthusiast",
-  
+
 "The Antiquities War",
 "Thopter Spy Network",
 "One with the Machine",
@@ -111,8 +111,8 @@
 "Shrine of the Forsaken Gods",
 "Temple of the False God",
 
-{"name":"Island", "count":4},
-{"name":"Swamp", "count":4, "notes": "Cycle from original Mirrodin."}
+{"name":"Island", "quantity":4},
+{"name":"Swamp", "quantity":4, "notes": "Cycle from original Mirrodin."}
 ],
 "sideboard":
 [

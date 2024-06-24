@@ -24,8 +24,8 @@
 "Fascination",
 "Skyscribing",
 
-{"name":"Island", "count":21},
-{"name":"Swamp", "count":10}
+{"name":"Island", "quantity":21},
+{"name":"Swamp", "quantity":10}
 ],
 "sideboard":
 [

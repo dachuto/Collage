@@ -21,9 +21,9 @@
 "Grolnok, the Omnivore",
 "Froghemoth",
 
-{"name":"Plains", "count":8},
-{"name":"Swamp", "count":9},
-{"name":"Mountain", "count":5}
+{"name":"Plains", "quantity":8},
+{"name":"Swamp", "quantity":9},
+{"name":"Mountain", "quantity":5}
 ],
 "sideboard":
 [

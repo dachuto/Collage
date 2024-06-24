@@ -41,8 +41,8 @@
 
 "Temple of the False God",
 "Simic Guildgate",
-{"name":"Forest", "count":9},
-{"name":"Island", "count":13}
+{"name":"Forest", "quantity":9},
+{"name":"Island", "quantity":13}
 ],
 "sideboard":
 [

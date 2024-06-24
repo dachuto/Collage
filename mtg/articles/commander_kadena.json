@@ -94,9 +94,9 @@
 "Simic Guildgate",
 "Woodland Stream",
 
-{"name":"Island", "count":9},
-{"name":"Swamp", "count":7},
-{"name":"Forest", "count":12}
+{"name":"Island", "quantity":9},
+{"name":"Swamp", "quantity":7},
+{"name":"Forest", "quantity":12}
 ],
 "sideboard":
 [

@@ -4,8 +4,8 @@
 [
 
 
-{"name":"Plains", "count":9},
-{"name":"Mountain", "count":20}
+{"name":"Plains", "quantity":9},
+{"name":"Mountain", "quantity":20}
 ],
 "sideboard":
 [
@@ -21,4 +21,3 @@
 "Seedguide Ash",
 ]
 }
-

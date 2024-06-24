@@ -32,10 +32,9 @@
 	"Bag of Holding",
 	"Desecrated Tomb",
 
-
 	"Needle Spires",
-	{"name":"Plains", "count":1},
-	{"name":"Mountain", "count":2}
+	{"name":"Plains", "quantity":1},
+	{"name":"Mountain", "quantity":2}
 ],
 "sideboard":
 [

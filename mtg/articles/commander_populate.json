@@ -97,10 +97,10 @@
 "Krosan Verge",
 "Stirring Wildwood",
 
-{"name":"Plains", "count":2},
-{"name":"Island", "count":7},
+{"name":"Plains", "quantity":2},
+{"name":"Island", "quantity":7},
 "Mountain",
-{"name":"Forest", "count":7}
+{"name":"Forest", "quantity":7}
 ],
 "sideboard":
 [

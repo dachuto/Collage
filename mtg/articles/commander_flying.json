@@ -51,8 +51,8 @@
 "Temple of the False God",
 "Reliquary Tower",
 "Mystifying Maze",
-{"name":"Plains", "count":7},
-{"name":"Island", "count":17}
+{"name":"Plains", "quantity":7},
+{"name":"Island", "quantity":17}
 ],
 "sideboard":
 [

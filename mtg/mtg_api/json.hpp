@@ -14,6 +14,8 @@ struct to_json {
 	bytes_view write(database const &database) const;
 	bytes_view write(multiverse_ids_container const &x) const;
 	bytes_view write(int const *first, int const *last) const;
+
+	bytes_view write(card_name_to_multiverse_id_container const &) const;
 };
 
 }

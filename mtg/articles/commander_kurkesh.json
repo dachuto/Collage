@@ -15,8 +15,8 @@
 "Soul Foundry",
 "Magistrate's Scepter",
 
-{"name":"Mountain", "count":30},
-{"name":"Swamp", "count":4, "notes": "Cycle from original Mirrodin."}
+{"name":"Mountain", "quantity":30},
+{"name":"Swamp", "quantity":4, "notes": "Cycle from original Mirrodin."}
 ],
 "sideboard":
 [
@@ -28,7 +28,7 @@
 "Titan Forge",
 "Erratic Portal",
 "Wand of Wonder",
-	
+
 "Mind Stone",
 "Hedron Archive",
 "Dreamstone Hedron",
@@ -43,7 +43,7 @@
 "Salvaging Station",
 
 "Spine of Ish Sah",
-	
+
 "Voltaic Key",
 "Burnished Hart",
 "Coretapper",

@@ -94,9 +94,9 @@
 "Bojuka Bog",
 "Temple of the False God",
 
-{"name":"Plains", "count":7},
-{"name":"Island", "count":12},
-{"name":"Swamp", "count":3}
+{"name":"Plains", "quantity":7},
+{"name":"Island", "quantity":12},
+{"name":"Swamp", "quantity":3}
 ],
 "sideboard":
 [

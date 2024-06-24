@@ -3,10 +3,9 @@ cmake_minimum_required(VERSION 3.10)
 set(project mtg_api)
 project(${project})
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 set(sources
-	database.cpp
 	json.cpp
 	mtg_api.cpp
 )
@@ -68,5 +67,3 @@ if (BUILD_NGINX_MODULE)
 else()
 	message(STATUS "Not building nginx module.")
 endif()
-
-

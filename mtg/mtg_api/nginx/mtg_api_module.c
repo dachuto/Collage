@@ -87,7 +87,7 @@ static char *config_function(ngx_conf_t *cf, ngx_command_t *cmd, void *conf) { \
 	return register_location_content_handler(cf, cmd, conf, config_function ## handler); \
 }
 
-REGISTER_HANDLER(mtg_api_info, mtg_api_f1)
+REGISTER_HANDLER(mtg_api_info, mtg_api_cpp_info)
 REGISTER_HANDLER(mtg_api_query, mtg_api_f2)
 
 static ngx_command_t ngx_http_UNIQUE_commands[] = {

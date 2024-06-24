@@ -1,13 +1,15 @@
 #include <cstdio>
 #include <cstring>
+#include <iostream>
 #include <map>
 #include <memory>
-#include <unordered_map>
+#include <ranges>
+#include <set>
 #include <vector>
-#include <iostream>
 
 #include <boost/scope_exit.hpp>
 
+#include "database.hpp"
 #include "rapidjson/document.h"
 #include "rapidjson/error/en.h"
 #include "rapidjson/filereadstream.h"
@@ -65,6 +67,12 @@ auto const &member(GenericValue const &d, char const *c) {
 	return it->value;
 }
 
+// template <typename GenericValue>
+// auto as_bool(GenericValue const &d) {
+// 	expect(d.IsBool());
+// 	return d.GetBool();
+// }
+
 template <typename GenericValue>
 auto as_int(GenericValue const &d) {
 	expect(d.IsInt());
@@ -111,147 +119,107 @@ bytes_view serialize(allocator_t allocator, rapidjson::Document const &document)
 	return {const_cast<buffer_type::Ch*>(buffer.GetString()), buffer.GetSize()}; // cast const away - it's memory from allocator
 }
 
-template <typename It>
-auto as_json_array(It first, It last) {
-	rapidjson::Document d;
+template <typename DocOrValue, typename It, typename Allocator>
+auto as_json_array(DocOrValue &d, It first, It last, Allocator &allocator) {
 	d.SetArray();
 	for (auto it = first; it != last; ++it) {
 		rapidjson::Value v;
 		v.SetInt(*it);
-		d.PushBack(v, d.GetAllocator());
+		d.PushBack(v, allocator);
 	}
-	return d;
 }
 
 }
 
 namespace mtg_api {
 
-auto all_cards(rapidjson::Document const &document) {
-	auto const one_card = [](auto const &d) {
-		expect(d.IsString());
-		return unique_cards_container::value_type{as_string(d), {}};
-	};
-
-	std::vector<unique_cards_container::value_type> temp;
-	expect(document.IsObject());
-	auto const &data = member(document, "data");
-	expect(data.IsObject());
-
-	for (auto it = data.MemberBegin(); it != data.MemberEnd(); ++it) {
-		temp.push_back(one_card(it->name));
-		//it->value
-	}
-
-	return unique_cards_container{std::cbegin(temp), std::cend(temp)};
-}
-
 void all_sets(rapidjson::Document const &document, database &db) {
-	auto const one_set = [&unique_cards = db.unique_cards](auto const &json_set, auto &&card_functor) {
+	auto const one_set = [](auto const &json_set, auto &&card_functor) {
 		expect(json_set.IsObject());
 		auto const &cards = member(json_set, "cards");
 		for (auto it = cards.Begin(); it != cards.End(); ++it) {
 			auto const &p = *it;
 			expect(p.IsObject());
-// <<<<<<< HEAD
-// 			try {
-// 				auto const &identifiers = member(p, "identifiers");
-// 				expect(identifiers.IsObject());
-// 				auto const &id_object = member(identifiers, "multiverseId");
-// 				auto const id = std::stoi(as_string(id_object));
-// 				auto const unique_cards_it = unique_cards.find(as_string(member(p, "name")));
-// =======
 			card_functor(p);
 		}
-
 	};
 
 	expect(document.IsObject());
-	auto const &member_data = document.FindMember("data")->value;
 
-	std::unordered_map<std::string, unique_card> card_names;
-	auto const extract_name = [&card_names](auto const &json_card) {
-		card_names.insert({as_string(member(json_card, "name")), {}});
-	};
-
-	for (auto it = member_data.MemberBegin(); it != member_data.MemberEnd(); ++it) {
-		one_set(it->value, extract_name);
-	}
-	db.unique_cards = unique_cards_container{std::cbegin(card_names), std::cend(card_names)};
+	std::map<std::string, std::set<multiverse_id_type>> card_name_to_multiverse_id_temp;
+	std::map<multiverse_id_type, set_printing> multiverse_id_to_set_printing_temp;
 
 	std::vector<card_sets_container::value_type> all_sets;
-	std::vector<printings_container::value_type> printings_not_sorted;
 
+	auto const &member_data = document.FindMember("data")->value;
 	for (auto it = member_data.MemberBegin(); it != member_data.MemberEnd(); ++it) {
-		multiverse_ids_container multiverse_ids;
-		auto const extract_set = [&unique_cards = db.unique_cards, &multiverse_ids, &printings_not_sorted](auto const &json_card) {
+		std::vector<cards_by_collector_number_container::value_type> cards_by_collector_number_temp;
+		auto const &set = it->value;
+		set_code_type const set_code = as_string(member(set, "code"));
+
+		auto const extract_set = [&](auto const &json_card) {
 			try {
 				auto const &identifiers = member(json_card, "identifiers");
 				std::string const id_s = std::string(as_string(member(identifiers, "multiverseId")));
-				auto const id = std::stoi(id_s);
-				auto const name = as_string(member(json_card, "name"));
-				auto unique_cards_it = unique_cards.find(name);
-				assert(unique_cards_it != unique_cards.end());
-// >>>>>>> 07a136e (json changes cpp)
-				unique_cards_it->second.printings.insert(id);
+				auto const multiverse_id = std::stoi(id_s);
 
-				printings_not_sorted.push_back({id, {unique_cards_it}});
-				multiverse_ids.insert(id);
-			} catch (...) {
-				// this is because data source lists cards, from wierd supplementary sets, without important fields (like multiverse id)
-				//std::cerr << e.what();
+				auto const collector_number = std::stoi(std::string(as_string(member(json_card, "number"))));
+				auto const name = as_string(member(json_card, "name"));
+
+				{
+					auto it = card_name_to_multiverse_id_temp.find(name);
+					if (it == card_name_to_multiverse_id_temp.end()) {
+						it = card_name_to_multiverse_id_temp.insert(it, {name, {}});
+					}
+					it->second.insert(multiverse_id);
+				}
+
+				{
+					std::cout << " >>> " << multiverse_id << " " << set_code << " " << collector_number << std::endl;
+					auto it = multiverse_id_to_set_printing_temp.find(multiverse_id);
+					if (it == multiverse_id_to_set_printing_temp.end()) {
+						it = multiverse_id_to_set_printing_temp.insert(it, {multiverse_id, set_printing{collector_number, set_code}});
+					} else {
+						// This is unexpected!
+					}
+				}
+
+				cards_by_collector_number_temp.push_back({collector_number, multiverse_id});
+			} catch (std::exception const &e) {
+				// this is because data source lists cards, from weird supplementary sets, without important fields (like multiverse id)
+				// std::cerr << e.what();
 			}
 		};
 
-// <<<<<<< HEAD
-// 		return card_sets_container::value_type{as_string(member(d, "code")), {as_string(member(d, "name")), temp}};
-// 	};
-
-// 	std::vector<card_sets_container::value_type> temp;
-// 	expect(document.IsObject());
-// 	auto const &data = member(document, "data");
-// 	expect(data.IsObject());
-
-// 	for (auto it = data.MemberBegin(); it != data.MemberEnd(); ++it) {
-// 		temp.push_back(one_set(it->value));
-// =======
-		auto const &set = it->value;
 		one_set(it->value, extract_set);
-		all_sets.push_back(card_sets_container::value_type{as_string(member(set, "code")), {as_string(member(set, "name")), multiverse_ids}});
+		all_sets.push_back(card_sets_container::value_type{set_code, {as_string(member(set, "name")), as_string(member(set, "releaseDate")), cards_by_collector_number_container{std::cbegin(cards_by_collector_number_temp), std::cend(cards_by_collector_number_temp)}}});
 	}
+
 	db.card_sets = card_sets_container{std::cbegin(all_sets), std::cend(all_sets)};
-	db.printings = printings_container{std::cbegin(printings_not_sorted), std::cend(printings_not_sorted)};
-}
 
-auto tags(rapidjson::Document const &document) {
-	expect(document.IsObject());
-	std::vector<tags_container::value_type> temp;
-	for (auto it = document.MemberBegin(); it != document.MemberEnd(); ++it) {
-		temp.push_back({std::stoi(as_string(it->name)), {as_string(it->value)}});
+	{
+		auto const temp_range = std::ranges::views::transform(multiverse_id_to_set_printing_temp, [](auto const &e) {
+			return multiverse_id_to_set_printing_container::value_type{e.first, e.second};
+		});
+		db.multiverse_id_to_set_printing = multiverse_id_to_set_printing_container{boost::container::ordered_unique_range_t{}, temp_range.begin(), temp_range.end()};
 	}
-	return tags_container{std::cbegin(temp), std::cend(temp)};
-}
 
-void name_to_tags(rapidjson::Document const &document, unique_cards_container &unique_cards, tags_container &tags) {
-	expect(document.IsObject());
+	{
+		auto const temp_range = std::ranges::views::transform(card_name_to_multiverse_id_temp, [](auto const &e) {
+			return card_name_to_multiverse_id_container::value_type{e.first, multiverse_ids_container{e.second.begin(), e.second.end()}};
+		});
+		db.card_name_to_multiverse_id = card_name_to_multiverse_id_container{temp_range.begin(), temp_range.end()};
+	}
 
-	std::map<tag_id, std::vector<unique_cards_container::const_iterator>> temp;
-	for (auto it = document.MemberBegin(); it != document.MemberEnd(); ++it) {
-		auto const unique_cards_it = unique_cards.find(as_string(it->name));
-		expect(unique_cards_it != unique_cards.end());
-		auto const &array = it->value;
-		expect(array.IsArray());
-		for (auto it2 = array.Begin(); it2 != array.End(); ++it2) {
-			tag_id const tag_id = as_int(*it2);
-			unique_cards_it->second.tags.insert(tag_id);
-			temp[tag_id].push_back(unique_cards_it);
+	{
+		std::vector<multiverse_id_to_card_name_index_container::value_type> inverted_index_temp;
+		for (std::size_t i = 0; i < db.card_name_to_multiverse_id.size(); ++i) {
+			auto const it = db.card_name_to_multiverse_id.nth(i);
+			for (auto const &multiverse_id : it->second) {
+				inverted_index_temp.push_back(multiverse_id_to_card_name_index_container::value_type{multiverse_id, i});
+			}
 		}
-	}
-
-	for (auto const &kv : temp) {
-			auto const tags_it = tags.find(kv.first);
-			expect(tags_it != tags.end());
-			tags_it->second.card_iterators = tag::card_iterators_container{std::cbegin(kv.second), std::cend(kv.second)};
+		db.multiverse_id_to_card_name_index = multiverse_id_to_card_name_index_container{inverted_index_temp.begin(), inverted_index_temp.end()};
 	}
 }
 
@@ -277,7 +245,7 @@ database read(mtg_api_args const &args) {
 	// }
 
 	// {
-	// 	auto document = read_JSON_file(args.path_name_to_tags);
+		// auto document = read_JSON_file(args.path_name_to_tags);
 	// 	expect(document);
 	// 	name_to_tags(*document, ret.unique_cards, ret.tags);
 	// }
@@ -293,43 +261,44 @@ bytes_view to_json::write(std::string const &s) const {
 
 bytes_view to_json::write(database const &database) const {
 	rapidjson::Document d;
-	d.SetObject();
-	//TODO: this is just a test
-	// for (auto const &s : database.unique_cards) {
-	// 	rapidjson::Value v{1}; //TODO
+	d.SetArray();
+
+	// for (auto const &[name, set] : database.card_sets) {
+	// 	rapidjson::Value v;
 	// 	d.AddMember(rapidjson::StringRef(s.first.data(), s.first.length()), v, d.GetAllocator());
 	// }
-
-	// d.SetArray();
-	for (auto const &t : database.tags) {
-		// rapidjson::Value dd;
-		// dd.SetObject();
-
-		{
-			std::string const i = std::to_string(t.first);
-			rapidjson::Value n;
-			n.SetString(i.data(), i.length(), d.GetAllocator());
-			rapidjson::Value v;
-			v.SetString(t.second.name.data(), t.second.name.length());
-			d.AddMember(n, v, d.GetAllocator());
-		}
-		// {
-		// 	rapidjson::Value v;
-		// 	v.SetInt(t.first);
-		// 	dd.AddMember("id", v, d.GetAllocator());
-		// }
-		// d.PushBack(dd, d.GetAllocator());
-	}
+	// 		v.SetString(key.c_str(), key.length());
+	// 	d.PushBack(v, d.GetAllocator());
 
 	return serialize(allocator, d);
 }
 
 bytes_view to_json::write(multiverse_ids_container const &x) const {
-	return serialize(allocator, as_json_array(std::cbegin(x), std::cend(x)));
+	rapidjson::Document d;
+	as_json_array(d, std::cbegin(x), std::cend(x), d.GetAllocator());
+	return serialize(allocator, d);
 }
 
 bytes_view to_json::write(int const *first, int const *last) const {
-	return serialize(allocator, as_json_array(first, last));
+	rapidjson::Document d;
+	as_json_array(d, first, last, d.GetAllocator());
+	return serialize(allocator, d);
+}
+
+bytes_view to_json::write(card_name_to_multiverse_id_container const &c) const {
+	rapidjson::Document d;
+	d.SetObject();
+
+	for (auto const &[key, value] : c) {
+			rapidjson::Value ids;
+			as_json_array(ids, std::cbegin(value), std::cend(value), d.GetAllocator());
+
+			rapidjson::Value kv;
+			kv.SetString(key.c_str(), key.length());
+			d.AddMember(kv, ids, d.GetAllocator());
+	}
+
+	return serialize(allocator, d);
 }
 
 }
