@@ -2,6 +2,19 @@
 
 We download card data in json format. See: nginx setup and install components.
 
+## scryfall_download.py
+
+Script to download all images from scryfall. Reasonable resolution is less than 10GB in total.
+
+```
+python3 ../Collage/mtg/python_tooling/scryfall_download.py ~/Downloads/unique-artwork-20240627210344.json
+```
+
+Then one can host a simple webserver with all the images:
+```
+python3 -m http.server 2345
+```
+
 ## prepare_data.py
 
 Takes json data as input and can output different useful information. Such as list of all english cards multiverse_ids. Now also takes a lot of market price data. Still lots of todo.
