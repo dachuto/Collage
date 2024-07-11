@@ -1,41 +1,57 @@
 "use strict";
 
 class deck_entry {
-	constructor(name, quantity, multiverse_id, notes, foil) {
-		if (!Number.isInteger(quantity)) {
+	constructor(input) {
+		if (!Number.isInteger(input.quantity)) {
 			throw "Not an integer";
 		}
-		if (quantity < 1) {
+		if (input.quantity < 1) {
 			throw "Must be at least 1";
 		}
-		if (notes != null && typeof notes !== "string") {
+		if (input.set != null && typeof input.set !== "string") {
 			throw "Notes must be string";
 		}
-
-		if (multiverse_id != null && !Number.isInteger(multiverse_id)) {
+		if (input.notes != null && typeof input.notes !== "string") {
+			throw "Notes must be string";
+		}
+		if (input.collector_number != null && typeof input.collector_number !== "string") {
+			throw "collector_number not a string";
+		}
+		if (input.multiverse_id != null && !Number.isInteger(input.multiverse_id)) {
 			throw "Not an integer";
 		}
-		// if (ids != null && !Array.isArray(ids)) {
-		// 	throw "Ids is not an array";
-		// }
-
-		if (name == null && multiverse_id == null) {
+		if (input.name == null && (input.multiverse_id == null || (input.set == null || input.collector_number == null))) {
 			throw "Not representing any printing";
 		}
-
-		if (foil != null && typeof foil !== "boolean") {
+		if (input.foil != null && typeof input.foil !== "boolean") {
 			throw "not a boolean";
 		}
 
-		this.name = name;
-		this.quantity = quantity;
-		this.multiverse_id = multiverse_id;
-		this.notes = notes;
+		this.name = input.name;
+
+		this.multiverse_id = input.multiverse_id;
+		this.set = input.set;
+		this.collector_number = input.collector_number;
+
+		this.quantity = input.quantity;
+
+		this.notes = input.notes;
 		this.temp_ids = null;
-		if (foil == null) {
-			this.foil = false;
-		}
-		this.foil = foil;
+
+		// if (input.foil == null) {
+		// 	this.foil = false;
+		// }
+		this.foil = input.foil;
+	}
+
+	needs_set_printing_fetch() {
+		return this.set == null || this.collector_number == null;
+	}
+
+	set_fetched_set_printing(set_printing) {
+		//TODO: maybe use temp
+		this.set = set_printing.set;
+		this.collector_number = set_printing.collector_number;
 	}
 
 	needs_multiverse_id_fetch() {
@@ -51,6 +67,10 @@ class deck_entry {
 			throw "Overwriting ids";
 		}
 		this.temp_ids = ids;
+	}
+
+	get_set_printing() {
+		return {set: this.set, collector_number: this.collector_number};
 	}
 
 	get_single_multiverse_id() {
@@ -72,17 +92,19 @@ function as_deck_entry(data) {
 	if (typeof data === 'deck_entry') {
 		return data;
 	} else if (typeof data === "string") {
-		return new deck_entry(data, 1, null, null, false);
+		return new deck_entry({name: data, quantity: 1});
 	} else if (typeof data === "number") {
-		return new deck_entry(null, 1, data, null, false);
+		return new deck_entry({quantity:1, multiverse_id: data});
 	} else if (typeof data == "object") {
-		return new deck_entry(
-			property_or_else(data, "name", null),
-			property_or_else(data, "quantity", 1),
-			property_or_else(data, "multiverse_id", null),
-			property_or_else(data, "notes", null),
-			property_or_else(data, "foil", null),
-		);
+		return new deck_entry({
+			name: property_or_else(data, "name", null),
+			quantity: property_or_else(data, "quantity", 1),
+			multiverse_id: property_or_else(data, "multiverse_id", null),
+			notes: property_or_else(data, "notes", null),
+			foil: property_or_else(data, "foil", null),
+			set: property_or_else(data, "set", null),
+			collector_number: property_or_else(data, "collector_number", null),
+		});
 
 		return new deck_entry(data["name"], parseInt(data["quantity"]), [data["multiverse_id"]], data["foil"]);
 	} else {
@@ -125,10 +147,10 @@ function as_json_string(card) {
 	if (card.quantity > 1) {
 		ret["quantity"] = card.quantity;
 	}
-	const multiverse_id = card.get_single_multiverse_id();
-	if (multiverse_id != null) {
-		ret["multiverse_id"] = multiverse_id;
-	}
+
+	ret["set"] = card.set;
+	ret["collector_number"] = card.collector_number;
+
 	if (card.foil) {
 		ret["foil"] = true;
 	}

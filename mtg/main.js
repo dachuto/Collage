@@ -1,29 +1,5 @@
 "use strict";
 
-function scryfall_link_all_printings(name) {
-	return "https://scryfall.com/search?as=grid&order=released&q=%21%22" + name + "%22+include%3Aextras&unique=prints"
-}
-
-class cards_data_source {
-	id_to_name(multiverse_id) {
-		return "TODO";
-	}
-
-	scryfall_link(name) {
-		const url = "https://scryfall.com/search?q=%21%22" + name + "%22";
-		return '<a href="' + url + '">' + name + '</a>';
-	}
-
-	id_to_html(multiverse_id) {
-		return this.scryfall_link(this.id_to_name(multiverse_id))
-	}
-
-	image_url(multiverse_id) {
-		// return "https://api.scryfall.com/cards/multiverse/" + multiverse_id + "?format=image";
-		return "https://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=" + multiverse_id;
-	}
-}
-
 // function convert_article(article, source) {
 // 	let re = /#([a-z]+)\((.*?)\)/g;
 
@@ -212,7 +188,26 @@ class page_data {
 		this.images_info = { loaded: 0, total: 0 };
 		this.message_box = document.querySelector("#message_box");
 		this.message_box_timer = null;
-		this.source = new cards_data_source();
+		this.source = {
+			scryfall_single_link: card => {
+				return "https://scryfall.com/card/" + card.set.toLowerCase() + "/" + card.collector_number.toString();
+
+			},
+
+			image_url: set_printing => {
+				return "http://localhost:2345" + "/" + set_printing.set.toLowerCase() + "/" + set_printing.collector_number.toString();
+			},
+
+			scryfall_all_prints_link: card => {
+				return "https://scryfall.com/search?as=grid&order=released&q=%21%22" + card.name + "%22+include%3Aextras&unique=prints";
+			}
+
+			// image_url: multiverse_id => {
+			// 	// return "https://api.scryfall.com/cards/multiverse/" + multiverse_id + "?format=image";
+			// 	return "https://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=" + multiverse_id;
+			// },
+		}
+
 		this.search_button = document.getElementById("search_button");
 		this.search_input = document.getElementById("search_input");
 
@@ -221,7 +216,7 @@ class page_data {
 		this.temp_deck_display_content = document.getElementById("temp_deck_display_content");
 
 		this.temp_deck = []
-		window.onbeforeunload = event => { if (this.temp_deck.length > 0) { event.preventDefault(); }};
+		window.onbeforeunload = event => { if (this.temp_deck.length > 0) { event.preventDefault(); } };
 
 		this.search_input.value = window.location.search;
 		this.search_button.onclick = () => {
@@ -233,7 +228,7 @@ class page_data {
 
 		this.commander_deck_param = "deck";
 		this.commander_decks = new Map();
-		this.commander_decks.set("* Quintorius", "commander_quintorius.json");
+		this.commander_decks.set("COLLECTION", "collection.json");
 		this.commander_decks.set("* counters deck", "commander_counters.json");
 		this.commander_decks.set("artifacts Esper", "commander_artifacts.json");
 		this.commander_decks.set("combo Golos", "commander_combo.json");
@@ -283,34 +278,71 @@ class page_data {
 		return [modified_url, json_path];
 	}
 
+	add_custom_overlay(card, overlay) {
+		if (true) {
+			const x = (card.quantity > 1) ? card.quantity.toString() : "";
+			const number_of_copies_overlay = square_text_svg(x);
+			number_of_copies_overlay.classList.add("transparent-barely-visible", "svg-opacity-aid");
+			overlay.appendChild(number_of_copies_overlay);
+		}
+
+		if (true) {
+			const number_of_copies_overlay = list_svg();
+			number_of_copies_overlay.classList.add("transparent-barely-visible", "svg-opacity-aid");
+			overlay.appendChild(number_of_copies_overlay);
+		}
+
+		if (true) {
+			const sf_link = document.createElement("a");
+			const s = square_text_svg_adjusted("SF");
+			sf_link.classList.add("transparent-barely-visible", "svg-opacity-aid");
+			sf_link.setAttribute("href", this.source.scryfall_all_prints_link(card));
+			sf_link.appendChild(s);
+			overlay.appendChild(sf_link);
+		}
+
+		if (true) {
+			const sf_link = document.createElement("a");
+			const s = square_text_svg_adjusted("🂡");
+			sf_link.classList.add("transparent-barely-visible", "svg-opacity-aid");
+			sf_link.setAttribute("href", this.source.scryfall_single_link(card));
+			sf_link.appendChild(s);
+			overlay.appendChild(sf_link);
+		}
+		if (true) {
+			const prices = this.search_for_prices(card);
+			if (prices !== undefined) {
+
+				const price_string = (maybe_value, currency) => {
+					if (maybe_value === undefined) {
+						return "";
+					}
+					return currency + maybe_value.toFixed(2);
+				};
+
+				const all_four = [
+					price_string(prices.tcgnormal, "$"),
+					price_string(prices.mkmnormal, "€"),
+					price_string(prices.tcgfoil, "$"),
+					price_string(prices.mkmfoil, "€"),
+				];
+
+				all_four.forEach((text_value, index) => {
+					const element = square_text_svg_adjusted(text_value);
+					element.classList.add("transparent-almost-opaque", "svg-opacity-aid", "card-grid-prices-position-" + index);
+					overlay.appendChild(element);
+				});
+			}
+		}
+	}
+
 	main_images_grid(deck) {
 		let images_grid = document.createElement("div");
 		images_grid.classList.add("images_grid");
 
 		for (const card of deck) {
 			const [card_div, overlay] = create_card_div(card, this.source);
-
-			if (true) {
-				const x = (card.quantity > 1) ? card.quantity.toString() : "";
- 				const number_of_copies_overlay = square_text_svg(x);
-				number_of_copies_overlay.classList.add("transparent-barely-visible", "svg-opacity-aid");
-	 			overlay.appendChild(number_of_copies_overlay);
-			}
-
-			if (true) {
- 				const number_of_copies_overlay = list_svg();
-				number_of_copies_overlay.classList.add("transparent-barely-visible", "svg-opacity-aid");
-	 			overlay.appendChild(number_of_copies_overlay);
-			}
-
-			if (true) {
-				const sf_link = document.createElement("a");
-				const s = square_text_svg("SF");
-				sf_link.classList.add("transparent-barely-visible", "svg-opacity-aid");
-				sf_link.setAttribute("href", scryfall_link_all_printings(card.name));
-				sf_link.appendChild(s);
-				overlay.appendChild(sf_link);
-			}
+			this.add_custom_overlay(card, overlay);
 
 			images_grid.appendChild(card_div);
 		}
@@ -324,6 +356,7 @@ class page_data {
 
 		for (const card of deck) {
 			const [card_div, overlay] = create_card_div(card, this.source);
+			this.add_custom_overlay(card, overlay);
 			images_grid.appendChild(card_div);
 			card_div.onclick = (event) => {
 				const add_foil = document.getElementById("card_preview_add_foil_checkbox").checked;
@@ -368,15 +401,19 @@ class page_data {
 
 			const cards = flat_entries(deck);
 			this.add_colors_and_icons(deck);
+			this.deck = deck;
 
 			this.request_missing_card_names(cards)
 				.then(values => this.fetch_card_name_to_multiverse_id())
+				.then(values => this.fetch_card_name_to_set_printing())
+				.then(values => this.fetch_set_printing_to_prices())
+				.then(values => this.fetch_multiverse_id_to_set_printing())
 				.then(values => {
-					this.fill_card_multiverse_id_based_on_name(cards);
+					cards.forEach(card => this.fill_card_set_printing_based_on_multiverse_id(card));
+					cards.forEach(card => this.fill_card_set_printing_based_on_name(card));
+					//this.fill_card_multiverse_id_based_on_name(cards);
 					this.fill_deck_text_boxes(cards);
 					document.getElementById("main_content").replaceChildren(this.main_images_grid(cards));
-					// this.start_lazy_images_loading();
-					// this.card_search_input.oninput = event => this.search_event(event);
 					this.card_search_input.onchange = event => this.search_event(event);
 				});
 		});
@@ -387,17 +424,17 @@ class page_data {
 		document.getElementById("deck_select_button").onclick = select_element_by_id("deck_text");
 		document.getElementById("json_fill_button").onclick = () => {
 			document.getElementById("json_text").textContent = as_pretty_json(this.temp_deck);
+			// document.getElementById("json_text").textContent = as_pretty_json(this.deck["main"]);
 		}
 		document.getElementById("json_select_button").onclick = select_element_by_id("json_text");
 	}
 
-	fetch_card_name_to_multiverse_id() {
+	fetch_card_name_to_set_printing() {
 		const all_url = new URL("/query", this.backend_url);
-		all_url.search = "card_name_to_multiverse_id=";
-
+		all_url.search = "card_name_to_set_printing=";
 		return JSON_request(all_url.href).then(value => {
-			this.card_name_to_multiverse_id = value;
-			this.fuse = new Fuse(Object.keys(this.card_name_to_multiverse_id), {
+			this.card_name_to_set_printing = value;
+			this.fuse = new Fuse(Object.keys(this.card_name_to_set_printing), {
 				// includeScore: true,
 				isCaseSensitive: false,
 				threshold: 0.5
@@ -408,6 +445,35 @@ class page_data {
 		});
 	}
 
+	fetch_set_printing_to_prices() {
+		const all_url = new URL("/query", this.backend_url);
+		all_url.search = "set_printing_to_prices=";
+		return JSON_request(all_url.href).then(value => {
+			this.set_printing_to_prices = value;
+			this.search_for_prices = (card) => {
+				return this.set_printing_to_prices[card.set + "/" + card.collector_number];
+			};
+		});
+	}
+
+	fetch_multiverse_id_to_set_printing() {
+		const all_url = new URL("/query", this.backend_url);
+		all_url.search = "multiverse_id_to_set_printing=";
+		return JSON_request(all_url.href).then(value => {
+			this.multiverse_id_to_set_printing = value;
+		});
+	}
+
+	fetch_card_name_to_multiverse_id() {
+		//TODO: do we use this anymore?
+		const all_url = new URL("/query", this.backend_url);
+		all_url.search = "card_name_to_multiverse_id=";
+
+		return JSON_request(all_url.href).then(value => {
+			this.card_name_to_multiverse_id = value;
+		});
+	}
+
 	search_event(event) {
 		console.log(event);
 		const needle = this.card_search_input.value;
@@ -415,9 +481,9 @@ class page_data {
 		const MAX_PREVIEWED_UNIQUE_CARDS = 8;
 		const cards_to_preview = this.search_for_name_matches(needle)
 			.slice(0, MAX_PREVIEWED_UNIQUE_CARDS)
-			.flatMap(name => this.card_name_to_multiverse_id[name].map(multiverse_id => new deck_entry(name, 1, multiverse_id, null, null)));
+			.flatMap(name => this.card_name_to_set_printing[name].map(set_printing => new deck_entry({ name: name, quantity: 1, set: set_printing.set, collector_number: set_printing.collector_number })));
 
-		this.fill_card_multiverse_id_based_on_name(cards_to_preview);
+		// this.fill_card_multiverse_id_based_on_name(cards_to_preview);
 		console.log(cards_to_preview);
 		this.card_search_preview.replaceChildren(this.preview_images_grid(cards_to_preview));
 	}
@@ -471,23 +537,6 @@ class page_data {
 		}
 	}
 
-	// start_async_loading() {
-	// 	console.log(location);
-	// 	console.log(decodeURIComponent(location.search));
-
-	// 	let info_url = new URL("/info", this.backend_url);
-	// 	let query_url = new URL("/query", this.backend_url);
-	// 	query_url.search = window.location.search;
-
-	// 	$.when(
-	// 		JSON_request(info_url.href),
-	// 		JSON_request(query_url.href)
-	// 	).then(
-	// 		this.async_complete.bind(this),
-	// 		null
-	// 	);
-	// }
-
 	request_missing_card_names(cards) {
 		let requests = [];
 		for (const card of cards) {
@@ -504,7 +553,43 @@ class page_data {
 		return Promise.all(requests);
 	}
 
-	fill_card_multiverse_id_based_on_name(cards) {
+	fill_card_set_printing_based_on_name(card) {
+		if (!card.needs_set_printing_fetch()) {
+			return;
+		}
+		if (card.name == null) {
+			return;
+		}
+
+		console.log(card);
+		const printing = this.card_name_to_set_printing[card.name][0];
+		if (printing === undefined) {
+			console.log("Suspicious name: " + card);
+		} else {
+			card.set_fetched_set_printing(this.card_name_to_set_printing[card.name][0]);
+		}
+
+	}
+
+	fill_card_set_printing_based_on_multiverse_id(card) {
+		if (!card.needs_set_printing_fetch()) {
+			return;
+		}
+
+		const multiverse_id = card.multiverse_id;
+		if (multiverse_id == null) {
+			return;
+		}
+
+		const printing = this.multiverse_id_to_set_printing[multiverse_id];
+		if (printing === undefined) {
+			console.log("Suspicious multiverse_id: " + multiverse_id);
+		} else {
+			card.set_fetched_set_printing(printing);
+		}
+	}
+
+	fill_card_multiverse_id_based_on_name(cards) { // DEPRECATED: do not call this unless you have a good reason to
 		for (const card of cards) {
 			if (!card.needs_multiverse_id_fetch()) {
 				continue;
@@ -659,20 +744,30 @@ function deck_subsection_menu_item(name, url, count, ui_icon_names, color) {
 	return a;
 }
 
-function square_text_svg(text_content) {
+function square_text_svg_advanced(text_content, text_size) {
 	let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	svg.setAttribute("viewBox", "0 0 100 100");
 	let text = document.createElementNS(svg.namespaceURI, "text");
 	text.setAttribute("dominant-baseline", "central");
 	text.setAttribute("text-anchor", "middle");
 	text.setAttribute("text-align", "center");
-	text.setAttribute("font-size", "60");
+	text.setAttribute("font-size", text_size.toString());
 	text.setAttribute("x", "50%");
 	text.setAttribute("y", "50%");
 	text.textContent = text_content;
 
 	svg.appendChild(text);
 	return svg;
+}
+
+function square_text_svg_adjusted(text_content) {
+	const adjusted_size = 160.0 / text_content.length;
+	return square_text_svg_advanced(text_content, adjusted_size);
+}
+
+
+function square_text_svg(text_content) {
+	return square_text_svg_advanced(text_content, 80);
 }
 
 function list_svg() {
@@ -766,7 +861,7 @@ function create_card_div(card, source) {
 	const image_container = document.createElement("div");
 
 	// const image = image_not_loaded_html(source.image_url(id));
-	const image = image_loaded_html(source.image_url(card.get_single_multiverse_id()));
+	const image = image_loaded_html(source.image_url(card.get_set_printing()));
 	image_container.appendChild(image_background());
 	image_container.appendChild(image);
 
