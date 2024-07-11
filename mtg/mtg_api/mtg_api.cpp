@@ -56,6 +56,12 @@ bytes_view f2(mtg_api::database const &database, interface_from_c_to_cpp_t const
 			}
 		} else if (key == "card_name_to_multiverse_id") {
 			output = serializer.write(database.card_name_to_multiverse_id);
+		} else if (key == "card_name_to_set_printing") {
+			output = serializer.write(database.card_name_to_set_printing);
+		} else if (key == "set_printing_to_prices") {
+			output = serializer.write(database.set_printing_to_prices);
+		} else if (key == "multiverse_id_to_set_printing") {
+			output = serializer.write(database.multiverse_id_to_set_printing);
 		} else if (key == "multiverse_id") {
 			int const id = as_int(value);
 			auto const it = database.multiverse_id_to_card_name_index.find(id);

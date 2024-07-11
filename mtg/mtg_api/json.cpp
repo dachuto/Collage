@@ -5,6 +5,8 @@
 #include <memory>
 #include <ranges>
 #include <set>
+#include <string>
+#include <string_view>
 #include <vector>
 
 #include <boost/scope_exit.hpp>
@@ -13,6 +15,7 @@
 #include "rapidjson/document.h"
 #include "rapidjson/error/en.h"
 #include "rapidjson/filereadstream.h"
+#include "rapidjson/pointer.h"
 #include "rapidjson/stringbuffer.h"
 #include "rapidjson/writer.h"
 
@@ -58,6 +61,14 @@ std::unique_ptr<rapidjson::Document> read_JSON_file(char const *path) {
 		return {};
 	}
 	return document;
+}
+
+rapidjson::Value const *member_optional(rapidjson::Value const &d, char const *c) {
+	auto const it = d.FindMember(c);
+	if (it == d.MemberEnd()) {
+		return nullptr;
+	}
+	return &it->value;
 }
 
 template <typename GenericValue>
@@ -129,11 +140,83 @@ auto as_json_array(DocOrValue &d, It first, It last, Allocator &allocator) {
 	}
 }
 
+template <typename Allocator>
+rapidjson::Value to_value(mtg_api::set_printing const &x, Allocator &allocator) {
+	rapidjson::Value ret;
+	ret.SetObject();
+
+	rapidjson::Value sc;
+	sc.SetString(x.set_code.c_str(), x.set_code.length(), allocator);
+	ret.AddMember("set", sc, allocator);
+
+	rapidjson::Value sn;
+	sc.SetString(x.collector_number.c_str(), x.collector_number.length(), allocator);
+	ret.AddMember("collector_number", sc, allocator);
+
+	return ret;
+}
+
+template <typename GenericValue>
+bool card_available_in_paper(GenericValue const &json_card) {
+	auto const &availability = member(json_card, "availability");
+	expect(availability.IsArray());
+	std::string_view const paper("paper");
+	for (auto it = availability.Begin(); it != availability.End(); ++it) {
+		auto const &p = *it;
+		expect(p.IsString());
+		if (paper == std::string_view(p.GetString())) {
+			return true;
+		}
+	}
+	return false;
+}
+
+// Returns map from card uuid to paper prices
+std::map<std::string, mtg_api::printing_prices> extract_paper_prices(rapidjson::Document const &document) {
+	expect(document.IsObject());
+	auto const &cards = member(document, "data");
+	expect(cards.IsObject());
+
+	std::map<std::string, mtg_api::printing_prices> ret;
+	for (rapidjson::Value::ConstMemberIterator it = cards.MemberBegin(); it != cards.MemberEnd(); ++it) {
+		auto const *paper = member_optional(it->value, "paper");
+		if (paper == nullptr) {
+			continue;
+		}
+
+		mtg_api::printing_prices prices;
+		{
+			rapidjson::Value const *tcgnormal = rapidjson::Pointer("/tcgplayer/retail/normal").Get(*paper);
+			if (tcgnormal != nullptr) {
+				prices.tcgnormal = tcgnormal->MemberBegin()->value.GetFloat();
+			}
+			rapidjson::Value const *tcgfoil = rapidjson::Pointer("/tcgplayer/retail/foil").Get(*paper);
+			if (tcgfoil != nullptr) {
+				prices.tcgfoil = tcgfoil->MemberBegin()->value.GetFloat();
+			}
+		}
+
+		{
+			rapidjson::Value const *mkmnormal = rapidjson::Pointer("/cardmarket/retail/normal").Get(*paper);
+			if (mkmnormal != nullptr) {
+				prices.mkmnormal = mkmnormal->MemberBegin()->value.GetFloat();
+			}
+			rapidjson::Value const *mkmfoil = rapidjson::Pointer("/cardmarket/retail/foil").Get(*paper);
+			if (mkmfoil != nullptr) {
+				prices.mkmfoil = mkmfoil->MemberBegin()->value.GetFloat();
+			}
+		}
+
+		ret.insert({std::string(it->name.GetString()), prices});
+	}
+	return ret;
+}
+
 }
 
 namespace mtg_api {
 
-void all_sets(rapidjson::Document const &document, database &db) {
+void all_sets(rapidjson::Document const &document, rapidjson::Document const &prices, database &db) {
 	auto const one_set = [](auto const &json_set, auto &&card_functor) {
 		expect(json_set.IsObject());
 		auto const &cards = member(json_set, "cards");
@@ -148,8 +231,14 @@ void all_sets(rapidjson::Document const &document, database &db) {
 
 	std::map<std::string, std::set<multiverse_id_type>> card_name_to_multiverse_id_temp;
 	std::map<multiverse_id_type, set_printing> multiverse_id_to_set_printing_temp;
+	std::map<std::string, std::set<set_printing>> card_name_to_set_printing_temp;
+
+	std::map<set_printing, printing_prices> set_printing_to_price_temp;
+
 
 	std::vector<card_sets_container::value_type> all_sets;
+
+	auto const prices_map = extract_paper_prices(prices);
 
 	auto const &member_data = document.FindMember("data")->value;
 	for (auto it = member_data.MemberBegin(); it != member_data.MemberEnd(); ++it) {
@@ -159,12 +248,27 @@ void all_sets(rapidjson::Document const &document, database &db) {
 
 		auto const extract_set = [&](auto const &json_card) {
 			try {
+				if (not card_available_in_paper(json_card)) {
+					return;
+				}
+
 				auto const &identifiers = member(json_card, "identifiers");
+
+				auto const name = as_string(member(json_card, "name"));
+				auto const collector_number = std::string(as_string(member(json_card, "number")));
+				set_printing const printing_identifier{collector_number, set_code};
+
+				{
+					auto it = card_name_to_set_printing_temp.find(name);
+					if (it == card_name_to_set_printing_temp.end()) {
+						it = card_name_to_set_printing_temp.insert(it, {name, {}});
+					}
+
+					it->second.insert(printing_identifier);
+				}
+
 				std::string const id_s = std::string(as_string(member(identifiers, "multiverseId")));
 				auto const multiverse_id = std::stoi(id_s);
-
-				auto const collector_number = std::stoi(std::string(as_string(member(json_card, "number"))));
-				auto const name = as_string(member(json_card, "name"));
 
 				{
 					auto it = card_name_to_multiverse_id_temp.find(name);
@@ -175,12 +279,22 @@ void all_sets(rapidjson::Document const &document, database &db) {
 				}
 
 				{
-					std::cout << " >>> " << multiverse_id << " " << set_code << " " << collector_number << std::endl;
+					//std::cout << " >>> " << multiverse_id << " " << set_code << " " << collector_number << std::endl;
 					auto it = multiverse_id_to_set_printing_temp.find(multiverse_id);
 					if (it == multiverse_id_to_set_printing_temp.end()) {
-						it = multiverse_id_to_set_printing_temp.insert(it, {multiverse_id, set_printing{collector_number, set_code}});
+						it = multiverse_id_to_set_printing_temp.insert(it, {multiverse_id, printing_identifier});
 					} else {
 						// This is unexpected!
+					}
+				}
+
+				{
+					auto const *uuid = member_optional(json_card, "uuid");
+					if (uuid != nullptr) {
+						auto const it = prices_map.find(uuid->GetString());
+						if (it != prices_map.end()) {
+							set_printing_to_price_temp.insert({printing_identifier, it->second});
+						}
 					}
 				}
 
@@ -212,6 +326,13 @@ void all_sets(rapidjson::Document const &document, database &db) {
 	}
 
 	{
+		auto const temp_range = std::ranges::views::transform(card_name_to_set_printing_temp, [](auto const &e) {
+			return card_name_to_set_printing_container::value_type{e.first, set_printing_container{e.second.begin(), e.second.end()}};
+		});
+		db.card_name_to_set_printing = card_name_to_set_printing_container{temp_range.begin(), temp_range.end()};
+	}
+
+	{
 		std::vector<multiverse_id_to_card_name_index_container::value_type> inverted_index_temp;
 		for (std::size_t i = 0; i < db.card_name_to_multiverse_id.size(); ++i) {
 			auto const it = db.card_name_to_multiverse_id.nth(i);
@@ -221,6 +342,8 @@ void all_sets(rapidjson::Document const &document, database &db) {
 		}
 		db.multiverse_id_to_card_name_index = multiverse_id_to_card_name_index_container{inverted_index_temp.begin(), inverted_index_temp.end()};
 	}
+
+	db.set_printing_to_prices = set_printing_to_prices_container{set_printing_to_price_temp.begin(), set_printing_to_price_temp.end()};
 }
 
 database read(mtg_api_args const &args) {
@@ -228,27 +351,16 @@ database read(mtg_api_args const &args) {
 
 	{
 		auto document = read_JSON_file(args.path_cards);
-		expect_2(document, "All cards file missing.");
-		//ret.unique_cards = all_cards(*document);
+		expect_2(document, "All cards file missing."); //unused
 	}
 
 	{
-		auto document = read_JSON_file(args.path_sets);
+		auto const document = read_JSON_file(args.path_sets);
 		expect_2(document, "All set document missing.");
-		all_sets(*document, ret);
+		auto const prices = read_JSON_file(args.path_prices);
+		expect_2(prices, "Prices document is missing.");
+		all_sets(*document, *prices, ret);
 	}
-
-	// {
-	// 	auto document = read_JSON_file(args.path_tags);
-	// 	expect(document);
-	// 	ret.tags = tags(*document);
-	// }
-
-	// {
-		// auto document = read_JSON_file(args.path_name_to_tags);
-	// 	expect(document);
-	// 	name_to_tags(*document, ret.unique_cards, ret.tags);
-	// }
 
 	return ret;
 }
@@ -299,6 +411,75 @@ bytes_view to_json::write(card_name_to_multiverse_id_container const &c) const {
 	}
 
 	return serialize(allocator, d);
+}
+
+bytes_view to_json::write(card_name_to_set_printing_container const &c) const {
+	rapidjson::Document d;
+	d.SetObject();
+
+	for (auto const &[key, value] : c) {
+			rapidjson::Value printings;
+			printings.SetArray();
+
+			for (auto const &p : value) {
+				printings.PushBack(to_value(p, d.GetAllocator()), d.GetAllocator());
+			}
+
+			rapidjson::Value kv;
+			kv.SetString(key.c_str(), key.length(), d.GetAllocator());
+			d.AddMember(kv, printings, d.GetAllocator());
+	}
+
+	return serialize(allocator, d);
+}
+
+bytes_view to_json::write(set_printing_to_prices_container const &c) const {
+	rapidjson::Document d;
+	d.SetObject();
+
+	auto const add_if_value_exists = [&allocator = d.GetAllocator()](auto &obj, char const *name, std::optional<float> const &ov) {
+		if (ov.has_value()) {
+			rapidjson::Value v;
+			v.SetFloat(ov.value());
+
+			rapidjson::Value kv;
+			kv.SetString(name, allocator);
+			obj.AddMember(kv, v, allocator);
+		}
+	};
+
+	for (auto const &[key, value] : c) {
+			rapidjson::Value prices;
+			prices.SetObject();
+
+			add_if_value_exists(prices, "mkmfoil", value.mkmfoil);
+			add_if_value_exists(prices, "mkmnormal", value.mkmnormal);
+			add_if_value_exists(prices, "tcgfoil", value.tcgfoil);
+			add_if_value_exists(prices, "tcgnormal", value.tcgnormal);
+
+			std::string encoded = key.set_code + "/" + key.collector_number;
+			rapidjson::Value kv;
+			kv.SetString(encoded.c_str(), encoded.length(), d.GetAllocator());
+			d.AddMember(kv, prices, d.GetAllocator());
+	}
+
+	return serialize(allocator, d);
+}
+
+bytes_view to_json::write(multiverse_id_to_set_printing_container const &c) const {
+	rapidjson::Document d;
+	d.SetObject();
+
+	for (auto const &[key, value] : c) {
+			std::string multiverse_id_as_key{std::to_string(key)};
+
+			rapidjson::Value kv;
+			kv.SetString(multiverse_id_as_key.c_str(), multiverse_id_as_key.length(), d.GetAllocator());
+			d.AddMember(kv, to_value(value, d.GetAllocator()), d.GetAllocator());
+	}
+
+	return serialize(allocator, d);
+
 }
 
 }

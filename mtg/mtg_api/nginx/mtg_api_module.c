@@ -6,9 +6,8 @@
 
 typedef struct {
 	ngx_str_t path_cards;
-	ngx_str_t path_name_to_tags;
 	ngx_str_t path_sets;
-	ngx_str_t path_tags;
+	ngx_str_t path_prices;
 } UNIQUE_global_configuration;
 
 static void *pointer_from_cpp = 0;
@@ -100,14 +99,6 @@ static ngx_command_t ngx_http_UNIQUE_commands[] = {
 		NULL
 	},
 	{
-		ngx_string("mtg_api_path_name_to_tags"),
-		NGX_HTTP_MAIN_CONF|NGX_CONF_TAKE1,
-		ngx_conf_set_str_slot,
-		NGX_HTTP_MAIN_CONF_OFFSET,
-		offsetof(UNIQUE_global_configuration, path_name_to_tags),
-		NULL
-	},
-	{
 		ngx_string("mtg_api_path_sets"),
 		NGX_HTTP_MAIN_CONF|NGX_CONF_TAKE1,
 		ngx_conf_set_str_slot,
@@ -116,11 +107,11 @@ static ngx_command_t ngx_http_UNIQUE_commands[] = {
 		NULL
 	},
 	{
-		ngx_string("mtg_api_path_tags"),
+		ngx_string("mtg_api_path_prices"),
 		NGX_HTTP_MAIN_CONF|NGX_CONF_TAKE1,
 		ngx_conf_set_str_slot,
 		NGX_HTTP_MAIN_CONF_OFFSET,
-		offsetof(UNIQUE_global_configuration, path_tags),
+		offsetof(UNIQUE_global_configuration, path_prices),
 		NULL
 	},
 	{
@@ -191,9 +182,8 @@ static void *ngx_http_UNIQUE_create_main_conf(ngx_conf_t *cf) {
 	}
 
 	ngx_str_null(&c->path_cards);
-	ngx_str_null(&c->path_name_to_tags);
 	ngx_str_null(&c->path_sets);
-	ngx_str_null(&c->path_tags);
+	ngx_str_null(&c->path_prices);
 
 	return c;
 }
@@ -219,9 +209,8 @@ static ngx_int_t ngx_http_UNIQUE_process_init(ngx_cycle_t *cycle) {
 
 	mtg_api_args args;
 	args.path_cards = c->path_cards.data;
-	args.path_name_to_tags = c->path_name_to_tags.data;
 	args.path_sets = c->path_sets.data;
-	args.path_tags = c->path_tags.data;
+	args.path_prices = c->path_prices.data;
 
 	interface_from_c_to_cpp_t interface = {
 		.allocator = {

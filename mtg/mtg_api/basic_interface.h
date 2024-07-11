@@ -40,9 +40,8 @@ typedef struct {
 
 typedef struct {
 	char const *path_cards;
-	char const *path_name_to_tags;
 	char const *path_sets;
-	char const *path_tags;
+	char const *path_prices;
 } mtg_api_args;
 
 #ifdef __cplusplus

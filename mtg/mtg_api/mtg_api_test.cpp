@@ -12,25 +12,32 @@ void *allocate_with_new(void *data, size_t size) {
 }
 
 TEST(mtg_api_test, works) {
-	allocator_t a{allocate_with_new, nullptr};
 
-	auto database = read({"./AtomicCards.json", "./name_to_tags.json", "./AllPrintings.json", "./tags.json"});
-	auto ret = to_json{a}.write(database);
-	std::string s(ret.data, ret.size);
-	std::cout << s << "\n";
 
-	for (auto const &kv: database.multiverse_id_to_set_printing) {
-		std::cout << kv.first;
-		std::cout << " [ " << kv.second.collector_number << ", " << kv.second.set_code;
-		std::cout << " ]\n";
+	auto const database = read({"./AtomicCards.json", "./AllPrintings.json", "./AllPricesToday.json"});
+	if (false) {
+		allocator_t a{allocate_with_new, nullptr};
+		auto ret = to_json{a}.write(database);
+		std::string s(ret.data, ret.size);
+		std::cout << s << "\n";
 	}
 
-	for (auto const &kv: database.card_sets) {
-		std::cout << kv.first << "\n";
-		for (auto const &id : kv.second.cards_by_collector_number) {
-			std::cout << id.second << " ";
+	if (false) {
+		for (auto const &kv: database.multiverse_id_to_set_printing) {
+			std::cout << kv.first;
+			std::cout << " [ " << kv.second.collector_number << ", " << kv.second.set_code;
+			std::cout << " ]\n";
 		}
-		std::cout << "\n";
+	}
+
+	if (false) {
+		for (auto const &kv: database.card_sets) {
+			std::cout << kv.first << "\n";
+			for (auto const &id : kv.second.cards_by_collector_number) {
+				std::cout << id.second << " ";
+			}
+			std::cout << "\n";
+		}
 	}
 
 	auto const it = database.card_name_to_multiverse_id.find(std::string("Fog"));

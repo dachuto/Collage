@@ -77,6 +77,7 @@ endfunction()
 set(MTG_JSON_FILES
 	AtomicCards.json
 	AllPrintings.json
+	AllPricesToday.json
 )
 
 foreach(X IN LISTS MTG_JSON_FILES)
@@ -120,10 +121,6 @@ install(TARGETS ${project} DESTINATION modules)
 foreach(X IN LISTS MTG_JSON_FILES)
 	install(FILES "${DOWNLOAD_DIR}/${X}" DESTINATION .)
 endforeach()
-#install(FILES ${DOWNLOAD_DIR}/AllCards.json DESTINATION .)
-#install(FILES ${DOWNLOAD_DIR}/AllPrintings.json DESTINATION .)
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../name_to_tags.json DESTINATION .)
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../tags.json DESTINATION .)
 
 add_custom_target(run_nginx
 	COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/nginx_runtime.sh

@@ -57,9 +57,9 @@ endif()
 
 set_compile_options(${project})
 
-add_executable(mtg_api_util mtg_api_util.cpp)
-set_compile_options(mtg_api_util)
-target_link_libraries(mtg_api_util mtg_api)
+# add_executable(mtg_api_util mtg_api_util.cpp)
+# set_compile_options(mtg_api_util)
+# target_link_libraries(mtg_api_util mtg_api)
 
 option(BUILD_NGINX_MODULE "build nginx module" ON)
 if (BUILD_NGINX_MODULE)

@@ -16,6 +16,9 @@ struct to_json {
 	bytes_view write(int const *first, int const *last) const;
 
 	bytes_view write(card_name_to_multiverse_id_container const &) const;
+	bytes_view write(card_name_to_set_printing_container const &) const;
+	bytes_view write(set_printing_to_prices_container const &) const;
+	bytes_view write(multiverse_id_to_set_printing_container const &) const;
 };
 
 }
