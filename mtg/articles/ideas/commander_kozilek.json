@@ -1,0 +1,42 @@
+{
+"commander":[{"name":"Kozilek, the Great Distortion","set":"CMM","collector_number":"668",
+"notes": "This colorless deck seems to very quickly run out of interesting cards on budget. At the moment, there are single digits of enchantments, planeswalkers and battles. There are less than thirty instants and sorceries in total. Eldrazi are now colored and there is barely enough colorless monsters to fill the deck. They are moving away from colorless artifacts so we will have to use older and common subset of available cards. For now, I think there is nothing wrong with just rebuilding Eldrazi Unbound and proxying expensive Eldrazi."}],
+"main":
+[
+"Everflowing Chalice",
+"Astral Cornucopia",
+"Palladium Myr",
+"Worn Powerstone",
+"Empowered Autogenerator",
+"Hedron Archive",
+"Ichor Elixir",
+"Sisay's Ring",
+"Stonespeaker Crystal",
+"Thran Dynamo",
+"Ur-Golem's Eye",
+"Kozilek's Channeler",
+"Gilded Lotus",
+"Dreamstone Hedron",
+"Skyclave Relic",
+
+"Endbringer",
+
+"Mage-Ring Network",
+"Phyrexia's Core",
+"Ruins of Oran-Rief",
+"Sea Gate Wreckage",
+"Shrine of the Forsaken Gods",
+"Temple of the False God",
+
+{"name":"Island", "quantity":4},
+{"name":"Swamp", "quantity":4}
+],
+"sideboard":
+[
+"Teshar, Ancestor's Apostle"
+],
+"wants":
+[
+"Angel of the Ruins"
+]
+}
