@@ -1,5 +1,5 @@
 {
-"commander":["Roon of the Hidden Realm"],
+"commander":[{"name":"Roon of the Hidden Realm", "notes":"TODO: many deck changes, need list update (lands)"}],
 "main":
 [
 "Sylvan Ranger",
@@ -64,6 +64,16 @@
 "Dismiss",
 "Plasm Capture",
 "Circuitous Route",
+
+{"name":"Dawnbringer Cleric","set":"AFR","collector_number":"9","foil":true},
+{"name":"Glorious Protector","set":"KHM","collector_number":"12","foil":true},
+
+{"name":"Pegasus Guardian // Rescue the Foal","set":"CLB","collector_number":"36","foil":true},
+
+{"name":"Karmic Guide","set":"MH2","collector_number":"263"},
+
+{"name":"Mysterious Limousine","set":"SNC","collector_number":"408","foil":true},
+{"name":"Priest of Ancient Lore","set":"AFR","collector_number":"35","foil":true},
 
 "Evolving Wilds",
 "Vivid Creek",

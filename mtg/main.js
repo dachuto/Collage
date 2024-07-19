@@ -230,6 +230,7 @@ class page_data {
 		this.commander_decks = new Map();
 		this.commander_decks.set("COLLECTION", "collection.json");
 		this.commander_decks.set("* counters deck", "commander_counters.json");
+		this.commander_decks.set("Nymris instant trickery", "commander_nymris_instants.json");
 		this.commander_decks.set("artifacts Esper", "commander_artifacts.json");
 		this.commander_decks.set("combo Golos", "commander_combo.json");
 		this.commander_decks.set("curses Mardu", "commander_curses.json");
@@ -241,6 +242,7 @@ class page_data {
 		this.commander_decks.set("Sevinne - Flashback", "commander_flashback.json");
 		this.commander_decks.set("Henzie", "commander_henize.json");
 		this.commander_decks.set("Kadena *", "commander_kadena.json");
+		this.commander_decks.set("Kathril keyword soup", "commander_kathril.json");
 		this.commander_decks.set("Merieke Ri Berit", "commander_merieke.json");
 		this.commander_decks.set("Minn", "commander_minn.json");
 		this.commander_decks.set("Nin, the Pain Artist", "commander_nin.json");

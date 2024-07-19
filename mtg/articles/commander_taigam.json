@@ -14,7 +14,6 @@
 "Impulse",
 "Scour All Possibilities",
 "Shimmer of Possibility",
-"Chart a Course",
 "Treasure Hunt",
 "Strategic Planning",
 "Pieces of the Puzzle",
@@ -66,6 +65,8 @@
 "Scholar of the Ages",
 "Rise from the Tides",
 "Swarm Intelligence",
+
+{"name":"Realm-Cloaked Giant // Cast Off","set":"AFC","collector_number":"70"},
 
 "Azorius Chancery",
 
@@ -120,7 +121,8 @@
 "Reduce to Dreams",
 "Flood of Tears",
 "Coastal Breach",
-"Runic Repetition"
+"Runic Repetition",
+"Chart a Course"
 ],
 "wants":
 [
