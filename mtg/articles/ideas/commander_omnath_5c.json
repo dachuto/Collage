@@ -1,0 +1,24 @@
+{
+"commander":[{"name":"Omnath, Locus of All","set":"MOM","collector_number":"387","foil":true}],
+"main":
+[
+
+{"name":"Swamp", "quantity":4}
+],
+"sideboard":
+[
+{"name":"Ruinous Ultimatum","notes":"The play pattern does not look that casual."},
+{"name":"Eerie Ultimatum","notes":"Huge and splashy but possibly ok in casual. The card is quite pricey."}
+],
+"wants":
+[
+"Niv-Mizzet, Parun",
+"Invasion of Alara // Awaken the Maelstrom",
+"Volrath, the Shapestealer",
+"Void Rend",
+"Crosis's Charm",
+"Deathsprout",
+"Violent Ultimatum",
+"Inspired Ultimatum"
+]
+}

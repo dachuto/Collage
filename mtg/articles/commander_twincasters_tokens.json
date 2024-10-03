@@ -3,11 +3,11 @@
 "main":
 [
 
-"Ethernal Investigator",
+"Ethereal Investigator",
 "Progenitor Mimic",
 
 
-	"Temple of the False God",
+"Temple of the False God",
 "Simic Guildgate",
 {"name":"Forest", "quantity":9},
 {"name":"Island", "quantity":13}
@@ -15,6 +15,8 @@
 "sideboard":
 [
 "Broodbirth Viper",
+"Geralf, Visionary Stitcher",
+{"name":"Mu Yanling, Sky Dancer","notes":"This deck needs big creature tokens and flying is *very* scarce."},
 "Mirror Match",
 "Talrand's Invocation",
 "Druid's Deliverance",
@@ -23,11 +25,13 @@
 ],
 "wants":
 [
-"Budoka Gardener",
+"Budoka Gardener // Dokai, Weaver of Life",
 "Hard Evidence",
 "Consuming Blob",
+"Astral Dragon",
 "Garruk, Primal Hunter",
-"Mirrorhall Mimic",
+"Hour of Need",
+"Mirrorhall Mimic // Ghastly Mimicry",
 "Deekah, Fractal Theorist",
 "Specimen Collector",
 "Mist-Syndicate Naga",

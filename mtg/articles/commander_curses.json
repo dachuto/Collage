@@ -8,10 +8,6 @@
 "Curse of Death's Hold",
 "Ethereal Absolution",
 
-"Honden of Infinite Rage",
-"Honden of Night's Reach",
-"Honden of Cleansing Fire",
-
 "Theater of Horrors",
 "Oracle's Vault",
 "Outpost Siege",
@@ -25,7 +21,7 @@
 
 "Last Laugh",
 "Pestilence",
-"The Fall of Lord Konda",
+"The Fall of Lord Konda // Fragment of Konda",
 "The Akroan War",
 "Elspeth Conquers Death",
 "The Eldest Reborn",
@@ -41,10 +37,13 @@
 "Revenge of Ravens",
 
 "Dawn of Hope",
-"Death Pit Offering",
+"Veiled Ascension",
 "Outlaws' Merriment",
 "Marshal's Anthem",
 "Sigil of the Empty Throne",
+"Assemble the Legion",
+
+"Death Pit Offering",
 
 "Monk Idealist",
 "Mesa Enchantress",
@@ -66,9 +65,9 @@
 
 "Single Combat",
 
-"Boros Signet",
 "Rakdos Signet",
 "Orzhov Signet",
+"Coalition Relic",
 
 "Nomad Outpost",
 "Aether Hub",
@@ -120,7 +119,10 @@
 "Purity",
 "Curse of Disturbance",
 "Thunderstaff",
-"Paradise Plume"
+"Paradise Plume",
+"Honden of Infinite Rage",
+"Honden of Night's Reach",
+"Honden of Cleansing Fire"
 ],
 "wants":
 [

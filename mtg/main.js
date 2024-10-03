@@ -229,10 +229,15 @@ class page_data {
 		this.commander_deck_param = "deck";
 		this.commander_decks = new Map();
 		this.commander_decks.set("COLLECTION", "collection.json");
+		this.commander_decks.set("WANTS", "wants.json");
+		this.commander_decks.set("Ideas - Niv Mizzet", "ideas/commander_niv_mizzet.json");
+		this.commander_decks.set("Ideas - Shirei", "ideas/commander_shirei.json");
+		this.commander_decks.set("Ideas - Omnath 5c", "ideas/commander_omnath_5c.json");
+		this.commander_decks.set("Ideas - Meria Gruul Artifacts", "ideas/commander_meria.json");
+		this.commander_decks.set("Twincasters tokens", "commander_twincasters_tokens.json");
 		this.commander_decks.set("* counters deck", "commander_counters.json");
 		this.commander_decks.set("Nymris instant trickery", "commander_nymris_instants.json");
 		this.commander_decks.set("artifacts Esper", "commander_artifacts.json");
-		this.commander_decks.set("combo Golos", "commander_combo.json");
 		this.commander_decks.set("curses Mardu", "commander_curses.json");
 		this.commander_decks.set("cycling *", "commander_cycling.json");
 		this.commander_decks.set("equipment White", "commander_equipment.json");
@@ -257,7 +262,8 @@ class page_data {
 		this.commander_decks.set("Mill", "commander_mill_grixis.json");
 		this.commander_decks.set("--FOG", "commander_fog.json");
 		this.commander_decks.set("CUBE", "cube.json");
-		this.commander_decks.set("WANTS", "wants.json");
+
+		this.commander_decks.set("DISCARDED Combo Golos", "ideas/commander_combo.json");
 		//UPDATED recently
 		this.commander_decks.set("Grenzo", "commander_grenzo.json");
 		this.commander_decks.set("Teysa", "commander_teysa.json");

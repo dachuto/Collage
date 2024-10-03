@@ -4,7 +4,6 @@
 [
 {"name":"Iron Myr","multiverse_id":194168},
 {"name":"Leaden Myr","multiverse_id":194204},
-{"name":"Pawn of Ulamog","multiverse_id":433052},
 {"name":"Junkyard Genius","multiverse_id":583797},
 {"name":"Pilgrim's Eye","multiverse_id":270872,"notes":"there should be good replacements now - see Bronze Walrus"},
 {"name":"Palladium Myr","multiverse_id":212251},
@@ -43,6 +42,8 @@
 {"name":"Rowdy Crew","multiverse_id":435313},
 {"name":"Junktroller","multiverse_id":88977,"foil":true},
 {"name":"Fiend of the Shadows","multiverse_id":532486},
+{"name":"Havoc Eater","set":"MKC","collector_number":"31"},
+{"name":"Eye of Duskmantle","set":"MKC","collector_number":"27"},
 
 {"name":"Skirsdag High Priest","multiverse_id":230794,"foil":true},
 {"name":"Marsh Flitter","multiverse_id":139705},
@@ -60,7 +61,6 @@
 {"name":"Rankle and Torbran","multiverse_id":607323,"foil":true},
 
 {"name":"Mad Auntie","quantity":1,"multiverse_id":139708},
-{"name":"Graveshifter","quantity":1,"multiverse_id":464043},
 {"name":"Garna, the Bloodflame","multiverse_id":443082},
 {"name":"Phyrexian Delver","multiverse_id":451070},
 
@@ -82,6 +82,7 @@
 "sideboard":
 [
 {"name":"Fires of Invention","notes":"I have non-creatures in this deck. This lets us cast all the overcosted stuff from hand, leaves mana for activations and fits the curve."},
+{"name":"Pawn of Ulamog","multiverse_id":433052},
 "Sengir Autocrat",
 "Phyrexian Rager",
 "Legate Lanius, Caesar's Ace",
