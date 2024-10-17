@@ -4,7 +4,6 @@
 [
 "Sylvan Ranger",
 "Coiling Oracle",
-"Lonis, Cryptozoologist",
 "Elvish Visionary",
 "Watcher for Tomorrow",
 "Gatecreeper Vine",
@@ -26,6 +25,7 @@
 "Qasali Slingers",
 "Acidic Slime",
 "Draining Whelk",
+{"name":"Genku, Future Shaper","set":"MH3","collector_number":"373","foil":true},
 "Goldnight Redeemer",
 "Lena, Selfless Champion",
 "Whiptongue Hydra",
@@ -41,7 +41,6 @@
 "Agent of Treachery",
 "Meteor Golem",
 "Phyrexian Ingester",
-"Kederekt Leviathan",
 
 "Vizier of Many Faces",
 "Altered Ego",
@@ -57,7 +56,6 @@
 
 "Zendikar Resurgent",
 
-"Ephemerate",
 "Confound",
 "Familiar's Ruse",
 "Ghostly Flicker",
@@ -100,9 +98,10 @@
 "sideboard":
 [
 "Deadeye Navigator",
+"Ephemerate",
+"Kederekt Leviathan",
 "Fierce Empath",
 "Ajani Unyielding",
-"Nezahal, Primal Tide",
 "Harmonic Sliver",
 "Loxodon Hierarch",
 "Urbis Protector",

@@ -230,6 +230,7 @@ class page_data {
 		this.commander_decks = new Map();
 		this.commander_decks.set("COLLECTION", "collection.json");
 		this.commander_decks.set("WANTS", "wants.json");
+		this.commander_decks.set("General Ferrous Rokiric", "ideas/commander_rokiric_golems.json");
 		this.commander_decks.set("Ideas - Niv Mizzet", "ideas/commander_niv_mizzet.json");
 		this.commander_decks.set("Ideas - Shirei", "ideas/commander_shirei.json");
 		this.commander_decks.set("Ideas - Omnath 5c", "ideas/commander_omnath_5c.json");

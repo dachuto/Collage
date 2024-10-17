@@ -2,21 +2,36 @@
 "commander":[{"name":"Meria, Scholar of Antiquity","set":"DMU","collector_number":"346"}],
 "main":
 [
-"Wizard's Spellbook"
+"Cybership"
 ],
 "sideboard":
 [
+"Soul of New Phyrexia",
+"Wand of Wonder",
+"Heart of Kiran",
+"Dermotaxi",
+"Heirloom Epic",
+"Foam Weapons Kiosk"
 ],
 "wants":
 [
-"Verdurous Gearhulk",
 "Glowcap Lantern",
-"Hunter's Bow",
+"Galadhrim Bow",
+"Verdurous Gearhulk",
 "Hexgold Halberd",
+"Hunter's Bow",
+"Sleeper Dart",
 "Spidersilk Net",
+"Mechatitan Core",
 "Welding Jar",
+"Levitating Statue",
 "Heaped Harvest",
 "Chainsaw",
-"Belt of Giant Strength"
+"Krenko's Buzzcrusher",
+"Belt of Giant Strength",
+"T-45 Power Armor",
+"Doors of Durin",
+"Key to the City",
+"Su-Chi Cave Guard"
 ]
 }
