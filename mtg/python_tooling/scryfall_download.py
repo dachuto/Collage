@@ -21,7 +21,7 @@ def handle_card(obj):
 	file_path = os.path.join(folder, file)
 	debug_message = f"{obj['name']} - {obj['set_name']} - {file_path}"
 
-	if not obj["highres_image"]:
+	if not obj["highres_image"] and folder != "ltr":
 		logging.info(debug_message + " no high resolution image available")
 		return
 

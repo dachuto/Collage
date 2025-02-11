@@ -6,7 +6,6 @@
 "Phantasmal Bear",
 "Veiled Sentry",
 "Phantom Steed",
-"Fathom Seer",
 
 "Facet Reader",
 "Merfolk Looter",
@@ -22,8 +21,11 @@
 "Curator of Mysteries",
 "Lunar Mystic",
 "Ethereal Investigator",
+"Azami, Lady of Scrolls",
 
 "Faerie Vandal",
+"Detective of the Month",
+"Homunculus Horde",
 "Whispering Wizard",
 
 "Clairvoyance",
@@ -44,25 +46,22 @@
 "Thirst for Discovery",
 {"name": "Contact Other Plane", "notes": "There are plenty other opitions that can double as removal."},
 "Vivisection",
-"Bargaining Table",
-"Graven Lore",
 "Boon of the Wish-Giver",
 
 "Disrupt",
 "Interdict",
 "Exclude",
+"Refute",
 "Leadership Vacuum",
 "Galestrike",
 "Nimble Obstructionist",
 "Dismiss",
+"Mystic Confluence",
 "Inscription of Insight",
 "Overwhelming Intellect",
 
-"Viridian Longbow",
 "Negate",
-"Mortarpod",
 "Tormod's Cryptkeeper",
-"Devious Cover-Up",
 "Fodder Cannon",
 "Nevinyrral's Disk",
 "Aetherspouts",
@@ -73,8 +72,9 @@
 "Psychic Spiral",
 
 "Mogg Cannon",
-"Stitcher's Apprentice",
+"Mortarpod",
 "Grafted Wargear",
+"Dissection Tools",
 
 "Mind Stone",
 "Sky Diamond",
@@ -91,11 +91,18 @@
 "sideboard":
 [
 "Brainstorm",
-"Into the Story"
+"Into the Story",
+"Fathom Seer",
+"Devious Cover-Up",
+"Graven Lore",
+
+"Viridian Longbow",
+"Stitcher's Apprentice"
 ],
 "wants":
 [
 "Wonder",
+"Murmuring Mystic",
 "Bag of Holding",
 "Meloku the Clouded Mirror",
 "Arcanis the Omnipotent",

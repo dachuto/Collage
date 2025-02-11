@@ -2,11 +2,13 @@
 "commander":["Sharuum the Hegemon"],
 "main":
 [
+
+{"name":"Urza, Prince of Kroog","set":"BRO","collector_number":"296"},
+{"name":"Master's Guide-Mural // Master's Manufactory","set":"LCI","collector_number":"233","foil":true},
 "Scrap Trawler",
 
 "Tormod's Cryptkeeper",
 "Etherium Spinner",
-"Treasure Keeper",
 "Venomcrawler",
 "Cataclysmic Gearhulk",
 "Ethersworn Adjudicator",
@@ -21,8 +23,6 @@
 "Hexavus",
 "Filigree Angel",
 "Ethersworn Sphinx",
-
-"Triplicate Titan",
 
 "Azorius Signet",
 "Dimir Signet",

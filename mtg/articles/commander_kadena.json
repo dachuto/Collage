@@ -6,7 +6,7 @@
 "Dragon's Eye Savants",
 "Ruthless Ripper",
 
-"Wall of Deceit",
+"Nervous Gardener",
 "Monastery Flock",
 "Headhunter",
 "Grim Haruspex",
@@ -33,8 +33,8 @@
 "Chromeshell Crab",
 "Quicksilver Dragon",
 "Skinthinner",
-"Spitting Gourna",
 "Deathmist Raptor",
+"Flourishing Bloom-Kin",
 "Hooded Hydra",
 "Thelonite Hermit",
 "Venomspout Brackus",
@@ -49,31 +49,36 @@
 
 "Gift of Doom",
 "Whetwheel",
-"Zoetic Cavern",
 
+"Glitch Interpreter",
 "Ixidron",
+"Curator Beastie",
 "Thieving Amalgam",
 
 "Trail of Mystery",
 "Secret Plans",
+"Experimental Lab // Staff Room",
+"Ugin's Mastery",
+"Primordial Mist",
+"They Came from the Pipes",
+
+{"name":"Vivien, Champion of the Wilds","set":"CLB","collector_number":"838"},
 
 "Ghastly Conscription",
 
 "Hex",
-"Flood of Tears",
-"Nissa's Renewal",
-"Crush of Tentacles",
+
 "Spitting Image",
 "Plasm Capture",
-"Clear the Mind",
 "Void Shatter",
 
 "Altered Ego",
 "Fallen Shinobi",
-"Gonti, Lord of Luxury",
-"Scholar of the Ages",
+
 "Genesis",
 
+"Zoetic Cavern",
+"Command Tower",
 "Vivid Marsh",
 "Vivid Creek",
 "Vivid Grove",
@@ -94,21 +99,42 @@
 "Simic Guildgate",
 "Woodland Stream",
 
-{"name":"Island", "quantity":9},
-{"name":"Swamp", "quantity":7},
-{"name":"Forest", "quantity":12}
+"River of Tears",
+"Flooded Grove",
+
+"Thriving Moor",
+
+"Darkwater Catacombs",
+"Overflowing Basin",
+"Viridescent Bog",
+
+{"name":"Island", "quantity":6},
+{"name":"Swamp", "quantity":4},
+{"name":"Forest", "quantity":10}
 ],
 "sideboard":
 [
+"Wall of Deceit",
 "Haunted Cadaver",
+"Spitting Gourna",
 "Brine Elemental",
+"Crush of Tentacles",
 "Golgari Charm"
 ],
 "wants":
 [
+"Threats Around Every Corner",
+"Experiment Twelve",
+"Growing Dread",
+"Printlifter Ooze",
 "Aphetto Runecaster",
+"Exit Specialist",
 "Weaver of Lies",
 "Salt Road Ambushers",
+"Oblivious Bookworm",
+"Valgavoth's Onslaught",
+"Thriving Grove",
+"Thriving Isle",
 "Unblinking Bleb",
 "Mischievous Quanar",
 "Whisperwood Elemental",

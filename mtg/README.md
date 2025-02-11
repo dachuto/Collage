@@ -6,8 +6,13 @@ We download card data in json format. See: nginx setup and install components.
 
 Script to download all images from scryfall. Reasonable resolution is less than 10GB in total.
 
+Download the latest bulk data:
 ```
-python3 ../Collage/mtg/python_tooling/scryfall_download.py ~/Downloads/unique-artwork-20240627210344.json
+https://scryfall.com/docs/api/bulk-data
+```
+
+```
+python3 ../Collage/mtg/python_tooling/scryfall_download.py ~/Downloads/unique-artwork-.json
 ```
 
 Then one can host a simple webserver with all the images:

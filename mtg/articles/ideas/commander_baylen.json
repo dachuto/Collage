@@ -1,0 +1,189 @@
+{
+"commander":["Baylen, the Haymaker"],
+"main":
+[
+
+{"name":"Jolrael, Mwonvuli Recluse","set":"M21","collector_number":"191"},
+
+{"name":"Fae Offering","set":"MH2","collector_number":"158"},
+{"name":"Killer Service","set":"NCC","collector_number":"61"},
+
+{"name":"Mad Ratter","set":"ELD","collector_number":"130","foil":true},
+
+{"name":"Increasing Devotion","set":"DDQ","collector_number":"14"},
+
+{"name":"Harmonious Archon","set":"ONC","collector_number":"74"},
+
+{"name":"Brass's Bounty","set":"PRIX","collector_number":"94","foil":true},
+{"name":"Hornet Queen","set":"LTC","collector_number":"250"},
+
+
+{"name":"Pia Nalaar","set":"KLD","collector_number":"124"},
+{"name":"Ezuri's Predation","set":"CLB","collector_number":"824"},
+{"name":"Martial Coup","set":"40K","collector_number":"189"},
+
+
+{"name":"Sun Titan","set":"C20","collector_number":"101"},
+{"name":"Three Blind Mice","set":"WOE","collector_number":"35"},
+
+"Jolrael, Mwonvuli Recluse",
+"Idol of Oblivion",
+"Recruit the Worthy",
+"Mad Ratter",
+
+"Sram's Expertise",
+
+"Inspired Tinkering",
+"Increasing Devotion",
+
+"Iridescent Hornbeetle",
+
+"Cloudgoat Ranger",
+"Ant Queen",
+"Emrakul's Hatcher",
+"Siege-Gang Commander",
+"Spawn-Gang Commander",
+
+"Harmonious Archon",
+"Dragonlair Spider",
+"Olivia's Attendants",
+
+"Threefold Thunderhulk",
+
+"Kher Keep",
+"Khalni Garden"
+],
+"sideboard":
+[
+"Dragonmaster Outcast",
+"Many Partings",
+"Malevolent Rumble",
+"Secure the Wastes",
+"Horn of Valhalla // Ysgard's Call",
+"Defenders of Humanity",
+"Entreat the Angels",
+"White Sun's Zenith",
+"Decree of Justice",
+"Wildfire Awakener",
+
+"Hit the Mother Lode",
+"Gideon's Phalanx",
+"Brass's Bounty",
+"Pollenbright Wings",
+
+"Release the Dogs",
+"There and Back Again",
+"Great Desert Prospector",
+"Fae Offering",
+"Oltec Matterweaver",
+"Queen Allenal of Ruadach",
+
+"The Sea Devils",
+"Caldaia Guardian",
+
+"Giant Opportunity",
+"Hop to It",
+"Hordeling Outburst",
+"Killer Service",
+"Rith's Charm",
+"Of Herbs and Stewed Rabbit",
+"The Hunger Tide Rises",
+"Three Blind Mice",
+
+"Tireless Tracker",
+"Toggo, Goblin Weaponsmith",
+"Conqueror's Pledge",
+"Release to Memory",
+
+"Muster the Departed",
+
+"Wild Endeavor",
+"Sarinth Greatwurm",
+"Megaton's Fate",
+"Geist-Honored Monk",
+"Fractal Harness",
+"Scepter of Celebration",
+"Ghired, Mirror of the Wilds",
+
+"Gylwain, Casting Director",
+"Glimpse the Impossible",
+
+"Pawpatch Recruit",
+"Novice Inspector",
+"Thraben Inspector",
+"Sharp-Eyed Rookie",
+"Doomed Artisan",
+
+"Clarion Spirit",
+"Dawn of Hope",
+"Propagator Drone",
+"Vitu-Ghazi Guildmage",
+"Selesnya Eulogist",
+"Prava of the Steel Legion",
+"Ranger Class",
+"Sprout Swarm",
+"Chitterspitter",
+"They Went This Way",
+
+
+"Glimmer Lens",
+
+"Rootborn Defenses",
+"Revive the Shire",
+
+"Hero of Precinct One",
+"Young Pyromancer",
+"Kellan, Daring Traveler // Journey On",
+"Cadira, Caller of the Small",
+
+"Full Flowering",
+"Crash the Party",
+
+"Artifact Mutation",
+"Aura Mutation",
+"Sundering Growth",
+"Sunder the Gateway",
+"Root Out",
+
+"Welcome to Sweettooth",
+"Tumbleweed Rising",
+"Form a Posse",
+"Battle for Bretagard",
+
+"Gala Greeters",
+"Peregrin Took",
+
+"Selesnya Charm",
+"Ghired's Belligerence",
+"White Sun's Twilight",
+"Bumbleflower's Sharepot",
+"Break Down",
+"Charge of the Mites",
+"Windswift Slice",
+"Entrapment Maneuver",
+
+"Audience with Trostani",
+"Builder's Talent",
+
+"Academy Manufactor",
+"Awakening Zone",
+"Goblin Assault",
+"Sam, Loyal Attendant",
+
+"Prosperous Partnership",
+"Season of the Burrow"
+],
+"wants":
+[
+"Rose Room Treasurer",
+"Elspeth Tirel",
+"Rith, the Awakener",
+"Elspeth, Sun's Champion",
+"Brightcap Badger",
+"Oath of Eorl",
+"Titania's Command",
+"Tyranid Invasion",
+"Selvala, Eager Trailblazer",
+"Sprout Swarm"
+]
+}

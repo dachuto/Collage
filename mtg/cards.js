@@ -129,12 +129,35 @@ function flat_entries(deck) {
 	return flat;
 }
 
+function as_text_deck_moxfield(entries) {
+	const sorted = entries;
+	let text = '"Count","Name","Edition","Condition","Language","Foil","Collector Number","Alter","Playtest Card","Purchase Price"';
+	for (const e of sorted) {
+		text += '"' + e.quantity + '",'
+		text += '"' + e.name + '",'
+		text += '"' + e.set + '",'
+		text += '"Near Mint",'
+		text += '"English",'
+		text += '"' + (e.foil ? 'foil' : '') + '",'
+		text += '"' + e.collector_number + '",'
+		text += '"",'
+		text += '"",'
+		text += '""'
+		text += '\n'
+
+	}
+	return text;
+}
+
 function as_text_deck(entries) {
-	//let sorted = Array.from(entries).sort((a, b) => a.name.localeCompare(b.name));
-	let sorted = entries;
+	const sorted = entries;
 	let text = "";
 	for (const e of sorted) {
-		text += e.quantity + " " + e.name + "\n";
+		// 1 Counterspell (CMR) 632 *F*
+		text += e.quantity + ' ';
+		text += e.name + ' ';
+		text += '(' + e.set + ') '
+		text += (e.foil ? '*F*' : '') + '\n';
 	}
 	return text;
 }

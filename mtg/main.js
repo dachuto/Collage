@@ -230,8 +230,9 @@ class page_data {
 		this.commander_decks = new Map();
 		this.commander_decks.set("COLLECTION", "collection.json");
 		this.commander_decks.set("WANTS", "wants.json");
-		this.commander_decks.set("General Ferrous Rokiric", "ideas/commander_rokiric_golems.json");
-		this.commander_decks.set("Ideas - Niv Mizzet", "ideas/commander_niv_mizzet.json");
+		this.commander_decks.set("General Ferrous Rokiric", "commander_rokiric_golems.json");
+		this.commander_decks.set("Niv Mizzet", "commander_niv_mizzet.json");
+		this.commander_decks.set("Ideas - Baylen", "ideas/commander_baylen.json");
 		this.commander_decks.set("Ideas - Shirei", "ideas/commander_shirei.json");
 		this.commander_decks.set("Ideas - Omnath 5c", "ideas/commander_omnath_5c.json");
 		this.commander_decks.set("Ideas - Meria Gruul Artifacts", "ideas/commander_meria.json");
@@ -571,12 +572,14 @@ class page_data {
 		}
 
 		console.log(card);
-		const printing = this.card_name_to_set_printing[card.name][0];
-		if (printing === undefined) {
-			console.log("Suspicious name: " + card);
-		} else {
-			card.set_fetched_set_printing(this.card_name_to_set_printing[card.name][0]);
+		if (this.card_name_to_set_printing[card.name] === undefined) {
+			const similar = this.search_for_name_matches(card.name);
+			console.log(similar);
+			card.name = similar[0];
 		}
+
+		const printing = this.card_name_to_set_printing[card.name][0];
+		card.set_fetched_set_printing(printing);
 
 	}
 
